@@ -1,0 +1,24 @@
+---
+# Jeff Comer
+# Ansible Playbook to create user and certificate for cert auth for all aci playbooks
+# more recent galaxy collections have facilities to to this without json/aci_rest as shown below
+
+- name: Build Fabric
+  hosts: apic
+  connection: local
+  gather_facts: False
+
+  tasks:
+#testing 123
+    - name: TASK 01 - Create User
+      cisco.aci.aci_aaa_user:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: False
+        aaa_user: ansible
+        state: "absent"
+      tags: aaa, certs
+
+
+
