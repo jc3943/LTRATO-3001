@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+    }
+    stages {
+        stage('Create Certificate User') {
+            steps {
+              ansiblePlaybook(
+              playbook: './aci/aciCreate-cert-userv3.yml',
+              inventory: '$apicInventory',
+              colorized: true
+              )
+            }
+        }
+    }
+}
