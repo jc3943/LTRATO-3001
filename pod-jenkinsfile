@@ -3,6 +3,7 @@ pipeline {
     environment {
         BRANCH_NAME = "${GIT_BRANCH}"
         varPath = "vars/" + "${BRANCH_NAME}"
+        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
     }
     stages {
         stage('Create Certificate User') {
