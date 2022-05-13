@@ -9,7 +9,7 @@ pipeline {
         stage('Create Certificate User') {
             steps {
               ansiblePlaybook(
-              playbook: './aci/aciCreate-cert-userv3.yml',
+              playbook: './aci/aciDelete-cert-auth.yml',
               inventory: '$apicInventory',
               colorized: true
               )
