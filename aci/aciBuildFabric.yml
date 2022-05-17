@@ -1,0 +1,848 @@
+---
+# Jeff Comer
+# Ansible Playbook to build base configuration of ACI fabric
+# uses vars/<branch>/switch-inventory.yaml for variables
+# modify vars/<branch>/switch-inventory.csv and run build-inventory.py to creaste vars/<branch>/switch-inventory.yaml
+
+- name: Build Fabric
+  hosts: apic
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: TASK 00a - Register Leaf Switches
+      aci_fabric_node:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        node_id: "{{ item.nodeid }}"
+        switch: "{{ item.lname }}"
+        serial: "{{ item.lserial }}"
+        descr: "Policy Created Using Ansible"
+      with_items: "{{ leaves }}"
+      tags: register
+
+    - name: TASK 00b - Register Spine Switches
+      aci_fabric_node:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        node_id: "{{ item.nodeid }}"
+        switch: "{{ item.sname }}"
+        serial: "{{ item.sserial }}"
+        descr: "Policy Created Using Ansible"
+      with_items: "{{ spines }}"
+      tags: register      
+
+    - name: TASK 01 - Create CDP ON Policy
+      aci_interface_policy_cdp:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        cdp_policy: "CDP_ON"
+        admin_state: "yes"
+        descr: "Policy Created Using Ansible"
+      tags: cdp, link
+
+    - name: TASK 02 - Create CDP OFF Policy
+      aci_interface_policy_cdp:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        cdp_policy: "CDP_OFF"
+        admin_state: "no"
+        descr: "Policy Created Using Ansible"
+      tags: cdp, link
+
+    - name: TASK 03 - Create LLDP ON Policy
+      aci_interface_policy_lldp:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        lldp_policy: "LLDP_ON"
+        transmit_state: "yes"
+        receive_state: "yes"
+        descr: "Policy Created Using Ansible"
+      tags: lldp, link
+
+    - name: TASK 04 - Create LLDP OFF Policy
+      aci_interface_policy_lldp:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        lldp_policy: "LLDP_OFF"
+        transmit_state: "no"
+        receive_state: "no"
+        descr: "Policy Created Using Ansible"
+      tags: lldp, link
+
+    - name: TASK 05 - Create MCP ON Policy
+      aci_interface_policy_mcp:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        mcp: "MCP_ON"
+        admin_state: "yes"
+        descr: "Policy Created Using Ansible"
+      tags: mcp, link
+
+    - name: TASK 06 - Create MCP OFF Policy
+      aci_interface_policy_mcp:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        mcp: "MCP_OFF"
+        admin_state: "no"
+        descr: "Policy Created Using Ansible"
+      tags: mcp, link
+
+    - name: TASK 07 - Create LACP ACTIVE Policy
+      aci_interface_policy_port_channel:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        port_channel: "LACP_ACTIVE"
+        mode: "active"
+        descr: "Policy Created Using Ansible"
+      tags: lacp, link
+
+    - name: TASK 08 - Create LACP MAC-PIN Policy
+      aci_interface_policy_port_channel:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        port_channel: "LACP_MAC-PINNING"
+        mode: "mac-pin"
+        descr: "Policy Created Using Ansible"
+      tags: lacp, link
+
+    - name: TASK 09 - Create 1G Link Policy
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "fabricHIfPol": {
+              "attributes": {
+                "dn": "uni/infra/hintfpol-1G",
+                "name": "1G",
+                "speed": "1G"
+              }
+            }
+          } 
+      delegate_to: localhost
+      tags: speed, link
+
+    - name: TASK 10 - Create 10G Link Policy
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "fabricHIfPol": {
+              "attributes": {
+                "dn": "uni/infra/hintfpol-10G",
+                "name": "10G",
+                "speed": "10G"
+              }
+            }
+          }
+      delegate_to: localhost
+      tags: speed, link
+
+    - name: TASK 11 - Create 25G Link Policy
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "fabricHIfPol": {
+              "attributes": {
+                "dn": "uni/infra/hintfpol-25G",
+                "name": "25G",
+                "speed": "25G",
+                "fecMode": "cl91-rs-fec"
+              }
+            }
+          }
+      delegate_to: localhost
+      tags: speed, link
+
+    - name: TASK 12 - Create 40G Link Policy
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "fabricHIfPol": {
+              "attributes": {
+                "dn": "uni/infra/hintfpol-40G",
+                "name": "40G",
+                "speed": "40G"
+              }
+            }
+          }
+      delegate_to: localhost
+      tags: speed, link
+
+    - name: TASK 13 - Create 100G Link Policy
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "fabricHIfPol": {
+              "attributes": {
+                "dn": "uni/infra/hintfpol-100G",
+                "name": "100G",
+                "speed": "100G"
+              }
+            }
+          }
+      delegate_to: localhost
+      tags: speed, link
+
+    - name: TASK 14 - Create Broadcast Multicast Storm Policy 
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "stormctrlIfPol": {
+              "attributes": {
+                "dn": "uni/infra/stormctrlifp-bcast-mcast-storm",
+                "bcBurstRate": "50.000000",
+                "bcRate": "50.000000",
+                "burstRate": "100.000000",
+                "mcBurstRate": "50.000000",
+                "mcRate": "50.000000",
+                "name": "bcast-mcast-storm",
+                "rate": "100.000000",
+                "stormCtrlAction": "drop",
+                "stormCtrlSoakInstCount": "3",
+                "uucBurstRate": "100.000000",
+                "uucRate": "100.000000"
+              }
+            }
+          }
+      delegate_to: localhost
+      tags: storm, link 
+
+    - name: TASK 15 - Change Default Error Disabled Recovery Policy
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "edrErrDisRecoverPol": {
+              "attributes": {
+                "dn": "uni/infra/edrErrDisRecoverPol-default",
+                "name": "default",
+              },
+              "children": [
+               {              
+                 "edrEventP": {
+                  "attributes": {
+                     "event": "event-bpduguard",
+                     "recover": "yes"
+                  }
+                 }
+               },
+               {
+                 "edrEventP": {
+                  "attributes": {
+                     "event": "event-ep-move",
+                     "recover": "yes"
+                  }
+                 }
+               },
+               {
+                 "edrEventP": {
+                  "attributes": {
+                     "event": "event-mcp-loop",
+                     "recover": "yes"
+                  }
+                 }
+               }
+             ]
+            }
+           }
+    - name: TASK 16 - Create BGP Route Reflectors
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "bgpInstPol": {
+              "attributes": {
+                "dn": "uni/fabric/bgpInstP-default",
+                "name": "default"
+              },
+              "children": [
+                {
+                  "bgpRRP": {
+                   "attributes": {
+                    "descr": "Fabric Route Reflectors"
+                   },
+                   "children": [
+                    {
+                      "bgpRRNodePEp": {
+                        "attributes": {
+                          "id": "{{ item.nodeid }}",
+                          "podId": "1"
+                        }
+                      }
+                    }
+                   ]
+                  }
+                },
+                {
+                  "bgpAsP": {
+                    "attributes": {
+                      "asn": "65000"
+                    }
+                  }
+                }
+              ]
+
+            }
+          }
+      with_items: "{{ spines }}"
+    - name: TASK 17 - Create Pod Policy Group
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "fabricPodPGrp": {
+              "attributes": {
+                "dn": "uni/fabric/funcprof/podpgrp-PodPolicyGrp-Default",
+                "name": "PodPolicyGrp-Default"
+              },
+              "children": [
+                {
+                  "fabricRsSnmpPol": {
+                    "attributes": {
+                      "tnSnmpPolName": "default"
+                    }
+                  }
+                },
+                {
+                  "fabricRsPodPGrpIsisDomP": {
+                    "attributes": {
+                      "tnIsisDomPolName": "default"
+                    }
+                  }
+                },
+                {
+                  "fabricRsPodPGrpCoopP": {
+                    "attributes": {
+                      "tnCoopPolName": "default"
+                    }
+                  }
+                },
+                {
+                  "fabricRsPodPGrpBGPRRP": {
+                    "attributes": {
+                      "tnBgpInstPolName": "default"
+                    }
+                  }
+                },
+                {
+                  "fabricRsTimePol": {
+                    "attributes": {
+                      "tnDatetimePolName": "default"
+                    }
+                  }
+                },
+                {
+                  "fabricRsMacsecPol": {
+                    "attributes": {
+                      "tnMacsecFabIfPolName": ""
+                    }
+                  }
+                },
+                {
+                  "fabricRsCommPol": {
+                    "attributes": {
+                      "tnCommPolName": "default"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+    - name: TASK 18 - Create Pod Profile
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "fabricPodS": {
+              "attributes": {
+                "dn": "uni/fabric/podprof-default/pods-default-typ-ALL",
+                "name": "default",
+                "type": "ALL"
+              },
+              "children": [
+                {
+                  "fabricRsPodPGrp": {
+                    "attributes": {
+                      "tDn": "uni/fabric/funcprof/podpgrp-PodPolicyGrp-Default"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+
+    - name: TASK 19 - Create Leaf Interface Policies
+      aci_interface_policy_leaf_profile:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        leaf_interface_profile: "{{ item.lname }}_intProf"
+      with_items: "{{ leaves  }}"
+
+    - name: TASK 19b - Create Leaf-Pair Interface Policies
+      aci_interface_policy_leaf_profile:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        leaf_interface_profile: "{{ item.lname }}_intProf"
+      with_items: "{{ leafpairs  }}"
+
+    - name: TASK 20 - Create Leaf Switch Profiles
+      aci_switch_policy_leaf_profile:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        leaf_profile: "{{ item.lname }}_swProf"
+      with_items: "{{ leaves  }}"
+
+    - name: TASK 20b - Create Leaf-Pair Switch Profiles
+      aci_switch_policy_leaf_profile:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        leaf_profile: "{{ item.lname }}_swProf"
+      with_items: "{{ leafpairs  }}"
+
+    - name: TASK 21 - Bind Leaf Selectors to Switch Profiles
+      aci_switch_leaf_selector:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        leaf_profile: "{{ item.lname }}_swProf"
+        leaf: "{{ item.lname }}"
+        leaf_node_blk: "{{ item.lname }}_intProf"
+        to: "{{ item.lnodeto }}"
+        from: "{{ item.lnodefrom }}"
+      with_items: "{{ leaves  }}"
+
+    - name: TASK 21b - Bind Leaf-Pair Selectors to Switch Profiles
+      aci_switch_leaf_selector:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        leaf_profile: "{{ item.lname }}_swProf"
+        leaf: "{{ item.lname }}"
+        leaf_node_blk: "{{ item.lname }}_intProf"
+        to: "{{ item.lnodeto }}"
+        from: "{{ item.lnodefrom }}"
+      with_items: "{{ leafpairs  }}"
+
+    - name: TASK 22 - Bind Leaf Interface Profiles to Switch Profiles
+      aci_interface_selector_to_switch_policy_leaf_profile:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        leaf_profile: "{{ item.lname }}_swProf"
+        interface_selector: "{{ item.lname }}_intProf"
+      with_items: "{{ leaves  }}"
+
+    - name: TASK 22b - Bind Leaf-Pair Interface Profiles to Switch Profiles
+      aci_interface_selector_to_switch_policy_leaf_profile:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        leaf_profile: "{{ item.lname }}_swProf"
+        interface_selector: "{{ item.lname }}_intProf"
+      with_items: "{{ leafpairs  }}"
+
+    - name: TASK 23 - Add vPC Protection Group
+      cisco.aci.aci_switch_policy_vpc_protection_group:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        protection_group: "{{ item.lname }}"
+        protection_group_id: "{{ item.vpcDomain }}"
+        switch_1_id: "{{ item.lnodefrom }}"
+        switch_2_id: "{{ item.lnodeto }}"
+        state: present
+        validate_certs: False
+      delegate_to: localhost
+      with_items: "{{ leafpairs  }}"
+
+    - name: TASK 24 - Create VLAN Pool
+      aci_vlan_pool:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        pool: "{{ item.poolname }}"
+        pool_allocation_mode: "{{ item.pooltype }}"
+      with_items: "{{ vlans  }}"
+      tags: vlan
+
+    - name: TASK 25 - Create VLAN Pool Encap Blocks
+      aci_vlan_pool_encap_block:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        pool: "{{ item.poolname }}"
+        pool_allocation_mode: "{{ item.pooltype }}"
+        block_name: "{{ item.poolname }}"
+        allocation_mode: "{{ item.encapallocmode }}"
+        block_start: "{{ item.encapstart }}"
+        block_end: "{{ item.encapend }}"
+      with_items: "{{ vlans  }}"
+      tags: vlan
+
+    - name: TASK - Create Physical Domain
+      cisco.aci.aci_domain:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        domain: "{{ item.domainname }}"
+        domain_type: "{{ item.domaintype }}"
+      when: (item.vmmprovider == "NA")
+      with_items: "{{ domains  }}"
+      tags: physdom
+
+    - name: TASK - Bind VLAN Pool to Physical Domain
+      aci_domain_to_vlan_pool:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        domain: "{{ item.domainname }}"
+        domain_type: "{{ item.domaintype }}"
+        pool: "{{ item.assocpool }}"
+        pool_allocation_mode: "{{ item.allocmode }}"
+      when: (item.vmmprovider == "NA")
+      with_items: "{{ domains  }}"
+      tags: domain
+
+    - name: TASK - Create a VMM Domain
+      cisco.aci.aci_domain:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        domain: "{{ item.domainname }}"
+        domain_type: "{{ item.domaintype }}"
+        vm_provider: "{{ item.vmmprovider }}"
+        vswitch: dvs
+      when: (item.vmmprovider != "NA")
+      with_items: "{{ domains  }}"
+      tags: vmm
+
+    - name: TASK - Bind VLAN Pool to VMM Domain
+      aci_domain_to_vlan_pool:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        domain: "{{ item.domainname }}"
+        domain_type: "{{ item.domaintype }}"
+        vm_provider: "{{ item.vmmprovider }}"
+        pool: "{{ item.assocpool }}"
+        pool_allocation_mode: "{{ item.allocmode }}"
+      when: (item.vmmprovider != "NA")
+      with_items: "{{ domains  }}"
+      tags: vmm
+
+    - name: TASK - Add credential to VMware VMM domain
+      cisco.aci.aci_vmm_credential:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        domain: "{{ item.domainname }}"
+        name: "{{ item.domainname }}-vcsa"
+        credential_username: administrator@vsphere.local
+        credential_password: LUSVP@ssw0rd!
+        vm_provider: "{{ item.vmmprovider }}"
+      when: (item.vmmprovider != "NA")
+      with_items: "{{ domains  }}"
+      tags: vmm
+
+    - name: TASK - Add VMM Controller
+      cisco.aci.aci_vmm_controller:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        domain: "{{ item.domainname }}"
+        name: "{{ item.domainname }}-vcsa"
+        controller_hostname: "{{ item.vcenter }}"
+        dvs_version: "6.6"
+        vm_provider: "{{ item.vmmprovider }}"
+        credentials: "{{ item.domainname }}-vcsa"
+        datacenter: "{{ item.datacenter }}"
+      when: (item.vmmprovider != "NA")
+      with_items: "{{ domains }}"
+      tags: vmm
+
+    - name: TASK - Add VSwitch Policy
+      cisco.aci.aci_vmm_vswitch_policy:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        port_channel_policy: LACP_ACTIVE
+        lldp_policy: LLDP_ON
+        domain: "{{ item.domainname }}"
+        vm_provider: "{{ item.vmmprovider }}"
+        enhanced_lag:
+          - name: "{{ item.domainname }}-lacp"
+            lacp_mode: active
+            load_balancing_mode: src-dst-ip-l4port
+            number_uplinks: 2
+      when: (item.vmmprovider != "NA")
+      with_items: "{{ domains  }}"
+      tags: vmm
+
+    - name: TASK - Create AEP
+      aci_aep:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        aep: "{{ item.aepname }}"
+      with_items: "{{ aeps  }}"
+      tags: aep      
+
+    - name: TASK - Associate AEP to physical domains
+      aci_aep_to_domain:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        aep: "{{ item.aepname }}"
+        domain: "{{ item.assocdomain }}"
+        domain_type: "{{ item.domaintype }}"
+      when: (item.vmmprovider == "NA")
+      with_items: "{{ aeps  }}"
+      tags: aep  
+
+    - name: TASK - Enable PTP
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "latencyPtpMode": {
+              "attributes": {
+                "dn": "uni/fabric/ptpmode",
+                "fabAnnounceIntvl": "1",
+                "fabAnnounceTimeout": "3",
+                "fabDelayIntvl": "-2",
+                "fabProfileTemplate": "aes67",
+                "fabSyncIntvl": "-3",
+                "globalDomain": "0",
+                "isCountValid": "yes",
+                "latencyPolCount": "0",
+                "prio1": "255",
+                "prio2": "255",
+                "state": "enabled",
+                "systemResolution": "0"
+              }
+            }
+          }
+      delegate_to: localhost
+      tags: ptp
+
+    - name: TASK - Create Data-Time Policy
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "datetimePol": {
+              "attributes": {
+                "dn": "uni/fabric/time-default",
+                "name": "default"
+              },
+              "children": [
+                {
+                  "datetimeNtpProv": {
+                   "attributes": {
+                    "name": "172.20.3.254",
+                    "keyId": "0",
+                    "maxPoll": "6",
+                    "minPoll": "4",
+                    "preferred": "no",
+                    "trueChimer": "disabled"
+                   },
+                   "children": [
+                    {
+                      "datetimeRsNtpProvToEpg": {
+                        "attributes": {
+                          "tDn": "uni/tn-mgmt/mgmtp-default/oob-default"
+                        }
+                      }
+                    }
+                   ]
+                  }
+                },
+                {
+                  "datetimeNtpProv": {
+                   "attributes": {
+                    "name": "172.20.1.254",
+                   "keyId": "0",
+                    "maxPoll": "6",
+                    "minPoll": "4",
+                    "preferred": "no",
+                    "trueChimer": "disabled"
+                   },
+                   "children": [
+                    {
+                      "datetimeRsNtpProvToEpg": {
+                        "attributes": {
+                          "tDn": "uni/tn-mgmt/mgmtp-default/oob-default"
+                        }
+                      }
+                    }
+                   ]
+                  }
+                }
+              ]
+            }
+          }
+      tags: ntp
+
+    - name: TASK - Configure OOB Addresses
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        content:
+          {
+            "mgmtRsOoBStNode": {
+              "attributes": {
+                "addr": "{{ item.mgmtAddress }}",
+                "dn": "uni/tn-mgmt/mgmtp-default/oob-default/rsooBStNode-[topology/pod-1/node-{{ item.nodeid }}]",
+                "gw": "{{ item.mgmtGateway }}",
+                "tDn": "topology/pod-1/node-{{ item.nodeid }}"
+              }
+            }
+          }
+#      with_items: "{{ spines and leaves }}"
+      with_items:
+        - "{{ spines }}"
+        - "{{ leaves }}"
+      delegate_to: localhost
+      tags: oob
+
