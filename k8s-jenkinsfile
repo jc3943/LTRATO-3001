@@ -1,0 +1,66 @@
+//Authored by Jeff Comer
+
+def nodeLabel = 'pod-builder-agent'
+pipeline {
+  environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
+        apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
+        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+  }
+  agent {
+    kubernetes {
+      yamlFile 'jnlp-ubuntu.yaml'
+    }
+  }
+  stages{
+    stage('Prep APIC SIMs and VCSA') {
+      steps {
+        container('jnlp') {
+          sh '''
+          echo "Inbound Agent is Connected"
+          '''
+        }
+        container('ubuntu-runner') {
+          ansiblePlaybook(
+              playbook: './vmware/vcsa-create.yml',
+              inventory: 'localhost',
+              extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
+              extraVars: [
+                  vcenter_hostname: "$vcsaHostName",
+                  datacenter_name: "${BRANCH_NAME}",
+                    cluster_name: "${BRANCH_NAME}"
+              ],
+              colorized: true
+          )
+          ansiblePlaybook(
+              playbook: './vmware/vm-snap-revert.yml',
+              inventory: './creds/vmw-inventory',
+              extras: '--extra-vars="vmname=$apicVm snap=$apicSnap"',
+              colorized: true
+          )
+          sh 'sleep 30'
+          ansiblePlaybook(
+              playbook: './aci/aciCreate-cert-auth.yml',
+              inventory: '$apicInventory',
+              colorized: true
+          )
+        }
+      }
+    }
+    stage('Fabric Discovery and Base Config') {
+      steps {
+        container('ubuntu-runner') {
+          ansiblePlaybook(
+              playbook: './aci/aciBuildFabric.yml',
+              inventory: '$apicInventory',
+              extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
+              colorized: true
+          )
+        }
+      }
+    }
+  }
+}

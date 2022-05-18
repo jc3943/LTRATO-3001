@@ -30,8 +30,8 @@ def main():
 
     infilepath = os.environ['varPath']
     outfilepath = os.environ['varPath']
-    infile = infilepath + "/switch-inventory.csv"
-    outfile = outfilepath + "/switch-inventory.yaml"
+    infile = infilepath + "/aci/switch-inventory.csv"
+    outfile = outfilepath + "/aci/switch-inventory.yaml"
 
     # open the CSV file and read it's contents to a list of dictionaries
     with open(infile, 'r') as csv_file:

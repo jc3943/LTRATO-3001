@@ -137,108 +137,68 @@
       tags: lacp, link
 
     - name: TASK 09 - Create 1G Link Policy
-      aci_rest:
+      cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
         private_key: ./creds/ansible.key
+        state: "present"
         validate_certs: False
-        path: /api/mo/uni.json
-        method: post
-        content:
-          {
-            "fabricHIfPol": {
-              "attributes": {
-                "dn": "uni/infra/hintfpol-1G",
-                "name": "1G",
-                "speed": "1G"
-              }
-            }
-          } 
+        link_level_policy: 1G
+        auto_negotiation: on
+        speed: 1G
       delegate_to: localhost
       tags: speed, link
 
     - name: TASK 10 - Create 10G Link Policy
-      aci_rest:
+      cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
         private_key: ./creds/ansible.key
+        state: "present"
         validate_certs: False
-        path: /api/mo/uni.json
-        method: post
-        content:
-          {
-            "fabricHIfPol": {
-              "attributes": {
-                "dn": "uni/infra/hintfpol-10G",
-                "name": "10G",
-                "speed": "10G"
-              }
-            }
-          }
+        link_level_policy: 10G
+        auto_negotiation: on
+        speed: 10G
       delegate_to: localhost
       tags: speed, link
 
     - name: TASK 11 - Create 25G Link Policy
-      aci_rest:
+      cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
         private_key: ./creds/ansible.key
+        state: "present"
         validate_certs: False
-        path: /api/mo/uni.json
-        method: post
-        content:
-          {
-            "fabricHIfPol": {
-              "attributes": {
-                "dn": "uni/infra/hintfpol-25G",
-                "name": "25G",
-                "speed": "25G",
-                "fecMode": "cl91-rs-fec"
-              }
-            }
-          }
+        link_level_policy: 25G
+        auto_negotiation: on
+        speed: 25G
+        forwarding_error_correction: cl91-rs-fec
       delegate_to: localhost
       tags: speed, link
 
     - name: TASK 12 - Create 40G Link Policy
-      aci_rest:
+      cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
         private_key: ./creds/ansible.key
+        state: "present"
         validate_certs: False
-        path: /api/mo/uni.json
-        method: post
-        content:
-          {
-            "fabricHIfPol": {
-              "attributes": {
-                "dn": "uni/infra/hintfpol-40G",
-                "name": "40G",
-                "speed": "40G"
-              }
-            }
-          }
+        link_level_policy: 40G
+        auto_negotiation: on
+        speed: 40G
       delegate_to: localhost
       tags: speed, link
 
     - name: TASK 13 - Create 100G Link Policy
-      aci_rest:
+      cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
         private_key: ./creds/ansible.key
+        state: "present"
         validate_certs: False
-        path: /api/mo/uni.json
-        method: post
-        content:
-          {
-            "fabricHIfPol": {
-              "attributes": {
-                "dn": "uni/infra/hintfpol-100G",
-                "name": "100G",
-                "speed": "100G"
-              }
-            }
-          }
+        link_level_policy: 100G
+        auto_negotiation: on
+        speed: 100G
       delegate_to: localhost
       tags: speed, link
 
@@ -647,60 +607,6 @@
       with_items: "{{ domains  }}"
       tags: vmm
 
-    - name: TASK - Add credential to VMware VMM domain
-      cisco.aci.aci_vmm_credential:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        private_key: ./creds/ansible.key
-        state: "present"
-        validate_certs: False
-        domain: "{{ item.domainname }}"
-        name: "{{ item.domainname }}-vcsa"
-        credential_username: administrator@vsphere.local
-        credential_password: LUSVP@ssw0rd!
-        vm_provider: "{{ item.vmmprovider }}"
-      when: (item.vmmprovider != "NA")
-      with_items: "{{ domains  }}"
-      tags: vmm
-
-    - name: TASK - Add VMM Controller
-      cisco.aci.aci_vmm_controller:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        private_key: ./creds/ansible.key
-        state: "present"
-        validate_certs: False
-        domain: "{{ item.domainname }}"
-        name: "{{ item.domainname }}-vcsa"
-        controller_hostname: "{{ item.vcenter }}"
-        dvs_version: "6.6"
-        vm_provider: "{{ item.vmmprovider }}"
-        credentials: "{{ item.domainname }}-vcsa"
-        datacenter: "{{ item.datacenter }}"
-      when: (item.vmmprovider != "NA")
-      with_items: "{{ domains }}"
-      tags: vmm
-
-    - name: TASK - Add VSwitch Policy
-      cisco.aci.aci_vmm_vswitch_policy:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        private_key: ./creds/ansible.key
-        state: "present"
-        validate_certs: False
-        port_channel_policy: LACP_ACTIVE
-        lldp_policy: LLDP_ON
-        domain: "{{ item.domainname }}"
-        vm_provider: "{{ item.vmmprovider }}"
-        enhanced_lag:
-          - name: "{{ item.domainname }}-lacp"
-            lacp_mode: active
-            load_balancing_mode: src-dst-ip-l4port
-            number_uplinks: 2
-      when: (item.vmmprovider != "NA")
-      with_items: "{{ domains  }}"
-      tags: vmm
-
     - name: TASK - Create AEP
       aci_aep:
         host: "{{ inventory_hostname }}"
@@ -839,7 +745,6 @@
               }
             }
           }
-#      with_items: "{{ spines and leaves }}"
       with_items:
         - "{{ spines }}"
         - "{{ leaves }}"

@@ -1,0 +1,8 @@
+apiVersion: "v1"
+kind: "Pod"
+spec:
+  containers:
+  - name: ubuntu-runner
+    image: jc3943/ubuntu:dev
+    command: ["sleep"]
+    args: ["120m"]

@@ -1,0 +1,67 @@
+---
+# Jeff Comer
+# Ansible Playbook to build vmm vcenter domain
+# uses vars/<branch>/switch-inventory.yaml for variables
+# modify vars/<branch>/switch-inventory.csv and run build-inventory.py to creaste vars/<branch>/switch-inventory.yaml
+
+- name: Build Fabric
+  hosts: apic
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+
+   - name: TASK - Add credential to VMware VMM domain
+      cisco.aci.aci_vmm_credential:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        domain: "{{ item.domainname }}"
+        name: "{{ item.domainname }}-vcsa"
+        credential_username: administrator@vsphere.local
+        credential_password: PASSWORD
+        vm_provider: "{{ item.vmmprovider }}"
+      when: (item.vmmprovider != "NA")
+      with_items: "{{ domains  }}"
+      tags: vmm
+
+    - name: TASK - Add VMM Controller
+      cisco.aci.aci_vmm_controller:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        domain: "{{ item.domainname }}"
+        name: "{{ item.domainname }}-vcsa"
+        controller_hostname: "{{ item.vcenter }}"
+        dvs_version: "6.6"
+        vm_provider: "{{ item.vmmprovider }}"
+        credentials: "{{ item.domainname }}-vcsa"
+        datacenter: "{{ item.datacenter }}"
+      when: (item.vmmprovider != "NA")
+      with_items: "{{ domains }}"
+      tags: vmm
+
+    - name: TASK - Add VSwitch Policy
+      cisco.aci.aci_vmm_vswitch_policy:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ./creds/ansible.key
+        state: "present"
+        validate_certs: False
+        port_channel_policy: LACP_ACTIVE
+        lldp_policy: LLDP_ON
+        domain: "{{ item.domainname }}"
+        vm_provider: "{{ item.vmmprovider }}"
+        enhanced_lag:
+          - name: "{{ item.domainname }}-lacp"
+            lacp_mode: active
+            load_balancing_mode: src-dst-ip-l4port
+            number_uplinks: 2
+      when: (item.vmmprovider != "NA")
+      with_items: "{{ domains  }}"
+      tags: vmm
