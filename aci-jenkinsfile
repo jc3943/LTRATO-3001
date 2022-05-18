@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+    }
+    stages {
+        stage('Create Certificate User') {
+            steps {
+              ansiblePlaybook(
+              playbook: './aci/aciCreate-cert-auth.yml',
+              inventory: '$apicInventory',
+              colorized: true
+              )
+            }
+        }
+        stage('Fabric Discovery and Base Config') {
+            steps {
+              ansiblePlaybook(
+              playbook: './aci/aciBuildFabric.yml',
+              inventory: '$apicInventory',
+              extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
+              colorized: true
+              )
+            }
+        }
+    }
+}
