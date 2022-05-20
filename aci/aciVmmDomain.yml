@@ -16,7 +16,7 @@
       cisco.aci.aci_vmm_credential:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         domain: "{{ item.domainname }}"
@@ -32,7 +32,7 @@
       cisco.aci.aci_vmm_controller:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         domain: "{{ item.domainname }}"
@@ -50,7 +50,7 @@
       cisco.aci.aci_vmm_vswitch_policy:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         port_channel_policy: LACP_ACTIVE

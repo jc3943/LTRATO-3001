@@ -14,7 +14,7 @@
       aci_fabric_node:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         node_id: "{{ item.nodeid }}"
@@ -28,7 +28,7 @@
       aci_fabric_node:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         node_id: "{{ item.nodeid }}"
@@ -42,7 +42,7 @@
       aci_interface_policy_cdp:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         cdp_policy: "CDP_ON"
@@ -54,7 +54,7 @@
       aci_interface_policy_cdp:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         cdp_policy: "CDP_OFF"
@@ -66,7 +66,7 @@
       aci_interface_policy_lldp:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         lldp_policy: "LLDP_ON"
@@ -79,7 +79,7 @@
       aci_interface_policy_lldp:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         lldp_policy: "LLDP_OFF"
@@ -92,7 +92,7 @@
       aci_interface_policy_mcp:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         mcp: "MCP_ON"
@@ -104,7 +104,7 @@
       aci_interface_policy_mcp:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         mcp: "MCP_OFF"
@@ -116,7 +116,7 @@
       aci_interface_policy_port_channel:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         port_channel: "LACP_ACTIVE"
@@ -128,7 +128,7 @@
       aci_interface_policy_port_channel:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         port_channel: "LACP_MAC-PINNING"
@@ -140,7 +140,7 @@
       cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         link_level_policy: 1G
@@ -153,7 +153,7 @@
       cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         link_level_policy: 10G
@@ -166,7 +166,7 @@
       cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         link_level_policy: 25G
@@ -180,7 +180,7 @@
       cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         link_level_policy: 40G
@@ -193,7 +193,7 @@
       cisco.aci.aci_interface_policy_link_level:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         link_level_policy: 100G
@@ -206,7 +206,7 @@
       aci_rest:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         validate_certs: False
         path: /api/mo/uni.json
         method: post
@@ -236,7 +236,7 @@
       aci_rest:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         validate_certs: False
         path: /api/mo/uni.json
         method: post
@@ -279,7 +279,7 @@
       aci_rest:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         validate_certs: False
         path: /api/mo/uni.json
         method: post
@@ -324,7 +324,7 @@
       aci_rest:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         validate_certs: False
         path: /api/mo/uni.json
         method: post
@@ -392,7 +392,7 @@
       aci_rest:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         validate_certs: False
         path: /api/mo/uni.json
         method: post
@@ -420,7 +420,7 @@
       aci_interface_policy_leaf_profile:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         leaf_interface_profile: "{{ item.lname }}_intProf"
@@ -430,7 +430,7 @@
       aci_interface_policy_leaf_profile:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         leaf_interface_profile: "{{ item.lname }}_intProf"
@@ -440,7 +440,7 @@
       aci_switch_policy_leaf_profile:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         leaf_profile: "{{ item.lname }}_swProf"
@@ -450,7 +450,7 @@
       aci_switch_policy_leaf_profile:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         leaf_profile: "{{ item.lname }}_swProf"
@@ -460,7 +460,7 @@
       aci_switch_leaf_selector:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         leaf_profile: "{{ item.lname }}_swProf"
@@ -474,7 +474,7 @@
       aci_switch_leaf_selector:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         leaf_profile: "{{ item.lname }}_swProf"
@@ -488,7 +488,7 @@
       aci_interface_selector_to_switch_policy_leaf_profile:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         leaf_profile: "{{ item.lname }}_swProf"
@@ -499,7 +499,7 @@
       aci_interface_selector_to_switch_policy_leaf_profile:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         leaf_profile: "{{ item.lname }}_swProf"
@@ -510,7 +510,7 @@
       cisco.aci.aci_switch_policy_vpc_protection_group:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         protection_group: "{{ item.lname }}"
         protection_group_id: "{{ item.vpcDomain }}"
         switch_1_id: "{{ item.lnodefrom }}"
@@ -524,7 +524,7 @@
       aci_vlan_pool:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         pool: "{{ item.poolname }}"
@@ -536,7 +536,7 @@
       aci_vlan_pool_encap_block:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         pool: "{{ item.poolname }}"
@@ -552,7 +552,7 @@
       cisco.aci.aci_domain:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         domain: "{{ item.domainname }}"
@@ -565,7 +565,7 @@
       aci_domain_to_vlan_pool:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         domain: "{{ item.domainname }}"
@@ -580,7 +580,7 @@
       cisco.aci.aci_domain:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         domain: "{{ item.domainname }}"
@@ -595,7 +595,7 @@
       aci_domain_to_vlan_pool:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         domain: "{{ item.domainname }}"
@@ -611,7 +611,7 @@
       aci_aep:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         aep: "{{ item.aepname }}"
@@ -622,7 +622,7 @@
       aci_aep_to_domain:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         state: "present"
         validate_certs: False
         aep: "{{ item.aepname }}"
@@ -636,7 +636,7 @@
       aci_rest:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         validate_certs: False
         path: /api/mo/uni.json
         method: post
@@ -667,7 +667,7 @@
       aci_rest:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         validate_certs: False
         path: /api/mo/uni.json
         method: post
@@ -730,7 +730,7 @@
       aci_rest:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
-        private_key: ./creds/ansible.key
+        private_key: ../creds/ansible.key
         validate_certs: False
         path: /api/mo/uni.json
         method: post
