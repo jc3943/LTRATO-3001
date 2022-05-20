@@ -4,12 +4,13 @@ pipeline {
         BRANCH_NAME = "${GIT_BRANCH}"
         varPath = "vars/" + "${BRANCH_NAME}"
         apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+        apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
     }
     stages {
         stage('Create Certificate User') {
             steps {
               ansiblePlaybook(
-              playbook: './aci/aciCreate-cert-userv3.yml',
+              playbook: './aci/aciCreate-cert-auth.yml',
               inventory: '$apicInventory',
               colorized: true
               )
@@ -19,7 +20,7 @@ pipeline {
             steps {
               ansiblePlaybook(
               playbook: './aci/aciBuildFabric.yml',
-              inventory: '$apicInventory',
+              inventory: '$apicInventoryx509',
               extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
               colorized: true
               )
