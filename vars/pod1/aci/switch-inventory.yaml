@@ -62,7 +62,7 @@ domains:
   domaintype: phys
   vcenter: ''
   vmmprovider: NA
-- allocmode: static
+- allocmode: dynamic
   assocpool: dCloud-VMM
   datacenter: dCloud-dCloud-DC
   domainname: dCloud-VMM
