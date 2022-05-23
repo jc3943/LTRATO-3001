@@ -1,0 +1,29 @@
+---
+# Jeff Comer
+# Ansible Playbook to reset apic simulator to base configuration
+# uses vars/<branch>/vm-aci-sim.yaml for vars
+
+- name: ENSURE APPLICATION CONFIGURATION EXISTS
+  hosts: vcenter 
+  connection: local
+  gather_facts: False
+  vars:
+    datacenter: "QA"
+    cluster: ""
+    folder: "/"
+    datastore: ""
+
+  tasks:
+    - name: Revert to a snapshot
+      vmware_guest_snapshot:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+        datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}" 
+        name: "{{ vmname }}"
+        state: revert
+        snapshot_name: "{{ snap }}"
+      delegate_to: localhost
+      #with_items: "{{ virtualmachines }}"
