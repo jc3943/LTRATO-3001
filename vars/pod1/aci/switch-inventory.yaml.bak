@@ -4,25 +4,25 @@ leaves:
   lnodeto: 201
   lserial: FDO26110T1F
   mgmtAddress: 172.172.1.3/20
-  mgmtGateway: 172.172.1.254
+  mgmtGateway: 172.20.1.254
   nodeid: 201
 - lname: Leaf-202
   lnodefrom: 202
   lnodeto: 202
   lserial: FDO26110T1S
   mgmtAddress: 172.172.1.4/20
-  mgmtGateway: 172.172.1.254
+  mgmtGateway: 172.20.1.254
   nodeid: 202
 spines:
 - mgmtAddress: 172.172.1.1/20
-  mgmtGateway: 172.172.1.254
+  mgmtGateway: 172.20.1.254
   nodeid: 101
   sname: Spine-101
   snodefrom: 101
   snodeto: 101
   sserial: FDO26250QNP
 - mgmtAddress: 172.172.1.2/20
-  mgmtGateway: 172.172.1.254
+  mgmtGateway: 172.20.1.254
   nodeid: 102
   sname: Spine-102
   snodefrom: 102
@@ -39,23 +39,23 @@ vlans:
   encapstart: 1200
   poolname: dCloud-VMM
   pooltype: dynamic
-- encapallocmode: dynamic
+- encapallocmode: static
   encapend: 1299
   encapstart: 1250
   poolname: dCloud-VMM
   pooltype: dynamic
-- encapallocmode: static
+- encapallocmode: dynamic
   encapend: 1205
   encapstart: 1200
   poolname: dCloud-VMM
   pooltype: dynamic
-- encapallocmode: dynamic
+- encapallocmode: static
   encapend: 1299
   encapstart: 1250
   poolname: dCloud-VMM
   pooltype: dynamic
 domains:
-- allocmode: dynamic
+- allocmode: static
   assocpool: dCloud-VMM
   datacenter: ''
   domainname: Infrastructure
