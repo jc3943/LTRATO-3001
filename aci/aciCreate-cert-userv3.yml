@@ -29,7 +29,7 @@
                 "name": "ansible",
                 "pwdLifeTime": "no-password-expire",
                 "status": "created,modified",
-                "pwd": "thor123!"
+                "pwd": "DEVP@ssw0rd"
               },
               "children": [
                 {

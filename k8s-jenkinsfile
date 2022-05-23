@@ -8,6 +8,7 @@ pipeline {
         apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
         apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
         apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+        apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
   }
   agent {
@@ -43,7 +44,7 @@ pipeline {
           )
           sh 'sleep 30'
           ansiblePlaybook(
-              playbook: './aci/aciCreate-cert-auth.yml',
+              playbook: './aci/aciCreate-cert-userv3.yml',
               inventory: '$apicInventory',
               colorized: true
           )
@@ -55,7 +56,7 @@ pipeline {
         container('ubuntu-runner') {
           ansiblePlaybook(
               playbook: './aci/aciBuildFabric.yml',
-              inventory: '$apicInventory',
+              inventory: '$apicInventoryx509',
               extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
               colorized: true
           )
