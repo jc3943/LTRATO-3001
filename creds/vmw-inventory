@@ -1,8 +1,8 @@
 [vcenter:vars]
 username=administrator@vsphere.local
-password=password
+password=DEVP@ssw0rd
 ansible_python_interpreter="/bin/python3"
 
 [vcenter]
-1.1.1.1
+172.16.10.241
 
