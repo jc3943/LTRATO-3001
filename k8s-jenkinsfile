@@ -26,6 +26,12 @@ pipeline {
         }
         container('ubuntu-runner') {
           ansiblePlaybook(
+              playbook: './vmware/vm-snap-revert.yml',
+              inventory: './creds/vmw-inventory',
+              extras: '--extra-vars="vmname=$apicVm snap=$apicSnap"',
+              colorized: true
+          )
+          ansiblePlaybook(
               playbook: './vmware/vcsa-create.yml',
               inventory: 'localhost',
               extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
@@ -36,13 +42,6 @@ pipeline {
               ],
               colorized: true
           )
-          ansiblePlaybook(
-              playbook: './vmware/vm-snap-revert.yml',
-              inventory: './creds/vmw-inventory',
-              extras: '--extra-vars="vmname=$apicVm snap=$apicSnap"',
-              colorized: true
-          )
-          sh 'sleep 30'
           ansiblePlaybook(
               playbook: './aci/aciCreate-cert-userv3.yml',
               inventory: '$apicInventory',
