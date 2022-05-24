@@ -1,6 +1,6 @@
 [apic:vars]
-username=admin
-password=DEVP@ssw0rd
+username=ansible
+password=C1sco12345
 ansible_python_interpreter="/usr/bin/python3"
 
 [apic]
