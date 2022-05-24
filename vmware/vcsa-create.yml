@@ -56,7 +56,7 @@
       dest: '/tmp/{{ vcsa_ova_name }}'
 
   - vmware_deploy_ovf:
-      hostname: '{{ esxi_address }}'
+      hostname: '{{ item.vcsaHost }}'
       username: '{{ esxi_username }}'
       password: '{{ esxi_password }}'
       name: '{{ vcenter_hostname }}' 
