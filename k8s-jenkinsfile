@@ -25,12 +25,14 @@ pipeline {
           '''
         }
         container('ubuntu-runner') {
+          //apic sim's stateless - revert to base snapshot with credentials and ip address only
           ansiblePlaybook(
               playbook: './vmware/vm-snap-revert.yml',
               inventory: './creds/vmw-inventory',
               extras: '--extra-vars="vmname=$apicVm snap=$apicSnap"',
               colorized: true
           )
+          //create vcsa on host defined in vcsa-Specs.yaml
           ansiblePlaybook(
               playbook: './vmware/vcsa-create.yml',
               inventory: 'localhost',
@@ -42,6 +44,7 @@ pipeline {
               ],
               colorized: true
           )
+          //create user for signature-based auth for all other aci playbooks
           ansiblePlaybook(
               playbook: './aci/aciCreate-cert-userv3.yml',
               inventory: '$apicInventory',
@@ -53,6 +56,7 @@ pipeline {
     stage('Fabric Discovery and Base Config') {
       steps {
         container('ubuntu-runner') {
+          //kick off discovery and configure base fabric parameters
           ansiblePlaybook(
               playbook: './aci/aciBuildFabric.yml',
               inventory: '$apicInventoryx509',
