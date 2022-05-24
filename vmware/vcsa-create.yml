@@ -1,0 +1,146 @@
+---
+- hosts: localhost
+  name: Deploy the VCSA to an ESXi Host
+  gather_facts: false
+  vars: 
+    esxi_address: '172.16.14.22'
+    esxi_username: 'root'
+    esxi_password: 'QAP@ssw0rd'
+    pod_esxi_password: 'DEVP@ssw0rd'
+    vcenter_password: 'DEVP@ssw0rd'
+    #vcenter_hostname: 'hx-crypto-vcsa'
+    #vcenter_address: '172.16.10.241'
+    net_prefix: '22'
+    net_gateway: '172.16.14.254'
+    dns_servers: '172.16.20.101'
+    domain: 'thor.iws.navy.mil'
+    searchpath: "thor.iws.navy.mil"
+    vcsa_size: 'tiny'
+    datastore: 'DEV'
+    networks: 'Storage Controller Management Network'
+    vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10.ova
+    vcsa_ova_url: 172.16.20.10:/data/nfs/00-Software/vmware/
+    #vcsa_ova_file: '/var/jenkins_home/{{ vcsa_ova_name }}'
+    vcsa_ova_file: '/tmp/{{ vcsa_ova_name }}'
+    nfs_file_browser_url: "http://172.16.10.124:8005"
+    nfs_file_browser_user: "admin"
+    nfs_file_browser_password: "admin"
+    nfs_file_url: '/api/raw/Software/VMWare/{{ vcsa_ova_name }}'
+
+  tasks:
+#  - name: Creating a Directory to mount the NFS Storage
+#    become: true
+#    file:
+#      path: /var/jenkins_home/iso
+#      state: directory
+#      mode: 0777
+
+  - name: Authenticate to the nfs file browser
+    uri:
+      url: '{{ nfs_file_browser_url }}/api/login'
+      method: POST
+      body_format: json
+      body: '{"username":"{{ nfs_file_browser_user }}","password":"{{ nfs_file_browser_password }}","recaptcha":""}'
+      headers:
+        Content-Type: "application/json"
+        Accept: "application/json"
+      return_content: yes
+      validate_certs: no
+      status_code: 200, -1
+    register: auth_res
+
+  - name: Download the file
+    get_url:
+      url: '{{ nfs_file_browser_url }}/api/raw/00-Software/vmware/{{ vcsa_ova_name }}?auth={{ auth_res.content  }}'
+      #dest: '/var/jenkins_home/{{ vcsa_ova_name }}'
+      dest: '/tmp/{{ vcsa_ova_name }}'
+
+  - vmware_deploy_ovf:
+      hostname: '{{ esxi_address }}'
+      username: '{{ esxi_username }}'
+      password: '{{ esxi_password }}'
+      name: '{{ vcenter_hostname }}' 
+      ovf: '{{ vcsa_ova_file }}' 
+      wait_for_ip_address: true
+      validate_certs: no
+      inject_ovf_env: true
+      datastore: '{{ datastore }}'
+      networks: "{u'Network 1':u'{{ networks }}'}"
+      properties:
+        DeploymentOption.value: '{{ vcsa_size }}'
+        guestinfo.cis.appliance.net.addr.family: 'ipv4'
+        guestinfo.cis.appliance.net.mode: 'static'
+        guestinfo.cis.appliance.net.addr: '{{ item.vcsaAddress }}' 
+        guestinfo.cis.appliance.net.pnid: "{{ vcenter_hostname }}" 
+        guestinfo.cis.appliance.net.prefix: '{{ net_prefix }}' 
+        guestinfo.cis.appliance.net.gateway: '{{ net_gateway }}' 
+        guestinfo.cis.appliance.net.dns.servers: '{{ dns_servers }}' 
+        guestinfo.cis.appliance.root.passwd: '{{ vcenter_password }}' 
+        guestinfo.cis.ceip_enabled: "False"
+        guestinfo.cis.deployment.autoconfig: 'True' 
+        guestinfo.cis.vmdir.password: '{{ vcenter_password }}' 
+        domain: '{{ domain }}'
+        searchpath: '{{ searchpath }}'
+    with_items: "{{ vcsaspecs }}"
+    delegate_to: localhost
+    
+  - name: Wait for vCenter
+    vmware_about_facts:
+      hostname: '{{ item.vcsaAddress }}'
+      username: 'administrator@vsphere.local'
+      password: '{{ vcenter_password }}'
+      validate_certs: no
+    with_items: "{{ vcsaspecs }}"
+    delegate_to: localhost
+    retries: 20
+    delay: 60
+    register: result           
+    until: result is succeeded
+    
+#  - name: Unmount
+#    mount:
+#      path: /tmp/iso
+#      state: unmounted
+#    become: true
+
+  - name: Create Datacenter
+    community.vmware.vmware_datacenter:
+      hostname: '{{ item.vcsaAddress }}'
+      username: 'administrator@vsphere.local'
+      password: '{{ vcenter_password }}'
+      datacenter_name: '{{ datacenter_name }}'
+      validate_certs: no
+      state: present
+    with_items: "{{ vcsaspecs }}"
+    delegate_to: localhost
+    tags: datacenter
+
+  - name: Create Cluster
+    community.vmware.vmware_cluster:
+      hostname: '{{ item.vcsaAddress }}'
+      username: 'administrator@vsphere.local'
+      password: '{{ vcenter_password }}'
+      datacenter_name: '{{ datacenter_name }}'
+      cluster_name: '{{ cluster_name }}'
+      enable_ha: true
+      enable_drs: true
+      validate_certs: no
+      state: present
+    with_items: "{{ vcsaspecs }}"
+    delegate_to: localhost
+    tags: cluster
+
+  - name: TASK - Add Hosts to vCenter
+    community.vmware.vmware_host:
+      hostname: '{{ item.vcsaAddress }}'
+      username: 'administrator@vsphere.local'
+      password: '{{ vcenter_password }}'
+      validate_certs: no
+      datacenter_name: '{{ datacenter_name }}'
+      cluster_name: '{{ cluster_name }}'
+      esxi_hostname: '{{ item.esxiAddress }}'
+      esxi_username: '{{ esxi_username }}'
+      esxi_password: '{{ pod_esxi_password }}'
+      state: present
+    with_items: "{{ vcsaspecs }}"
+    delegate_to: localhost
