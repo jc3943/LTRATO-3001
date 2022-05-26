@@ -3,7 +3,7 @@
 # Ansible Playbook to configure aci interfaces
 # example seed file vars/<branch>/aci-ports.yaml which was created using create_port_yaml.py
 
-- name: Build Fabric
+- name: Configure Ports
   hosts: apic
   connection: local
   gather_facts: False
