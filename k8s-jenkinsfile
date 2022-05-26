@@ -66,5 +66,18 @@ pipeline {
         }
       }
     }
+    stage('Configure Fabric Intf Profiles and Policy Groups') {
+      steps {
+        container('ubuntu-runner') {
+          //kick off discovery and configure base fabric parameters
+          ansiblePlaybook(
+              playbook: './aci/aciIntf-create.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/aci-ports.yaml"',
+              colorized: true
+          )
+        }
+      }
+    }
   }
 }
