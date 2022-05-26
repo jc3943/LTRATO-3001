@@ -67,7 +67,7 @@ pipeline {
         }
       }
     }
-    stage('Configure Fabric Intf Profiles and Policy Groups') {
+    stage('Configure Fabric Ports') {
       steps {
         container('ubuntu-runner') {
           //kick off discovery and configure base fabric parameters
