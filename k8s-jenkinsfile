@@ -44,6 +44,7 @@ pipeline {
               ],
               colorized: true
           )
+          sh 'sleep 45'
           //create user for signature-based auth for all other aci playbooks
           ansiblePlaybook(
               playbook: './aci/aciCreate-cert-userv3.yml',
