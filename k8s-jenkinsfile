@@ -33,17 +33,17 @@ pipeline {
               colorized: true
           )
           //create vcsa on host defined in vcsa-Specs.yaml
-          ansiblePlaybook(
-              playbook: './vmware/vcsa-create.yml',
-              inventory: 'localhost',
-              extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
-              extraVars: [
-                  vcenter_hostname: "$vcsaHostName",
-                  datacenter_name: "${BRANCH_NAME}",
-                    cluster_name: "${BRANCH_NAME}"
-              ],
-              colorized: true
-          )
+//          ansiblePlaybook(
+//              playbook: './vmware/vcsa-create.yml',
+//              inventory: 'localhost',
+//              extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
+//              extraVars: [
+//                  vcenter_hostname: "$vcsaHostName",
+//                  datacenter_name: "${BRANCH_NAME}",
+//                    cluster_name: "${BRANCH_NAME}"
+//              ],
+//              colorized: true
+//          )
           sh 'sleep 45'
           //create user for signature-based auth for all other aci playbooks
           ansiblePlaybook(
