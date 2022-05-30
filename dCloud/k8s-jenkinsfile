@@ -1,0 +1,64 @@
+//Authored by Jeff Comer
+
+def nodeLabel = 'pod-builder-agent'
+pipeline {
+  environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
+        apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
+        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+        apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+  }
+  agent {
+    kubernetes {
+      yamlFile 'jnlp-ubuntu.yaml'
+    }
+  }
+  stages{
+    stage('Prep APIC SIMs and VCSA') {
+      steps {
+        container('jnlp') {
+          sh '''
+          echo "Inbound Agent is Connected"
+          '''
+        }
+        container('ubuntu-runner') {
+          //create user for signature-based auth for all other aci playbooks
+          ansiblePlaybook(
+              playbook: './aci/aciCreate-cert-userv3.yml',
+              inventory: '$apicInventory',
+              colorized: true
+          )
+        }
+      }
+    }
+    stage('Fabric Discovery and Base Config') {
+      steps {
+        container('ubuntu-runner') {
+          //kick off discovery and configure base fabric parameters
+          ansiblePlaybook(
+              playbook: './aci/aciBuildFabric.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
+              colorized: true
+          )
+        }
+      }
+    }
+    stage('Configure Fabric Ports') {
+      steps {
+        container('ubuntu-runner') {
+          //kick off discovery and configure base fabric parameters
+          ansiblePlaybook(
+              playbook: './aci/aciIntf-create.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/aci-ports.yaml"',
+              colorized: true
+          )
+        }
+      }
+    }
+  }
+}

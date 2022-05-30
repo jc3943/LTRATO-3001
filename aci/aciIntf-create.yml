@@ -1,0 +1,68 @@
+---
+# Jeff Comer
+# Ansible Playbook to configure aci interfaces
+# example seed file vars/<branch>/aci-ports.yaml which was created using create_port_yaml.py
+
+- name: Configure Ports
+  hosts: apic
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+
+    - name: TASK 01 - Create Interface Policy Groups
+      aci_interface_policy_leaf_policy_group:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        validate_certs: False
+        policy_group: "{{ item.name }}"
+        link_level_policy: "{{ item.speed }}"
+        lag_type: "{{ item.lagType }}"
+        cdp_policy: "{{ item.cdpPol }}"
+        lldp_policy:  "{{ item.lldpPol }}"
+        mcp_policy: "{{ item.mcpPol }}"
+        monitoring_policy: "{{ item.monPol }}"
+        storm_control_interface_policy: "{{ item.stormCtlPol }}"
+        port_channel_policy: "{{ item.lacpPol }}"
+        aep: "{{ item.aep }}"
+      when: (item.lacpPol != "NA")
+      with_items: "{{ policyGrps }}"
+
+    - name: TASK 02 - Create Interface Policy Groups
+      aci_interface_policy_leaf_policy_group:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        validate_certs: False
+        policy_group: "{{ item.name }}"
+        link_level_policy: "{{ item.speed }}"
+        lag_type: "{{ item.lagType }}"
+        cdp_policy: "{{ item.cdpPol }}"
+        lldp_policy:  "{{ item.lldpPol }}"
+        mcp_policy: "{{ item.mcpPol }}"
+        monitoring_policy: "{{ item.monPol }}"
+        storm_control_interface_policy: "{{ item.stormCtlPol }}"
+#        port_channel_policy: "{{ item.lacpPol }}"
+        aep: "{{ item.aep }}"
+      when: (item.lacpPol == "NA")
+      with_items: "{{ policyGrps }}"
+
+
+    - name: TASK 03 - Create Interface Profile Selector
+      aci_access_port_to_interface_policy_leaf_profile:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        validate_certs: False
+        leaf_interface_profile: "{{ item.interfaceProfile }}"
+        access_port_selector: "{{ item.name }}"
+        leaf_port_blk: "{{ item.blkNum }}"
+        leaf_port_blk_description: "{{ item.description }}"
+        interface_type: "{{ item.intfType }}"
+        from_port: "{{ item.fromPort }}"
+        to_port: "{{ item.toPort }}"
+        policy_group: "{{ item.policyGrp }}"
+      with_items: "{{ interfaceProfiles }}"
+

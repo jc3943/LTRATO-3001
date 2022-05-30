@@ -3,7 +3,7 @@
 # Ansible Playbook to reset apic simulator to base configuration
 # uses vars/<branch>/vm-aci-sim.yaml for vars
 
-- name: ENSURE APPLICATION CONFIGURATION EXISTS
+- name: Virtual Maching SNAPSHOT REVERT
   hosts: vcenter 
   connection: local
   gather_facts: False
