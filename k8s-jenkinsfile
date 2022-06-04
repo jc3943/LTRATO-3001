@@ -10,7 +10,8 @@ pipeline {
         apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
         apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
-        vcsaNetworks = "CG61|CL-PODS|EPG_" + "${BRANCH_NAME}.toUpperCase()"
+        def uBranch = "${BRANCH_NAME}".toUpperCase()
+        vcsaNetworks = "CG61|CL-PODS|EPG_" + $uBranch
   }
   agent {
     kubernetes {
