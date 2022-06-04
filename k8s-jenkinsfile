@@ -40,7 +40,7 @@ pipeline {
               extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
               extraVars: [
                   vcenter_hostname: "$vcsaHostName",
-                  networks: "$vcsaNetworks"
+                  networks: "$vcsaNetworks",
                   datacenter_name: "${BRANCH_NAME}",
                   cluster_name: "${BRANCH_NAME}"
               ],
