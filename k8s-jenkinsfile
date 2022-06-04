@@ -10,6 +10,7 @@ pipeline {
         apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
         apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+        vcsaNetworks = "CG61|CL-PODS|EPG_" + "${BRANCH_NAME}".toUpperCase()
   }
   agent {
     kubernetes {
@@ -39,8 +40,9 @@ pipeline {
               extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
               extraVars: [
                   vcenter_hostname: "$vcsaHostName",
+                  networks: "$vcsaNetworks"
                   datacenter_name: "${BRANCH_NAME}",
-                    cluster_name: "${BRANCH_NAME}"
+                  cluster_name: "${BRANCH_NAME}"
               ],
               colorized: true
           )
