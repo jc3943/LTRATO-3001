@@ -1,0 +1,4 @@
+vcsaspecs:
+- vcsaAddress: 172.16.14.133
+  vcsaHost: 172.16.14.21
+  esxiAddress: 172.16.66.140

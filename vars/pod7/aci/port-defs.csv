@@ -1,0 +1,9 @@
+name,description,speed,intfType,cdpPol,lldpPol,mcpPol,monPol,stormCtlPol,lacpPol,aep,interfaceProfile,fromPort,toPort,blkNum,interactions
+HX_vSwitch,HX-04-1_mLOM-01,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,Leaf-201_intProf,5,5,block2,policyGrps
+HX_vSwitch,HX-04-2_mLOM-01,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,Leaf-201_intProf,6,6,block3,interfaceProfiles
+HX_vSwitch,HX-04-3_mLOM-01,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,Leaf-201_intProf,7,7,block4,
+HX_vSwitch,HX-04-1_mLOM-02,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,Leaf-202_intProf,5,5,block2,
+HX_vSwitch,HX-04-2_mLOM-02,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,Leaf-202_intProf,6,6,block3,
+HX_vSwitch,HX-04-3_mLOM-02,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,Leaf-202_intProf,7,7,block4,
+ESXi_vSwitch,ESXi-04-1_mLOM-01,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,Leaf-201_intProf,11,11,block2,
+ESXi_vSwitch,ESXi-04-1_mLOM-02,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,Leaf-202_intProf,11,11,block2,
