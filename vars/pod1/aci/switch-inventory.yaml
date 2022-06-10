@@ -67,7 +67,7 @@ domains:
   datacenter: dCloud-dCloud-DC
   domainname: dCloud-VMM
   domaintype: vmm
-  vcenter: 1.1.1.1
+  vcenter: 172.16.14.121
   vmmprovider: vmware
 aeps:
 - aepname: Infrastructure
