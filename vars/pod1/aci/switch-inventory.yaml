@@ -64,7 +64,7 @@ domains:
   vmmprovider: NA
 - allocmode: dynamic
   assocpool: dCloud-VMM
-  datacenter: dCloud-dCloud-DC
+  datacenter: pod1
   domainname: dCloud-VMM
   domaintype: vmm
   vcenter: 172.16.14.121
