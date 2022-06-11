@@ -58,8 +58,15 @@ pipeline {
       steps {
         container('ubuntu-runner') {
           //kick off discovery and configure base fabric parameters
+          sh 'python3 aci/aciBuildInventory.py'
           ansiblePlaybook(
               playbook: './aci/aciBuildFabric.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
+              colorized: true
+          )
+          ansiblePlaybook(
+              playbook: './aci/aciVmmDomain.yml',
               inventory: '$apicInventoryx509',
               extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
               colorized: true
