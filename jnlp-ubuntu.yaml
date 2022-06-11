@@ -3,6 +3,6 @@ kind: "Pod"
 spec:
   containers:
   - name: ubuntu-runner
-    image: jc3943/ubuntu:dev
+    image: jc3943/ubuntu:5.30.22
     command: ["sleep"]
     args: ["120m"]
