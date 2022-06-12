@@ -65,7 +65,7 @@ domains:
 - allocmode: dynamic
   assocpool: dCloud-VMM
   datacenter: pod1
-  domainname: dCloud-VMM
+  domainname: CL-VMM
   domaintype: vmm
   vcenter: 172.16.14.121
   vmmprovider: vmware
@@ -75,6 +75,6 @@ aeps:
   domaintype: phys
   vmmprovider: NA
 - aepname: Infrastructure
-  assocdomain: dCloud-VMM
+  assocdomain: CL-VMM
   domaintype: vmm
   vmmprovider: vmware
