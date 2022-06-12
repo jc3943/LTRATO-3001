@@ -1,0 +1,778 @@
+tenants:
+  - tenant: LTRATO-3001
+vrfs:
+  - vrf: ltrato-3001-vrf
+    tenant: LTRATO-3001
+    rp: NA
+aps:
+  - ap: WEB_APP
+    tenant: LTRATO-3001
+  - ap: CL-2022
+    tenant: LTRATO-3001
+bridge_domains:
+  - bd: BD_WEB
+    gateway: 10.0.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_APP
+    gateway: 10.0.2.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_DB
+    gateway: 10.0.3.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_100
+    gateway: 10.100.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_101
+    gateway: 10.101.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_102
+    gateway: 10.102.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_103
+    gateway: 10.103.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_104
+    gateway: 10.104.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_105
+    gateway: 10.105.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_106
+    gateway: 10.106.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_107
+    gateway: 10.107.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_108
+    gateway: 10.108.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_109
+    gateway: 10.109.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_110
+    gateway: 10.110.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_111
+    gateway: 10.111.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_112
+    gateway: 10.112.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_113
+    gateway: 10.113.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_114
+    gateway: 10.114.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_115
+    gateway: 10.115.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_116
+    gateway: 10.116.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_117
+    gateway: 10.117.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_118
+    gateway: 10.118.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_119
+    gateway: 10.119.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_120
+    gateway: 10.120.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_121
+    gateway: 10.121.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_122
+    gateway: 10.122.1.254
+    mask: 24
+    tenant: LTRATO-3001
+    vrf: ltrato-3001-vrf
+    scope: public,shared
+    L3Out: NA
+epgs:
+  - epg: WEB_EPG
+    tenant: LTRATO-3001
+    ap: WEB_APP
+    bd: BD_WEB
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 199
+    encaptype: auto
+    gateway: 10.0.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: APP_EPG
+    tenant: LTRATO-3001
+    ap: WEB_APP
+    bd: BD_APP
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 200
+    encaptype: auto
+    gateway: 10.0.2.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: DB_EPG
+    tenant: LTRATO-3001
+    ap: WEB_APP
+    bd: BD_DB
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 201
+    encaptype: auto
+    gateway: 10.0.3.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_100
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_100
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 100
+    encaptype: auto
+    gateway: 10.100.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_101
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_101
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 101
+    encaptype: auto
+    gateway: 10.101.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_102
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_102
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 102
+    encaptype: auto
+    gateway: 10.102.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_103
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_103
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 103
+    encaptype: auto
+    gateway: 10.103.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_104
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_104
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 104
+    encaptype: auto
+    gateway: 10.104.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_105
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_105
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 105
+    encaptype: auto
+    gateway: 10.105.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_106
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_106
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 106
+    encaptype: auto
+    gateway: 10.106.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_107
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_107
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 107
+    encaptype: auto
+    gateway: 10.107.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_108
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_108
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 108
+    encaptype: auto
+    gateway: 10.108.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_109
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_109
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 109
+    encaptype: auto
+    gateway: 10.109.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_110
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_110
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 110
+    encaptype: auto
+    gateway: 10.110.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_111
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_111
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 111
+    encaptype: auto
+    gateway: 10.111.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_112
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_112
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 112
+    encaptype: auto
+    gateway: 10.112.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_113
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_113
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 113
+    encaptype: auto
+    gateway: 10.113.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_114
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_114
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 114
+    encaptype: auto
+    gateway: 10.114.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_115
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_115
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 115
+    encaptype: auto
+    gateway: 10.115.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_116
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_116
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 116
+    encaptype: auto
+    gateway: 10.116.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_117
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_117
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 117
+    encaptype: auto
+    gateway: 10.117.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_118
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_118
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 118
+    encaptype: auto
+    gateway: 10.118.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_119
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_119
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 119
+    encaptype: auto
+    gateway: 10.119.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_120
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_120
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 120
+    encaptype: auto
+    gateway: 10.120.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_121
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_121
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 121
+    encaptype: auto
+    gateway: 10.121.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+  - epg: EPG_122
+    tenant: LTRATO-3001
+    ap: CL-2022
+    bd: BD_122
+    domain: CL-VMM
+    domainType: vmm
+    encaps: 122
+    encaptype: auto
+    gateway: 10.122.1.254
+    mask: 24
+    description: 3 Tier Web App
+    multivrf: NA
+epg_contracts:
+  - epg: WEB_EPG
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: WEB_APP
+    tenant: LTRATO-3001
+  - epg: WEB_EPG
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: WEB_APP
+    tenant: LTRATO-3001
+  - epg: APP_EPG
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: WEB_APP
+    tenant: LTRATO-3001
+  - epg: APP_EPG
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: WEB_APP
+    tenant: LTRATO-3001
+  - epg: DB_EPG
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: WEB_APP
+    tenant: LTRATO-3001
+  - epg: DB_EPG
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: WEB_APP
+    tenant: LTRATO-3001
+  - epg: EPG_100
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_100
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_101
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_101
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_102
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_102
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_103
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_103
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_104
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_104
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_105
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_105
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_106
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_106
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_107
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_107
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_108
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_108
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_109
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_109
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_110
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_110
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_111
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_111
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_112
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_112
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_113
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_113
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_114
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_114
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_115
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_115
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_116
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_116
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_117
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_117
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_118
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_118
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_119
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_119
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_120
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_120
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_121
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_121
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_122
+    contract: WebAppContract
+    contract_type: "provider"
+    ap: CL-2022
+    tenant: LTRATO-3001
+  - epg: EPG_122
+    contract: WebAppContract
+    contract_type: "consumer"
+    ap: CL-2022
+    tenant: LTRATO-3001
+contracts:
+  - contract: WebAppContract
+    tenant: LTRATO-3001
+    subject: "Subject"
+    filter: web_app_allow
+filters:
+  - filter: web_app_allow
+    tenant: LTRATO-3001
+    entry: "default"
+    ethertype: "unspecified"
