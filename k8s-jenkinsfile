@@ -86,7 +86,7 @@ pipeline {
           )
           //create vmm integration with vcsa
           ansiblePlaybook(
-              playbook: './aci/aciVmmDomain.yml ',
+              playbook: './aci/aciVmmDomain.yml',
               inventory: '$apicInventoryx509',
               extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
               colorized: true
