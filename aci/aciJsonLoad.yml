@@ -1,0 +1,18 @@
+---
+- name: json Loader
+  hosts: apic
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+
+    - name: TASK - aci REST json loader
+      aci_rest:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        validate_certs: False
+        path: /api/mo/uni.json
+        method: post
+        src: "{{ json_payload }}"
