@@ -37,35 +37,35 @@ vlans:
 - encapallocmode: static
   encapend: 1205
   encapstart: 1200
-  poolname: dCloud-VMM
+  poolname: CL-VMM
   pooltype: dynamic
 - encapallocmode: dynamic
   encapend: 1299
   encapstart: 1250
-  poolname: dCloud-VMM
+  poolname: CL-VMM
   pooltype: dynamic
 - encapallocmode: static
   encapend: 1205
   encapstart: 1200
-  poolname: dCloud-VMM
+  poolname: CL-VMM
   pooltype: dynamic
 - encapallocmode: dynamic
   encapend: 1299
   encapstart: 1250
-  poolname: dCloud-VMM
+  poolname: CL-VMM
   pooltype: dynamic
 domains:
 - allocmode: dynamic
-  assocpool: dCloud-VMM
+  assocpool: CL-VMM
   datacenter: ''
   domainname: Infrastructure
   domaintype: phys
   vcenter: ''
   vmmprovider: NA
 - allocmode: dynamic
-  assocpool: dCloud-VMM
+  assocpool: CL-VMM
   datacenter: dCloud-dCloud-DC
-  domainname: dCloud-VMM
+  domainname: CL-VMM
   domaintype: vmm
   vcenter: 1.1.1.1
   vmmprovider: vmware
@@ -75,6 +75,6 @@ aeps:
   domaintype: phys
   vmmprovider: NA
 - aepname: Infrastructure
-  assocdomain: dCloud-VMM
+  assocdomain: CL-VMM
   domaintype: vmm
   vmmprovider: vmware
