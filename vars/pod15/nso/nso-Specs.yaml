@@ -1,0 +1,4 @@
+nsospecs:
+- nsoUrl: http://172.16.14.162:8080/jsonrpc
+  c8000vAddress: 172.0.15.11
+  c8000vName: pod15-8000v
