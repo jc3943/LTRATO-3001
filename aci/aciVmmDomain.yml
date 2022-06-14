@@ -4,7 +4,7 @@
 # uses vars/<branch>/switch-inventory.yaml for variables
 # modify vars/<branch>/switch-inventory.csv and run build-inventory.py to creaste vars/<branch>/switch-inventory.yaml
 
-- name: Build Fabric
+- name: Build Fabric VMM Domain
   hosts: apic
   connection: local
   gather_facts: False

@@ -3,7 +3,7 @@
 # Ansible Playbook to create user and certificate for cert auth for all aci playbooks
 # more recent galaxy collections have facilities to to this without json/aci_rest as shown below
 
-- name: Build Fabric
+- name: Create Certificat User
   hosts: apic
   connection: local
   gather_facts: False
