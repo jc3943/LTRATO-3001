@@ -16,7 +16,17 @@ pipeline {
       yamlFile 'jnlp-ubuntu.yaml'
     }
   }
+  
   stages{
+    stage('Stat k8s Nodes') {
+      steps {
+        container('ubuntu-runner') {
+          /Check health state of k8s nodes in target cluster
+          sh 'cp -r .kube /root/'
+          sh 'python3 k8s/clusterHealth.py'
+        }
+      }
+    }
     stage('Prep APIC SIMs and VCSA') {
       steps {
         container('jnlp') {

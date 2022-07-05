@@ -6,6 +6,7 @@ def getNodes():
     nodeStatDict = {}
     nodeErrorDict = {}
     nodeErrorList = []
+    clusterStatExit = True
     config.load_kube_config()
     k8s_api = client.CoreV1Api()
     response = k8s_api.list_node()
@@ -16,6 +17,14 @@ def getNodes():
         nodeStatDict.update({response.items[i].status.conditions[1].type:response.items[i].status.conditions[1].status})
         nodeStatDict.update({response.items[i].status.conditions[2].type:response.items[i].status.conditions[2].status})
         nodeStatDict.update({response.items[i].status.conditions[3].type:response.items[i].status.conditions[3].status})
+        nodeStatDict.update({response.items[i].status.conditions[4].type:response.items[i].status.conditions[4].status})
+        if nodeStatDict['Ready'] == "False":
+            print(nodeStatDict['node'] + ":\t" + "Node Status Not Healthy")
+            clusterStatExit = False
+        else:
+            print(nodeStatDict['node'] + ":\t" + "Status Healthy")
         nodeStatList.append(nodeStatDict)
+    if clusterStatExit is False:
+        exit(-1)
     return nodeStatList
  
