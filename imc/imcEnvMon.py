@@ -44,4 +44,4 @@ def main(argv):
 if __name__ == '__main__':
     cimcData = main(sys.argv[1:])
     pwrData = getPwrStats(cimcData)
-    #print(json.dumps(pwrData[0]))
+    #print(json.dumps(pwrData))

@@ -2,9 +2,12 @@
 # collection of imc functions
 
 
-import sys, getopt, csv
+import sys, getopt, csv, time
 import requests, json
 import urllib3
+from datetime import datetime, timezone
+import psycopg2
+from psycopg2.extras import execute_values
 
 def disablePC(specDict):
     j = 0
@@ -93,6 +96,10 @@ def getPwrStats(specDict):
     allPwrStats = []
     #pwrStatsDict = {"Host":[],"pwrData":[]}
     pwrStatsDict = {}
+    summaryDict = {}
+    summaryInfo = []
+    current_time = datetime.now(timezone.utc)
+
     with open(specDict['infile'], 'r') as csv_file:
         csvread = csv.DictReader(csv_file)
         csvDict = list(csvread)
@@ -101,6 +108,7 @@ def getPwrStats(specDict):
 
     print("Host,sysAvgWatts,sysMaxWatts,psu1VoltsOut,psu2VoltsOut,psu1Serial,psu1OutWatts,psu1InVolts,psu1InWatts,psu2Serial,psu2OutWatts,psu2InVolts,psu2InWatts")
     for i in range(len(csvDict)):
+        epocSec = time.time()
         pwrInfoUrl = "https://" + csvDict[i]['cimc'] + "/redfish/v1/Chassis/1/Power"
         pwrInfoResponse = requests.get(pwrInfoUrl, verify=False, auth=(specDict['username'], specDict['password']))
         pwrInfoJson = pwrInfoResponse.json()
@@ -118,7 +126,34 @@ def getPwrStats(specDict):
         psu2OutWatts = allPwrStats[i][csvDict[i]['cimc']]["PowerSupplies"][1]["PowerOutputWatts"]
         psu2InVolts = allPwrStats[i][csvDict[i]['cimc']]["PowerSupplies"][1]["LineInputVoltage"]
         psu2InWatts = allPwrStats[i][csvDict[i]['cimc']]["PowerSupplies"][1]["PowerInputWatts"]
-        #print(csvDict[i]['cimc'] + "," + str(avgWatts) + "," + str(maxWatts) + "," + str(psu1VoltOut) + "," + str(psu2VoltOut))
+        summaryDict = {"host":csvDict[i]['cimc'],"psu1Serial":psu1Serial,"psu2Serial":psu2Serial,"avgWatts":avgWatts,"maxWatts":maxWatts,"psu1InVolts":psu1InVolts,"psu1VoltOout":psu1VoltOut,"psu1InWatts":psu1InWatts,"psu1OutWatts":psu1OutWatts,"psu2InVolts":psu2InVolts,"psu2VoltOut":psu2VoltOut,"psu2InWatts":psu2InWatts,"psu2OutWatts":psu2OutWatts,"psu2InWatts":psu2InWatts,"time":str(current_time),"timesec":epocSec}
+        summaryInfo.append(summaryDict)
         print(csvDict[i]['cimc'], str(avgWatts), str(maxWatts), str(psu1VoltOut), str(psu2VoltOut), psu1Serial, str(psu1OutWatts), str(psu1InVolts), str(psu2InWatts), psu2Serial, str(psu2OutWatts), str(psu2InVolts), str(psu2InWatts), sep=",")
 
+    print(json.dumps(summaryInfo))
+    conn = psycopg2.connect(host='172.16.67.14', dbname="envmon", user="postgres")
+    cursor = conn.cursor()
+    columns = summaryInfo[0].keys()
+    query = "INSERT INTO imcpwr ({}) VALUES %s".format(','.join(columns))
+    values = [[value for value in pwrData.values()] for pwrData in summaryInfo]
+    execute_values(cursor, query, values)
+    conn.commit()
     return allPwrStats
+
+def getThermStats(specDict):
+    i = 0
+    k = 0
+    allThermStats = []
+    thermStatsDict = {}
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
+
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+    for i in range(len(csvDict)):
+        thermInfoUrl = "https://" + csvDict[i]['cimc'] + "/redfish/v1/Chassis/1/Thermal"
+        thermInfoResponse = requests.get(thermInfoUrl, verify=False, auth=(specDict['username'], specDict['password']))
+        thermInfoJson = thermInfoResponse.json()
+        thermStatsDict = {csvDict[i]['cimc']:thermInfoJson}
+        allThermStats.append(pwrStatsDict)
