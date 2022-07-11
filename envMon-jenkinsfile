@@ -1,0 +1,34 @@
+//Authored by Jeff Comer
+
+def nodeLabel = 'pod-builder-agent'
+pipeline {
+  triggers {
+        cron('*/30 * * * *')
+    }
+  environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
+        apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
+        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+        apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+        IMC_CREDS = credentials('imc-creds')
+  }
+  agent {
+    kubernetes {
+      yamlFile 'jnlp-ubuntu.yaml'
+    }
+  }
+  
+  stages{
+    stage('Get IMC Pwr Stats') {
+      steps {
+        container('ubuntu-runner') {
+          //Get Pwr Stats from list of hosts
+          sh 'python3 imc/imcEnvMon.py -u $IMC_CREDS_USR -p $IMC_CREDS_PSW -i $varPath/imc/hostIpAddrs.csv'
+        }
+      }
+    }
+  }
+}
