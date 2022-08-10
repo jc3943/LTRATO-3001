@@ -1,5 +1,5 @@
 nodeName,nodeID,type,serialNum,nodeFrom,nodeTo,mgmtAddress,mgmtGateway,vpcDomain,vlPoolName,poolType,encapallocmode,encapstart,encapend,domainName,domainType,vmmProvider,aepName,vcenter,vcDataCenter,apic,apicNodeId,aciSoftware,imageURL,imageName
-SBOX-Spine-101,101,spine,FDO25250QNP,101,101,172.16.106.1/20,172.20.111.254,,HX-VMM,dynamic,static,1200,1205,,,,,,,SBOX-APIC-04-1,1,n9000-15.2(2f),172.16.65.167/ZZ-Staging/OUSV-Install/ACI/ACI-5.2f/aci-n9000-dk9.15.2.2f.bin,aci-n9000-dk9.15.2.2f.bin
+SBOX-Spine-101,101,spine,FDO25250QNP,101,101,172.20.106.1/20,172.20.111.254,,HX-VMM,dynamic,static,1200,1205,,,,,,,SBOX-APIC-04-1,1,n9000-15.2(2f),172.16.65.167/ZZ-Staging/OUSV-Install/ACI/ACI-5.2f/aci-n9000-dk9.15.2.2f.bin,aci-n9000-dk9.15.2.2f.bin
 SBOX-Leaf-201,201,leaf,FDO25110T1F,201,201,172.20.106.2/20,172.20.111.254,,HX-VMM,dynamic,dynamic,1250,1299,Infrastructure,phys,NA,Infrastructure,,,,,apic-5.2(2f),172.16.65.167/ZZ-Staging/OUSV-Install/ACI/ACI-5.2f/aci-apic-dk9.5.2.2f.iso,aci-apic-dk9.5.2.2f.iso
 SBOX-Leaf-202,202,leaf,FDO25110T1S,202,202,172.20.106.3/20,172.20.111.254,,HX-VMM,dynamic,static,1200,1205,,,,,,,,,,,
 SBOX-Leaf-201-SBOX-Leaf-202,201,vpc,,201,202,,,201,HX-VMM,dynamic,dynamic,1250,1299,HX-VMM,vmm,vmware,Infrastructure,172.16.14.137,SBOX,,,,,
