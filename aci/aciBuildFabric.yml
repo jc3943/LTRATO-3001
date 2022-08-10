@@ -642,7 +642,7 @@
         aep: "{{ item.aepname }}"
         domain: "{{ item.assocdomain }}"
         domain_type: "{{ item.domaintype }}"
-        vm_provider: "{{ item.vmmprovider }}
+        vm_provider: "{{ item.vmmprovider }}"
       when: (item.vmmprovider != "NA")
       with_items: "{{ aeps  }}"
       tags: aep
