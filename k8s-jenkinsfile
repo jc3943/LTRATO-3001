@@ -88,6 +88,7 @@ pipeline {
       steps {
         container('ubuntu-runner') {
           //configure aci fabric ports
+          sh 'python3 aci/aciCreate_port_yaml.py'
           ansiblePlaybook(
               playbook: './aci/aciIntf-create.yml',
               inventory: '$apicInventoryx509',

@@ -26,7 +26,7 @@ def main():
     dict3 = {}
 
     # open the CSV file and read it's contents to a list of dictionaries
-    with open('vars/pod1/aci/port-defs.csv', 'r') as csv_file:
+    with open('vars/sandbox/aci/port-defs.csv', 'r') as csv_file:
         csvread = csv.DictReader(csv_file)
         for column in csvread:
             # append each dict to the list
@@ -137,7 +137,7 @@ def main():
     # print(newDict1)
 
     # print all of the key : value pairs to the yaml file
-    with open('vars/pod1/aci/aci-ports.yaml', 'w+') as yml_file:
+    with open('vars/sandbox/aci/aci-ports.yaml', 'w+') as yml_file:
         shove = yaml.dump(newDict1, yml_file)
 
     # print("Success!")
