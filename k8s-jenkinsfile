@@ -36,11 +36,11 @@ pipeline {
         }
         container('ubuntu-runner') {
           //apic sim's stateless - revert to base snapshot with credentials and ip address only
-          ansiblePlaybook(
-              playbook: './vmware/vm-snap-revert.yml',
-              inventory: './creds/vmw-inventory',
-              extras: '--extra-vars="vmname=$apicVm snap=$apicSnap"',
-              colorized: true
+          //ansiblePlaybook(
+          //    playbook: './vmware/vm-snap-revert.yml',
+          //    inventory: './creds/vmw-inventory',
+          //    extras: '--extra-vars="vmname=$apicVm snap=$apicSnap"',
+          //    colorized: true
           )
           //create vcsa on host defined in vcsa-Specs.yaml
           ansiblePlaybook(
