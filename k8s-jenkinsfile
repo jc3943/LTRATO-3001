@@ -41,7 +41,7 @@ pipeline {
           //    inventory: './creds/vmw-inventory',
           //    extras: '--extra-vars="vmname=$apicVm snap=$apicSnap"',
           //    colorized: true
-          )
+          //)
           //create vcsa on host defined in vcsa-Specs.yaml
           ansiblePlaybook(
               playbook: './vmware/vcsa-create.yml',
