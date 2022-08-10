@@ -630,7 +630,21 @@
         domain_type: "{{ item.domaintype }}"
       when: (item.vmmprovider == "NA")
       with_items: "{{ aeps  }}"
-      tags: aep  
+      tags: aep
+
+    - name: TASK - Associate AEP to virtual domains
+      aci_aep_to_domain:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        state: "present"
+        validate_certs: False
+        aep: "{{ item.aepname }}"
+        domain: "{{ item.assocdomain }}"
+        domain_type: "{{ item.domaintype }}"
+      when: (item.vmmprovider != "NA")
+      with_items: "{{ aeps  }}"
+      tags: aep
 
     - name: TASK - Enable PTP
       aci_rest:
