@@ -1,4 +1,5 @@
-FROM jc3943/ubuntu:5.30.22
+FROM ubuntu:22.04
+#FROM jc3943/ubuntu:5.30.22
 
 ##### Apt-Utils #####
 RUN apt-get update \
@@ -8,18 +9,17 @@ RUN apt-get install -y sudo
 
 ##### Other utils #####
 RUN apt-get update \
-	&& apt-get install -y openssh-client vim nfs-common gzip ansible wget
+	&& apt-get install -y openssh-client vim nfs-common gzip ansible wget software-properties-common gnupg2 curl
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update
 RUN apt-get update
 #RUN apt remove ansible -y
-#RUN apt install -y python3-pip
-#RUN apt install curl -y
 RUN apt install sshpass -y
 RUN apt-get install git -y
+RUN apt-get install python3-pip -y
 RUN pip3 install --upgrade pip
-#RUN pip3 install --upgrade ansible
+RUN pip3 install --upgrade ansible
 RUN ansible-galaxy collection install cisco.aci
 RUN ansible-galaxy collection install community.vmware
 RUN ansible-galaxy collection install cisco.nae
@@ -37,11 +37,17 @@ RUN pip3 install urllib3
 RUN pip3 install install git+https://github.com/CiscoDevNet/intersight-python
 RUN pip3 install jsonschema
 
-#RUN apt-get update \
-#	&& curl -OL https://dl.google.com/go/go1.17.2.linux-amd64.tar.gz \
-#	&& tar -xvf go1.17.2.linux-amd64.tar.gz \
-#	&& mv go /usr/local
+RUN apt-get update \
+	&& curl -OL https://dl.google.com/go/go1.17.2.linux-amd64.tar.gz \
+	&& tar -xvf go1.17.2.linux-amd64.tar.gz \
+	&& mv go /usr/local
 
-RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
-    && chmod 700 get_helm.sh && ./get_helm.sh
+RUN curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor > hashicorp.gpg
+RUN install -o root -g root -m 644 hashicorp.gpg /etc/apt/trusted.gpg.d
+RUN apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com focal main"
+RUN apt update
+RUN apt install terraform
+
+#RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
+#    && chmod 700 get_helm.sh && ./get_helm.sh
 
