@@ -38,6 +38,7 @@ pipeline {
         container('ubuntu-tfe') {
           //kick off terraform imc device discover for ucs hosts
           dir('tfe/intersight') {
+            sh 'cp hosts /etc/hosts'
             sh 'terraform init'
             sh 'terraform apply -auto-approve'
           }

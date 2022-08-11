@@ -3,6 +3,6 @@ kind: "Pod"
 spec:
   containers:
   - name: ubuntu-tfe
-    image: jc3943/ubuntu:5.30.22
+    image: jc3943/ubuntu-tfe:20220811
     command: ["sleep"]
     args: ["120m"]
