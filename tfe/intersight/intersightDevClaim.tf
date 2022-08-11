@@ -14,7 +14,7 @@ provider "intersight" {
 }
 
 locals {
-  instances = csvdecode(file("$varPath/imc/hostIpAddrs.csv"))
+  instances = csvdecode(file("./hostIpAddrs.csv"))
 }
 
 resource "intersight_appliance_device_claim" "intersight_imc_claim" {
