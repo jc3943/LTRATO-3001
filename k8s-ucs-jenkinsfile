@@ -39,6 +39,7 @@ pipeline {
           //kick off terraform imc device discover for ucs hosts
           dir('tfe/intersight') {
             sh 'cp hosts /etc/hosts'
+            sh 'sleep 300'
             sh 'terraform init'
             sh 'terraform apply -auto-approve'
           }
