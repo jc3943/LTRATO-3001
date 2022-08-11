@@ -124,7 +124,7 @@ pipeline {
       steps {
         container('ubuntu-runner') {
           //Build tenant from vars
-          sh 'python3 ./aci/aciUpgrade.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/switch-inventory.csv'
+          sh 'python3 ./aci/aciUpgrade.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/aci/switch-inventory.csv'
         }
       }
     }
