@@ -5,6 +5,7 @@ pipeline {
   environment {
         BRANCH_NAME = "${GIT_BRANCH}"
         varPath = "vars/" + "${BRANCH_NAME}"
+        APIC_CREDS = credentials('apic-creds')
         apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
         apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
         apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
@@ -116,6 +117,14 @@ pipeline {
               extras: '--extra-vars="@$varPath/aci/tenant.yaml"',
               colorized: true
           )
+        }
+      }
+    }
+    stage('Upgrade APIC') {
+      steps {
+        container('ubuntu-runner') {
+          //Build tenant from vars
+          sh 'python3 ./aci/aciUpgrade.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/switch-inventory.csv'
         }
       }
     }
