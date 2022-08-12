@@ -143,12 +143,12 @@ def apicUpgrade(specDict, cookie):
             print("Retrying Connection, Node Reset")
             upgradeCheck += 1
             bakeTimer += 1
-            time.sleep(5)
+            time.sleep(30)
         except requests.exceptions.ConnectionError:
             print("Retrying Connection, Connection Refused")
             upgradeCheck += 1
             bakeTimer += 1
-            time.sleep(5)
+            time.sleep(30)
 
 
 
