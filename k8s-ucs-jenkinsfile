@@ -40,7 +40,7 @@ pipeline {
           dir('tfe/intersight') {
             //sh 'cp resolv.conf /etc/'
             sh 'terraform init'
-            sh 'sleep 600'
+            //sh 'sleep 600'
             sh 'terraform apply -auto-approve'
           }
         }
