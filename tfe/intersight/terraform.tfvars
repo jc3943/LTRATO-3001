@@ -8,4 +8,4 @@ api_endpoint = "https://qa-intersight.thor.iws.navy.mil"
 
 # CIMC Creds
 cimc_user = "admin"
-cims_pw = "DEVP@ssw0rd"
+cimc_pw = "DEVP@ssw0rd"
