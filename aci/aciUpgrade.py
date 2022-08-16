@@ -148,7 +148,7 @@ def apicUpgrade(specDict, cookie):
             print("Retrying Connection, Connection Refused")
             upgradeCheck += 1
             bakeTimer += 1
-            time.sleep(30)
+            time.sleep(60)
 
 
 
