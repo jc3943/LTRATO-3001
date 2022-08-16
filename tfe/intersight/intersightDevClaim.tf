@@ -9,5 +9,5 @@ resource "intersight_appliance_device_claim" "intersight_imc_claim" {
   hostname        = each.value.cimc
   platform_type = "IMC"
   username  = var.cimc_user
-  password = var.cimc_pw
+  password = base64decode(var.cimc_pw)
 }
