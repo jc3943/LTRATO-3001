@@ -111,6 +111,7 @@ def apicUpgrade(specDict, cookie):
         try:
             upgradeStatus = requests.get(upgradeCheckURL, cookies=cookie, verify=False)
             upgradeJson = upgradeStatus.json()
+            print(upgradeJson)
             try:
                 upgradeResult = upgradeJson["imdata"][0]["maintUpgJob"]["attributes"]["upgradeStatusStr"]
                 if (upgradeResult == "Successful"):
