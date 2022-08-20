@@ -28,7 +28,7 @@ pipeline {
         }
       }
     }
-    stage('Prep APIC SIMs and VCSA') {
+    stage('Deploy VCSA and add credentials to APIC') {
       steps {
         container('jnlp') {
           sh '''
