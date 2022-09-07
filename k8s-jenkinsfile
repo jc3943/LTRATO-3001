@@ -117,6 +117,14 @@ pipeline {
               extras: '--extra-vars="@$varPath/aci/tenant.yaml"',
               colorized: true
           )
+          ansiblePlaybook(
+              playbook: './aci/aciJsonLoad.yml',
+              inventory: '$apicInventoryx509',
+              extraVars: [
+                  json_payload: "$varPath/aci/L3-Out.json"
+              ],
+              colorized: true
+          )
         }
       }
     }
