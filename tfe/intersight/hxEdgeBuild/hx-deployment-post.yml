@@ -1,0 +1,42 @@
+Request URL: https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/ClusterProfiles/63121fb36973682d30395d0b?$expand=NodeProfileConfig($select=ConfigContext)
+Request Method: POST
+Status Code: 200 
+Remote Address: 172.16.20.5:443
+Referrer Policy: strict-origin-when-cross-origin
+cache-control: no-cache, no-store, must-revalidate
+content-security-policy: base-uri 'self' https://cdn.qa-intersight.thor.iws.navy.mil/; child-src 'self' https://qa-intersight.thor.iws.navy.mil/ https://cdn.qa-intersight.thor.iws.navy.mil/ https://10.104.223.224/ https://cloudsso-test.cisco.com https://www-stage.cisco.com/ ; default-src 'self' https://cdn.qa-intersight.thor.iws.navy.mil/; font-src 'self' data: https://cdn.qa-intersight.thor.iws.navy.mil/; frame-ancestors 'self'; img-src 'self' data: https://cdn.qa-intersight.thor.iws.navy.mil/; style-src 'self' 'unsafe-inline' https://cdn.qa-intersight.thor.iws.navy.mil/; object-src 'none'; form-action 'self' https://qa-intersight.thor.iws.navy.mil/ https://cloudsso-test.cisco.com https://www-stage.cisco.com/ ; script-src 'self' https://cdn.qa-intersight.thor.iws.navy.mil/; sandbox allow-modals allow-scripts allow-same-origin allow-popups allow-forms allow-downloads; connect-src 'self' https://cdn.qa-intersight.thor.iws.navy.mil/ https://status.intersight.com https://download.qa-intersight.thor.iws.navy.mil/ wss://socket.qa-intersight.thor.iws.navy.mil wss://qa-intersight.thor.iws.navy.mil; frame-src 'self' blob: https://qa-intersight.thor.iws.navy.mil/ https://cdn.qa-intersight.thor.iws.navy.mil/ https://10.104.223.224/ https://cloudsso-test.cisco.com https://www-stage.cisco.com/ ;
+content-type: application/json; charset=utf-8
+date: Fri, 02 Sep 2022 15:47:16 GMT
+pragma: no-cache
+server: nginx
+strict-transport-security: max-age=63072000; includeSubDomains
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-starship-traceid: NB526a85a26e2f61a8fe04314b206e538a
+x-xss-protection: 1; mode=block;
+:authority: qa-intersight.thor.iws.navy.mil
+:method: POST
+:path: /api/v1/hyperflex/ClusterProfiles/63121fb36973682d30395d0b?$expand=NodeProfileConfig($select=ConfigContext)
+:scheme: https
+accept: */*
+accept-encoding: gzip, deflate, br
+accept-language: en
+cache-control: max-age=0
+content-length: 19
+content-type: application/json
+cookie: X-UI-Scope=default; X-Starship-Token=8e1d31ea6d9a3a72ef71bc0187e53d5b37fb920a28002d083972619c4a586b96-63121f337564612d3021dd5f-6273ddc07564612d30091b98
+if-none-match: *
+origin: https://qa-intersight.thor.iws.navy.mil
+referer: https://qa-intersight.thor.iws.navy.mil/an/policy/profiles/hx/edit/63121fb36973682d30395d0b/?$currentPage=1&$pageSize=10&$orderby=Name%20asc
+sec-ch-ua: "Chromium";v="104", " Not A;Brand";v="99", "Google Chrome";v="104"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: same-origin
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36
+x-requested-with: XMLHttpRequest
+
+
+Payload
+{"Action":"Deploy"}

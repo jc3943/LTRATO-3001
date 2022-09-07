@@ -1,0 +1,182 @@
+https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/ClusterProfiles
+{
+  "ObjectType": "hyperflex.ClusterProfile.List",
+  "Results": [
+    {
+      "AccountMoid": "6273ddc07564612d30091b97",
+      "Action": "No-op",
+      "ActionParams": [],
+      "Ancestors": [],
+      "AssociatedCluster": null,
+      "AssociatedComputeCluster": null,
+      "AutoSupport": {
+        "ClassId": "mo.MoRef",
+        "Moid": "630b9b756973682d30393dea",
+        "ObjectType": "hyperflex.AutoSupportPolicy",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/AutoSupportPolicies/630b9b756973682d30393dea"
+      },
+      "ClassId": "hyperflex.ClusterProfile",
+      "ClusterInternalSubnet": {
+        "ClassId": "comm.IpV4Interface",
+        "Gateway": "",
+        "IpAddress": "",
+        "Netmask": "",
+        "ObjectType": "comm.IpV4Interface"
+      },
+      "ClusterNetwork": {
+        "ClassId": "mo.MoRef",
+        "Moid": "630b9b756973682d30393dc1",
+        "ObjectType": "hyperflex.ClusterNetworkPolicy",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/ClusterNetworkPolicies/630b9b756973682d30393dc1"
+      },
+      "ClusterStorage": {
+        "ClassId": "mo.MoRef",
+        "Moid": "630b9b756973682d30393de5",
+        "ObjectType": "hyperflex.ClusterStoragePolicy",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/ClusterStoragePolicies/630b9b756973682d30393de5"
+      },
+      "ConfigContext": {
+        "ClassId": "policy.ConfigContext",
+        "ConfigState": "Configuring",
+        "ConfigType": "Installation",
+        "ControlAction": "Deploy",
+        "ErrorState": "",
+        "ObjectType": "policy.ConfigContext",
+        "OperState": "Configuring"
+      },
+      "ConfigResult": {
+        "ClassId": "mo.MoRef",
+        "Moid": "63121fb36973682d30395d0d",
+        "ObjectType": "hyperflex.ConfigResult",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/ConfigResults/63121fb36973682d30395d0d"
+      },
+      "CreateTime": "2022-09-02T15:22:27.841Z",
+      "DataIpAddress": "169.254.239.1",
+      "Description": "dev-hx-m4 HX Cluster Profile",
+      "DomainGroupMoid": "6273ddc07564612d30091b98",
+      "ExtFcStorage": null,
+      "ExtIscsiStorage": null,
+      "HostNamePrefix": "dev-hx-m4",
+      "Httpproxypolicy": null,
+      "HypervisorControlIpAddress": "",
+      "HypervisorType": "ESXi",
+      "LocalCredential": {
+        "ClassId": "mo.MoRef",
+        "Moid": "630b9b756973682d30393dc6",
+        "ObjectType": "hyperflex.LocalCredentialPolicy",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/LocalCredentialPolicies/630b9b756973682d30393dc6"
+      },
+      "MacAddressPrefix": "00:25:B5:EF",
+      "MgmtIpAddress": "172.16.114.10",
+      "MgmtPlatform": "EDGE",
+      "ModTime": "2022-09-02T15:47:16.978Z",
+      "Moid": "63121fb36973682d30395d0b",
+      "Name": "dev-hx-m4",
+      "NodeConfig": {
+        "ClassId": "mo.MoRef",
+        "Moid": "630b9b756973682d30393dd5",
+        "ObjectType": "hyperflex.NodeConfigPolicy",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/NodeConfigPolicies/630b9b756973682d30393dd5"
+      },
+      "NodeProfileConfig": [
+        {
+          "ClassId": "mo.MoRef",
+          "Moid": "63121fb46973682d30395d15",
+          "ObjectType": "hyperflex.NodeProfile",
+          "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/NodeProfiles/63121fb46973682d30395d15"
+        },
+        {
+          "ClassId": "mo.MoRef",
+          "Moid": "63121fb56973682d30395d35",
+          "ObjectType": "hyperflex.NodeProfile",
+          "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/NodeProfiles/63121fb56973682d30395d35"
+        },
+        {
+          "ClassId": "mo.MoRef",
+          "Moid": "63121fb56973682d30395d60",
+          "ObjectType": "hyperflex.NodeProfile",
+          "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/NodeProfiles/63121fb56973682d30395d60"
+        }
+      ],
+      "ObjectType": "hyperflex.ClusterProfile",
+      "Organization": {
+        "ClassId": "mo.MoRef",
+        "Moid": "6273e3fd6972652d3030ae8d",
+        "ObjectType": "organization.Organization",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/organization/Organizations/6273e3fd6972652d3030ae8d"
+      },
+      "Owners": [
+        "6273ddc07564612d30091b97"
+      ],
+      "PermissionResources": [
+        {
+          "ClassId": "mo.MoRef",
+          "Moid": "6273e3fd6972652d3030ae8d",
+          "ObjectType": "organization.Organization",
+          "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/organization/Organizations/6273e3fd6972652d3030ae8d"
+        }
+      ],
+      "PolicyBucket": [],
+      "ProxySetting": {
+        "ClassId": "mo.MoRef",
+        "Moid": "630b9b756973682d30393def",
+        "ObjectType": "hyperflex.ProxySettingPolicy",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/ProxySettingPolicies/630b9b756973682d30393def"
+      },
+      "Replication": 3,
+      "RunningWorkflows": [
+        {
+          "ClassId": "mo.MoRef",
+          "Moid": "63122584696f6e2d30fc7b95",
+          "ObjectType": "workflow.WorkflowInfo",
+          "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/workflow/WorkflowInfos/63122584696f6e2d30fc7b95"
+        }
+      ],
+      "SharedScope": "",
+      "SoftwareVersion": {
+        "ClassId": "mo.MoRef",
+        "Moid": "63121fb26973682d30395ced",
+        "ObjectType": "hyperflex.SoftwareVersionPolicy",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/SoftwareVersionPolicies/63121fb26973682d30395ced"
+      },
+      "SrcTemplate": null,
+      "StorageClientIpAddress": "169.254.240.1",
+      "StorageClientNetmask": "255.255.248.0",
+      "StorageClientVlan": {
+        "ClassId": "hyperflex.NamedVlan",
+        "Name": "",
+        "ObjectType": "hyperflex.NamedVlan",
+        "VlanId": 0
+      },
+      "StorageClusterAuxiliaryIp": "",
+      "StorageDataVlan": {
+        "ClassId": "hyperflex.NamedVlan",
+        "Name": "VLAN1201",
+        "ObjectType": "hyperflex.NamedVlan",
+        "VlanId": 1201
+      },
+      "StorageType": "HyperFlexDp",
+      "SysConfig": {
+        "ClassId": "mo.MoRef",
+        "Moid": "630b9b756973682d30393de0",
+        "ObjectType": "hyperflex.SysConfigPolicy",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/SysConfigPolicies/630b9b756973682d30393de0"
+      },
+      "Tags": [
+        {
+          "Key": "hx",
+          "Value": "m4"
+        }
+      ],
+      "Type": "instance",
+      "UcsmConfig": null,
+      "VcenterConfig": {
+        "ClassId": "mo.MoRef",
+        "Moid": "630b9b756973682d30393dda",
+        "ObjectType": "hyperflex.VcenterConfigPolicy",
+        "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/hyperflex/VcenterConfigPolicies/630b9b756973682d30393dda"
+      },
+      "WwxnPrefix": ""
+    }
+  ]
+}

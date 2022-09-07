@@ -147,3 +147,19 @@ hx_mgmt_platform                            = "EDGE"
 hx_replication                              = "3"# <int>
 hx_storage_data_vlan_name                   = "VLAN1201"
 hx_storage_data_vlan_id                     = "1201" # <int>
+
+# Server Names
+server_names = [
+  {
+    name = "dev-hx-m4-01",
+    hostname = "dev-hx-m4-01"
+  },
+  {
+    name = "dev-hx-m4-02",
+    hostname = "dev-hx-m4-02"
+  },
+  {
+    name = "dev-hx-m4-03",
+    hostname = "dev-hx-m4-01"
+  }
+]
