@@ -47,6 +47,22 @@ interfaceProfiles:
   name: HX_vSwitch
   policyGrp: HX_vSwitch
   toPort: 7
+- blkNum: block5
+  description: HX-05-1_3_mLOM-01
+  fromPort: 8
+  interfaceProfile: SBOX-Leaf-201_intProf
+  intfType: switch_port
+  name: HX_vSwitch
+  policyGrp: HX_vSwitch
+  toPort: 10
+- blkNum: block5
+  description: HX-05-1_3_mLOM-02
+  fromPort: 8
+  interfaceProfile: SBOX-Leaf-202_intProf
+  intfType: switch_port
+  name: HX_vSwitch
+  policyGrp: HX_vSwitch
+  toPort: 10
 - blkNum: block2
   description: ESXi-04-1_mLOM-01
   fromPort: 11
@@ -72,7 +88,7 @@ policyGrps:
   mcpPol: MCP_ON
   monPol: Nflow_Mon
   name: HX_vSwitch
-  speed: 10G
+  speed: 25G
   stormCtlPol: bcast-mcast-storm
 - aep: Infrastructure
   cdpPol: CDP_ON
