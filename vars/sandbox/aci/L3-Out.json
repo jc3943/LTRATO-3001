@@ -50,7 +50,7 @@
                     "attributes": {
                       "annotation": "",
                       "configIssues": "",
-                      "rtrId": "172.20.255.103",
+                      "rtrId": "172.20.255.117",
                       "rtrIdLoopBack": "yes",
                       "tDn": "topology/pod-1/node-201"
                     }
@@ -72,7 +72,7 @@
                       {
                         "l3extRsPathL3OutAtt": {
                           "attributes": {
-                            "addr": "172.20.254.9/30",
+                            "addr": "172.20.254.17/30",
                             "annotation": "",
                             "autostate": "disabled",
                             "descr": "",
