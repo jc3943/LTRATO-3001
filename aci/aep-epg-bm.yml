@@ -1,0 +1,24 @@
+---
+# Jeff Comer
+# Ansible Playbook to map baremetal epg's to appropriate aep
+- name: MAP BAREMETAL EPGs TO AEP
+  hosts: apic
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: TASK - Map EPG to AEP
+      cisco.aci.aci_aep_to_epg:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        state: "present"
+        validate_certs: False
+        tenant: "{{ item.tenant }}"
+        aep: "{{ item.domain }}"
+        ap: "{{ item.ap }}"
+        epg: "{{ item.epg }}"
+        encap_id: "{{ item.encaps }}"
+        interface_mode: trunk
+      with_items: "{{ epgs }}"
+      tags: tenant
