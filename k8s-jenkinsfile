@@ -125,7 +125,7 @@ pipeline {
               ],
               colorized: true
           )
-          sh 'python3 ./aci/create_yaml_from_csv_v4.3.py -i $varPath/aci/bare-metal-aep.csv -o $varPath/aci/bare-metal-aep.yaml'
+          sh 'python3 ./aci/aciCreate_yaml_from_csv_v4.3.py -i $varPath/aci/bare-metal-aep.csv -o $varPath/aci/bare-metal-aep.yaml'
           ansiblePlaybook(
               playbook: './aci/aep-epg-bm.yml',
               inventory: '$apicInventoryx509',
