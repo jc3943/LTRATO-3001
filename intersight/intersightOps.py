@@ -10,7 +10,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Create an AUTH object
 AUTH = IntersightAuth(
-    secret_key_filename='../creds/qa-isight-SecretKey.txt',
+    secret_key_filename='creds/qa-isight-SecretKey.txt',
     api_key_id='6273ddc07564612d30091b97/6273e4cc7564612d300964b9/62f53d6e7564612d30253ff4'
     )
 

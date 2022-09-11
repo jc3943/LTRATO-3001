@@ -5,7 +5,7 @@ import sys, getopt, csv
 import requests, json
 import urllib3
 from intersight_auth import IntersightAuth
-from intersightOps import getHXProfiles
+from intersightOps import deployHXProfiles
 
 
 def main(argv):
