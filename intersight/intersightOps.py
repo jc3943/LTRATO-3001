@@ -14,7 +14,7 @@ AUTH = IntersightAuth(
     api_key_id='6273ddc07564612d30091b97/6273e4cc7564612d300964b9/62f53d6e7564612d30253ff4'
     )
 
-def getHXProfiles(specDict):
+def deployHXProfiles(specDict):
     profileURL = specDict['url'] + "/api/v1/hyperflex/ClusterProfiles"
     print(profileURL)
     response = requests.get(profileURL, verify=False, auth=AUTH)

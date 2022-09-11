@@ -30,4 +30,4 @@ def main(argv):
 
 if __name__ == '__main__':
     hxData = main(sys.argv[1:])
-    hxProfiles = getHXProfiles(hxData)
+    hxProfiles = deployHXProfiles(hxData)
