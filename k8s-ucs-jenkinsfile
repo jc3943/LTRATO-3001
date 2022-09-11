@@ -37,11 +37,26 @@ pipeline {
         }
         container('ubuntu-tfe') {
           //kick off terraform imc device discover for ucs hosts
-          dir('tfe/intersight') {
+          dir('tfe/intersight/hxDevClaim') {
             //sh 'cp resolv.conf /etc/'
             sh 'terraform init'
             //sh 'sleep 600'
             sh 'terraform apply -auto-approve'
+            //Need code here to check status of claim rather than sleep
+            sh 'sleep 900'
+          }
+        }
+      }
+    }
+    stage('Initiate Hyperflex Build') {
+      steps {
+        container('ubuntu-tfe') {
+          //kick off terraform imc device discover for ucs hosts
+          dir('tfe/intersight/hxEdgeBuild') {
+            sh 'terraform init'
+            //sh 'sleep 600'
+            sh 'terraform apply -var-file=env.tfvars -auto-approve'
+            //Need code here to check status of HX Edge Build
           }
         }
       }

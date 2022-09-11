@@ -1,0 +1,22 @@
+{
+  "$id": "datastore.schema",
+  "description": "HX Datastore Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "sizeInBytes": {
+      "type": "number"
+    },
+    "dataBlockSizeInBytes": {
+      "type": "number"
+    },
+    "siteName": {
+      "type": "string"
+    },
+    "usageType": {
+      "type": "string"
+    }
+  }
+}
