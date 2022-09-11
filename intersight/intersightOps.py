@@ -14,16 +14,18 @@ AUTH = IntersightAuth(
     api_key_id='6273ddc07564612d30091b97/6273e4cc7564612d300964b9/62f53d6e7564612d30253ff4'
     )
 
+def getDevTargetStatus(specDict):
+    targetURL = specDict['url'] + "/api/v1/asset/Targets"
+    targetClaimStatus = requests.get(targetURL, verify=False, auth=AUTH)
+    print(targetClaimStatus.text)
+    targetClaimStatusJson = targetClaimStatus.json()
+
 def deployHXProfiles(specDict):
     profileURL = specDict['url'] + "/api/v1/hyperflex/ClusterProfiles"
-    print(profileURL)
+    #print(profileURL)
     response = requests.get(profileURL, verify=False, auth=AUTH)
     hxProfileJson = response.json()
-    #profileList = hxProfileJson["Results"][0]
-    #print(profileList)
     profileMoid =  hxProfileJson["Results"][0]["Moid"]
-    #print(profileMoid)
-    #print(response.text)
     profileDeployURL = profileURL + "/" + profileMoid
     profileDeployPayload = {"Action":"Deploy"}
     profileDeployResponse = requests.post(profileDeployURL, json=profileDeployPayload, verify=False, auth=AUTH)

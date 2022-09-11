@@ -42,23 +42,23 @@ pipeline {
             sh 'terraform init'
             //sh 'sleep 600'
             sh 'terraform apply -auto-approve'
-            //Need code here to check status of claim rather than sleep
-            sh 'sleep 600'
           }
+          //Need add status checking to python script for status to replace sleep
+          sh 'python3 intersight/intersightDevClaimStatus.py -u https://qa-intersight.thor.iws.navy.mil'
+          sh 'sleep 600'
         }
       }
     }
     stage('Initiate Hyperflex Build') {
       steps {
         container('ubuntu-tfe') {
-          //kick off terraform imc device discover for ucs hosts
+          //kick policy and profile create
           dir('tfe/intersight/hxEdgeBuild') {
             sh 'terraform init'
-            //sh 'sleep 600'
             sh 'terraform apply -var-file=env.tfvars -auto-approve'
-            //Need code here to check status of HX Edge Build
           }
           sh 'python3 intersight/intersightProfiles.py -u https://qa-intersight.thor.iws.navy.mil'
+          //Need code here to check status of HX Edge Build
         }
       }
     }
