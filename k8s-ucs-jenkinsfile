@@ -43,7 +43,7 @@ pipeline {
             //sh 'sleep 600'
             sh 'terraform apply -auto-approve'
             //Need code here to check status of claim rather than sleep
-            sh 'sleep 900'
+            sh 'sleep 600'
           }
         }
       }
