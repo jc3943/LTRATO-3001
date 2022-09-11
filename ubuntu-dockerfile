@@ -36,6 +36,7 @@ RUN pip3 install str2bool
 RUN pip3 install urllib3
 RUN pip3 install install git+https://github.com/CiscoDevNet/intersight-python
 RUN pip3 install jsonschema
+RUN pip3 install intersight_auth
 
 RUN apt-get update \
 	&& curl -OL https://dl.google.com/go/go1.17.2.linux-amd64.tar.gz \
