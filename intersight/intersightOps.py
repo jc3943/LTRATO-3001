@@ -15,10 +15,14 @@ AUTH = IntersightAuth(
     )
 
 def getDevTargetStatus(specDict):
+    i = 0
     targetURL = specDict['url'] + "/api/v1/asset/Targets"
     targetClaimStatus = requests.get(targetURL, verify=False, auth=AUTH)
     print(targetClaimStatus.text)
     targetClaimStatusJson = targetClaimStatus.json()
+    print(len(targetClaimStatusJson["Results"]))
+    for i in range(len(targetClaimStatusJson["Results"])):
+        print(targetClaimStatusJson["Results"][i]["Status"])
 
 def deployHXProfiles(specDict):
     profileURL = specDict['url'] + "/api/v1/hyperflex/ClusterProfiles"
