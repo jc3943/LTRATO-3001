@@ -42,9 +42,8 @@ pipeline {
             sh 'terraform apply -auto-approve'
           }
           //Need add status checking to python script for status to replace sleep
-          sh 'sleep 180'
-          sh 'python3 intersight/intersightDevClaimStatus.py -u https://qa-intersight.thor.iws.navy.mil'
-          //sh 'sleep 600'
+          //sh 'python3 intersight/intersightDevClaimStatus.py -u https://qa-intersight.thor.iws.navy.mil'
+          sh 'sleep 600'
         }
       }
     }
@@ -56,7 +55,7 @@ pipeline {
             sh 'terraform init'
             sh 'terraform apply -var-file=env.tfvars -auto-approve'
           }
-          sh 'python3 intersight/intersightProfiles.py -u https://qa-intersight.thor.iws.navy.mil'
+          //sh 'python3 intersight/intersightProfiles.py -u https://qa-intersight.thor.iws.navy.mil'
           //Need code here to check status of HX Edge Build
         }
       }

@@ -13,11 +13,11 @@ def main(argv):
     Main execution routine
     """
 
-    argDict = {"url":""}
+    argDict = {"url":"","infile":""}
     try:
-      opts, args = getopt.getopt(argv,"hu:",["url"])
+      opts, args = getopt.getopt(argv,"hu:i:",["url","infile"])
     except getopt.GetoptError:
-      print('intersightProfiles.py -u <intersightURL>')
+      print('intersightProfiles.py -u <intersightURL> -i <inputCsvFile')
       sys.exit(2)
     for opt, arg in opts:
       if opt == '-h':
@@ -26,6 +26,9 @@ def main(argv):
       elif opt in ("-u", "--url"):
          userArg = arg
          argDict["url"] = userArg
+      elif opt in ("-i", "--infile"):
+         userArg = arg
+         argDict["infile"] = userArg
     return argDict
 
 if __name__ == '__main__':
