@@ -38,14 +38,13 @@ pipeline {
         container('ubuntu-tfe') {
           //kick off terraform imc device discover for ucs hosts
           dir('tfe/intersight/hxDevClaim') {
-            //sh 'cp resolv.conf /etc/'
             sh 'terraform init'
-            //sh 'sleep 600'
             sh 'terraform apply -auto-approve'
           }
           //Need add status checking to python script for status to replace sleep
+          sh 'sleep 180'
           sh 'python3 intersight/intersightDevClaimStatus.py -u https://qa-intersight.thor.iws.navy.mil'
-          sh 'sleep 600'
+          //sh 'sleep 600'
         }
       }
     }

@@ -1,7 +1,7 @@
 # Jeff Comer
 # Collection of Intersight functions
 
-import sys, getopt, csv
+import sys, getopt, csv, time
 import requests, json
 import urllib3
 from intersight_auth import IntersightAuth
@@ -20,10 +20,17 @@ def getDevTargetStatus(specDict):
     targetClaimStatus = requests.get(targetURL, verify=False, auth=AUTH)
     print(targetClaimStatus.text)
     targetClaimStatusJson = targetClaimStatus.json()
-    print(len(targetClaimStatusJson["Results"]))
-    for i in range(len(targetClaimStatusJson["Results"])):
-        if (targetClaimStatusJson["Results"][i]["TargetType"] != "IntersightAppliance"):
-            print(targetClaimStatusJson["Results"][i]["Status"])
+    for statusCheck in range(0, 900):
+        statusList = []
+        for i in range(len(targetClaimStatusJson["Results"])):
+            if ("IMC" in targetClaimStatusJson["Results"][i]["TargetType"]):
+                statusList.append(targetClaimStatusJson["Results"][i]["Status"])
+        print(statusList)
+        if "NotConnected" in statusList:
+            statusCheck += 1
+            time.sleep(60)
+        else:
+            break
 
 def deployHXProfiles(specDict):
     profileURL = specDict['url'] + "/api/v1/hyperflex/ClusterProfiles"
