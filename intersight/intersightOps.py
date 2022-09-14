@@ -78,6 +78,23 @@ def deployHXProfiles(specDict):
     print(profileDeployResponse.text)
     print("*********************************")
     profileDeployStatus = requests.get(profileDeployURL, json=profileDeployPayload, verify=False, auth=AUTH)
-    print(profileDeployStatus.text)
+    #print(profileDeployStatus.text)
 
+def statusHXDeploy(specDict):
+    profileURL = specDict['url'] + "/api/v1/hyperflex/ClusterProfiles"
+    response = requests.get(profileURL, verify=False, auth=AUTH)
+    hxProfileJson = response.json()
+    profileMoid =  hxProfileJson["Results"][0]["Moid"]
+    profileDeployURL = profileURL + "/" + profileMoid
+    for i in range(0, 18):
+        print("*********************************")
+        profileDeployStatus = requests.get(profileDeployURL, json=profileDeployPayload, verify=False, auth=AUTH)
+        profileDeployStatusJson = profileDeployStatus.json()
+        if (profileDeployStatusJson["Results"][0]["OperState"] == "Configuring"):
+            i += 1
+            time.sleep(600)
+        elif (profileDeployStatusJson["Results"][0]["ConfigState"] == "Failed"):
+            print("HX Profile Deployment Failed")
+            exit(1)
 
+        print(profileDeployStatus.text)

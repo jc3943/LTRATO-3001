@@ -95,8 +95,8 @@ hx_proxy_ip                                 = "172.172.172.172"
 # vcenter_config_policy 
 hx_vcenter_config_policy_name               = "dev-hx-vcenterPol"
 hx_vcenter_config_policy_description        = "vCenter Config Policy"
-hx_vcenter_dc_name                          = "HX-DEV"
-hx_vcenter_ip                               = "172.16.10.241"
+hx_vcenter_dc_name                          = "sandbox"
+hx_vcenter_ip                               = "172.16.14.137"
 hx_vcenter_password                         = "DEVP@ssw0rd"
 hx_vcenter_username                         = "administrator@vsphere.local"
 
