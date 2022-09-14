@@ -74,5 +74,10 @@ def deployHXProfiles(specDict):
     profileDeployURL = profileURL + "/" + profileMoid
     profileDeployPayload = {"Action":"Deploy"}
     profileDeployResponse = requests.post(profileDeployURL, json=profileDeployPayload, verify=False, auth=AUTH)
+    time.sleep(60)
     print(profileDeployResponse.text)
+    print("*********************************")
+    profileDeployStatus = requests.get(profileDeployURL, json=profileDeployPayload, verify=False, auth=AUTH)
+    print(profileDeployStatus.text)
+
 

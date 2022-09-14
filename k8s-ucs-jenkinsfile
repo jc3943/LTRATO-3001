@@ -55,7 +55,7 @@ pipeline {
             sh 'terraform init'
             sh 'terraform apply -var-file=env.tfvars -auto-approve'
           }
-          //sh 'python3 intersight/intersightProfiles.py -u https://qa-intersight.thor.iws.navy.mil'
+          sh 'python3 intersight/intersightProfiles.py -u https://qa-intersight.thor.iws.navy.mil'
           //Need code here to check status of HX Edge Build
         }
       }
