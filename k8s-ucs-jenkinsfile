@@ -42,8 +42,8 @@ pipeline {
             sh 'terraform apply -auto-approve'
           }
           //Need add status checking to python script for status to replace sleep
-          //sh 'python3 intersight/intersightDevClaimStatus.py -u https://qa-intersight.thor.iws.navy.mil'
-          sh 'sleep 600'
+          sh 'python3 intersight/intersightDevClaimStatus.py -u https://qa-intersight.thor.iws.navy.mil -i vars/sandbox/imc/hostIpAddrs.csv'
+          //sh 'sleep 600'
         }
       }
     }

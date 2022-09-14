@@ -16,20 +16,52 @@ AUTH = IntersightAuth(
 
 def getDevTargetStatus(specDict):
     i = 0
+    j = 0
+    k = 0
+    claimCheck = 0
+    statusCheck = 0
+    cimcList = []
+    claimList = []
+
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
+    
     targetURL = specDict['url'] + "/api/v1/asset/Targets"
-    targetClaimStatus = requests.get(targetURL, verify=False, auth=AUTH)
-    print(targetClaimStatus.text)
-    targetClaimStatusJson = targetClaimStatus.json()
+    #print(targetClaimStatus.text)
+    
+    for k in range(len(csvDict)):
+        cimcList.append(csvDict[k]['cimc'])
+    #print(cimcList)
+    for claimCheck in range(0, 900):
+        j = 0
+        claimList = []
+        targetClaimStatus = requests.get(targetURL, verify=False, auth=AUTH)
+        targetClaimStatusJson = targetClaimStatus.json()
+        if ("IntersightAssist" not in targetClaimStatusJson["Results"][i]["TargetType"]):
+            for j in range(len(targetClaimStatusJson["Results"])):
+                claimList.append(targetClaimStatusJson["Results"][j]["IpAddress"][0])
+        #print(claimList)
+        cimcsClaimed = all(elem in cimcList for elem in claimList)
+        #print(cimcsClaimed)
+        if cimcsClaimed:
+            print("Targets from terraform device claims are claimed in Intersight")
+            break
+        else:
+            claimCheck += 1
+            time.sleep(60)
+
     for statusCheck in range(0, 900):
         statusList = []
         for i in range(len(targetClaimStatusJson["Results"])):
             if ("IMC" in targetClaimStatusJson["Results"][i]["TargetType"]):
                 statusList.append(targetClaimStatusJson["Results"][i]["Status"])
-        print(statusList)
+        #print(statusList)
         if "NotConnected" in statusList:
             statusCheck += 1
             time.sleep(60)
         else:
+            print("Targets from terraform device claims are conected in Intersight")
             break
 
 def deployHXProfiles(specDict):
