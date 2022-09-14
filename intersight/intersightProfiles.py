@@ -5,7 +5,7 @@ import sys, getopt, csv
 import requests, json
 import urllib3
 from intersight_auth import IntersightAuth
-from intersightOps import deployHXProfiles
+from intersightOps import deployHXProfiles, statusHXDeploy
 
 
 def main(argv):
@@ -31,3 +31,4 @@ def main(argv):
 if __name__ == '__main__':
     hxData = main(sys.argv[1:])
     hxProfiles = deployHXProfiles(hxData)
+    hxDeployState = statusHXDeploy(hxData)
