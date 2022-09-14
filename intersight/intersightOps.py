@@ -96,5 +96,9 @@ def statusHXDeploy(specDict):
         elif (profileDeployStatusJson["Results"][0]["ConfigState"] == "Failed"):
             print("HX Profile Deployment Failed")
             exit(1)
+        elif (profileDeployStatusJson["Results"][0]["ConfigState"] == "Associated"):
+            print("HX Profile Deployment Complete")
+            exit(0)
+        
 
         print(profileDeployStatus.text)
