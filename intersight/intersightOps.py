@@ -32,18 +32,19 @@ def getDevTargetStatus(specDict):
     
     for k in range(len(csvDict)):
         cimcList.append(csvDict[k]['cimc'])
-    #print(cimcList)
+    print(cimcList)
     for claimCheck in range(0, 900):
         j = 0
         claimList = []
         targetClaimStatus = requests.get(targetURL, verify=False, auth=AUTH)
         targetClaimStatusJson = targetClaimStatus.json()
-        if ("IntersightAssist" not in targetClaimStatusJson["Results"][i]["TargetType"]):
-            for j in range(len(targetClaimStatusJson["Results"])):
+        #if ("IntersightAssist" not in targetClaimStatusJson["Results"][i]["TargetType"]):
+        for j in range(len(targetClaimStatusJson["Results"])):
+            if (targetClaimStatusJson["Results"][j]["IpAddress"] != []):
                 claimList.append(targetClaimStatusJson["Results"][j]["IpAddress"][0])
-        #print(claimList)
-        cimcsClaimed = all(elem in cimcList for elem in claimList)
-        #print(cimcsClaimed)
+        print(claimList)
+        cimcsClaimed = all(elem in claimList for elem in cimcList)
+        print(cimcsClaimed)
         if cimcsClaimed:
             print("Targets from terraform device claims are claimed in Intersight")
             break
