@@ -88,10 +88,11 @@ def statusHXDeploy(specDict):
     profileDeployURL = profileURL + "/" + profileMoid
     for i in range(0, 18):
         print("*********************************")
-        profileDeployStatus = requests.get(profileDeployURL, json=profileDeployPayload, verify=False, auth=AUTH)
+        profileDeployStatus = requests.get(profileDeployURL, verify=False, auth=AUTH)
         profileDeployStatusJson = profileDeployStatus.json()
         if (profileDeployStatusJson["Results"][0]["OperState"] == "Configuring"):
             i += 1
+            print(profileDeployStatusJson["Results"][0]["OperState"])
             time.sleep(600)
         elif (profileDeployStatusJson["Results"][0]["ConfigState"] == "Failed"):
             print("HX Profile Deployment Failed")
@@ -99,6 +100,5 @@ def statusHXDeploy(specDict):
         elif (profileDeployStatusJson["Results"][0]["ConfigState"] == "Associated"):
             print("HX Profile Deployment Complete")
             exit(0)
-        
-
+    
         print(profileDeployStatus.text)
