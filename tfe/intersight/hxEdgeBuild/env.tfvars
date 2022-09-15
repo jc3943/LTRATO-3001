@@ -34,7 +34,7 @@ hx_mac_prefix_end_addr                      = "00:25:B5:BB"
 hx_storage_policy_name                      = "dev-hx-strPol"
 hx_storage_policy_description               = "Storage policy for hx cluster"
 hx_vdi_optimization                         = false
-hx_disk_partition_cleanup                   = false
+hx_disk_partition_cleanup                   = true
 hx_logical_avalability_zone_config          = false
 
 # local_credential_policy
@@ -43,7 +43,7 @@ hx_local_credential_policy_description      = "Local Credential Policy"
 hx_factory_hypervisor_password              = true
 hx_hxdp_root_pwd                            = "DEVP@ssw0rd"
 hx_hypervisor_admin                         = "root"
-hx_hypervisor_admin_pwd                     = "Cisco123"
+hx_hypervisor_admin_pwd                     = "DEVP@ssw0rd"
 
 # node_config_policy
 node_config_policy_name                     = "dev-hx-nodePol"
