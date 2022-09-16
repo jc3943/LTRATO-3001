@@ -10,13 +10,13 @@ tag_key1                                    = "hx"
 tag_value1                                  = "m4"
 
 # auto_support_policy 
-hx_auto_support_name                        = "dev-hx-autoSupport"
+hx_auto_support_name                        = "sandbox-autoSupport"
 hx_auto_support_description                 = "auto support policy"
 hx_auto_support_service_ticket_receipient   = "thor@thor.iws.navy.mil"
 hx_auto_support_admin_state                 = false
 
 # cluster_network_policy
-hx_network_policy_name                      = "dev-hx-networPolicy"
+hx_network_policy_name                      = "sandbox-networPolicy"
 hx_network_policy_description               = "Network Policy Definition"
 hx_jumbo_frame                              = true
 hx_uplink_speed                             = "10G"
@@ -31,14 +31,14 @@ hx_mac_prefix_start_addr                    = "00:25:B5:AA"
 hx_mac_prefix_end_addr                      = "00:25:B5:BB"
 
 # cluster_storage_policy
-hx_storage_policy_name                      = "dev-hx-strPol"
+hx_storage_policy_name                      = "sandbox-strPol"
 hx_storage_policy_description               = "Storage policy for hx cluster"
 hx_vdi_optimization                         = false
 hx_disk_partition_cleanup                   = false
 hx_logical_avalability_zone_config          = false
 
 # local_credential_policy
-hx_local_credential_policy_name             = "dev-hx-localCreds"
+hx_local_credential_policy_name             = "sandbox-localCreds"
 hx_local_credential_policy_description      = "Local Credential Policy"
 hx_factory_hypervisor_password              = true
 hx_hxdp_root_pwd                            = "DEVP@ssw0rd"
@@ -46,9 +46,9 @@ hx_hypervisor_admin                         = "root"
 hx_hypervisor_admin_pwd                     = "Cisco123"
 
 # node_config_policy
-node_config_policy_name                     = "dev-hx-nodePol"
+node_config_policy_name                     = "sandbox-nodePol"
 node_config_policy_description              = "Node Config Policy"
-hx_node_name_prefix                         = "dev-hx-m4"
+hx_node_name_prefix                         = "sandbox"
 
 hx_hxdp_mgmt_start_addr                     = "172.16.114.11"
 hx_hxdp_mgmt_end_addr                       = "172.16.114.13"
@@ -72,12 +72,12 @@ hx_hypervisor_vmotion_netmask               = "255.255.255.0"
 hx_hypervisor_admin_user                    = "root"
 
 # software_version_policy
-hx_software_version_policy_name             = "dev-hx-swVerPol"
+hx_software_version_policy_name             = "sandbox-swVerPol"
 hx_software_version_policy_description      = "Software Version Policy"
 hx_hxdp_version                             = "4.5(2b)"
 
 # sys_config_policy
-hx_sys_config_policy_name                   = "dev-hx-sysConfgi"
+hx_sys_config_policy_name                   = "sandbox-sysConfgi"
 hx_sys_config_policy_description            = "System Config Policy"
 hx_dns_domain_name                          = "thor.iws.navy.mil"
 hx_dns_servers                              = ["172.16.20.101"] # ["x.x.x.1", "x.x.x.2"]
@@ -93,7 +93,7 @@ hx_proxy_port                               = "80"
 hx_proxy_ip                                 = "172.172.172.172"
 
 # vcenter_config_policy 
-hx_vcenter_config_policy_name               = "dev-hx-vcenterPol"
+hx_vcenter_config_policy_name               = "sandbox-vcenterPol"
 hx_vcenter_config_policy_description        = "vCenter Config Policy"
 hx_vcenter_dc_name                          = "sandbox"
 hx_vcenter_ip                               = "172.16.14.137"
@@ -135,10 +135,10 @@ hx_fc_wwxn_prefix_end_addr                  = "20:00:00:25:B5:EF"
 hx_fc_admin_state                           = false # bool
 
 # cluster_profile
-hx_profile_name                             = "dev-hx-hxProfile"
+hx_profile_name                             = "sandbox-hxProfile"
 hx_profile_description                      = "HX Cluster Profile"
-cluster_name                                = "dev-hx-m4"
-hx_host_name_prefix                         = "dev-hx-m4"
+cluster_name                                = "sandbox"
+hx_host_name_prefix                         = "sandbox"
 hx_data_ip_address                          = "169.254.1.1"
 hx_hypervisor_type                          = "ESXi"
 hx_mac_address_prefix                       = "00:25:B5:EF"
@@ -151,15 +151,15 @@ hx_storage_data_vlan_id                     = "1201" # <int>
 # Server Names
 server_names = [
   {
-    name = "dev-hx-m4-01",
-    hostname = "dev-hx-m4-01"
+    name = "sandbox-01",
+    hostname = "sandbox-01"
   },
   {
-    name = "dev-hx-m4-02",
-    hostname = "dev-hx-m4-02"
+    name = "sandbox-02",
+    hostname = "sandbox-02"
   },
   {
-    name = "dev-hx-m4-03",
-    hostname = "dev-hx-m4-01"
+    name = "sandbox-03",
+    hostname = "sandbox-01"
   }
 ]
