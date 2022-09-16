@@ -43,7 +43,7 @@ hx_local_credential_policy_description      = "Local Credential Policy"
 hx_factory_hypervisor_password              = true
 hx_hxdp_root_pwd                            = "DEVP@ssw0rd"
 hx_hypervisor_admin                         = "root"
-hx_hypervisor_admin_pwd                     = "Cisco123"
+hx_hypervisor_admin_pwd                     = "DEVP@ssw0rd"
 
 # node_config_policy
 node_config_policy_name                     = "sandbox-nodePol"
