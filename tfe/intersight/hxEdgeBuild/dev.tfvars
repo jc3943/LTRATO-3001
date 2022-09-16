@@ -7,7 +7,7 @@ endpoint                                    = "https://qa-intersight.thor.iws.na
 org_name                                    = "default"
 # Tags
 tag_key1                                    = "hx"
-tag_value1                                  = "m4"
+tag_value1                                  = "m5"
 
 # auto_support_policy 
 hx_auto_support_name                        = "sandbox-autoSupport"
