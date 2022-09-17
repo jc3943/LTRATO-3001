@@ -50,9 +50,9 @@ resource "intersight_hyperflex_cluster_profile" "hx_cluster_profile" {
   cluster_network {
     moid = intersight_hyperflex_cluster_network_policy.hx_network_config_policy.moid
   }
-  proxy_setting {
+  /*proxy_setting {
     moid = intersight_hyperflex_proxy_setting_policy.hx_proxy_setting_policy.moid
-  }
+  }*/
   /*
   ext_fc_storage {
     moid = intersight_hyperflex_ext_fc_storage_policy.hx_ext_fc_storage_policy.moid

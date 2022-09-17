@@ -1,4 +1,4 @@
-resource "intersight_hyperflex_proxy_setting_policy" "hx_proxy_setting_policy" {
+/*resource "intersight_hyperflex_proxy_setting_policy" "hx_proxy_setting_policy" {
   name        = "${var.cluster_name}_proxy_settings"
   description = "HX Proxy Settings"
   hostname    = var.hx_proxy_ip
@@ -13,4 +13,4 @@ resource "intersight_hyperflex_proxy_setting_policy" "hx_proxy_setting_policy" {
     key   = var.tag_key1
     value = var.tag_value1
   }
-}
+}*/
