@@ -139,8 +139,8 @@ def hxCreateDatastore(specDict, token, cuuid):
         print(hostDatastoreURL)
         bearerStr = "Bearer " + token
         hostDatastoreHeader = {"Authorization":bearerStr,"Content-type":"application/json","Accept":"application/json"}
-        templateFile = open('./templates/datastore.json', 'rb')
-        schemaFile = open('./schemas/datastore.schema')
+        templateFile = open('./hyperflex/templates/datastore.json', 'rb')
+        schemaFile = open('./hyperflex/schemas/datastore.schema')
         templateJson = json.load(templateFile)
         schemaJson = json.load(schemaFile)
         jsonTest = validataJson(templateJson, schemaJson)

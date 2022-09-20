@@ -5,4 +5,4 @@ spec:
   - name: ubuntu-tfe
     image: jc3943/ubuntu-tfe:20220911
     command: ["sleep"]
-    args: ["120m"]
+    args: ["360m"]
