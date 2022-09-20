@@ -8,12 +8,12 @@
   connection: local
   gather_facts: False
   vars:
-    datacenter: "OUSV3"
-    cluster: "OUSV3-Tactical"
+    datacenter: "sandbox"
+    cluster: "sandbox"
     folder: "/"
-    datastore: "OUSV3"
+    datastore: "sandbox"
     esx_username: "root"
-    esx_password: "LUSVP@ssw0rd!"
+    esx_password: "password"
 
   tasks:
     - read_csv:
