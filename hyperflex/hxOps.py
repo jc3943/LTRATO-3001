@@ -14,73 +14,73 @@ def validataJson(jsonData, schemaData):
         return False
     return True
 
-def hxGetToken(specDict, clusterVip):
-    #with open(specDict['infile'], 'r') as csv_file:
-    #    csvread = csv.DictReader(csv_file)
-    #    csvDict = list(csvread)
+def hxGetToken(specDict):
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
 
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-    #for i in range(len(csvDict)):
-    tokenURL = "https://" + clusterVip + "/aaa/v1/auth?grant_type=password"
-    authPayload = {"username":specDict['username'],"password":specDict['password']}
-    tokenResponse = requests.post(tokenURL, json=authPayload, verify=False)
-    tokenJson = tokenResponse.json()
-    print("Token Acquired", tokenResponse, sep=":")
-    token = tokenJson["access_token"]
+    for i in range(len(csvDict)):
+        tokenURL = "https://" + csvDict[i]['host'] + "/aaa/v1/auth?grant_type=password"
+        authPayload = {"username":specDict['username'],"password":specDict['password']}
+        tokenResponse = requests.post(tokenURL, json=authPayload, verify=False)
+        tokenJson = tokenResponse.json()
+        print("Token Acquired", tokenResponse, sep=":")
+        token = tokenJson["access_token"]
     return token
 
-def hxGetCuuid(specDict, clusterVip, token):
-    #with open(specDict['infile'], 'r') as csv_file:
-    #    csvread = csv.DictReader(csv_file)
-    #    csvDict = list(csvread)
+def hxGetCuuid(specDict, token):
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
     
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-    #for i in range(len(csvDict)):
-    clusterInfoURL = "https://" + clusterVip + "/coreapi/v1/clusters"
-    bearerStr = "Bearer " + token
-    clusterInfoHeader = {"Authorization":bearerStr}
-    clusterInfoResponse = requests.get(clusterInfoURL, headers=clusterInfoHeader, verify=False)
-    clusterInfoJson = clusterInfoResponse.json()
-    cuuid = clusterInfoJson[0]["uuid"]
-    return cuuid
+    for i in range(len(csvDict)):
+        clusterInfoURL = "https://" + csvDict[i]['host'] + "/coreapi/v1/clusters"
+        bearerStr = "Bearer " + token
+        clusterInfoHeader = {"Authorization":bearerStr}
+        clusterInfoResponse = requests.get(clusterInfoURL, headers=clusterInfoHeader, verify=False)
+        clusterInfoJson = clusterInfoResponse.json()
+        cuuid = clusterInfoJson[0]["uuid"]
+        return cuuid
 
-def hxGetHostInfo(specDict, clusterVip, token):
-    #with open(specDict['infile'], 'r') as csv_file:
-    #    csvread = csv.DictReader(csv_file)
-    #    csvDict = list(csvread)
+def hxGetHostInfo(specDict, token):
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
     
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-    #for i in range(len(csvDict)):
-    hostInfoURL = "https://" + clusterVip + "/coreapi/v1/hypervisor/hosts"
-    bearerStr = "Bearer " + token
-    hostInfoHeader = {"Authorization":bearerStr}
-    hostInfoResponse = requests.get(hostInfoURL, headers=hostInfoHeader, verify=False)
-    hostInfoJson = hostInfoResponse.json()
-    #print(json.dumps(hostInfoJson))
-    hostInfoFile = "../data/" + clusterVip + "-hosts.json"
-    with open(hostInfoFile, 'w') as f:
-        json.dump(hostInfoJson, f)
+    for i in range(len(csvDict)):
+        hostInfoURL = "https://" + csvDict[i]['host'] + "/coreapi/v1/hypervisor/hosts"
+        bearerStr = "Bearer " + token
+        hostInfoHeader = {"Authorization":bearerStr}
+        hostInfoResponse = requests.get(hostInfoURL, headers=hostInfoHeader, verify=False)
+        hostInfoJson = hostInfoResponse.json()
+        #print(json.dumps(hostInfoJson))
+        hostInfoFile = "../data/" + csvDict[i]['host'] + "-hosts.json"
+        with open(hostInfoFile, 'w') as f:
+            json.dump(hostInfoJson, f)
 
-def hxGetDiskInfo(specDict, clusterVip, token):
-    #with open(specDict['infile'], 'r') as csv_file:
-    #    csvread = csv.DictReader(csv_file)
-    #    csvDict = list(csvread)
+def hxGetDiskInfo(specDict, token):
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
     
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-    #for i in range(len(csvDict)):
-    hostDiskURL = "https://" + clusterVip + "/coreapi/v1/hypervisor/disks"
-    bearerStr = "Bearer " + token
-    hostDiskHeader = {"Authorization":bearerStr}
-    hostDiskResponse = requests.get(hostDiskURL, headers=hostDiskHeader, verify=False)
-    hostDiskJson = hostDiskResponse.json()
-    #print(json.dumps(hostDiskJson))
-    diskInfoFile = "../data/" + clusterVip + "-disks.json"
-    with open(diskInfoFile, 'w') as f:
-        json.dump(hostDiskJson, f)
+    for i in range(len(csvDict)):
+        hostDiskURL = "https://" + csvDict[i]['host'] + "/coreapi/v1/hypervisor/disks"
+        bearerStr = "Bearer " + token
+        hostDiskHeader = {"Authorization":bearerStr}
+        hostDiskResponse = requests.get(hostDiskURL, headers=hostDiskHeader, verify=False)
+        hostDiskJson = hostDiskResponse.json()
+        #print(json.dumps(hostDiskJson))
+        diskInfoFile = "../data/" + clusterVip + "-disks.json"
+        with open(diskInfoFile, 'w') as f:
+            json.dump(hostDiskJson, f)
 
 def hxGetStigStat(specDict, token):
     with open(specDict['infile'], 'r') as csv_file:
