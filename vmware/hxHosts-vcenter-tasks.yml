@@ -1,0 +1,126 @@
+---
+# Jeff Comer
+# Ansible Playbook to add hosts to vcenter and attach nic's to a DVS
+# example seed file vars/<branch>/hx-hosts.yaml which was created using csv-to-yaml.py
+
+- name: vCenter DVS Tasks
+  hosts: vcenter 
+  connection: local
+  gather_facts: False
+  vars:
+    datacenter: "OUSV3"
+    cluster: "OUSV3-Tactical"
+    folder: "/"
+    datastore: "OUSV3"
+    esx_username: "root"
+    esx_password: "LUSVP@ssw0rd!"
+
+  tasks:
+    - read_csv:
+        path: $varPath/esxi-hosts.csv
+      register: hostlist
+      tags: hostadd, portgroup, vmotion
+
+    - name: TASK - Add Hosts to vCenter
+      community.vmware.vmware_host:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+        datacenter_name: "{{ datacenter }}"
+        cluster_name: "{{ cluster }}"
+        esxi_hostname: '{{ hosts.host }}'
+        esxi_username: '{{ esx_username }}'
+        esxi_password: '{{ esx_password }}'
+        state: present
+      loop: "{{ hostlist.list }}"
+      loop_control:
+        loop_var: hosts
+      delegate_to: localhost
+      tags: hostadd
+
+    - name: TASK - Enable SSH on all Hosts in the Cluster
+      community.vmware.vmware_host_service_manager:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+        cluster_name: "{{ cluster }}"
+        service_name: TSM-SSH
+        state: present
+      delegate_to: localhost
+      tags: ssh
+
+    - name: TASK - Add vMotion Port Group to vSwitch
+      community.vmware.vmware_portgroup:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+        cluster_name: "{{ cluster }}"
+        switch: "{{ hosts.vswitchName }}"
+        portgroup: "{{ hosts.portGroupName }}"
+        vlan_id: "{{ hosts.vlanId }}"
+        state: present
+      loop: "{{ hostlist.list }}"
+      loop_control:
+        loop_var: hosts
+      delegate_to: localhost
+      tags: portgroup
+
+    - name: TASK - Add vMotion vmKerner to vSwitch
+      community.vmware.vmware_vmkernel:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+        esxi_hostname: "{{ hosts.host }}"
+        vswitch_name: "{{ hosts.vswitchName }}"
+        portgroup_name: "{{ hosts.portGroupName }}"
+        enable_vmotion: True
+        network:
+          type: 'static'
+          ip_address: "{{ hosts.vmotionIp }}"
+          subnet_mask: "{{ hosts.vmotionNetMask }}"
+          tcpip_stack: vmotion
+        state: present
+      loop: "{{ hostlist.list }}"
+      loop_control:
+        loop_var: hosts
+      delegate_to: localhost
+      tags: vmotion
+
+    - name: TASK - Add Hosts to DVS 
+      community.vmware.vmware_dvs_host:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+        esxi_hostname: '{{ item.host }}'
+        switch_name: OUSV3-VMM
+        vmnics:
+            - vmnic4
+            - vmnic5
+        state: present
+      delegate_to: localhost
+      with_items: "{{ esxhosts }}"
+      tags: hostdvs
+
+    - name: TASK - Add Links to LAG
+      community.vmware.vmware_dvs_host:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+        esxi_hostname: '{{ item.host }}'
+        switch_name: OUSV3-VMM
+        lag_uplinks:
+            - lag: OUSV3-VMM-lacp
+              vmnics:
+                  - vmnic4
+                  - vmnic5
+        state: present
+      delegate_to: localhost
+      with_items: "{{ esxhosts }}"
+      tags: hostlag
+
