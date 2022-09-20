@@ -28,7 +28,7 @@ pipeline {
         }
       }
     }
-    stage('Initiate Intersight IMC Device Claims') {
+ /*   stage('Initiate Intersight IMC Device Claims') {
       steps {
         container('jnlp') {
           sh '''
@@ -57,6 +57,14 @@ pipeline {
           }
           sh 'python3 intersight/intersightProfiles.py -u https://qa-intersight.thor.iws.navy.mil'
           //Need code here to check status of HX Edge Build
+        }
+      }
+    } */
+    stage('Create HX DataStore') {
+      steps {
+        container('ubuntu-tfe') {
+          //Create HX DataStore from json template file
+          sh 'python3 hyperflex/hx-createdatastore.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/hyperflex/hx-ctrlvm.csv'
         }
       }
     }
