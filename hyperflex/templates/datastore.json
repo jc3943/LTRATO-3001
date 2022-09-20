@@ -1,6 +1,6 @@
 {
-    "name": "TEST1234",
-    "sizeInBytes": 200000000000000000,
+    "name": "sandbox",
+    "sizeInBytes": 100000000000000,
     "dataBlockSizeInBytes": 8192,
     "siteName": "HX-DEV",
     "usageType": "NFS"
