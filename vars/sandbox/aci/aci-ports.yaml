@@ -64,21 +64,45 @@ interfaceProfiles:
   policyGrp: HX_vSwitch
   toPort: 10
 - blkNum: block2
-  description: ESXi-04-1_mLOM-01
+  description: sandbox-01_mLOM-03-04
   fromPort: 11
+  interfaceProfile: SBOX-Leaf-201-SBOX-Leaf-202_intProf
+  intfType: vpc
+  name: vpc_sandbox-01
+  policyGrp: vpc_sandbox-01
+  toPort: 11
+- blkNum: block2
+  description: sandbox-02_mLOM-03-04
+  fromPort: 12
+  interfaceProfile: SBOX-Leaf-201-SBOX-Leaf-202_intProf
+  intfType: vpc
+  name: vpc_sandbox-02
+  policyGrp: vpc_sandbox-02
+  toPort: 12
+- blkNum: block2
+  description: sandbox-03_mLOM-03-04
+  fromPort: 13
+  interfaceProfile: SBOX-Leaf-201-SBOX-Leaf-202_intProf
+  intfType: vpc
+  name: vpc_sandbox-03
+  policyGrp: vpc_sandbox-03
+  toPort: 13
+- blkNum: block2
+  description: ESXi-04-1_mLOM-01
+  fromPort: 14
   interfaceProfile: SBOX-Leaf-201_intProf
   intfType: switch_port
   name: ESXi_vSwitch
   policyGrp: ESXi_vSwitch
-  toPort: 11
+  toPort: 14
 - blkNum: block2
   description: ESXi-04-1_mLOM-02
-  fromPort: 11
+  fromPort: 14
   interfaceProfile: SBOX-Leaf-202_intProf
   intfType: switch_port
   name: ESXi_vSwitch
   policyGrp: ESXi_vSwitch
-  toPort: 11
+  toPort: 14
 policyGrps:
 - aep: Infrastructure
   cdpPol: CDP_ON
@@ -88,6 +112,36 @@ policyGrps:
   mcpPol: MCP_ON
   monPol: Nflow_Mon
   name: HX_vSwitch
+  speed: 25G
+  stormCtlPol: bcast-mcast-storm
+- aep: Infrastructure
+  cdpPol: CDP_ON
+  lacpPol: LACP_ACTIVE
+  lagType: node
+  lldpPol: LLDP_ON
+  mcpPol: MCP_ON
+  monPol: Nflow_Mon
+  name: vpc_sandbox-01
+  speed: 25G
+  stormCtlPol: bcast-mcast-storm
+- aep: Infrastructure
+  cdpPol: CDP_ON
+  lacpPol: LACP_ACTIVE
+  lagType: node
+  lldpPol: LLDP_ON
+  mcpPol: MCP_ON
+  monPol: Nflow_Mon
+  name: vpc_sandbox-02
+  speed: 25G
+  stormCtlPol: bcast-mcast-storm
+- aep: Infrastructure
+  cdpPol: CDP_ON
+  lacpPol: LACP_ACTIVE
+  lagType: node
+  lldpPol: LLDP_ON
+  mcpPol: MCP_ON
+  monPol: Nflow_Mon
+  name: vpc_sandbox-03
   speed: 25G
   stormCtlPol: bcast-mcast-storm
 - aep: Infrastructure

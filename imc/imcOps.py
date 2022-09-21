@@ -30,6 +30,34 @@ def disablePC(specDict):
         pcModResult = requests.patch(vicModUrl, json=pcOffPayload, verify=False, auth=(specDict['username'], specDict['password']))
         print(pcModResult)
 
+def createVnic(specDict):
+    j = 0
+    k = 1
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
+
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+    for i in range(len(csvDict)):
+        vnicInfoUrl = "https://" + csvDict[i]['cimc'] + "/redfish/v1/Chassis/1/NetworkAdapters/"
+        vnicResponse = requests.get(vnicInfoUrl, verify=False, auth=(specDict['username'], specDict['password']))
+        vnicJson = vnicResponse.json()
+        vnicSerialUrl = vnicJson["Members"][0]["@odata.id"]
+        vnicList = csvDict[i]['vnicsAdd'].split(";")
+        physPortList = csvDict[i]['uplinkPorts'].split(";")
+        pcieOrder = csvDict[i]['pcieOrder'].split(";")
+        vnicCreateUrl = "https://" + csvDict[i]['cimc'] + vnicSerialUrl + "/NetworkDeviceFunctions"
+        print(vnicCreateUrl)
+        for j in range(len(vnicList)):
+           physPortUrl = vnicCreateUrl + "/NetworkPorts/" + physPortList[j]
+           physPortId = physPortList[j].split("-")
+           physPortId[1] = int(physPortId[1]) - 1
+           cdnName = "hx-vpc-" + str(j)
+           vnicPayload = {"Id":vnicList[j],"Name":vnicList[j],"NetDevFuncType":"Ethernet","Ethernet":{"MTUSize":9000},"Links":{"PhysicalPortAssignment":{"@odata.id":physPortUrl}},"Oem":{"Cisco":{"VnicConfiguration":{"UplinkPort":physPortId[1],"PCIOrder":pcieOrder[j],"EthConfiguration":{"Cdn":cdnName}}}}}
+           print(vnicPayload)
+           vnicCreateResponse = requests.post(vnicCreateUrl, json=vnicPayload, verify=False, auth=(specDict['username'], specDict['password']))
+
 def powerCycle(specDict):
     j = 0
     k = 1
