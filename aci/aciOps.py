@@ -1,6 +1,11 @@
+import urllib.request
+import urllib3
+import sys
+import getopt
+import requests
+import csv, json
+
 def bakeCookies(specDict2):
-    import urllib3
-    import requests
     baseURL = "https://" + specDict2['hostIp']
     tokenURL = baseURL + "/api/aaaLogin.json"
 
@@ -14,9 +19,36 @@ def bakeCookies(specDict2):
     newCookie = {'APIC-cookie':token}
     return newCookie
 
+def portActions(specDict):
+    jsonPayload = ""
+
+    with open(specDict['file'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        portNodeDict = list(csvread)
+    print(portNodeDict)
+
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+    tokenURL = "https://" + specDict['hostIp'] + "/api/aaaLogin.json"
+    portURL = "https://" + specDict['hostIp'] + "/api/node/mo/uni/fabric/outofsvc.json"
+    tokenHeader = {"content-type": "application/json"}
+    jsonPayload = {'aaaUser':{"attributes":{'name':specDict['username'],'pwd':specDict['password']}}}
+    tokenResponse = requests.post(tokenURL, json=jsonPayload, verify=False)
+    jsonData = tokenResponse.json()
+    token = jsonData["imdata"][0]["aaaLogin"]["attributes"]["token"]
+    cookie = {'APIC-cookie':token}
+    if(specDict['action'] == "shut"):
+       for i in range(len(portNodeDict)):
+          portJson = "{\"fabricRsOosPath\":{\"attributes\":{\"tDn\":\"topology/pod-1/paths-" + portNodeDict[i]['node'] + "/pathep-[eth1/" + portNodeDict[i]['port'] + "]\",\"lc\":\"blacklist\"},\"children\":[]}}"
+          portShut = requests.post(portURL, json=json.loads(portJson), cookies=cookie, verify=False)
+
+    if(specDict['action'] == "noshut"):
+       for i in range(len(portNodeDict)):
+          portJson = "{\"fabricRsOosPath\":{\"attributes\":{\"dn\":\"uni/fabric/outofsvc/rsoosPath-[topology/pod-1/paths-" + portNodeDict[i]['node'] + "/pathep-[eth1/" + portNodeDict[i]['port'] + "]]\",\"status\":\"deleted\"},\"children\":[]}}"
+          print(portJson)
+          portNoShut = requests.post(portURL, json=json.loads(portJson), cookies=cookie, verify=False)
+
 def createTacacs(specDict, apicSnacks):
-    import urllib3
-    import requests
     baseURL = "https://" + specDict['hostIp']
     cookie = apicSnacks
     providerURL = baseURL + "/api/node/mo/uni/userext/tacacsext/tacacsplusprovider-172.16.5.1.json"
