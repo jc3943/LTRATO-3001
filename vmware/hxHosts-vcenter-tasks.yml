@@ -17,27 +17,9 @@
 
   tasks:
     - read_csv:
-        path: $varPath/esxi-hosts.csv
+        path: $varPath/hx-hosts.csv
       register: hostlist
       tags: hostadd, portgroup, vmotion
-
-    - name: TASK - Add Hosts to vCenter
-      community.vmware.vmware_host:
-        hostname: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-        validate_certs: no
-        datacenter_name: "{{ datacenter }}"
-        cluster_name: "{{ cluster }}"
-        esxi_hostname: '{{ hosts.host }}'
-        esxi_username: '{{ esx_username }}'
-        esxi_password: '{{ esx_password }}'
-        state: present
-      loop: "{{ hostlist.list }}"
-      loop_control:
-        loop_var: hosts
-      delegate_to: localhost
-      tags: hostadd
 
     - name: TASK - Enable SSH on all Hosts in the Cluster
       community.vmware.vmware_host_service_manager:
@@ -99,8 +81,8 @@
         esxi_hostname: '{{ item.host }}'
         switch_name: OUSV3-VMM
         vmnics:
-            - vmnic4
-            - vmnic5
+            - vmnic10
+            - vmnic11
         state: present
       delegate_to: localhost
       with_items: "{{ esxhosts }}"
@@ -115,10 +97,10 @@
         esxi_hostname: '{{ item.host }}'
         switch_name: OUSV3-VMM
         lag_uplinks:
-            - lag: OUSV3-VMM-lacp
+            - lag: HX-VMM-lacp
               vmnics:
-                  - vmnic4
-                  - vmnic5
+                  - vmnic10
+                  - vmnic11
         state: present
       delegate_to: localhost
       with_items: "{{ esxhosts }}"

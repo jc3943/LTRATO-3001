@@ -1,4 +1,4 @@
 host,vswitchName,portGroupName,vlanId,vmotionIp,vmotionNetMask
-sandbox-01.iws.navy.smil.mil,vSwitch0,vmotion,1202,172.16.117.41,255.255.255.0
-sandbox-02.iws.navy.smil.mil,vSwitch0,vmotion,1202,172.16.117.42,255.255.255.0
-sandbox-03.iws.navy.smil.mil,vSwitch0,vmotion,1202,172.16.117.43,255.255.255.0
+sandbox-01.iws.navy.smil.mil,vmotion,vmotionPg,1202,172.16.117.41,255.255.255.0
+sandbox-02.iws.navy.smil.mil,vmotion,vmotionPg,1202,172.16.117.42,255.255.255.0
+sandbox-03.iws.navy.smil.mil,vmotion,vmotionPg,1202,172.16.117.43,255.255.255.0
