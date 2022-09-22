@@ -39,8 +39,12 @@ def portActions(specDict):
     cookie = {'APIC-cookie':token}
     if(specDict['action'] == "shut"):
        for i in range(len(portNodeDict)):
-          portJson = "{\"fabricRsOosPath\":{\"attributes\":{\"tDn\":\"topology/pod-1/paths-" + portNodeDict[i]['node'] + "/pathep-[eth1/" + portNodeDict[i]['port'] + "]\",\"lc\":\"blacklist\"},\"children\":[]}}"
-          portShut = requests.post(portURL, json=json.loads(portJson), cookies=cookie, verify=False)
+          #portJson = "{\"fabricRsOosPath\":{\"attributes\":{\"tDn\":\"topology/pod-1/paths-" + portNodeDict[i]['node'] + "/pathep-[eth1/" + portNodeDict[i]['port'] + "]\",\"lc\":\"blacklist\"},\"children\":[]}}"
+          if(portNodeDict[i]['intfType'] == "vpc"):
+            nodeList = portNodeDict[i]['intfType'].split("-")
+            for j in range(len(nodeList)):
+                portJson = {"fabricRsOosPath":{"attributes":{"tDn":"topology/pod-1/paths-" + nodeList[j] + "/pathep-[eth1/" + portNodeDict[i]['toPort'] + "]","lc":"blacklist"},"children":[]}}
+                portShut = requests.post(portURL, json=portJson, cookies=cookie, verify=False)
 
     if(specDict['action'] == "noshut"):
        for i in range(len(portNodeDict)):

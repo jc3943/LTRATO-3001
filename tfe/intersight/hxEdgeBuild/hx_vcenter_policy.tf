@@ -11,6 +11,6 @@ resource "intersight_hyperflex_vcenter_config_policy" "hx_vcenter_policy" {
   }
   data_center = var.hx_vcenter_dc_name
   hostname    = var.hx_vcenter_ip
-  password    = var.hx_vcenter_password
+  password    = base64decode(var.hx_vcenter_password)
   username    = var.hx_vcenter_username
 }

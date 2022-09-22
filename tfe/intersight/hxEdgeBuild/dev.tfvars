@@ -41,9 +41,9 @@ hx_logical_avalability_zone_config          = false
 hx_local_credential_policy_name             = "sandbox-localCreds"
 hx_local_credential_policy_description      = "Local Credential Policy"
 hx_factory_hypervisor_password              = true
-hx_hxdp_root_pwd                            = "DEVP@ssw0rd"
+hx_hxdp_root_pwd                            = "REVWUEBzc3cwcmQ="
 hx_hypervisor_admin                         = "root"
-hx_hypervisor_admin_pwd                     = "DEVP@ssw0rd"
+hx_hypervisor_admin_pwd                     = "REVWUEBzc3cwcmQ="
 
 # node_config_policy
 node_config_policy_name                     = "sandbox-nodePol"
@@ -97,7 +97,7 @@ hx_vcenter_config_policy_name               = "sandbox-vcenterPol"
 hx_vcenter_config_policy_description        = "vCenter Config Policy"
 hx_vcenter_dc_name                          = "sandbox"
 hx_vcenter_ip                               = "172.16.14.137"
-hx_vcenter_password                         = "DEVP@ssw0rd"
+hx_vcenter_password                         = "REVWUEBzc3cwcmQ="
 hx_vcenter_username                         = "administrator@vsphere.local"
 
 

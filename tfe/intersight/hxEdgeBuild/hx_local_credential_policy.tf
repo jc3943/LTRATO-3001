@@ -11,6 +11,6 @@ resource "intersight_hyperflex_local_credential_policy" "hx_local_credential_pol
   }
   factory_hypervisor_password = var.hx_factory_hypervisor_password
   hypervisor_admin            = var.hx_hypervisor_admin_user
-  hypervisor_admin_pwd        = var.hx_hypervisor_admin_pwd
-  hxdp_root_pwd               = var.hx_hxdp_root_pwd
+  hypervisor_admin_pwd        = base64decode(var.hx_hypervisor_admin_pwd)
+  hxdp_root_pwd               = base64decode(var.hx_hxdp_root_pwd)
 }
