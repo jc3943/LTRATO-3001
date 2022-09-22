@@ -12,3 +12,4 @@ vpc_sandbox-02,sandbox-02_mLOM-03-04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bca
 vpc_sandbox-03,sandbox-03_mLOM-03-04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,SBOX-Leaf-201-SBOX-Leaf-202_intProf,201-202,13,13,block2,
 ESXi_vSwitch,ESXi-04-1_mLOM-01,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,14,14,block2,
 ESXi_vSwitch,ESXi-04-1_mLOM-02,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-202_intProf,202,14,14,block2,
+L3Out_OOB,Layer 3 Out to OOB,1G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,48,48,block2,

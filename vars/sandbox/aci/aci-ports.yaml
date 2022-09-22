@@ -103,6 +103,14 @@ interfaceProfiles:
   name: ESXi_vSwitch
   policyGrp: ESXi_vSwitch
   toPort: 14
+- blkNum: block2
+  description: Layer 3 Out to OOB
+  fromPort: 48
+  interfaceProfile: SBOX-Leaf-201_intProf
+  intfType: switch_port
+  name: L3Out_OOB
+  policyGrp: L3Out_OOB
+  toPort: 48
 policyGrps:
 - aep: Infrastructure
   cdpPol: CDP_ON
@@ -153,4 +161,14 @@ policyGrps:
   monPol: Nflow_Mon
   name: ESXi_vSwitch
   speed: 10G
+  stormCtlPol: bcast-mcast-storm
+- aep: Infrastructure
+  cdpPol: CDP_ON
+  lacpPol: NA
+  lagType: leaf
+  lldpPol: LLDP_ON
+  mcpPol: MCP_ON
+  monPol: Nflow_Mon
+  name: L3Out_OOB
+  speed: 1G
   stormCtlPol: bcast-mcast-storm
