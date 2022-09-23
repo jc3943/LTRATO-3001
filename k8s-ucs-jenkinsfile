@@ -68,5 +68,13 @@ pipeline {
         }
       }
     }
+    /*stage('Config IMC vnics for VPC') {
+      steps {
+        container('ubuntu-tfe') {
+          //Re-enable fabric ports and config imc for vpc ports and vnics
+          sh 'python3 imc/imcVnicCreate.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/imc/hostIpAddrs.csv'
+        }
+      }
+    }*/
   }
 }
