@@ -7,7 +7,7 @@ import sys
 import getopt
 import requests
 import csv, json
-from aciOps import portActions, bakeCookies
+from aciOps import hxPortActions, bakeCookies
 
 def main(argv):
     """
@@ -51,7 +51,7 @@ def main(argv):
 
 if __name__ == '__main__':
     cliArgs = main(sys.argv[1:])
-    actionResult = portActions(cliArgs)
+    actionResult = hxPortActions(cliArgs)
     
 
     

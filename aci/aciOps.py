@@ -19,13 +19,13 @@ def bakeCookies(specDict2):
     newCookie = {'APIC-cookie':token}
     return newCookie
 
-def portActions(specDict):
+def hxPortActions(specDict):
     jsonPayload = ""
 
     with open(specDict['file'], 'r') as csv_file:
         csvread = csv.DictReader(csv_file)
         portNodeDict = list(csvread)
-    print(portNodeDict)
+    #print(portNodeDict)
 
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -41,16 +41,21 @@ def portActions(specDict):
        for i in range(len(portNodeDict)):
           #portJson = "{\"fabricRsOosPath\":{\"attributes\":{\"tDn\":\"topology/pod-1/paths-" + portNodeDict[i]['node'] + "/pathep-[eth1/" + portNodeDict[i]['port'] + "]\",\"lc\":\"blacklist\"},\"children\":[]}}"
           if(portNodeDict[i]['intfType'] == "vpc"):
-            nodeList = portNodeDict[i]['intfType'].split("-")
+            nodeList = portNodeDict[i]['node'].split("-")
+            print("Disabling ports on: " + portNodeDict[i]['name'])
             for j in range(len(nodeList)):
                 portJson = {"fabricRsOosPath":{"attributes":{"tDn":"topology/pod-1/paths-" + nodeList[j] + "/pathep-[eth1/" + portNodeDict[i]['toPort'] + "]","lc":"blacklist"},"children":[]}}
                 portShut = requests.post(portURL, json=portJson, cookies=cookie, verify=False)
 
     if(specDict['action'] == "noshut"):
        for i in range(len(portNodeDict)):
-          portJson = "{\"fabricRsOosPath\":{\"attributes\":{\"dn\":\"uni/fabric/outofsvc/rsoosPath-[topology/pod-1/paths-" + portNodeDict[i]['node'] + "/pathep-[eth1/" + portNodeDict[i]['port'] + "]]\",\"status\":\"deleted\"},\"children\":[]}}"
-          print(portJson)
-          portNoShut = requests.post(portURL, json=json.loads(portJson), cookies=cookie, verify=False)
+          #portJson = "{\"fabricRsOosPath\":{\"attributes\":{\"dn\":\"uni/fabric/outofsvc/rsoosPath-[topology/pod-1/paths-" + portNodeDict[i]['node'] + "/pathep-[eth1/" + portNodeDict[i]['port'] + "]]\",\"status\":\"deleted\"},\"children\":[]}}"
+          if(portNodeDict[i]['intfType'] == "vpc"):
+            nodeList = portNodeDict[i]['node'].split("-")
+            print("Disabling ports on: " + portNodeDict[i]['name'])
+            for j in range(len(nodeList)):
+                portJson = {"fabricRsOosPath":{"attributes":{"dn":"uni/fabric/outofsvc/rsoosPath-[topology/pod-1/paths-" + nodeList[j] + "/pathep-[eth1/" + portNodeDict[i]['toPort'] + "]]","status":"deleted"},"children":[]}}
+                portNoShut = requests.post(portURL, json=portJson, cookies=cookie, verify=False)
 
 def createTacacs(specDict, apicSnacks):
     baseURL = "https://" + specDict['hostIp']
