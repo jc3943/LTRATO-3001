@@ -74,6 +74,7 @@ pipeline {
           //Re-enable fabric ports and config imc for vpc ports and vnics
           sh 'python3 aci/aciHxVpcOps.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/aci/port-defs.csv -a noshut'
           sh 'python3 imc/imcVnicCreate.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/imc/hostIpAddrs.csv'
+          sh 'python3 imc/imcServerPowerCycle.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/imc/hostIpAddrs.csv'
         }
       }
     }
