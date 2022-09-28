@@ -15,7 +15,7 @@
 
   tasks:
     - read_csv:
-        path: $varPath/vmware/hx-hosts.csv
+        path: ../$varPath/vmware/hx-hosts.csv
       register: hostlist
       tags: hostadd, portgroup, vmotion
 
