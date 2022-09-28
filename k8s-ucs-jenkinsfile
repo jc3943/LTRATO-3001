@@ -88,7 +88,7 @@ pipeline {
               playbook: './vmware/hxHosts-vcenter-tasks.yml',
               inventory: 'localhost',
               extraVars: [
-                  vcsa_hostname: "$vcsaHostName",
+                  vcsa_hostname: "172.16.14.137",
                   datacenter_name: "${BRANCH_NAME}",
                   cluster_name: "${BRANCH_NAME}",
                   datastore: "${BRANCH_NAME}",
