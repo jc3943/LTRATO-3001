@@ -7,27 +7,25 @@
   hosts: vcenter 
   connection: local
   gather_facts: False
-  vars:
-    datacenter: "sandbox"
-    cluster: "sandbox"
-    folder: "/"
-    datastore: "sandbox"
-    esx_username: "root"
-    esx_password: "password"
+#  vars:
+#    datacenter: "sandbox"
+#    cluster: "sandbox"
+#    folder: "/"
+#    datastore: "sandbox"
 
   tasks:
     - read_csv:
-        path: $varPath/hx-hosts.csv
+        path: $varPath/vmware/hx-hosts.csv
       register: hostlist
       tags: hostadd, portgroup, vmotion
 
     - name: TASK - Enable SSH on all Hosts in the Cluster
       community.vmware.vmware_host_service_manager:
-        hostname: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
+        hostname: "{{ vcsa_hostname }}"
+        username: "{{ vcsa_user }}"
+        password: "{{ vcsa_pwd }}"
         validate_certs: no
-        cluster_name: "{{ cluster }}"
+        cluster_name: "{{ cluster_name }}"
         service_name: TSM-SSH
         state: present
       delegate_to: localhost
@@ -35,11 +33,11 @@
 
     - name: TASK - Add vMotion Port Group to vSwitch
       community.vmware.vmware_portgroup:
-        hostname: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
+        hostname: "{{ vcsa_hostname }}"
+        username: "{{ vcsa_user }}"
+        password: "{{ vcsa_pwd }}"
         validate_certs: no
-        cluster_name: "{{ cluster }}"
+        cluster_name: "{{ cluster_name }}"
         switch: "{{ hosts.vswitchName }}"
         portgroup: "{{ hosts.portGroupName }}"
         vlan_id: "{{ hosts.vlanId }}"
@@ -50,11 +48,11 @@
       delegate_to: localhost
       tags: portgroup
 
-    - name: TASK - Add vMotion vmKerner to vSwitch
+    - name: TASK - Add vMotion vmKernel to vSwitch
       community.vmware.vmware_vmkernel:
-        hostname: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
+        hostname: "{{ vcsa_hostname }}"
+        username: "{{ vcsa_user }}"
+        password: "{{ vcsa_pwd }}"
         validate_certs: no
         esxi_hostname: "{{ hosts.host }}"
         vswitch_name: "{{ hosts.vswitchName }}"
@@ -74,35 +72,39 @@
 
     - name: TASK - Add Hosts to DVS 
       community.vmware.vmware_dvs_host:
-        hostname: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
+        hostname: "{{ vcsa_hostname }}"
+        username: "{{ vcsa_user }}"
+        password: "{{ vcsa_pwd }}"
         validate_certs: no
-        esxi_hostname: '{{ item.host }}'
-        switch_name: OUSV3-VMM
+        esxi_hostname: '{{ hosts.host }}'
+        switch_name: HX-VMM
         vmnics:
             - vmnic10
             - vmnic11
         state: present
+      loop: "{{ hostlist.list }}"
+      loop_control:
+        loop_var: hosts
       delegate_to: localhost
-      with_items: "{{ esxhosts }}"
       tags: hostdvs
 
     - name: TASK - Add Links to LAG
       community.vmware.vmware_dvs_host:
-        hostname: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
+        hostname: "{{ vcsa_hostname }}"
+        username: "{{ vcsa_user }}"
+        password: "{{ vcsa_pwd }}"
         validate_certs: no
-        esxi_hostname: '{{ item.host }}'
-        switch_name: OUSV3-VMM
+        esxi_hostname: '{{ hosts.host }}'
+        switch_name: HX-VMM
         lag_uplinks:
             - lag: HX-VMM-lacp
               vmnics:
                   - vmnic10
                   - vmnic11
         state: present
+      loop: "{{ hostlist.list }}"
+      loop_control:
+        loop_var: hosts
       delegate_to: localhost
-      with_items: "{{ esxhosts }}"
       tags: hostlag
 
