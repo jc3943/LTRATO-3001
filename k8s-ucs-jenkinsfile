@@ -68,7 +68,7 @@ pipeline {
         }
       }
     }
-    stage('Config IMC vnics for VPC') {
+  /*  stage('Config IMC vnics for VPC') {
       steps {
         container('ubuntu-tfe') {
           //Re-enable fabric ports and config imc for vpc ports and vnics
@@ -79,7 +79,7 @@ pipeline {
           sh 'sleep 600'
         }
       }
-    }
+    } */
     stage('Post-install tasks and DVS Configs') {
       steps {
         container('ubuntu-tfe') {
@@ -90,9 +90,9 @@ pipeline {
               extraVars: [
                   vcsa_hostname: "$vcsaHostName",
                   datacenter_name: "${BRANCH_NAME}",
-                  cluster_name: "${BRANCH_NAME}"
-                  datastore: "${BRANCH_NAME}"
-                  vcsa_user: "administrator@vsphere.local"
+                  cluster_name: "${BRANCH_NAME}",
+                  datastore: "${BRANCH_NAME}",
+                  vcsa_user: "administrator@vsphere.local",
                   vcsa_pwd: "$APIC_CREDS_PSW"
               ],
               colorized: true
