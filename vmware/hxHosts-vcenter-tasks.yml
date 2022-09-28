@@ -4,7 +4,7 @@
 # example seed file vars/<branch>/hx-hosts.yaml which was created using csv-to-yaml.py
 
 - name: vCenter DVS Tasks
-  hosts: vcenter 
+  hosts: localhost 
   connection: local
   gather_facts: False
 #  vars:
