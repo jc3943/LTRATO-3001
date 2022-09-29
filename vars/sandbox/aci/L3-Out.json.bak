@@ -8,18 +8,21 @@
           "descr": "",
           "dn": "uni/tn-SERVICES/out-out-L3Out_SBOX",
           "enforceRtctrl": "export",
+          "mplsEnabled": "no",
           "name": "out-L3Out_SBOX",
           "nameAlias": "",
           "ownerKey": "",
           "ownerTag": "",
-          "targetDscp": "unspecified"
+          "targetDscp": "unspecified",
+          "userdom": ":all:common:"
         },
         "children": [
           {
             "l3extRsL3DomAtt": {
               "attributes": {
                 "annotation": "",
-                "tDn": "uni/l3dom-out-L3Out_SBOX"
+                "tDn": "uni/l3dom-L3Out_Ext",
+                "userdom": ":all:common:"
               }
             }
           },
@@ -27,7 +30,8 @@
             "l3extRsEctx": {
               "attributes": {
                 "annotation": "",
-                "tnFvCtxName": "services-vrf"
+                "tnFvCtxName": "services-vrf",
+                "userdom": "all"
               }
             }
           },
@@ -42,7 +46,8 @@
                 "ownerKey": "",
                 "ownerTag": "",
                 "tag": "yellow-green",
-                "targetDscp": "unspecified"
+                "targetDscp": "unspecified",
+                "userdom": ":all:common:"
               },
               "children": [
                 {
@@ -52,7 +57,8 @@
                       "configIssues": "",
                       "rtrId": "172.20.255.117",
                       "rtrIdLoopBack": "yes",
-                      "tDn": "topology/pod-1/node-201"
+                      "tDn": "topology/pod-1/node-201",
+                      "userdom": ":all:common:"
                     }
                   }
                 },
@@ -66,7 +72,8 @@
                       "ownerKey": "",
                       "ownerTag": "",
                       "prio": "unspecified",
-                      "tag": "yellow-green"
+                      "tag": "yellow-green",
+                      "userdom": ":all:common:"
                     },
                     "children": [
                       {
@@ -80,11 +87,14 @@
                             "encapScope": "local",
                             "ifInstT": "l3-port",
                             "ipv6Dad": "enabled",
+                            "isMultiPodDirect": "no",
                             "llAddr": "::",
+                            "mac": "00:22:BD:F8:19:FF",
                             "mode": "regular",
                             "mtu": "inherit",
                             "tDn": "topology/pod-1/paths-201/pathep-[eth1/48]",
-                            "targetDscp": "unspecified"
+                            "targetDscp": "unspecified",
+                            "userdom": ":all:common:"
                           }
                         }
                       },
@@ -92,7 +102,8 @@
                         "l3extRsNdIfPol": {
                           "attributes": {
                             "annotation": "",
-                            "tnNdIfPolName": ""
+                            "tnNdIfPolName": "",
+                            "userdom": "all"
                           }
                         }
                       },
@@ -100,7 +111,8 @@
                         "l3extRsIngressQosDppPol": {
                           "attributes": {
                             "annotation": "",
-                            "tnQosDppPolName": ""
+                            "tnQosDppPolName": "",
+                            "userdom": "all"
                           }
                         }
                       },
@@ -108,7 +120,8 @@
                         "l3extRsEgressQosDppPol": {
                           "attributes": {
                             "annotation": "",
-                            "tnQosDppPolName": ""
+                            "tnQosDppPolName": "",
+                            "userdom": "all"
                           }
                         }
                       },
@@ -116,7 +129,8 @@
                         "l3extRsArpIfPol": {
                           "attributes": {
                             "annotation": "",
-                            "tnArpIfPolName": ""
+                            "tnArpIfPolName": "",
+                            "userdom": "all"
                           }
                         }
                       },
@@ -124,7 +138,8 @@
                         "l3extRsLIfPCustQosPol": {
                           "attributes": {
                             "annotation": "",
-                            "tnQosCustomPolName": ""
+                            "tnQosCustomPolName": "",
+                            "userdom": "all"
                           }
                         }
                       },
@@ -134,14 +149,16 @@
                             "annotation": "",
                             "descr": "",
                             "name": "",
-                            "nameAlias": ""
+                            "nameAlias": "",
+                            "userdom": ":all:common:"
                           },
                           "children": [
                             {
                               "eigrpRsIfPol": {
                                 "attributes": {
                                   "annotation": "",
-                                  "tnEigrpIfPolName": "default"
+                                  "tnEigrpIfPolName": "default",
+                                  "userdom": "all"
                                 }
                               }
                             }
@@ -164,9 +181,11 @@
                 "matchT": "AtleastOne",
                 "name": "L3Out_Ext",
                 "nameAlias": "",
+                "pcEnfPref": "unenforced",
                 "prefGrMemb": "exclude",
                 "prio": "unspecified",
-                "targetDscp": "unspecified"
+                "targetDscp": "unspecified",
+                "userdom": ":all:common:"
               },
               "children": [
                 {
@@ -176,7 +195,8 @@
                       "intent": "install",
                       "matchT": "AtleastOne",
                       "prio": "unspecified",
-                      "tnVzBrCPName": "SERVICES-Contract"
+                      "tnVzBrCPName": "SERVICES-Contract",
+                      "userdom": ":all:common:"
                     }
                   }
                 },
@@ -189,7 +209,8 @@
                       "ip": "0.0.0.0/0",
                       "name": "",
                       "nameAlias": "",
-                      "scope": "export-rtctrl,import-security,shared-rtctrl"
+                      "scope": "export-rtctrl,import-security,shared-rtctrl",
+                      "userdom": ":all:common:"
                     }
                   }
                 },
@@ -197,7 +218,8 @@
                   "fvRsCustQosPol": {
                     "attributes": {
                       "annotation": "",
-                      "tnQosCustomPolName": ""
+                      "tnQosCustomPolName": "",
+                      "userdom": "all"
                     }
                   }
                 },
@@ -207,7 +229,8 @@
                       "annotation": "",
                       "intent": "install",
                       "prio": "unspecified",
-                      "tnVzBrCPName": "SERVICES-Contract"
+                      "tnVzBrCPName": "SERVICES-Contract",
+                      "userdom": ":all:common:"
                     }
                   }
                 }
@@ -220,7 +243,8 @@
                 "annotation": "",
                 "asn": "10",
                 "descr": "",
-                "nameAlias": ""
+                "nameAlias": "",
+                "userdom": ":all:common:"
               }
             }
           }
