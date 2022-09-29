@@ -34,7 +34,7 @@ hx_mac_prefix_end_addr                      = "00:25:B5:BB"
 hx_storage_policy_name                      = "sandbox-strPol"
 hx_storage_policy_description               = "Storage policy for hx cluster"
 hx_vdi_optimization                         = false
-hx_disk_partition_cleanup                   = false
+hx_disk_partition_cleanup                   = true
 hx_logical_avalability_zone_config          = false
 
 # local_credential_policy
