@@ -137,13 +137,13 @@ pipeline {
         }
       }
     }
-    stage('Upgrade APIC') {
+  /*  stage('Upgrade APIC') {
       steps {
         container('ubuntu-runner') {
           //Upgrade APIC'S
           sh 'python3 ./aci/aciUpgrade.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/aci/switch-inventory.csv'
         }
       }
-    }
+    } */
   }
 }
