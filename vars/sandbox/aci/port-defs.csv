@@ -15,5 +15,3 @@ ESXi_vSwitch,ESXi-M6_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mc
 vpc_esx-m6-01,ESXi-M6_mLOM-03-04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,SBOX-Leaf-201-SBOX-Leaf-202_intProf,201-202,15,15,block2,
 ESXi_vSwitch,ESXi-HX_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,16,16,block3,
 ESXi_vSwitch,ESXi-HX_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-202_intProf,202,16,16,block3,
-L3Out_OOB,Layer 3 Out to OOB,1G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,48,48,block2,
-L3Out_OOB,Layer 3 Out to OOB,1G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-202_intProf,202,48,48,block2,
