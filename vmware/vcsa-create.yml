@@ -133,17 +133,17 @@
     delegate_to: localhost
     tags: cluster
 
-  - name: TASK - Add Hosts to vCenter
-    community.vmware.vmware_host:
-      hostname: '{{ item.vcsaAddress }}'
-      username: 'administrator@vsphere.local'
-      password: '{{ vcenter_password }}'
-      validate_certs: no
-      datacenter_name: '{{ datacenter_name }}'
-      cluster_name: '{{ cluster_name }}'
-      esxi_hostname: '{{ item.esxiAddress }}'
-      esxi_username: '{{ esxi_username }}'
-      esxi_password: '{{ pod_esxi_password }}'
-      state: present
-    with_items: "{{ vcsaspecs }}"
-    delegate_to: localhost
+#  - name: TASK - Add Hosts to vCenter
+#    community.vmware.vmware_host:
+#      hostname: '{{ item.vcsaAddress }}'
+#      username: 'administrator@vsphere.local'
+#      password: '{{ vcenter_password }}'
+#      validate_certs: no
+#      datacenter_name: '{{ datacenter_name }}'
+#      cluster_name: '{{ cluster_name }}'
+#      esxi_hostname: '{{ item.esxiAddress }}'
+#      esxi_username: '{{ esxi_username }}'
+#      esxi_password: '{{ pod_esxi_password }}'
+#      state: present
+#    with_items: "{{ vcsaspecs }}"
+#    delegate_to: localhost
