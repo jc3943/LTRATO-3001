@@ -28,7 +28,7 @@ pipeline {
         }
       }
     }
- /*   stage('Initiate Intersight IMC Device Claims') {
+    stage('Initiate Intersight IMC Device Claims') {
       steps {
         container('jnlp') {
           sh '''
@@ -59,7 +59,7 @@ pipeline {
           //Need code here to check status of HX Edge Build
         }
       }
-    } */
+    } 
     stage('Create HX DataStore') {
       steps {
         container('ubuntu-tfe') {
@@ -68,7 +68,7 @@ pipeline {
         }
       }
     }
-  /*  stage('Config IMC vnics for VPC') {
+    stage('Config IMC vnics for VPC') {
       steps {
         container('ubuntu-tfe') {
           //Re-enable fabric ports and config imc for vpc ports and vnics
@@ -79,7 +79,7 @@ pipeline {
           sh 'sleep 600'
         }
       }
-    } */
+    } 
     stage('Post-install tasks and DVS Configs') {
       steps {
         container('ubuntu-tfe') {
