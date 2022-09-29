@@ -13,12 +13,13 @@
     net_prefix: '22'
     net_gateway: '172.16.14.254'
     dns_servers: '172.16.20.101'
+    ntp_servers: '172.20.1.254'
     domain: 'thor.iws.navy.mil'
     searchpath: "thor.iws.navy.mil"
     vcsa_size: 'tiny'
     datastore: 'DEV'
     networks: 'Storage Controller Management Network'
-    vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10.ova
+    vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10-ntp.ova
     vcsa_ova_url: 172.16.20.10:/data/nfs/00-Software/vmware/
     #vcsa_ova_file: '/var/jenkins_home/{{ vcsa_ova_name }}'
     vcsa_ova_file: '/tmp/{{ vcsa_ova_name }}'
@@ -78,7 +79,9 @@
         guestinfo.cis.appliance.root.passwd: '{{ vcenter_password }}' 
         guestinfo.cis.ceip_enabled: "False"
         guestinfo.cis.deployment.autoconfig: 'True' 
-        guestinfo.cis.vmdir.password: '{{ vcenter_password }}' 
+        guestinfo.cis.vmdir.password: '{{ vcenter_password }}'
+        guestinfo.cis.appliance.time.tools-sync: 'true'
+        guestinfo.cis.appliance.ntp.servers: '{{ ntp_servers }}'
         domain: '{{ domain }}'
         searchpath: '{{ searchpath }}'
     with_items: "{{ vcsaspecs }}"
