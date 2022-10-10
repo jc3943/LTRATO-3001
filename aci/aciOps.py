@@ -1,9 +1,11 @@
 import urllib.request
 import urllib3
-import sys
+import sys, time
 import getopt
 import requests
-import csv, json
+import csv, json, pprint
+import random
+from random import seed
 
 def bakeCookies(specDict2):
     baseURL = "https://" + specDict2['hostIp']
