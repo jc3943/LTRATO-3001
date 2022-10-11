@@ -27,7 +27,7 @@ pipeline {
         }
       }
     }
-    stage('Prep APIC SIMs and VCSA') {
+/*    stage('Prep APIC SIMs and VCSA') {
       steps {
         container('jnlp') {
           sh '''
@@ -36,7 +36,7 @@ pipeline {
         }
         container('ubuntu-runner') {
           //apic sim's stateless - revert to base snapshot with credentials and ip address only
-/*          ansiblePlaybook(
+          ansiblePlaybook(
               playbook: './vmware/vm-snap-revert.yml',
               inventory: './creds/vmw-inventory',
               extras: '--extra-vars="vmname=$apicVm snap=$apicSnap"',
@@ -63,8 +63,8 @@ pipeline {
           )
         }
       }
-    }
-    stage('Fabric Discovery and Base Config') {
+    } */
+/*    stage('Fabric Discovery and Base Config') {
       steps {
         container('ubuntu-runner') {
           //kick off discovery and configure base fabric parameters
@@ -83,8 +83,8 @@ pipeline {
           )
         }
       }
-    }
-    stage('Configure Ports and VMM Integration') {
+    } */
+/*    stage('Configure Ports and VMM Integration') {
       steps {
         container('ubuntu-runner') {
           //configure aci fabric ports
