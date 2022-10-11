@@ -72,15 +72,15 @@ def main(argv):
     pwArg = ""
     hostIpArg = ""
 
-    argDict = {"username":"","password":"","hostIp":"","file":""}
+    argDict = {"username":"","password":"","hostIp":"","file":"","nodeGrp":""}
     try:
-      opts, args = getopt.getopt(argv,"hu:p:i:f:",["username","password","hostIp=","file="])
+      opts, args = getopt.getopt(argv,"hu:p:i:f:n:",["username","password","hostIp=","file=","nodeGrp="])
     except getopt.GetoptError:
       print('apicUpgrade.py -u <username> -p <password> -i <host_ip> -f <inputfile>')
       sys.exit(2)
     for opt, arg in opts:
       if opt == '-h':
-         print('apicUpgrade.py -u <username> -p <password> -i <host_ip> -f <inputfile>')
+         print('apicUpgrade.py -u <username> -p <password> -i <host_ip> -f <inputfile> -n <evenNode or oddNodes')
          sys.exit()
       elif opt in ("-u", "--username"):
          userArg = arg
@@ -94,6 +94,9 @@ def main(argv):
       elif opt in ("-f", "--file"):
          file = arg
          argDict["file"] = file
+      elif opt in ("-n", "--nodeGrp"):
+         nodeGrp = arg
+         argDict["file"] = nodeGrp
     return argDict
 
 if __name__ == '__main__':

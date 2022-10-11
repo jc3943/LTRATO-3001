@@ -7,6 +7,7 @@ import csv, json, pprint
 import random
 from random import seed
 
+
 def bakeCookies(specDict2):
     baseURL = "https://" + specDict2['hostIp']
     tokenURL = baseURL + "/api/aaaLogin.json"
