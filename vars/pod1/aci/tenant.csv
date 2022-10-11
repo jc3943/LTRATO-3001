@@ -24,9 +24,9 @@ BD_119,10.119.1.254,24,LTRATO-3001,ltrato-3001-vrf,CL-2022,3 Tier Web App,EPG_11
 BD_120,10.120.1.254,24,LTRATO-3001,ltrato-3001-vrf,CL-2022,3 Tier Web App,EPG_120,CL-VMM,vmm,WebAppContract,120,auto,web_app_allow,NA,NA,NA
 BD_121,10.121.1.254,24,LTRATO-3001,ltrato-3001-vrf,CL-2022,3 Tier Web App,EPG_121,CL-VMM,vmm,WebAppContract,121,auto,web_app_allow,NA,NA,NA
 BD_122,10.122.1.254,24,LTRATO-3001,ltrato-3001-vrf,CL-2022,3 Tier Web App,EPG_122,CL-VMM,vmm,WebAppContract,122,auto,web_app_allow,NA,NA,NA
-BD_200,10.200.1.254,24,nso-tenant,nso-tenant-vrf,CL-2022,3 Tier Web App,EPG_200,CL-VMM,vmm,WebAppContract,200,auto,web_app_allow,NA,NA,NA
-BD_201,10.201.1.254,24,nso-tenant,nso-tenant-vrf,CL-2022,3 Tier Web App,EPG_201,CL-VMM,vmm,WebAppContract,201,auto,web_app_allow,NA,NA,NA
-BD_202,10.202.1.254,24,nso-tenant,nso-tenant-vrf,CL-2022,3 Tier Web App,EPG_202,CL-VMM,vmm,WebAppContract,202,auto,web_app_allow,NA,NA,NA
-BD_203,10.203.1.254,24,nso-tenant,nso-tenant-vrf,CL-2022,3 Tier Web App,EPG_203,CL-VMM,vmm,WebAppContract,203,auto,web_app_allow,NA,NA,NA
-BD_204,10.204.1.254,24,nso-tenant,nso-tenant-vrf,CL-2022,3 Tier Web App,EPG_204,CL-VMM,vmm,WebAppContract,204,auto,web_app_allow,NA,NA,NA
-BD_205,10.205.1.254,24,nso-tenant,nso-tenant-vrf,CL-2022,3 Tier Web App,EPG_205,CL-VMM,vmm,WebAppContract,205,auto,web_app_allow,NA,NA,NA
+BD_200,10.200.1.254,24,nso-tenant,nso-tenant-vrf,NSO-2022,3 Tier Web App,EPG_200,CL-VMM,vmm,WebAppContract,200,auto,web_app_allow,NA,NA,NA
+BD_201,10.201.1.254,24,nso-tenant,nso-tenant-vrf,NSO-2022,3 Tier Web App,EPG_201,CL-VMM,vmm,WebAppContract,201,auto,web_app_allow,NA,NA,NA
+BD_202,10.202.1.254,24,nso-tenant,nso-tenant-vrf,NSO-2022,3 Tier Web App,EPG_202,CL-VMM,vmm,WebAppContract,202,auto,web_app_allow,NA,NA,NA
+BD_203,10.203.1.254,24,nso-tenant,nso-tenant-vrf,NSO-2022,3 Tier Web App,EPG_203,CL-VMM,vmm,WebAppContract,203,auto,web_app_allow,NA,NA,NA
+BD_204,10.204.1.254,24,nso-tenant,nso-tenant-vrf,NSO-2022,3 Tier Web App,EPG_204,CL-VMM,vmm,WebAppContract,204,auto,web_app_allow,NA,NA,NA
+BD_205,10.205.1.254,24,nso-tenant,nso-tenant-vrf,NSO-2022,3 Tier Web App,EPG_205,CL-VMM,vmm,WebAppContract,205,auto,web_app_allow,NA,NA,NA
