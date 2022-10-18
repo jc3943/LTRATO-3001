@@ -1,0 +1,167 @@
+tenants:
+  - tenant: SERVICES
+vrfs:
+  - vrf: services-vrf
+    tenant: SERVICES
+    rp: 172.16.115.254
+aps:
+  - ap: Management
+    tenant: SERVICES
+bridge_domains:
+  - bd: BD_1200
+    gateway: 172.16.115.254
+    mask: 22
+    tenant: SERVICES
+    vrf: services-vrf
+    scope: public,shared
+    L3Out: out-L3Out_SBOX
+  - bd: BD_1201
+    gateway: 172.16.116.254
+    mask: 24
+    tenant: SERVICES
+    vrf: services-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_1202
+    gateway: 172.16.117.254
+    mask: 24
+    tenant: SERVICES
+    vrf: services-vrf
+    scope: public,shared
+    L3Out: NA
+  - bd: BD_1200
+    gateway: 172.16.115.254
+    mask: 22
+    tenant: SERVICES
+    vrf: services-vrf
+    scope: public,shared
+    L3Out: out-L3Out_SBOX
+  - bd: BD_5
+    gateway: 172.16.125.14
+    mask: 28
+    tenant: SERVICES
+    vrf: services-vrf
+    scope: public,shared
+    L3Out: out-L3Out_SBOX
+epgs:
+  - epg: EPG_1200
+    tenant: SERVICES
+    ap: Management
+    bd: BD_1200
+    domain: Infrastructure
+    domainType: phys
+    encaps: 1200
+    encaptype: vlan
+    gateway: 172.16.115.254
+    mask: 22
+    description: ESXi Management EPG
+    multivrf: YES
+  - epg: EPG_1201
+    tenant: SERVICES
+    ap: Management
+    bd: BD_1201
+    domain: Infrastructure
+    domainType: phys
+    encaps: 1201
+    encaptype: vlan
+    gateway: 172.16.116.254
+    mask: 24
+    description: HX Storage Data EPG HX-1
+    multivrf: NA
+  - epg: EPG_1202
+    tenant: SERVICES
+    ap: Management
+    bd: BD_1202
+    domain: Infrastructure
+    domainType: phys
+    encaps: 1202
+    encaptype: vlan
+    gateway: 172.16.117.254
+    mask: 24
+    description: ESXi vMtion EPG
+    multivrf: NA
+  - epg: EPG_1200
+    tenant: SERVICES
+    ap: Management
+    bd: BD_1200
+    domain: HX-VMM
+    domainType: vmm
+    encaps: 1200
+    encaptype: auto
+    gateway: 172.16.115.254
+    mask: 22
+    description: ESXi Management EPG
+    multivrf: YES
+  - epg: EPG_5
+    tenant: SERVICES
+    ap: Management
+    bd: BD_5
+    domain: HX-VMM
+    domainType: vmm
+    encaps: 1205
+    encaptype: auto
+    gateway: 172.16.125.14
+    mask: 28
+    description: Security EPG
+    multivrf: NA
+epg_contracts:
+  - epg: EPG_1200
+    contract: SERVICES-Contract
+    contract_type: "provider"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_1200
+    contract: SERVICES-Contract
+    contract_type: "consumer"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_1201
+    contract: SERVICES-Contract
+    contract_type: "provider"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_1201
+    contract: SERVICES-Contract
+    contract_type: "consumer"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_1202
+    contract: SERVICES-Contract
+    contract_type: "provider"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_1202
+    contract: SERVICES-Contract
+    contract_type: "consumer"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_1200
+    contract: SERVICES-Contract
+    contract_type: "provider"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_1200
+    contract: SERVICES-Contract
+    contract_type: "consumer"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_5
+    contract: SERVICES-Contract
+    contract_type: "provider"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_5
+    contract: SERVICES-Contract
+    contract_type: "consumer"
+    ap: Management
+    tenant: SERVICES
+contracts:
+  - contract: SERVICES-Contract
+    tenant: SERVICES
+    subject: "Subject"
+    filter: services-allow_all
+filters:
+  - filter: services-allow_all
+    tenant: SERVICES
+    entry: "default"
+    ethertype: "unspecified"
