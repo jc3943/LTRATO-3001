@@ -27,7 +27,7 @@ pipeline {
         }
       }
     }
-/*    stage('Prep APIC SIMs and VCSA') {
+    stage('Prep APIC SIMs and VCSA') {
       steps {
         container('jnlp') {
           sh '''
@@ -63,8 +63,8 @@ pipeline {
           )
         }
       }
-    } */
-/*    stage('Fabric Discovery and Base Config') {
+    }
+    stage('Fabric Discovery and Base Config') {
       steps {
         container('ubuntu-runner') {
           //kick off discovery and configure base fabric parameters
@@ -83,8 +83,8 @@ pipeline {
           )
         }
       }
-    } */
-/*    stage('Configure Ports and VMM Integration') {
+    }
+    stage('Configure Ports and VMM Integration') {
       steps {
         container('ubuntu-runner') {
           //configure aci fabric ports
@@ -103,7 +103,7 @@ pipeline {
           )
         }
       }
-    } */
+    }
     stage('Create and Configure Tenant') {
       steps {
         container('ubuntu-runner') {
