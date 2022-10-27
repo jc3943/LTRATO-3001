@@ -1,0 +1,73 @@
+# Accept the VMware End User License Agreement
+vmaccepteula
+
+# Set the root password for the DCUI and Tech Support Mode
+rootpw {{ .Password }}
+
+#for Local boot
+DISKIDPLACEHOLDER
+
+# Set the network to DHCP on the first network adapater
+
+network --bootproto=static --ip={{ .IpAddress }} --netmask={{ .NetMask }} --gateway={{ .GateWay }} --hostname={{ .HostName }} --nameserver={{ .dns1 }} --vlanid={{ .vlanId }} --device={{ .NetworkDevice1 }}
+
+%pre --interpreter=busybox
+hwclock -d %LIVE_VAR_DATE_1% -t %LIVE_VAR_TIME_UTC_1%
+date -s %LIVE_VAR_DATE_TIME_UTC_1%
+cd /tmp
+
+%firstboot --interpreter=busybox
+cd /tmp
+esxcfg-vswitch -A 'VM Network' vSwitch0
+esxcfg-vswitch -L vmnic4 vSwitch0
+esxcfg-vswitch -L vmnic5 vSwitch0
+esxcfg-vswitch -U vmnic0 vSwitch0
+
+
+%post --interpreter=busybox
+#cd /tmp
+#esxcfg-vswitch -A 'VM Network' vSwitch0
+#esxcfg-vswitch -L vmnic2 vSwitch0
+#esxcfg-vswitch -L vmnic3 vSwitch0
+#esxcfg-vswitch -U vmnic0 vSwitch0
+
+#esxcli network vswitch standard uplink add --uplink-name=vmnic2 --vswitch-name=vSwitch0
+#esxcli network vswitch standard uplink add --uplink-name=vmnic3 --vswitch-name=vSwitch0
+#esxcli network vswitch standard uplink remove --uplink-name=vmnic0 --vswitch-name=vSwitch0
+
+###############################
+# disable lockdown mode
+############################### 
+vim-cmd -U dcui vimsvc/auth/admin_account_enable
+
+###############################
+# enable & start remote ESXi Shell  (SSH)
+###############################
+vim-cmd hostsvc/enable_ssh
+vim-cmd hostsvc/start_ssh
+
+###############################
+# enable & start ESXi Shell (TSM)
+###############################
+vim-cmd hostsvc/enable_esx_shell
+vim-cmd hostsvc/start_esx_shell
+vim-cmd -U dcui vimsvc/auth/admin_account_enable
+
+esxcli system hostname set --host={{ .HostName }}
+esxcli system syslog config set --loghost={{ .syslog }}
+esxcli network ip dns server add --server={{ .dns1 }}
+esxcli network ip dns server add --server={{ .dns2 }}
+
+ESXI_INSTALL_LOG=/var/log/esxi_install.log
+echo \"OS INSTALL COMPLETED\" >>   /var/log/Xinstall.log
+/opt/ucs_tool_esxi/ucs_ipmitool write_file  /var/log/Xinstall.log osProgress.log
+
+######################################
+# Configure NTP
+######################################
+echo "server 172.20.1.254" >> /etc/ntp.conf;
+echo "server 172.20.3.254" >> /etc/ntp.conf;
+
+
+# Let us poweroff/shutdown our selves.
+reboot

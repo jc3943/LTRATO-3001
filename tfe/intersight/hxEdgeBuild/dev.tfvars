@@ -53,7 +53,7 @@ hx_node_name_prefix                         = "sandbox"
 hx_hxdp_mgmt_start_addr                     = "172.16.114.11"
 hx_hxdp_mgmt_end_addr                       = "172.16.114.13"
 hx_hxdp_mgmt_gateway                        = "172.16.115.254"
-hx_hxdp_mgmt_netmask                        = "255.255.240.0"
+hx_hxdp_mgmt_netmask                        = "255.255.252.0"
 
 # hx_hxdp_data_start_addr                   = ""
 # hx_hxdp_data_end_addr                     = ""

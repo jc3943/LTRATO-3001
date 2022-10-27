@@ -1,0 +1,71 @@
+{
+  "Answers": {
+    "AnswerFile": "",
+    "ClassId": "os.Answers",
+    "Hostname": "sandbox-exsi-bm",
+    "IpConfigType": "static",
+    "IpConfiguration": {
+      "ClassId": "os.IpConfiguration",
+      "IpV4Config": {
+        "GateWay": "172.16.115.254",
+        "IpAddress": "172.16.115.41",
+        "NetMask": "255.255.252.0",
+        "NetworkDevice1": "vmnic5",
+        "dns1": "172.16.20.101",
+        "dns2": "172.20.1.254",
+        "syslog": "172.16.10.99",
+        "vlanId": "1200"
+      },
+      "ObjectType": "os.Ipv4Configuration"
+    },
+    "IsRootPasswordCrypted": false,
+    "Nameserver": "172.16.20.101",
+    "NetworkDevice": "",
+    "ObjectType": "os.Answers",
+    "ProductKey": "",
+    "RootPassword": "changeP@ssw0rd",
+    "Source": "Template"
+  },
+  "ClassId": "os.Install",
+  "ConfigurationFile": {
+    "ClassId": "mo.MoRef",
+    "Moid": "",
+    "ObjectType": "os.ConfigurationFile",
+    "Selector": "$filter=Name eq 'esxi-cfg-kst'"
+  },
+  "Description": "Install ESXi 6.7 U3",
+  "Image": {
+    "ClassId": "mo.MoRef",
+    "Moid": "6358a8dd6567612d30f3b750",
+    "ObjectType": "softwarerepository.OperatingSystemFile",
+    "Selector": ""
+  },
+  "InstallMethod": "vMedia",
+  "InstallTarget": {
+    "ClassId": "os.InstallTarget",
+    "Id": "0",
+    "Name": "RAID0_1",
+    "ObjectType": "os.VirtualDrive",
+    "StorageControllerSlotId": "MRAID"
+  },
+  "Name": "InstallTemplatee165",
+  "ObjectType": "os.Install",
+  "Organization": {
+    "ClassId": "mo.MoRef",
+    "Moid": "6273e3fd6972652d3030ae8d",
+    "ObjectType": "organization.Organization",
+    "Selector": ""
+  },
+  "OsduImage": {
+    "ClassId": "mo.MoRef",
+    "Moid": "6358a8dd6567612d30f3b74b",
+    "ObjectType": "firmware.ServerConfigurationUtilityDistributable",
+    "Selector": ""
+  },
+  "Server": {
+    "ClassId": "mo.MoRef",
+    "Moid": "",
+    "ObjectType": "compute.RackUnit",
+    "Selector": "$filter=Serial eq 'WMP2443017J'"
+  }
+}
