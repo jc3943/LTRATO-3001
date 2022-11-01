@@ -9,7 +9,11 @@ DISKIDPLACEHOLDER
 
 # Set the network to DHCP on the first network adapater
 
+<<<<<<< HEAD
 network --bootproto=static --ip={{ .IpAddress }} --netmask={{ .NetMask }} --gateway={{ .GateWay }} --hostname={{ .HostName }} --nameserver={{ .dns1 }} --vlanid={{ .vlanId }} --device={{ .NetworkDevice1 }} --device={{ .NetworkDevice2 }}
+=======
+network --bootproto=static --ip={{ .IpAddress }} --netmask={{ .NetMask }} --gateway={{ .GateWay }} --hostname={{ .HostName }} --nameserver={{ .dns1 }} --vlanid={{ .vlanId }} --device={{ .NetworkDevice1 }}
+>>>>>>> techTap
 
 %pre --interpreter=busybox
 hwclock -d %LIVE_VAR_DATE_1% -t %LIVE_VAR_TIME_UTC_1%
@@ -19,8 +23,13 @@ cd /tmp
 %firstboot --interpreter=busybox
 cd /tmp
 esxcfg-vswitch -A 'VM Network' vSwitch0
+<<<<<<< HEAD
 esxcfg-vswitch -L vmnic2 vSwitch0
 esxcfg-vswitch -L vmnic3 vSwitch0
+=======
+esxcfg-vswitch -L vmnic4 vSwitch0
+esxcfg-vswitch -L vmnic5 vSwitch0
+>>>>>>> techTap
 esxcfg-vswitch -U vmnic0 vSwitch0
 
 

@@ -1,0 +1,10 @@
+[nxos:vars]
+ansible_user = admin
+ansible_password = changeP@ssw0rd
+ansible_connection = httpapi
+ansible_network_os = nxos
+port = 80
+ansible_python_interpreter="/usr/bin/python3"
+
+[nxos]
+172.16.20.230

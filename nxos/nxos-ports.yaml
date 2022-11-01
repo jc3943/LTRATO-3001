@@ -1,0 +1,386 @@
+Interface:
+- Description: ESXi-02-1 mLOM 01
+  Enabled: true
+  Interface: Eth 1/1
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: ESXi-02-1 mLOM 02
+  Enabled: true
+  Interface: Eth 1/2
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: ESXi-02-1 mLOM 03
+  Enabled: true
+  Interface: Eth 1/3
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: ESXi-02-1 mLOM 04
+  Enabled: true
+  Interface: Eth 1/4
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-1 mLOM 01
+  Enabled: true
+  Interface: Eth 1/5
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-1 mLOM 02
+  Enabled: true
+  Interface: Eth 1/6
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-1 mLOM 03
+  Enabled: false
+  Interface: Eth 1/7
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-1 mLOM 04
+  Enabled: false
+  Interface: Eth 1/8
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-2 mLOM 01
+  Enabled: true
+  Interface: Eth 1/9
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-2 mLOM 02
+  Enabled: true
+  Interface: Eth 1/10
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-2 mLOM 03
+  Enabled: false
+  Interface: Eth 1/11
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-2 mLOM 04
+  Enabled: false
+  Interface: Eth 1/12
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-3 mLOM 01
+  Enabled: true
+  Interface: Eth 1/13
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-3 mLOM 02
+  Enabled: true
+  Interface: Eth 1/14
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-3 mLOM 03
+  Enabled: false
+  Interface: Eth 1/15
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-3 mLOM 04
+  Enabled: false
+  Interface: Eth 1/16
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-4 mLOM 01
+  Enabled: true
+  Interface: Eth 1/17
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-4 mLOM 02
+  Enabled: true
+  Interface: Eth 1/18
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-4 mLOM 03
+  Enabled: false
+  Interface: Eth 1/19
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: HX-03-4 mLOM 04
+  Enabled: false
+  Interface: Eth 1/20
+  Mode: layer2
+  Speed: 25
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/21
+  Mode: layer2
+  Speed: 10
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/22
+  Mode: layer2
+  Speed: 10
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/23
+  Mode: layer2
+  Speed: 10
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/24
+  Mode: layer2
+  Speed: 10
+  Type: Trunk
+  VLAN: 1
+- Description: LEAF-01-1 25
+  Enabled: false
+  Interface: Eth 1/25
+  Mode: layer2
+  Speed: 10
+  Type: Trunk
+  VLAN: 1
+- Description: LEAF-01-2 25
+  Enabled: false
+  Interface: Eth 1/26
+  Mode: layer2
+  Speed: 10
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/27
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/28
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/29
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/30
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/31
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/32
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: Tempory Setup Port 33
+  Enabled: true
+  Interface: Eth 1/33
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: Tempory Setup Port 34
+  Enabled: true
+  Interface: Eth 1/34
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/35
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/36
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/37
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/38
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/39
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1
+- Description: HX-04-2 CIMC
+  Enabled: true
+  Interface: Eth 1/40
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: HX-04-1 CIMC
+  Enabled: true
+  Interface: Eth 1/41
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: PDU-04-1 PRIMARY ETH
+  Enabled: true
+  Interface: Eth 1/42
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: HX-03-2 CIMC
+  Enabled: true
+  Interface: Eth 1/43
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: HX-03-1 CIMC
+  Enabled: true
+  Interface: Eth 1/44
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: PDU-03-1 PRIMARY ETH
+  Enabled: true
+  Interface: Eth 1/45
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: ESXi-02-1 CIMC
+  Enabled: true
+  Interface: Eth 1/46
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: PDU-02-1 PRIMARY ETH
+  Enabled: true
+  Interface: Eth 1/47
+  Mode: layer2
+  Speed: 1
+  Type: Access
+  VLAN: 1000
+- Description: OOBS-01-1 TE 01/01/01
+  Enabled: true
+  Interface: Eth 1/48
+  Mode: layer2
+  Speed: 10
+  Type: Access
+  VLAN: 1000
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/49
+  Mode: layer2
+  Speed: 100
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/50
+  Mode: layer2
+  Speed: 100
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/51
+  Mode: layer2
+  Speed: 100
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/52
+  Mode: layer2
+  Speed: 100
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/53
+  Mode: layer2
+  Speed: 100
+  Type: Trunk
+  VLAN: 1
+- Description: UNUSED
+  Enabled: false
+  Interface: Eth 1/54
+  Mode: layer2
+  Speed: 100
+  Type: Trunk
+  VLAN: 1
+- Description: OOB SVI
+  Enabled: true
+  Interface: Vlan
+  Mode: layer3
+  Speed: 10
+  Type: Trunk
+  VLAN: 1000

@@ -1,0 +1,4 @@
+﻿OsImageName,ScuImageName,ConfigurationSource,ConfigurationFileName,InstallMethod,InstallTargetType,InstallTarget,,,,,,
+ESXi-6.7,SCU-6.1.3c,Custom,esxi-cfg-kst,vMedia,MRAID VD,MRAID:0,,,,,,
+SerialNumber,IpAddress,NetMask,GateWay,Password,IsPasswordEncrypted,NameServer,vlanId,NetworkDevice1,HostName,dns1,dns2,syslog
+WMP2443017J,172.16.115.41,255.255.252.0,172.16.115.254,DEVP@ssw0rd!,FALSE,172.16.20.101,1200,vmnic5,sandbox-bm-esxi,172.16.20.101,172.20.1.254,172.16.10.99

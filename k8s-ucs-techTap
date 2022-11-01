@@ -1,0 +1,51 @@
+//Authored by Jeff Comer
+
+def nodeLabel = 'pod-builder-agent'
+pipeline {
+  environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        APIC_CREDS = credentials('apic-creds')
+        apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
+        apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
+        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+        apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+  }
+  agent {
+    kubernetes {
+      yamlFile 'jnlp-ubuntu-tfe.yaml'
+    }
+  }
+  
+  stages{
+    stage('Stat k8s Nodes') {
+      steps {
+        container('ubuntu-tfe') {
+          //Check health state of k8s nodes in target cluster
+          sh 'cp -r .kube /root/'
+          sh 'python3 k8s/clusterHealth.py'
+        }
+      }
+    }
+    stage('Initiate Intersight IMC Device Claims') {
+      steps {
+        container('jnlp') {
+          sh '''
+          echo "Inbound Agent is Connected"
+          '''
+        }
+        container('ubuntu-tfe') {
+          //kick off terraform imc device discover for ucs hosts
+          dir('tfe/intersight/hxDevClaim') {
+            sh 'terraform init'
+            sh 'terraform apply -auto-approve'
+          }
+          //Need add status checking to python script for status to replace sleep
+          sh 'python3 intersight/intersightDevClaimStatus.py -u https://qa-intersight.thor.iws.navy.mil -i vars/techTap/imc/hostIpAddrs.csv'
+          sh 'sleep 180'
+        }
+      }
+    }
+  }
+}

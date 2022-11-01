@@ -1,0 +1,53 @@
+---
+- name: Build NXOS
+  hosts: nxos
+  gather_facts: False
+
+  tasks:
+
+
+    - name: Task 01 - Replaces device configuration of listed interfaces with provided configuration
+      cisco.nxos.nxos_interfaces:
+        config:
+        - name: "{{ item.Interface }}"
+          description: "{{ item.Description }}"
+          enabled: "{{ item.Enabled }}"
+          mode: "{{ item.Mode }}"
+        state: replaced
+      with_items: "{{ Interface }}"
+      tags: interface
+      when: (item.Type == "Trunk" and item.Interface != "Vlan")
+
+    - name: Task 02 - Replace device configuration of specified L2 trunk interfaces with provided configuration
+      cisco.nxos.nxos_l2_interfaces:
+        config:
+        - name: "{{ item.Interface }}"
+          trunk:
+            native_vlan: "{{ item.VLAN }}"
+        state: replaced
+      with_items: "{{ Interface }}"
+      tags: interface
+      when: (item.Type == "Trunk" and item.Interface != "Vlan")
+
+    - name: Task 03 - Replace device configuration of specified L2  access interfaces with provided configuration
+      cisco.nxos.nxos_l2_interfaces:
+        config:
+        - name: "{{ item.Interface }}"
+          access:
+            vlan: "{{ item.VLAN }}"
+        state: replaced
+      with_items: "{{ Interface }}"
+      tags: interface
+      when: (item.Type == "Access" and item.Interface != "Vlan")
+
+    - name: Task 04 - Create SVI interfaces
+      cisco.nxos.nxos_config:
+        lines:
+        - ip address 172.20.1.254/20
+        parents: interface Vlan1000
+      tags: svi
+
+       
+
+
+    
