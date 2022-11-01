@@ -154,3 +154,12 @@ variable "os_answers_nr_source" {
   description = "Source of Answer file"
   default     = "Template" # Template for cisco provided source files
 }
+variable "os_tmpl_name" {
+  type        = string
+  description = "Template name"
+}
+variable "os_tmpl_file" {
+  type        = string
+  description = "Template file name"
+}
+

@@ -55,3 +55,7 @@ os_ipv4_dns_ip       = "172.16.20.101"
 os_root_password     = "DEVP@ssw0rd"
 os_answers_nr_source = "Template" # Template for cisco provided source files
 
+## os_tmpl_file
+os_tmpl_name         = "sandbox-esxi"
+os_tmpl_file    = "../../../vmware/sandbox-esxi-bm.csv"
+

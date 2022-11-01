@@ -1,0 +1,228 @@
+[0m[1mdata.intersight_organization_organization.org_data: Reading...[0m[0m
+[0m[1mdata.intersight_organization_organization.org_data: Read complete after 5s [id=6273e3fd6972652d3030ae8d][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # intersight_firmware_server_configuration_utility_distributable.scu_ucsc[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "intersight_firmware_server_configuration_utility_distributable" "scu_ucsc" {
+      [32m+[0m [0m[1m[0maccount_moid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mancestors[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mbundle_type[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mcatalog[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mclass_id[0m[0m             = "firmware.ServerConfigurationUtilityDistributable"
+      [32m+[0m [0m[1m[0mcomponent_meta[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mcreate_time[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdistributable_metas[0m[0m  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_group_moid[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mdownload_count[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mguid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mimport_action[0m[0m        = "None"
+      [32m+[0m [0m[1m[0mimport_state[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mimported_time[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mlast_access_time[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mmod_time[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mmoid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "SCU-6.1.3c"
+      [32m+[0m [0m[1m[0mnr_source[0m[0m            = [
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = jsonencode(
+                    {
+                      [32m+[0m [0mLocationLink = "http://172.16.65.167/00-Software/Intersight/ucs-cxxx-scu-6.1.3c.iso"
+                      [32m+[0m [0mPassword     = ""
+                      [32m+[0m [0mUsername     = ""
+                    }
+                )
+              [32m+[0m [0mclass_id              = (known after apply)
+              [32m+[0m [0mobject_type           = "softwarerepository.HttpServer"
+            },
+        ]
+      [32m+[0m [0m[1m[0mnr_version[0m[0m           = "6.1.3c"
+      [32m+[0m [0m[1m[0mobject_type[0m[0m          = "firmware.ServerConfigurationUtilityDistributable"
+      [32m+[0m [0m[1m[0mowners[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mparent[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpermission_resources[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mplatform_type[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mrelease[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mrelease_date[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mshared_scope[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0msoftware_type_id[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0msupported_models[0m[0m     = [
+          [32m+[0m [0m"C-series",
+        ]
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = [90mnull[0m[0m
+              [32m+[0m [0mkey                   = "DC"
+              [32m+[0m [0mvalue                 = "DAHL"
+            },
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = [90mnull[0m[0m
+              [32m+[0m [0mkey                   = "ENV"
+              [32m+[0m [0mvalue                 = "SANDBOX"
+            },
+        ]
+      [32m+[0m [0m[1m[0mvendor[0m[0m               = "Cisco"
+      [32m+[0m [0m[1m[0mversion_context[0m[0m      = (known after apply)
+    }
+
+[1m  # intersight_os_bulk_install_info.os_install[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "intersight_os_bulk_install_info" "os_install" {
+      [32m+[0m [0m[1m[0maccount_moid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mancestors[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mclass_id[0m[0m             = "os.BulkInstallInfo"
+      [32m+[0m [0m[1m[0mconfiguration_file[0m[0m   = [
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = [90mnull[0m[0m
+              [32m+[0m [0mclass_id              = "mo.MoRef"
+              [32m+[0m [0mmoid                  = (known after apply)
+              [32m+[0m [0mobject_type           = "os.ConfigurationFile"
+              [32m+[0m [0mselector              = "$filter=Name eq 'esxi-cfg-kst'"
+            },
+        ]
+      [32m+[0m [0m[1m[0mcreate_time[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_group_moid[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mfile_content[0m[0m         = <<-EOT
+            ﻿OsImageName,ScuImageName,ConfigurationSource,ConfigurationFileName,InstallMethod,InstallTargetType,InstallTarget,,,,,,
+            ESXi-6.7,SCU-6.1.3c,Custom,esxi-cfg-kst,vMedia,MRAID VD,MRAID:0,,,,,,
+            SerialNumber,IpAddress,NetMask,GateWay,Password,IsPasswordEncrypted,NameServer,vlanId,NetworkDevice1,HostName,dns1,dns2,syslog
+            WMP2443017J,172.16.115.41,255.255.252.0,172.16.115.254,DEVP@ssw0rd!,FALSE,172.16.20.101,1200,vmnic5,sandbox-bm-esxi,172.16.20.101,172.20.1.254,172.16.10.99
+        EOT
+      [32m+[0m [0m[1m[0mglobal_config[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mis_file_content_set[0m[0m  = (known after apply)
+      [32m+[0m [0m[1m[0mmod_time[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mmoid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "InstallTemplatee165"
+      [32m+[0m [0m[1m[0mobject_type[0m[0m          = "os.BulkInstallInfo"
+      [32m+[0m [0m[1m[0moper_state[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0morganization[0m[0m         = [
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = [90mnull[0m[0m
+              [32m+[0m [0mclass_id              = "mo.MoRef"
+              [32m+[0m [0mmoid                  = "6273e3fd6972652d3030ae8d"
+              [32m+[0m [0mobject_type           = "organization.Organization"
+              [32m+[0m [0mselector              = [90mnull[0m[0m
+            },
+        ]
+      [32m+[0m [0m[1m[0mos_image[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mowners[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mparent[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpermission_resources[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mscu_image[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mserver_configs[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mservers[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mshared_scope[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mvalidation_infos[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mversion_context[0m[0m      = (known after apply)
+    }
+
+[1m  # intersight_os_template_file.os_tmpl_file[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "intersight_os_template_file" "os_tmpl_file" {
+      [32m+[0m [0m[1m[0maccount_moid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mancestors[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mclass_id[0m[0m             = "os.TemplateFile"
+      [32m+[0m [0m[1m[0mcreate_time[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_group_moid[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mmod_time[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mmoid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "SCU-6.1.3c"
+      [32m+[0m [0m[1m[0mobject_type[0m[0m          = "os.TemplateFile"
+      [32m+[0m [0m[1m[0mowners[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mparent[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpermission_resources[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mplaceholders[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mshared_scope[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = [90mnull[0m[0m
+              [32m+[0m [0mkey                   = "DC"
+              [32m+[0m [0mvalue                 = "DAHL"
+            },
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = [90mnull[0m[0m
+              [32m+[0m [0mkey                   = "ENV"
+              [32m+[0m [0mvalue                 = "SANDBOX"
+            },
+        ]
+      [32m+[0m [0m[1m[0mtemplate_content[0m[0m     = <<-EOT
+            ﻿OsImageName,ScuImageName,ConfigurationSource,ConfigurationFileName,InstallMethod,InstallTargetType,InstallTarget,,,,,,
+            ESXi-6.7,SCU-6.1.3c,Custom,esxi-cfg-kst,vMedia,MRAID VD,MRAID:0,,,,,,
+            SerialNumber,IpAddress,NetMask,GateWay,Password,IsPasswordEncrypted,NameServer,vlanId,NetworkDevice1,HostName,dns1,dns2,syslog
+            WMP2443017J,172.16.115.41,255.255.252.0,172.16.115.254,DEVP@ssw0rd!,FALSE,172.16.20.101,1200,vmnic5,sandbox-bm-esxi,172.16.20.101,172.20.1.254,172.16.10.99
+        EOT
+      [32m+[0m [0m[1m[0mversion_context[0m[0m      = (known after apply)
+    }
+
+[1m  # intersight_softwarerepository_operating_system_file.esxi_custom_iso[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "intersight_softwarerepository_operating_system_file" "esxi_custom_iso" {
+      [32m+[0m [0m[1m[0maccount_moid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mancestors[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mcatalog[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mclass_id[0m[0m             = "softwarerepository.OperatingSystemFile"
+      [32m+[0m [0m[1m[0mcreate_time[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m          = "ESXi 6.7 U3 Cisco Custom ISO"
+      [32m+[0m [0m[1m[0mdomain_group_moid[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mdownload_count[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mimport_action[0m[0m        = "None"
+      [32m+[0m [0m[1m[0mimport_state[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mimported_time[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mlast_access_time[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mmod_time[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mmoid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "ESXi-6.7"
+      [32m+[0m [0m[1m[0mnr_source[0m[0m            = [
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = jsonencode(
+                    {
+                      [32m+[0m [0mLocationLink = "http://172.16.65.167/00-Software/ESX/VMware-ESXi-6.7.0-17700523-Custom-Cisco-6.7.3.1.iso"
+                      [32m+[0m [0mPassword     = ""
+                      [32m+[0m [0mUsername     = ""
+                    }
+                )
+              [32m+[0m [0mclass_id              = (known after apply)
+              [32m+[0m [0mobject_type           = "softwarerepository.HttpServer"
+            },
+        ]
+      [32m+[0m [0m[1m[0mnr_version[0m[0m           = "ESXi 6.7 U3"
+      [32m+[0m [0m[1m[0mobject_type[0m[0m          = "softwarerepository.OperatingSystemFile"
+      [32m+[0m [0m[1m[0mowners[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mparent[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpermission_resources[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mrelease_date[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mshared_scope[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = [90mnull[0m[0m
+              [32m+[0m [0mkey                   = "DC"
+              [32m+[0m [0mvalue                 = "DAHL"
+            },
+          [32m+[0m [0m{
+              [32m+[0m [0madditional_properties = [90mnull[0m[0m
+              [32m+[0m [0mkey                   = "ENV"
+              [32m+[0m [0mvalue                 = "SANDBOX"
+            },
+        ]
+      [32m+[0m [0m[1m[0mvendor[0m[0m               = "VMware"
+      [32m+[0m [0m[1m[0mversion_context[0m[0m      = (known after apply)
+    }
+
+[0m[1mPlan:[0m 4 to add, 0 to change, 0 to destroy.
+[0m[0m[1mintersight_os_template_file.os_tmpl_file: Creating...[0m[0m
+[0m[1mintersight_softwarerepository_operating_system_file.esxi_custom_iso: Creating...[0m[0m
+[0m[1mintersight_os_bulk_install_info.os_install: Creating...[0m[0m
+[0m[1mintersight_firmware_server_configuration_utility_distributable.scu_ucsc: Creating...[0m[0m
+[0m[1mintersight_os_template_file.os_tmpl_file: Creation complete after 4s [id=1666989240][0m
+[0m[1mintersight_os_bulk_install_info.os_install: Creation complete after 5s [id=635c3cb756620f877a32b51f][0m
+[0m[1mintersight_firmware_server_configuration_utility_distributable.scu_ucsc: Creation complete after 5s [id=635c3cb86567612d30f3c5ef][0m
+[0m[1mintersight_softwarerepository_operating_system_file.esxi_custom_iso: Creation complete after 5s [id=635c3cb86567612d30f3c5f4][0m
+[0m[1m[32m
+Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
+[0m

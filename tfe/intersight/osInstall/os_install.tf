@@ -1,6 +1,7 @@
-resource "intersight_os_install" "os_install" {
-  name = "InstallTemplatee165"
-  server {
+resource "intersight_os_bulk_install_info" "os_install" {
+  name = "../../../vmware/sandbox-esxi-bm2.csv"
+  file_content = file("../../../vmware/sandbox-esxi-bm2.csv")
+/*  server {
     object_type = "compute.RackUnit"
     selector    = var.os_install_server_selector
   }
@@ -11,11 +12,12 @@ resource "intersight_os_install" "os_install" {
   osdu_image {
     moid        = intersight_firmware_server_configuration_utility_distributable.scu_ucsc.moid
     object_type = "firmware.ServerConfigurationUtilityDistributable"
-  }
-  configuration_file {
+  } */
+/*  configuration_file {
     object_type = "os.ConfigurationFile"
     selector    = var.os_install_configuration_file_selector
-  }
+  } */
+
 /*  answers {
     hostname       = var.os_hostname
     ip_config_type = var.os_ip_config_type
@@ -40,23 +42,23 @@ resource "intersight_os_install" "os_install" {
     root_password            = var.os_root_password
     nr_source                = var.os_answers_nr_source
   } */
-  answers {
-    answer_file = "../../../vmware/sandbox-esxi-bm.csv"
-    nr_source   = "File"
+/*  answers {
+    #answer_file = file("../../../vmware/answers.json")
+    nr_source   = "None"
     object_type = "os.Answers"
-  }
-  description    = "Install ESXi 6.7 U3"
-  install_method = "vMedia"
+  } */
+  #description    = "Install ESXi 6.7 U3"
+  #install_method = "vMedia"
   organization {
     object_type = "organization.Organization"
     moid        = "6273e3fd6972652d3030ae8d"
   }
-  install_target {
+/*  install_target {
     additional_properties = jsonencode({
       Id                      = "0"
       Name                    = "RAID0_1"
       StorageControllerSlotId = "MRAID"
     })
     object_type = "os.VirtualDrive"
-  }
+  } */
 }
