@@ -169,6 +169,7 @@ def getPwrStats(specDict):
     return allPwrStats
 
 def getThermStats(specDict):
+    #unfinished business
     i = 0
     k = 0
     allThermStats = []
@@ -185,3 +186,25 @@ def getThermStats(specDict):
         thermInfoJson = thermInfoResponse.json()
         thermStatsDict = {csvDict[i]['cimc']:thermInfoJson}
         allThermStats.append(pwrStatsDict)
+
+def getChassisSerial(specDict):
+
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
+    keys = csvDict[0].keys()
+
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+    for i in range(len(csvDict)):
+        chassisUrl = "https://" + csvDict[i]['cimc'] + "/redfish/v1/Chassis/1"
+        chassisInfoResponse = requests.get(chassisUrl, verify=False, auth=(specDict['username'], specDict['password']))
+        chassisInfoJson = chassisInfoResponse.json()
+        chassisSerial = chassisInfoJson["SerialNumber"]
+        if (csvDict[i]['chassisSerial'] == ""):
+            csvDict[i]['chassisSerial'] = chassisSerial
+    print(csvDict)
+    with open(specDict['infile'], "w", newline='') as out_file:
+        dictWrite = csv.DictWriter(out_file, keys)
+        dictWrite.writeheader()
+        dictWrite.writerows(csvDict)
