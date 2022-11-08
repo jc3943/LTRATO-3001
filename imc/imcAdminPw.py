@@ -1,11 +1,11 @@
 # Jeff Comer
-# script to set NTP and/or other protocols for IMC
+# script to set admin password IMC
 # Example input file is vars/<branch>/imc/hostIpAddrs.csv
 
 import sys, getopt, csv
 import requests, json
 import urllib3
-from imcOps import imcNetSet, imcNetProtSet
+from imcOps import imcAdminPw
 
 
 def main(argv):
@@ -20,9 +20,9 @@ def main(argv):
     userArg = ""
     pwArg = ""
 
-    argDict = {"username":"","password":"","infile":""}
+    argDict = {"username":"","password":"","infile":"","newPw":""}
     try:
-      opts, args = getopt.getopt(argv,"hu:p:i:",["username","password","infile="])
+      opts, args = getopt.getopt(argv,"hu:p:i:n:",["username","password","infile=","newPw"])
     except getopt.GetoptError:
       print('imcDns.py -u <username> -p <password> -i <inputcsv>')
       sys.exit(2)
@@ -39,9 +39,11 @@ def main(argv):
       elif opt in ("-i", "--infile"):
          infileArg = arg
          argDict["infile"] = infileArg
+      elif opt in ("-n", "--newPw"):
+         infileArg = arg
+         argDict["newPw"] = infileArg
     return argDict
 
 if __name__ == '__main__':
     cimcData = main(sys.argv[1:])
-    imcDns = imcNetSet(cimcData)
-    imcNetProt = imcNetProtSet(cimcData)
+    imcAdminPw = imcAdminPw(cimcData)

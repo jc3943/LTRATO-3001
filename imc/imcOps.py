@@ -198,6 +198,8 @@ def imcAdminPw(specDict):
     for i in range(len(csvDict)):
         adminPwUrl = "https://" + csvDict[i]['cimc'] + "/redfish/v1/AccountService/Accounts/1"
         adminPwPayload = {"Id":"1","UserName":"admin","Password":specDict['newPw']}
+        adminPwResponse = requests.patch(adminPwUrl, json=adminPwPayload, verify=False, auth=(specDict['username'], specDict['password']))
+        print(csvDict[i]['cimc'] + " PW Reset:\t", adminPwResponse)
 
 def imcNetSet(specDict):
     
