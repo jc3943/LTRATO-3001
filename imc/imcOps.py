@@ -187,7 +187,19 @@ def getThermStats(specDict):
         thermStatsDict = {csvDict[i]['cimc']:thermInfoJson}
         allThermStats.append(pwrStatsDict)
 
-def imcInit(specDict):
+def imcAdminPw(specDict):
+
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
+
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+    for i in range(len(csvDict)):
+        adminPwUrl = "https://" + csvDict[i]['cimc'] + "/redfish/v1/AccountService/Accounts/1"
+        adminPwPayload = {"Id":"1","UserName":"admin","Password":specDict['newPw']}
+
+def imcNetSet(specDict):
     
     with open(specDict['infile'], 'r') as csv_file:
         csvread = csv.DictReader(csv_file)
@@ -200,9 +212,9 @@ def imcInit(specDict):
         netConfigDnsList = [csvDict[i]['dns1'],csvDict[i]['dns2']]
         netConfigPayload = {"HostName":csvDict[i]['hostName'],"NameServers":netConfigDnsList,"StaticNameServers":netConfigDnsList}
         netConfigResult = requests.patch(netConfigUrl, json=netConfigPayload, verify=False, auth=(specDict['username'], specDict['password']))
-        print(netConfigResult)
+        print(csvDict[i]['cimc'] + " DNS:\t", netConfigResult)
 
-def imcAdminPw(specDict):
+def imcNetProtSet(specDict):
 
     with open(specDict['infile'], 'r') as csv_file:
         csvread = csv.DictReader(csv_file)
@@ -211,7 +223,11 @@ def imcAdminPw(specDict):
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
     for i in range(len(csvDict)):
-        adminPwUrl = "https://" + csvDict[i]['cimc'] + "/redfish/v1/AccountService/Accounts/1"
+        netProtConfigUrl = "https://" + csvDict[i]['cimc'] + "/redfish/v1/Managers/CIMC/NetworkProtocol"
+        ntpList = [csvDict[i]['ntp1'],csvDict[i]['ntp2']]
+        netProtPayload = {"NTP":{"ProtocolEnabled":True,"NTPServers":ntpList}}
+        netProtResult = requests.patch(netProtConfigUrl, json=netProtPayload, verify=False, auth=(specDict['username'], specDict['password']))
+        print(csvDict[i]['cimc'] + " NTP:\t", netProtResult)
 
 def getChassisSerial(specDict):
 

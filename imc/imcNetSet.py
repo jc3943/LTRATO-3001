@@ -5,7 +5,7 @@
 import sys, getopt, csv
 import requests, json
 import urllib3
-from imcOps import imcInit
+from imcOps import imcNetSet, imcNetProtSet
 
 
 def main(argv):
@@ -43,4 +43,5 @@ def main(argv):
 
 if __name__ == '__main__':
     cimcData = main(sys.argv[1:])
-    imcDns = imcInit(cimcData)
+    imcDns = imcNetSet(cimcData)
+    imcNetProt = imcNetProtSet(cimcData)
