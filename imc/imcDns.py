@@ -1,11 +1,11 @@
 # Jeff Comer
-# script to collect imc inventory data
+# script to set DNS form IMC
 # Example input file is vars/<branch>/imc/hostIpAddrs.csv
 
 import sys, getopt, csv
 import requests, json
 import urllib3
-from imcOps import getChassisSerial
+from imcOps import setImcDns
 
 
 def main(argv):
@@ -24,11 +24,11 @@ def main(argv):
     try:
       opts, args = getopt.getopt(argv,"hu:p:i:",["username","password","infile="])
     except getopt.GetoptError:
-      print('imcVnicCreate.py -u <username> -p <password> -i <inputcsv>')
+      print('imcDns.py -u <username> -p <password> -i <inputcsv>')
       sys.exit(2)
     for opt, arg in opts:
       if opt == '-h':
-         print('imcVnicCreate.py -u <username> -p <password> -i <inputcsv>')
+         print('imcDns.py -u <username> -p <password> -i <inputcsv>')
          sys.exit()
       elif opt in ("-u", "--username"):
          userArg = arg
@@ -43,4 +43,4 @@ def main(argv):
 
 if __name__ == '__main__':
     cimcData = main(sys.argv[1:])
-    chassisData = getChassisSerial(cimcData)
+    imcDns = setImcDns(cimcData)
