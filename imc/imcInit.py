@@ -5,7 +5,7 @@
 import sys, getopt, csv
 import requests, json
 import urllib3
-from imcOps import setImcDns
+from imcOps import imcInit
 
 
 def main(argv):
@@ -22,7 +22,7 @@ def main(argv):
 
     argDict = {"username":"","password":"","infile":""}
     try:
-      opts, args = getopt.getopt(argv,"hu:p:i:",["username","password","infile="])
+      opts, args = getopt.getopt(argv,"hu:p:i:n:",["username","password","infile="])
     except getopt.GetoptError:
       print('imcDns.py -u <username> -p <password> -i <inputcsv>')
       sys.exit(2)
@@ -43,4 +43,4 @@ def main(argv):
 
 if __name__ == '__main__':
     cimcData = main(sys.argv[1:])
-    imcDns = setImcDns(cimcData)
+    imcDns = imcInit(cimcData)

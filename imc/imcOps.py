@@ -187,7 +187,7 @@ def getThermStats(specDict):
         thermStatsDict = {csvDict[i]['cimc']:thermInfoJson}
         allThermStats.append(pwrStatsDict)
 
-def setImcDns(specDict):
+def imcInit(specDict):
     
     with open(specDict['infile'], 'r') as csv_file:
         csvread = csv.DictReader(csv_file)
@@ -201,6 +201,17 @@ def setImcDns(specDict):
         netConfigPayload = {"HostName":csvDict[i]['hostName'],"NameServers":netConfigDnsList,"StaticNameServers":netConfigDnsList}
         netConfigResult = requests.patch(netConfigUrl, json=netConfigPayload, verify=False, auth=(specDict['username'], specDict['password']))
         print(netConfigResult)
+
+def imcAdminPw(specDict):
+
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
+
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+    for i in range(len(csvDict)):
+        adminPwUrl = "https://" + csvDict[i]['cimc'] + "/redfish/v1/AccountService/Accounts/1"
 
 def getChassisSerial(specDict):
 
