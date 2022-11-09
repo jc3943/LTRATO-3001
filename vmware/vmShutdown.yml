@@ -1,0 +1,120 @@
+---
+- name: Various VM Operations
+  hosts: vcenter 
+  connection: local
+  gather_facts: False
+  vars:
+    datacenter: "OUSV3"
+    cluster: "OUSV3"
+    folder: "/"
+    datastore: "OUSV3"
+  
+  tasks:
+    - read_csv:
+        path: $varPath/OUSV3-vmList.csv
+      register: vmlist
+      tags: shutdown, P3, P2, P1, poweroff, P0
+
+    - name: TASK - shutdown P3 guest VM
+      vmware_guest:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        state: "shutdownguest"
+        validate_certs: no
+        datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}"
+        name: "{{ vmname.Name }}"
+        cluster: "{{ cluster }}"
+        datastore: "{{ datastore }}"
+      loop: "{{ vmlist.list }}"
+      loop_control:
+        loop_var: vmname
+      when: (vmname.Priority|int == 3)
+      tags: shutdown, P3
+
+    - name: TASK - shutdown P2 guest VM
+      vmware_guest:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        state: "shutdownguest"
+        validate_certs: no
+        datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}"
+        name: "{{ vmname.Name }}"
+        cluster: "{{ cluster }}"
+        datastore: "{{ datastore }}"
+      loop: "{{ vmlist.list }}"
+      loop_control:
+        loop_var: vmname
+      when: (vmname.Priority|int == 2)
+      tags: shutdown, P2
+
+    - name: TASK - shutdown P1 guest VM
+      vmware_guest:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        state: "shutdownguest"
+        validate_certs: no
+        datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}"
+        name: "{{ vmname.Name }}"
+        cluster: "{{ cluster }}"
+        datastore: "{{ datastore }}"
+      loop: "{{ vmlist.list }}"
+      loop_control:
+        loop_var: vmname
+      when: (vmname.Priority|int == 1)
+      tags: shutdown, P1
+
+    - pause:
+        minutes: 2
+
+    - name: TASK - Poweroff all guest VMs
+      vmware_guest:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        state: "poweredoff"
+        validate_certs: no
+        datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}"
+        name: "{{ vmname.Name }}"
+        cluster: "{{ cluster }}"
+        datastore: "{{ datastore }}"
+      loop: "{{ vmlist.list }}"
+      loop_control:
+        loop_var: vmname
+      when: (vmname.Priority|int != 0)
+      tags: shutdown, poweroff
+
+    - name: TASK - shutdown P0 guest VM
+      vmware_guest:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        state: "shutdownguest"
+        validate_certs: no
+        datacenter: "{{ datacenter }}"
+        folder: "{{ folder }}"
+        name: "{{ vmname.Name }}"
+        cluster: "{{ cluster }}"
+        datastore: "{{ datastore }}"
+      loop: "{{ vmlist.list }}"
+      loop_control:
+        loop_var: vmname
+      when: (vmname.Priority|int == 0)
+      tags: shutdown, P0
+
+    - pause:
+        minutes: 2
+
+    
+
+
+
+
+
+

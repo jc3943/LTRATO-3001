@@ -7,11 +7,6 @@
   hosts: localhost 
   connection: local
   gather_facts: False
-#  vars:
-#    datacenter: "sandbox"
-#    cluster: "sandbox"
-#    folder: "/"
-#    datastore: "sandbox"
 
   tasks:
     - read_csv:

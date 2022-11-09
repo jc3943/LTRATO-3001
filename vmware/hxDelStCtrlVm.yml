@@ -1,0 +1,77 @@
+---
+- name: HX Storage Controller VM Deletion
+  hosts: localhost 
+  connection: local
+  gather_facts: False
+  vars:
+    folder: "/"
+  
+  tasks:
+    - read_csv:
+        path: ../$varPath/imc/hostIpAddrs.csv
+      register: hostList
+      tags: poweroff, delete
+
+    - name: TASK - Poweroff Controller VMs
+      vmware_guest:
+        hostname: "{{ vcsa_hostname }}"
+        username: "{{ vcsa_user }}"
+        password: "{{ vcsa_pwd }}"
+        state: "poweredoff"
+        validate_certs: no
+        datacenter: "{{ datacenter_name }}"
+        folder: "{{ folder }}"
+        name: "stCtlVM-{{ hosts.chassisSerial }}"
+        cluster: "{{ cluster_name }}"
+        datastore: "{{ datastore }}"
+      loop: "{{ hostList.list }}"
+      loop_control:
+        loop_var: hosts
+      tags: poweroff
+
+    - pause:
+        minutes: 1
+
+    - name: TASK - Delete Controller VMs
+      vmware_guest:
+        hostname: "{{ vcsa_hostname }}"
+        username: "{{ vcsa_user }}"
+        password: "{{ vcsa_pwd }}"
+        state: "absent"
+        validate_certs: no
+        datacenter: "{{ datacenter_name }}"
+        folder: "{{ folder }}"
+        name: "stCtlVM-{{ hosts.chassisSerial }}"
+        cluster: "{{ cluster_name }}"
+        datastore: "{{ datastore }}"
+      loop: "{{ hostList.list }}"
+      loop_control:
+        loop_var: hosts
+      tags: delete
+
+    - pause:
+        minutes: 1
+
+    - read_csv:
+        path: ../$varPath/vmware/hx-hosts.csv
+      register: hostlist
+      tags: vmkernelDhcp
+
+    - name: TASK - Reset ESXi host networking to dhcp
+      community.vmware.vmware_vmkernel:
+        hostname: "{{ vcsa_hostname }}"
+        username: "{{ vcsa_user }}"
+        password: "{{ vcsa_pwd }}"
+        validate_certs: no
+        esxi_hostname: "{{ hosts.host }}"
+        vswitch_name: "{{ hosts.vswitchName }}"
+        portgroup_name: "{{ hosts.portGroupName }}"
+        device: vmk0
+        network:
+          type: 'dhcp'
+        state: present
+      loop: "{{ hostlist.list }}"
+      loop_control:
+        loop_var: hosts
+      delegate_to: localhost
+      tags: vmkernelDhcp
