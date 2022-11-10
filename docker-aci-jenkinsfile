@@ -12,9 +12,7 @@ pipeline {
         apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
   }
-  agent {
-    any
-  }
+  agent any
   
   stages{
     stage('Deploy VCSA and add credentials to APIC') {
