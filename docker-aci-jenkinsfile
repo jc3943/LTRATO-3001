@@ -21,12 +21,6 @@ pipeline {
   stages{
     stage('Deploy VCSA and add credentials to APIC') {
       steps {
-        container('jnlp') {
-          sh '''
-          echo "Inbound Agent is Connected"
-          '''
-        }
-        container('ubuntu-runner') {
           //apic sim's stateless - revert to base snapshot with credentials and ip address only
           //ansiblePlaybook(
           //    playbook: './vmware/vm-snap-revert.yml',
@@ -53,12 +47,10 @@ pipeline {
               inventory: '$apicInventory',
               colorized: true
           )
-        }
       }
     }
     stage('Fabric Discovery and Base Config') {
       steps {
-        container('ubuntu-runner') {
           //kick off discovery and configure base fabric parameters
           sh 'python3 aci/aciBuildInventory.py'
           ansiblePlaybook(
@@ -73,12 +65,10 @@ pipeline {
               extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
               colorized: true
           )
-        }
       }
     }
     stage('Configure Ports and VMM Integration') {
       steps {
-        container('ubuntu-runner') {
           //configure aci fabric ports
           sh 'python3 aci/aciCreate_port_yaml.py'
           ansiblePlaybook(
@@ -96,12 +86,10 @@ pipeline {
               extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
               colorized: true
           )
-        }
       }
     }
     stage('Create and Configure Tenant') {
       steps {
-        container('ubuntu-runner') {
           //Build tenant from vars
           sh 'python3 aci/aciCreate_yaml_from_csv_v4.3.py -i $varPath/aci/tenant.csv -o  $varPath/aci/tenant.yaml'
           ansiblePlaybook(
@@ -125,7 +113,6 @@ pipeline {
               extras: '--extra-vars="@$varPath/aci/bare-metal-aep.yaml"',
               colorized: true
           )
-        }
       }
     }
   /*  stage('Upgrade APIC') {
