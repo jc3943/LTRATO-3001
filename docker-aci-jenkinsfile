@@ -13,9 +13,7 @@ pipeline {
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
   }
   agent {
-    kubernetes {
-      yamlFile 'jnlp-ubuntu.yaml'
-    }
+    any
   }
   
   stages{
