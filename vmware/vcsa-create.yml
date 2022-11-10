@@ -125,8 +125,8 @@
       password: '{{ vcenter_password }}'
       datacenter_name: '{{ datacenter_name }}'
       cluster_name: '{{ cluster_name }}'
-      enable_ha: true
-      enable_drs: true
+      #enable_ha: true
+      #enable_drs: true
       validate_certs: no
       state: present
     with_items: "{{ vcsaspecs }}"
