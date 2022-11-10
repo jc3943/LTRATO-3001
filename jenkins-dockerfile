@@ -1,0 +1,132 @@
+FROM jenkins/jenkins:2.347
+
+##### Declare Environment Variables (defaults for now, CCS will override anything sensitive) #####
+
+ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
+ENV ADMIN_USER "admin"
+ENV ADMIN_PASS "jenkins"
+ENV GOROOT "/usr/local/go"
+ENV PATH="$GOROOT/bin:$PATH"
+
+##### Install default pluggins (not part of the official container) #####
+
+RUN /usr/local/bin/install-plugins.sh cloudbees-folder \
+	&& /usr/local/bin/install-plugins.sh antisamy-markup-formatter \
+	&& /usr/local/bin/install-plugins.sh build-timeout \
+	&& /usr/local/bin/install-plugins.sh credentials-binding \
+	&& /usr/local/bin/install-plugins.sh timestamper \
+	&& /usr/local/bin/install-plugins.sh ws-cleanup \
+	&& /usr/local/bin/install-plugins.sh ant \
+	&& /usr/local/bin/install-plugins.sh gradle \
+	&& /usr/local/bin/install-plugins.sh workflow-aggregator \
+	&& /usr/local/bin/install-plugins.sh pipeline-stage-view \
+	&& /usr/local/bin/install-plugins.sh git \
+	&& /usr/local/bin/install-plugins.sh subversion \
+	&& /usr/local/bin/install-plugins.sh ssh-slaves \
+	&& /usr/local/bin/install-plugins.sh matrix-auth \
+	&& /usr/local/bin/install-plugins.sh pam-auth \
+	&& /usr/local/bin/install-plugins.sh ldap \
+	&& /usr/local/bin/install-plugins.sh email-ext \
+	&& /usr/local/bin/install-plugins.sh mailer \
+	&& /usr/local/bin/install-plugins.sh bouncycastle-api \
+	&& /usr/local/bin/install-plugins.sh command-launcher \
+	&& /usr/local/bin/install-plugins.sh jdk-tool \
+	&& /usr/local/bin/install-plugins.sh kubernetes \
+#	&& /usr/local/bin/install-plugins.sh kubernetes-cd \
+	&& /usr/local/bin/install-plugins.sh ansible \
+	&& /usr/local/bin/install-plugins.sh pipeline-utility-steps
+
+#############################
+#############################
+#############################
+##### UTIL STAGING AREA #####
+#############################
+#############################
+#############################
+
+##### Change to root to do additional installs, file copies and set execute permissions #####
+USER root
+
+##### Setting up sudoers.d #####
+#COPY /sudoers.d/* /etc/sudoers.d/
+
+##### Install Additional Software #####
+##### Apt-Utils #####
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends apt-utils
+##### Sudo #####
+RUN apt-get install -y sudo
+
+##### Other utils #####
+RUN apt-get update \
+	&& apt-get install -y openssh-client vim nfs-common gzip ansible wget
+
+##### Go Lang install #####
+##### Go Lang ENVs set above #####
+
+RUN apt-get update \
+	&& wget https://dl.google.com/go/go1.17.2.linux-amd64.tar.gz \
+	&& tar -xvf go1.17.2.linux-amd64.tar.gz \
+	&& mv go /usr/local
+
+##### Install PIP3 and Mods #####
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt update
+RUN apt-get update
+#RUN apt remove ansible -y
+RUN apt install sshpass -y
+RUN apt install -y python3-pip
+RUN apt install curl -y
+RUN apt-get install git -y
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade ansible
+RUN ansible-galaxy collection install cisco.aci
+RUN ansible-galaxy collection install community.vmware
+RUN ansible-galaxy collection install cisco.nae
+RUN ansible-galaxy collection install wti.remote
+USER jenkins
+RUN pip3 install pyopenssl
+RUN pip3 install requests
+RUN pip3 install xlrd
+RUN pip3 install pyvmomi
+RUN pip3 install Jinja2
+RUN pip3 install kubernetes
+RUN pip3 install psycopg2-binary
+RUN pip3 install PyYAML
+RUN pip3 install str2bool
+RUN pip3 install urllib3
+RUN pip3 install install git+https://github.com/CiscoDevNet/intersight-python
+RUN pip3 install jsonschema
+RUN pip3 install intersight_auth
+USER root
+
+##### Install Powershell #####
+##### Ref: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-7.1 #####
+##### Update the list of packages #####
+RUN apt-get update
+
+##### Download the Microsoft repository GPG keys #####
+RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
+
+##### Register the Microsoft repository GPG keys #####
+RUN dpkg -i packages-microsoft-prod.deb 
+
+##### Update the list of products #####
+RUN apt-get update
+
+##### Install PowerShell #####
+RUN apt-get install -y powershell
+
+##### Install VMware PowerCli #####
+RUN pwsh -C 'Install-Module -Name VMware.PowerCLI -Confirm:$False -Force -Scope AllUsers'
+
+##### Install govc #####
+##### Used for managing vcenter	#####
+RUN curl -L -o - "https://github.com/vmware/govmomi/releases/latest/download/govc_Linux_x86_64.tar.gz" | tar -C /usr/local/bin -xvzf - govc
+
+##### Install Terraform	#####
+RUN mkdir /usr/local/bin/terraform \
+	&& curl "https://releases.hashicorp.com/terraform/1.0.10/terraform_1.0.10_linux_amd64.zip" --output terraform_1.0.10_linux_amd64.zip && unzip terraform_1.0.10_linux_amd64.zip
+
+USER jenkins
