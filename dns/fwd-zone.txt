@@ -1,0 +1,19 @@
+$ttl 38400
+prod.bh.navy.mil.	IN	SOA	dns01.bhadmin.prod.bh.navy.mil. (
+			1635516061
+			10800
+			3600
+			604800
+			38400 )
+prod.bh.navy.mil.	IN	NS	dns01.
+dns01.prod.bh.navy.mil.	IN	A	172.16.10.100
+vcsa-bh-prod.prod.bh.navy.mil.	IN	A	172.16.10.20
+intersight-bh-prod.prod.bh.navy.mil.	IN	A	172.16.10.105
+hx-bh-prod-01-esx.prod.bh.navy.mil.	IN	A	172.16.11.11
+hx-bh-prod-02-esx.prod.bh.navy.mil.	IN	A	172.16.11.12
+hx-bh-prod-03-esx.prod.bh.navy.mil.	IN	A	172.16.11.13
+hx-bh-prod-04-esx.prod.bh.navy.mil.	IN	A	172.16.11.14
+dc-intersight.prod.bh.navy.mil.	IN	CNAME	intersight-bh-prod
+dns01.prod.bh.navy.mil.	IN	A	172.16.10.100
+
+vproc-01-esx.prod.bh.navy.mil.	IN	A	172.16.11.41

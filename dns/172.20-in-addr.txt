@@ -1,0 +1,10 @@
+$ttl 38400
+20.172.in-addr.arpa.	IN	SOA	dns01.prod.bh.navy.mil. bhadmin.prod.bh.navy.mil. (
+			1635516836
+			10800
+			3600
+			604800
+			38400 )
+20.172.in-addr.arpa.	IN	NS	dns01.prod.bh.navy.mil.
+
+

@@ -1,0 +1,16 @@
+$ttl 38400
+16.172.in-addr.arpa.	IN	SOA	dns01.bhadmin.prod.bh.navy.mil. bhadmin.prod.bh.navy.mil.(
+			1635516629
+			10800
+			3600
+			604800
+			38400 )
+16.172.in-addr.arpa.	IN	NS	dns01.prod.bh.navy.mil.
+11.11.16.172.in-addr.arpa.	IN	PTR	hx-bh-prod-01-esx.prod.bh.navy.mil.
+12.11.16.172.in-addr.arpa.	IN	PTR	hx-bh-prod-02-esx.prod.bh.navy.mil.
+13.11.16.172.in-addr.arpa.	IN	PTR	hx-bh-prod-03-esx.prod.bh.navy.mil.
+14.11.16.172.in-addr.arpa.	IN	PTR	hx-bh-prod-04-esx.prod.bh.navy.mil.
+20.10.16.172.in-addr.arpa.	IN	PTR	vcsa-bh-prod.prod.bh.navy.mil.
+100.10.16.172.in-addr.arpa.	IN	PTR	dns01.prod.bh.navy.mil.
+105.10.16.172.in-addr.arpa.	IN	PTR	intersight-bh-prod.prod.bh.navy.mil.
+41.11.16.172.in-addr.arpa.	IN	PTR	vproc-01-esx.prod.bh.navy.mil.
