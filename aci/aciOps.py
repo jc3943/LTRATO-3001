@@ -71,3 +71,60 @@ def createTacacs(specDict, apicSnacks):
     loginDomainResponse = requests.post(loginDomainURL, json=loginDomainPayload, cookies=cookie, verify=False)
     print(providerURL, providerResponse, sep=": ")
     print(loginDomainURL, loginDomainResponse, sep=": ")
+
+def getApicStatus(specDict, apicSnacks):
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
+
+    i = 0
+    j = 0
+    apicFitList = []
+    apicFitDict = {}
+    apicUnFitList = []
+    apicUnFitDict = {}
+
+    baseURL = "https://" + specDict['hostIp']
+    for i in range(len(csvDict)):
+        if (csvDict[i]['apicNodeId'] != ''):
+            apicStatusURL = baseURL + "/api/node/mo/topology/pod-1/node-" + str(csvDict[i]['apicNodeId']) + ".json?query-target=subtree&target-subtree-class=infraWiNode"
+            cookie = apicSnacks
+            apicStatusResponse = requests.get(apicStatusURL, cookies=cookie, verify=False)
+            apicStatusJson = apicStatusResponse.json()
+            for j in range(len(apicStatusJson['imdata'])):
+                if (apicStatusJson['imdata'][j]['infraWiNode']['attributes']['health'] == "fully-fit"):
+                    apicFitDict = {'nodeName':apicStatusJson['imdata'][j]['infraWiNode']['attributes']['nodeName'], 'nodeState':apicStatusJson['imdata'][j]['infraWiNode']['attributes']['health']}
+                    apicFitList.append(apicFitDict)
+                else:
+                    apicUnFitDict = {'nodeName':apicStatusJson['imdata'][j]['infraWiNode']['attributes']['nodeName'], 'nodeState':apicStatusJson['imdata'][j]['infraWiNode']['attributes']['health']}
+                    apicUnFitList.append(apicFitDict)
+
+    print((apicFitList))
+    return apicUnFitList
+
+def getNodeStatus(specDict, apicSnacks):
+    i = 0
+    nodeFitList = []
+    nodeFitDict = {}
+    nodeUnFitList = []
+    nodeUnFitDict = {}
+
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
+
+    baseURL = "https://" + specDict['hostIp']
+    nodeStatusURL = baseURL + "/api/node/mo/topology/pod-1.json?query-target=children&target-subtree-class=fabricNode"
+    cookie = apicSnacks
+    nodeStatusResponse = requests.get(nodeStatusURL, cookies=cookie, verify=False)
+    nodeStatusJson = nodeStatusResponse.json()
+    for i in range(len(nodeStatusJson['imdata'])):
+        if (nodeStatusJson['imdata'][i]['fabricNode']['attributes']['role'] == "leaf" or nodeStatusJson['imdata'][i]['fabricNode']['attributes']['role'] == "spine"):
+            if (nodeStatusJson['imdata'][i]['fabricNode']['attributes']['fabricSt'] ==  "active"):
+                nodeFitDict = {'nodeName':nodeStatusJson['imdata'][i]['fabricNode']['attributes']['name'], 'state':nodeStatusJson['imdata'][i]['fabricNode']['attributes']['fabricSt']}
+                nodeFitList.append(nodeFitDict)
+            else:
+                nodeUnFitDict = {'nodeName':nodeStatusJson['imdata'][i]['fabricNode']['attributes']['name'], 'state':nodeStatusJson['imdata'][i]['fabricNode']['attributes']['fabricSt']}
+                nodeUnFitList.append(nodeFitDict)
+    print(nodeFitList)
+    print(nodeUnFitList)
