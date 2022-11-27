@@ -100,67 +100,56 @@ def apicUpgrade(specDict, cookie):
     time.sleep(120)
     cookie = bakeCookies(specDict)
 
-    for upgradeCheck in range(0, 90):
-        print("Iteration: " + str(upgradeCheck))
-        #if bakeTimer >= 30:
-        try:
-            cookie = bakeCookies(specDict)
-            bakeTimer = 0
+    for upgradeCheck in range(0, 800):
+        print("Bake Count: " + str(bakeTimer))
+        if bakeTimer >= 30:
             try:
-                upgradeStatus = requests.get(upgradeCheckURL, cookies=cookie, verify=False)
-                upgradeJson = upgradeStatus.json()
-                #pprint.pprint(upgradeJson)
-                try:
-                    upgradeResult = upgradeJson["imdata"][0]["maintUpgJob"]["attributes"]["upgradeStatus"]
-                    upgradePercent = upgradeJson["imdata"][0]["maintUpgJob"]["attributes"]["instlProgPct"]
-                    if (upgradeResult == "completeok"):
-                        upgradeCheck = 900
-                        bakeTimer = 0
-                        print(upgradeResult + ":\t" + upgradePercent)
-                        break
-                    elif (upgradeResult != "completeok"):
-                        upgradeCheck += 1
-                        bakeTimer += 1
-                        #pprint.pprint(upgradeStatus.text)
-                        print(upgradeResult)
-                        time.sleep(60)
-                    if (upgradeCheck == 90):
-                        print("Upgrade timeout Expired.  Please verify status via APIC")
-                        exit(-1)
-                    #time.sleep(5)
-                    #if (bakeTimer == 30):
-                    #    cookie = bakeCookies(specDict)
-                    #    bakeTimer = 0
-                except:
+                cookie = bakeCookies(specDict)
+                bakeTimer = 0
+            except:
+                time.sleep(30)
+        try:
+            upgradeStatus = requests.get(upgradeCheckURL, cookies=cookie, verify=False)
+            upgradeJson = upgradeStatus.json()
+            print(upgradeJson)
+            try:
+                upgradeResult = upgradeJson["imdata"][0]["maintUpgJob"]["attributes"]["upgradeStatusStr"]
+                if (upgradeResult == "Successful"):
+                    upgradeCheck = 900
+                    bakeTimer = 0
+                    print(upgradeResult)
+                    break
+                elif (upgradeResult != "Successful"):
                     upgradeCheck += 1
                     bakeTimer += 1
-                    time.sleep(60)
-                    #if (bakeTimer == 30):
-                    #    cookie = bakeCookies(specDict)
-                    #    bakeTimer = 0
-                    print("Looking for valid json response")
-            
-            except requests.exceptions.Timeout:
-                print("Retrying Connection, Node Reset")
-                upgradeCheck += 1
-                bakeTimer += 1
-                time.sleep(60)
-            except requests.exceptions.ConnectionError:
-                print("Retrying Connection, Connection Refused")
-                upgradeCheck += 1
-                bakeTimer += 1
-                time.sleep(60)
+                    #pprint.pprint(upgradeStatus.text)
+                    print(upgradeResult)
+                if (upgradeCheck == 800):
+                    print("Upgrade timeout Expired.  Please verify status via APIC")
+                    exit(-1)
+                time.sleep(5)
+                if (bakeTimer == 30):
+                    cookie = bakeCookies(specDict)
+                    bakeTimer = 0
             except:
-                print("Unable to get status of upgrade at:\t" + upgradeCheckURL)
-                print("http response:\t" + str(upgradeStatus))
-                pprint.pprint(upgradeJson)
                 upgradeCheck += 1
-                time.sleep(60)
-        except:
-            print("Unable to obtain auth token")
+                bakeTimer += 1
+                time.sleep(5)
+                if (bakeTimer == 30):
+                    cookie = bakeCookies(specDict)
+                    bakeTimer = 0
+                print("Looking for valid json response")
+            
+        except requests.exceptions.Timeout:
+            print("Retrying Connection, Node Reset")
             upgradeCheck += 1
+            bakeTimer += 1
+            time.sleep(30)
+        except requests.exceptions.ConnectionError:
+            print("Retrying Connection, Connection Refused")
+            upgradeCheck += 1
+            bakeTimer += 1
             time.sleep(60)
-        
 
 
 
