@@ -48,7 +48,7 @@ def apicUpgrade(specDict, cookie):
         switchUploadStatus = requests.get(switchStatusURL, cookies=cookie, verify=False)
         statusJson = switchUploadStatus.json()
         currentState = statusJson["imdata"][0]["firmwareDownload"]["attributes"]["dnldPercent"]
-        print("Current Download %: " + currentState)
+        print("Current SWITCH FW Download %: " + currentState)
         if (int(currentState) == 100):
             statusCheck = 500
             bakeTimer = 0
@@ -56,7 +56,7 @@ def apicUpgrade(specDict, cookie):
         elif (int(currentState) != 100):
             statusCheck += 1
             bakeTimer += 1
-            pprint.pprint(switchUploadStatus.text)
+            #pprint.pprint(statusJson)
             time.sleep(5)
             if (bakeTimer == 30):
                 cookie = bakeCookies(specDict)
@@ -73,14 +73,14 @@ def apicUpgrade(specDict, cookie):
         apicUploadStatus = requests.get(apicStatusURL, cookies=cookie, verify=False)
         statusJson = apicUploadStatus.json()
         currentState = statusJson["imdata"][0]["firmwareDownload"]["attributes"]["dnldPercent"]
-        print("Current Download %: " + currentState)
+        print("Current APIC FW Download %: " + currentState)
         if (int(currentState) == 100):
             statusCheck = 500
             bakeTimer = 0
             break
         elif (int(currentState) != 100):
             statusCheck += 1
-            pprint.pprint(apicUploadStatus.text)
+            #pprint.pprint(statusJson)
             time.sleep(5)
             bakeTimer += 1
             if (bakeTimer == 30):
@@ -116,13 +116,13 @@ def apicUpgrade(specDict, cookie):
                     if (upgradeResult == "completeok"):
                         upgradeCheck = 900
                         bakeTimer = 0
-                        print(upgradeResult + ":\t" + upgradePercent)
+                        print(upgradeResult)
                         break
                     elif (upgradeResult != "completeok"):
                         upgradeCheck += 1
                         bakeTimer += 1
                         #pprint.pprint(upgradeStatus.text)
-                        print(upgradeResult)
+                        print(upgradeResult + ":\t" + upgradePercent)
                         time.sleep(60)
                     if (upgradeCheck == 90):
                         print("Upgrade timeout Expired.  Please verify status via APIC")
