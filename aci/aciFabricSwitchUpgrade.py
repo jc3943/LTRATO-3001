@@ -9,10 +9,13 @@ import requests
 import csv, json, pprint
 import random
 from random import seed
+from aciOps import bakeCookies
 
-def apicUpgrade(specDict):
+def switchUpgrade(specDict):
     jsonPayload = ""
     payloadURL = ""
+    evenNodesList = []
+    oddNodesList = []
 
     with open(specDict['file'], 'r') as csv_file:
         csvread = csv.DictReader(csv_file)
@@ -37,26 +40,74 @@ def apicUpgrade(specDict):
             switchUpgradeVersion = switchInventoryDict[i]['aciSoftware']
             print(switchUpgradeVersion)
     switchUpgradeURL = baseURL + "/api/node/mo/uni/fabric.json"
-    print(switchUpgradeURL)
     #print(switchFWPolGrpPayload)
 
-#    for i in range(len(switchInventoryDict)):
-#       if(int(switchInventoryDict[i]['nodeID']) % 2 == 0):
-#            nodeBlkName = "NODEBLK-" + switchInventoryDict[i]['nodeID']
-#            switchFWPolGrpPayload = {"fabricInst":{"attributes":{"dn":"uni/fabric","status":"modified"},"children":[{"maintMaintP":{"attributes":{"dn":"uni/fabric/maintpol-evenNodes","version":switchUpgradeVersion,"ignoreCompat":"true","adminSt":"triggered","runMode":"pauseOnlyOnFailures"},"children":[]}},{"maintMaintGrp":{"attributes":{"name":"evenNodes"},"children":[{"fabricNodeBlk":{"attributes":{"name":nodeBlkName,"from_":switchInventoryDict[i]['nodeID'],"to_":switchInventoryDict[i]['nodeID']}}},{"maintRsMgrpp":{"attributes":{"tnMaintMaintPName":"evenNodes"}}}]}}]}}
-#            switchFwPolGrp = requests.post(switchUpgradeURL, json=switchFWPolGrpPayload, cookies=cookie, verify=False)
-#            print(switchFWPolGrpPayload)
-#            print(switchFwPolGrp)
-#            print("Break")
+    if (specDict['nodeGrp'] == "evenNodes"):
+        for i in range(len(switchInventoryDict)):
+            if (int(switchInventoryDict[i]['nodeID']) != ''):
+                if((int(switchInventoryDict[i]['nodeID'])) % 2 == 0):
+                    evenNodesList.append(int(switchInventoryDict[i]['nodeID']))
+                    nodeBlkName = "NODEBLK-" + switchInventoryDict[i]['nodeID']
+                    switchFWPolGrpPayload = {"fabricInst":{"attributes":{"dn":"uni/fabric","status":"modified"},"children":[{"maintMaintP":{"attributes":{"dn":"uni/fabric/maintpol-evenNodes","version":switchUpgradeVersion,"ignoreCompat":"true","adminSt":"triggered","runMode":"pauseOnlyOnFailures"},"children":[]}},{"maintMaintGrp":{"attributes":{"name":"evenNodes"},"children":[{"fabricNodeBlk":{"attributes":{"name":nodeBlkName,"from_":switchInventoryDict[i]['nodeID'],"to_":switchInventoryDict[i]['nodeID']}}},{"maintRsMgrpp":{"attributes":{"tnMaintMaintPName":"evenNodes"}}}]}}]}}
+                    switchFwPolGrp = requests.post(switchUpgradeURL, json=switchFWPolGrpPayload, cookies=cookie, verify=False)
+        print("Upgrading Even Node Grp:\t", evenNodesList)
+        return evenNodesList
 
-    for i in range(len(switchInventoryDict)):
-        if(int(switchInventoryDict[i]['nodeID']) % 2 != 0):
-            nodeBlkName = "NODEBLK-" + switchInventoryDict[i]['nodeID']
-            switchFWPolGrpPayload = {"fabricInst":{"attributes":{"dn":"uni/fabric","status":"modified"},"children":[{"maintMaintP":{"attributes":{"dn":"uni/fabric/maintpol-oddNodes","version":switchUpgradeVersion,"ignoreCompat":"true","adminSt":"triggered","runMode":"pauseOnlyOnFailures"},"children":[]}},{"maintMaintGrp":{"attributes":{"name":"oddNodes"},"children":[{"fabricNodeBlk":{"attributes":{"name":nodeBlkName,"from_":switchInventoryDict[i]['nodeID'],"to_":switchInventoryDict[i]['nodeID']}}},{"maintRsMgrpp":{"attributes":{"tnMaintMaintPName":"oddNodes"}}}]}}]}}
-            switchFwPolGrp = requests.post(switchUpgradeURL, json=switchFWPolGrpPayload, cookies=cookie, verify=False)
-            print(switchFWPolGrpPayload)
-            print(switchFwPolGrp)
-            print("Break")
+
+    if (specDict['nodeGrp'] == "oddNodes"):
+        for i in range(len(switchInventoryDict)):
+            if (switchInventoryDict[i]['nodeID'] != ''):
+                if(int(switchInventoryDict[i]['nodeID']) % 2 != 0):
+                    print(int(switchInventoryDict[i]['nodeID']))
+                    oddNodesList.append(switchInventoryDict[i]['nodeID'])
+                    nodeBlkName = "NODEBLK-" + switchInventoryDict[i]['nodeID']
+                    switchFWPolGrpPayload = {"fabricInst":{"attributes":{"dn":"uni/fabric","status":"modified"},"children":[{"maintMaintP":{"attributes":{"dn":"uni/fabric/maintpol-oddNodes","version":switchUpgradeVersion,"ignoreCompat":"true","adminSt":"triggered","runMode":"pauseOnlyOnFailures"},"children":[]}},{"maintMaintGrp":{"attributes":{"name":"oddNodes"},"children":[{"fabricNodeBlk":{"attributes":{"name":nodeBlkName,"from_":switchInventoryDict[i]['nodeID'],"to_":switchInventoryDict[i]['nodeID']}}},{"maintRsMgrpp":{"attributes":{"tnMaintMaintPName":"oddNodes"}}}]}}]}}
+                    switchFwPolGrp = requests.post(switchUpgradeURL, json=switchFWPolGrpPayload, cookies=cookie, verify=False)
+        print(switchFwPolGrp)
+        print("Upgrading Odd Node Grp:\t", oddNodesList)
+        return oddNodesList
+
+def checkNodeUpgStatus(specDict, nodeList):
+    with open(specDict['file'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        switchInventoryDict = list(csvread)
+
+    completedNodeList = []
+    upgradeComplete = False
+
+    baseURL = "https://" + specDict['hostIp']
+    nodeStatusURL = baseURL + "/api/node/class/maintUpgJob.json"
+    maintGrp = specDict['nodeGrp']
+
+    for upgradeCheck in range(0, 90):
+        try:
+            cookie = bakeCookies(specDict)
+            try:
+                upgradeStatus = requests.get(nodeStatusURL, cookies=cookie, verify=False)
+                upgradeStatusJson = upgradeStatus.json()
+                for i in range(len(upgradeStatusJson['imdata'])):
+                    if (upgradeStatusJson['imdata'][i]['maintUpgJob']['attributes']['maintGrp'] == maintGrp):
+                        if (int(upgradeStatusJson['imdata'][i]['maintUpgJob']['attributes']['maintGrp'] == maintGrp) == 100):
+                            print("Upgrade Complete for:\t", upgradeStatusJson['imdata'][i]['maintUpgJob']['attributes']['maintGrp'])
+                            upgradeComplete = True
+                            break
+                        else:
+                            print("Upgrade Progress: ", upgradeStatusJson['imdata'][i]['maintUpgJob']['attributes']['maintGrp'], upgradeStatusJson['imdata'][i]['maintUpgJob']['attributes']['instlProgPct'])
+                            upgradeCheck += 1
+                            time.sleep(60)
+            except:
+                print("Failed to acquire upgrade status")
+                upgradeCheck += 1
+                time.sleep(60)
+
+
+        except:
+            print("Unable to acquire API token")
+            upgradeCheck += 1
+            time.sleep(60)
+        time.sleep(60)
+    return upgradeComplete
+
 
 def main(argv):
     """
@@ -80,7 +131,7 @@ def main(argv):
       sys.exit(2)
     for opt, arg in opts:
       if opt == '-h':
-         print('apicUpgrade.py -u <username> -p <password> -i <host_ip> -f <inputfile> -n <evenNode or oddNodes')
+         print('apicUpgrade.py -u <username> -p <password> -i <host_ip> -f <inputfile> -n <evenNodes or oddNodes')
          sys.exit()
       elif opt in ("-u", "--username"):
          userArg = arg
@@ -96,9 +147,10 @@ def main(argv):
          argDict["file"] = file
       elif opt in ("-n", "--nodeGrp"):
          nodeGrp = arg
-         argDict["file"] = nodeGrp
+         argDict["nodeGrp"] = nodeGrp
     return argDict
 
 if __name__ == '__main__':
     cliArgs = main(sys.argv[1:])
-    apicUpgradeResult = apicUpgrade(cliArgs)
+    switchUpgradeResult = switchUpgrade(cliArgs)
+    upgradeStatus = checkNodeUpgStatus(cliArgs, switchUpgradeResult)
