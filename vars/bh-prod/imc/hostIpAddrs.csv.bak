@@ -1,0 +1,4 @@
+cimc,type,vnicsAdd,uplinkPorts,pcieOrder,chassisSerial
+172.20.106.11,hx,eth8;eth9,Port-3;Port-4,2.0;2.1,
+172.20.106.12,hx,eth8;eth9,Port-3;Port-4,2.0;2.1,
+172.20.106.13,hx,eth8;eth9,Port-3;Port-4,2.0;2.1,

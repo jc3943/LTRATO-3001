@@ -1,0 +1,4 @@
+host,vswitchName,portGroupName,vlanId,vmotionIp,vmotionNetMask
+sandbox-esx1.thor.iws.navy.mil,vmotion,vmotionPg,1202,172.16.117.11,255.255.255.0
+sandbox-esx2.thor.iws.navy.mil,vmotion,vmotionPg,1202,172.16.117.12,255.255.255.0
+sandbox-esx3.thor.iws.navy.mil,vmotion,vmotionPg,1202,172.16.117.13,255.255.255.0

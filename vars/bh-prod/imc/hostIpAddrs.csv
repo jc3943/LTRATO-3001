@@ -1,0 +1,4 @@
+cimc,type,hostName,dns1,dns2,ntp1,ntp2,vnicsAdd,uplinkPorts,pcieOrder,chassisSerial
+172.20.106.11,hx,sandbox-01,172.16.20.101,172.20.1.254,172.20.1.254,172.16.20.253,eth8;eth9,Port-3;Port-4,2.0;2.1,WMP253400J6
+172.20.106.12,hx,sandbox-02,172.16.20.101,172.20.1.254,172.20.1.254,172.16.20.253,eth8;eth9,Port-3;Port-4,2.0;2.1,WMP253400GP
+172.20.106.13,hx,sandbox-03,172.16.20.101,172.20.1.254,172.20.1.254,172.16.20.253,eth8;eth9,Port-3;Port-4,2.0;2.1,WMP253400KA

@@ -1,0 +1,17 @@
+name,description,speed,intfType,cdpPol,lldpPol,mcpPol,monPol,stormCtlPol,lacpPol,aep,interfaceProfile,node,fromPort,toPort,blkNum,interactions
+HX_vSwitch_M4,sandbox-m4-esx1_mLOM-01,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,5,5,block2,policyGrps
+HX_vSwitch_M4,sandbox-m4-esx2_mLOM-01,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,6,6,block3,interfaceProfiles
+HX_vSwitch_M4,sandbox-m4-esx3_mLOM-01,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,7,7,block4,
+HX_vSwitch_M4,sandbox-m4-esx1_mLOM-02,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-202_intProf,202,5,5,block2,
+HX_vSwitch_M4,sandbox-m4-esx2_mLOM-02,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-202_intProf,202,6,6,block3,
+HX_vSwitch_M4,sandbox-m4-esx3_mLOM-02,10G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-202_intProf,202,7,7,block4,
+HX_vSwitch,sandbox-esx1-esx3_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,8,10,block5,
+HX_vSwitch,sandbox-esx1-esx3_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-202_intProf,202,8,10,block5,
+vpc_sandbox-01,sandbox-01_mLOM-03-04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,SBOX-Leaf-201-SBOX-Leaf-202_intProf,201-202,11,11,block2,
+vpc_sandbox-02,sandbox-02_mLOM-03-04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,SBOX-Leaf-201-SBOX-Leaf-202_intProf,201-202,12,12,block2,
+vpc_sandbox-03,sandbox-03_mLOM-03-04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,SBOX-Leaf-201-SBOX-Leaf-202_intProf,201-202,13,13,block2,
+ESXi_vSwitch,ESXi-M6_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,14,14,block2,
+ESXi_vSwitch,ESXi-M6_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-202_intProf,202,14,14,block2,
+vpc_esx-m6-01,ESXi-M6_mLOM-03-04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,SBOX-Leaf-201-SBOX-Leaf-202_intProf,201-202,15,15,block2,
+ESXi_vSwitch,ESXi-HX_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-201_intProf,201,16,16,block3,
+ESXi_vSwitch,ESXi-HX_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,SBOX-Leaf-202_intProf,202,16,16,block3,
