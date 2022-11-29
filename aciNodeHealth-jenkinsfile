@@ -1,4 +1,4 @@
-/Authored by Jeff Comer
+//Authored by Jeff Comer
 
 def nodeLabel = 'pod-builder-agent'
 pipeline {
