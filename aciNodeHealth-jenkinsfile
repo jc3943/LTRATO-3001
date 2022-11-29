@@ -1,0 +1,35 @@
+/Authored by Jeff Comer
+
+def nodeLabel = 'pod-builder-agent'
+pipeline {
+  triggers {
+        cron('*/30 * * * *')
+    }
+  environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
+        apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
+        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+        apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+        IMC_CREDS = credentials('imc-creds')
+        APIC_CREDS = credentials('apic-creds')
+  }
+  agent {
+    kubernetes {
+      yamlFile 'jnlp-ubuntu.yaml'
+    }
+  }
+  
+  stages{
+    stage('Get APIC and Switch States') {
+      steps {
+        container('ubuntu-runner') {
+          //Get Pwr Stats from list of hosts
+          sh 'python3 aci/aciGetNodeStates.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f vars/sandbox/aci/switch-inventory.csv'
+        }
+      }
+    }
+  }
+}

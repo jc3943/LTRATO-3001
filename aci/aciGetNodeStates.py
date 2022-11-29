@@ -63,3 +63,15 @@ if __name__ == '__main__':
     else:
         apicHealth == False
         print("SOME OR APIC'S ARE NOT FULLY FIT\n", apicStatusResult)
+    if(nodeStatusResult == []):
+        nodeHealth == True
+        print("APIC'S ARE FULLY FIT")
+    else:
+        nodeHealth == False
+        print("SOME OR APIC'S ARE NOT FULLY FIT\n", apicStatusResult)
+    if(apicHealth and nodeHealth):
+        exit(0)
+    else:
+        print("Fabric Health Test Failed")
+        exit(-1)
+    

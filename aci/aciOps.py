@@ -125,6 +125,6 @@ def getNodeStatus(specDict, apicSnacks):
                 nodeFitList.append(nodeFitDict)
             else:
                 nodeUnFitDict = {'nodeName':nodeStatusJson['imdata'][i]['fabricNode']['attributes']['name'], 'state':nodeStatusJson['imdata'][i]['fabricNode']['attributes']['fabricSt']}
-                nodeUnFitList.append(nodeFitDict)
-    print(nodeFitList)
+                nodeUnFitList.append(nodeUnFitDict)
     print(nodeUnFitList)
+    return nodeUnFitList
