@@ -53,25 +53,16 @@ def main(argv):
 
 if __name__ == '__main__':
     apicHealth = False
+    nodeHealth = False
     cliArgs = main(sys.argv[1:])
     apicSnacks = bakeCookies(cliArgs)
     apicStatusResult = getApicStatus(cliArgs, apicSnacks)
     nodeStatusResult = getNodeStatus(cliArgs, apicSnacks)
-    if(apicStatusResult == []):
-        apicHealth == True
-        print("APIC'S ARE FULLY FIT")
-    else:
-        apicHealth == False
-        print("SOME OR APIC'S ARE NOT FULLY FIT\n", apicStatusResult)
-    if(nodeStatusResult == []):
-        nodeHealth == True
-        print("APIC'S ARE FULLY FIT")
-    else:
-        nodeHealth == False
-        print("SOME OR APIC'S ARE NOT FULLY FIT\n", apicStatusResult)
-    if(apicHealth and nodeHealth):
+    if(apicStatusResult == [] and nodeStatusResult == []):
+        print("Fabric Health is Good")
         exit(0)
     else:
-        print("Fabric Health Test Failed")
+        print("There are Issues in the Fabric.  See output for details")
         exit(-1)
+
     
