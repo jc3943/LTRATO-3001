@@ -3,7 +3,7 @@
 def nodeLabel = 'pod-builder-agent'
 pipeline {
   triggers {
-        cron('*/10 * * * *')
+        croncron('*/30 * * * *')
     }
   environment {
         BRANCH_NAME = "${GIT_BRANCH}"
