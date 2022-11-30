@@ -3,27 +3,27 @@
   name: Deploy the VCSA to an ESXi Host
   gather_facts: false
   vars: 
-    esxi_address: '172.16.14.22'
+    esxi_address: '172.16.100.20'
     esxi_username: 'root'
     esxi_password: 'THORP@ssw0rd'
-    pod_esxi_password: 'DEVP@ssw0rd'
-    vcenter_password: 'DEVP@ssw0rd'
+    pod_esxi_password: 'THORP@ssw0rd'
+    vcenter_password: 'THORP@ssw0rd'
     #vcenter_hostname: 'hx-crypto-vcsa'
     #vcenter_address: '172.16.10.241'
-    net_prefix: '22'
-    net_gateway: '172.16.14.254'
-    dns_servers: '172.16.20.101'
+    net_prefix: '24'
+    net_gateway: '172.16.100.254'
+    dns_servers: '172.16.100.100'
     ntp_servers: '172.20.1.254'
-    domain: 'thor.iws.navy.mil'
-    searchpath: "thor.iws.navy.mil"
+    domain: 'prod.bh.navy.mil'
+    searchpath: "prod.bh.navy.mil"
     vcsa_size: 'tiny'
-    datastore: 'DEV'
-    networks: 'Storage Controller Management Network'
+    datastore: 'BH_TB_Data'
+    networks: 'PG_1220'
     vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10-ntp.ova
-    vcsa_ova_url: 172.16.20.10:/data/nfs/00-Software/vmware/
+    vcsa_ova_url: 172.16.100.100:/mnt/nfsshare/00-Software/vmware/
     #vcsa_ova_file: '/var/jenkins_home/{{ vcsa_ova_name }}'
     vcsa_ova_file: '/tmp/{{ vcsa_ova_name }}'
-    nfs_file_browser_url: "http://172.16.10.124:8005"
+    nfs_file_browser_url: "http://172.16.100.100:8005"
     nfs_file_browser_user: "admin"
     nfs_file_browser_password: "admin"
     nfs_file_url: '/api/raw/Software/VMWare/{{ vcsa_ova_name }}'
@@ -133,17 +133,17 @@
     delegate_to: localhost
     tags: cluster
 
-#  - name: TASK - Add Hosts to vCenter
-#    community.vmware.vmware_host:
-#      hostname: '{{ item.vcsaAddress }}'
-#      username: 'administrator@vsphere.local'
-#      password: '{{ vcenter_password }}'
-#      validate_certs: no
-#      datacenter_name: '{{ datacenter_name }}'
-#      cluster_name: '{{ cluster_name }}'
-#      esxi_hostname: '{{ item.esxiAddress }}'
-#      esxi_username: '{{ esxi_username }}'
-#      esxi_password: '{{ pod_esxi_password }}'
-#      state: present
-#    with_items: "{{ vcsaspecs }}"
-#    delegate_to: localhost
+  - name: TASK - Add Hosts to vCenter
+    community.vmware.vmware_host:
+      hostname: '{{ item.vcsaAddress }}'
+      username: 'administrator@vsphere.local'
+      password: '{{ vcenter_password }}'
+      validate_certs: no
+      datacenter_name: '{{ datacenter_name }}'
+      cluster_name: '{{ cluster_name }}'
+      esxi_hostname: '{{ item.esxiAddress }}'
+      esxi_username: '{{ esxi_username }}'
+      esxi_password: '{{ pod_esxi_password }}'
+      state: present
+    with_items: "{{ vcsaspecs }}"
+    delegate_to: localhost
