@@ -17,7 +17,7 @@
     domain: 'prod.bh.navy.mil'
     searchpath: "prod.bh.navy.mil"
     vcsa_size: 'tiny'
-    datastore: 'BH_TB_Data'
+    datastore: 'datastore1'
     networks: 'PG_1220'
     vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10.ova
     vcsa_ova_url: 172.16.100.100:/mnt/nfsshare/00-Software/vmware/
