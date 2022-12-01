@@ -1,54 +1,54 @@
 interfaceProfiles:
 - blkNum: block2
-  description: HX-04-1_mLOM-01
+  description: sandbox-m4-esx1_mLOM-01
   fromPort: 5
   interfaceProfile: SBOX-Leaf-201_intProf
   intfType: switch_port
-  name: HX_vSwitch
-  policyGrp: HX_vSwitch
+  name: HX_vSwitch_M4
+  policyGrp: HX_vSwitch_M4
   toPort: 5
 - blkNum: block3
-  description: HX-04-2_mLOM-01
+  description: sandbox-m4-esx2_mLOM-01
   fromPort: 6
   interfaceProfile: SBOX-Leaf-201_intProf
   intfType: switch_port
-  name: HX_vSwitch
-  policyGrp: HX_vSwitch
+  name: HX_vSwitch_M4
+  policyGrp: HX_vSwitch_M4
   toPort: 6
 - blkNum: block4
-  description: HX-04-3_mLOM-01
+  description: sandbox-m4-esx3_mLOM-01
   fromPort: 7
   interfaceProfile: SBOX-Leaf-201_intProf
   intfType: switch_port
-  name: HX_vSwitch
-  policyGrp: HX_vSwitch
+  name: HX_vSwitch_M4
+  policyGrp: HX_vSwitch_M4
   toPort: 7
 - blkNum: block2
-  description: HX-04-1_mLOM-02
+  description: sandbox-m4-esx1_mLOM-02
   fromPort: 5
   interfaceProfile: SBOX-Leaf-202_intProf
   intfType: switch_port
-  name: HX_vSwitch
-  policyGrp: HX_vSwitch
+  name: HX_vSwitch_M4
+  policyGrp: HX_vSwitch_M4
   toPort: 5
 - blkNum: block3
-  description: HX-04-2_mLOM-02
+  description: sandbox-m4-esx2_mLOM-02
   fromPort: 6
   interfaceProfile: SBOX-Leaf-202_intProf
   intfType: switch_port
-  name: HX_vSwitch
-  policyGrp: HX_vSwitch
+  name: HX_vSwitch_M4
+  policyGrp: HX_vSwitch_M4
   toPort: 6
 - blkNum: block4
-  description: HX-04-3_mLOM-02
+  description: sandbox-m4-esx3_mLOM-02
   fromPort: 7
   interfaceProfile: SBOX-Leaf-202_intProf
   intfType: switch_port
-  name: HX_vSwitch
-  policyGrp: HX_vSwitch
+  name: HX_vSwitch_M4
+  policyGrp: HX_vSwitch_M4
   toPort: 7
 - blkNum: block5
-  description: HX-05-1_3_mLOM-01
+  description: sandbox-esx1-esx3_mLOM-01
   fromPort: 8
   interfaceProfile: SBOX-Leaf-201_intProf
   intfType: switch_port
@@ -56,7 +56,7 @@ interfaceProfiles:
   policyGrp: HX_vSwitch
   toPort: 10
 - blkNum: block5
-  description: HX-05-1_3_mLOM-02
+  description: sandbox-esx1-esx3_mLOM-02
   fromPort: 8
   interfaceProfile: SBOX-Leaf-202_intProf
   intfType: switch_port
@@ -88,7 +88,7 @@ interfaceProfiles:
   policyGrp: vpc_sandbox-03
   toPort: 13
 - blkNum: block2
-  description: ESXi-04-1_mLOM-01
+  description: ESXi-M6_mLOM-01
   fromPort: 14
   interfaceProfile: SBOX-Leaf-201_intProf
   intfType: switch_port
@@ -96,7 +96,7 @@ interfaceProfiles:
   policyGrp: ESXi_vSwitch
   toPort: 14
 - blkNum: block2
-  description: ESXi-04-1_mLOM-02
+  description: ESXi-M6_mLOM-02
   fromPort: 14
   interfaceProfile: SBOX-Leaf-202_intProf
   intfType: switch_port
@@ -104,14 +104,40 @@ interfaceProfiles:
   policyGrp: ESXi_vSwitch
   toPort: 14
 - blkNum: block2
-  description: Layer 3 Out to OOB
-  fromPort: 48
+  description: ESXi-M6_mLOM-03-04
+  fromPort: 15
+  interfaceProfile: SBOX-Leaf-201-SBOX-Leaf-202_intProf
+  intfType: vpc
+  name: vpc_esx-m6-01
+  policyGrp: vpc_esx-m6-01
+  toPort: 15
+- blkNum: block3
+  description: ESXi-HX_mLOM-01
+  fromPort: 16
   interfaceProfile: SBOX-Leaf-201_intProf
   intfType: switch_port
-  name: L3Out_OOB
-  policyGrp: L3Out_OOB
-  toPort: 48
+  name: ESXi_vSwitch
+  policyGrp: ESXi_vSwitch
+  toPort: 16
+- blkNum: block3
+  description: ESXi-HX_mLOM-02
+  fromPort: 16
+  interfaceProfile: SBOX-Leaf-202_intProf
+  intfType: switch_port
+  name: ESXi_vSwitch
+  policyGrp: ESXi_vSwitch
+  toPort: 16
 policyGrps:
+- aep: Infrastructure
+  cdpPol: CDP_ON
+  lacpPol: NA
+  lagType: leaf
+  lldpPol: LLDP_ON
+  mcpPol: MCP_ON
+  monPol: Nflow_Mon
+  name: HX_vSwitch_M4
+  speed: 10G
+  stormCtlPol: bcast-mcast-storm
 - aep: Infrastructure
   cdpPol: CDP_ON
   lacpPol: NA
@@ -154,13 +180,13 @@ policyGrps:
   stormCtlPol: bcast-mcast-storm
 - aep: Infrastructure
   cdpPol: CDP_ON
-  lacpPol: NA
-  lagType: leaf
+  lacpPol: LACP_ACTIVE
+  lagType: node
   lldpPol: LLDP_ON
   mcpPol: MCP_ON
   monPol: Nflow_Mon
-  name: ESXi_vSwitch
-  speed: 10G
+  name: vpc_esx-m6-01
+  speed: 25G
   stormCtlPol: bcast-mcast-storm
 - aep: Infrastructure
   cdpPol: CDP_ON
@@ -169,6 +195,16 @@ policyGrps:
   lldpPol: LLDP_ON
   mcpPol: MCP_ON
   monPol: Nflow_Mon
-  name: L3Out_OOB
-  speed: 1G
+  name: ESXi_vSwitch
+  speed: 25G
+  stormCtlPol: bcast-mcast-storm
+- aep: Infrastructure
+  cdpPol: CDP_ON
+  lacpPol: NA
+  lagType: leaf
+  lldpPol: LLDP_ON
+  mcpPol: MCP_ON
+  monPol: Nflow_Mon
+  name: ESXi_vSwitch
+  speed: 25G
   stormCtlPol: bcast-mcast-storm

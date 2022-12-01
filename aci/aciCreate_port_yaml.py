@@ -137,7 +137,7 @@ def main():
     # print(newDict1)
 
     # print all of the key : value pairs to the yaml file
-    with open('vars/sandbox/aci/aci-ports.yaml', 'w+') as yml_file:
+    with open('vars/bh-prod/aci/aci-ports.yaml', 'w+') as yml_file:
         shove = yaml.dump(newDict1, yml_file)
 
     # print("Success!")
