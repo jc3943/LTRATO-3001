@@ -26,7 +26,7 @@ def main():
     dict3 = {}
 
     # open the CSV file and read it's contents to a list of dictionaries
-    with open('vars/sandbox/aci/port-defs.csv', 'r') as csv_file:
+    with open('vars/bh-prod/aci/port-defs.csv', 'r') as csv_file:
         csvread = csv.DictReader(csv_file)
         for column in csvread:
             # append each dict to the list
