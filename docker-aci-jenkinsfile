@@ -74,7 +74,7 @@ pipeline {
               colorized: true
           )
           //Shut vpc ports for HX Edge in prep for install
-          sh 'python3 aci/aciHxVpcOps.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/aci/port-defs.csv -a shut'
+          sh 'python3 aci/aciHxVpcOps.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.1.8 -f $varPath/aci/port-defs.csv -a shut'
           //create vmm integration with vcsa
           ansiblePlaybook(
               playbook: './aci/aciVmmDomain.yml',
