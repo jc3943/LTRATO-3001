@@ -10,7 +10,7 @@ pipeline {
         apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
         apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
         apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
-        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + "prod.bh.navy.mil"
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".prod.bh.navy.mil"
   }
   agent any
   
@@ -25,18 +25,18 @@ pipeline {
           //    colorized: true
           //)
           //create vcsa on host defined in vcsa-Specs.yaml
-          ansiblePlaybook(
-              playbook: './vmware/vcsa-create.yml',
-              inventory: 'localhost',
-              extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
-              extraVars: [
-                  vcenter_hostname: "$vcsaHostName",
-                  datacenter_name: "${BRANCH_NAME}",
-                  cluster_name: "${BRANCH_NAME}"
-              ],
-              colorized: true
-          )
-          sh 'sleep 45'
+          //ansiblePlaybook(
+          //    playbook: './vmware/vcsa-create.yml',
+          //    inventory: 'localhost',
+          //    extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
+          //    extraVars: [
+          //        vcenter_hostname: "$vcsaHostName",
+          //        datacenter_name: "${BRANCH_NAME}",
+          //        cluster_name: "${BRANCH_NAME}"
+          //    ],
+          //    colorized: true
+          //)
+          //sh 'sleep 45'
           //create user for signature-based auth for all other aci playbooks
           ansiblePlaybook(
               playbook: './aci/aciCreate-cert-userv3.yml',
