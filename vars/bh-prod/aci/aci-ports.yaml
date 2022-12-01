@@ -1,132 +1,124 @@
 interfaceProfiles:
 - blkNum: block2
-  description: sandbox-m4-esx1_mLOM-01
+  description: hx-bh-prod-01-esxi_mLOM-01
   fromPort: 5
-  interfaceProfile: SBOX-Leaf-201_intProf
-  intfType: switch_port
-  name: HX_vSwitch_M4
-  policyGrp: HX_vSwitch_M4
-  toPort: 5
-- blkNum: block3
-  description: sandbox-m4-esx2_mLOM-01
-  fromPort: 6
-  interfaceProfile: SBOX-Leaf-201_intProf
-  intfType: switch_port
-  name: HX_vSwitch_M4
-  policyGrp: HX_vSwitch_M4
-  toPort: 6
-- blkNum: block4
-  description: sandbox-m4-esx3_mLOM-01
-  fromPort: 7
-  interfaceProfile: SBOX-Leaf-201_intProf
-  intfType: switch_port
-  name: HX_vSwitch_M4
-  policyGrp: HX_vSwitch_M4
-  toPort: 7
-- blkNum: block2
-  description: sandbox-m4-esx1_mLOM-02
-  fromPort: 5
-  interfaceProfile: SBOX-Leaf-202_intProf
-  intfType: switch_port
-  name: HX_vSwitch_M4
-  policyGrp: HX_vSwitch_M4
-  toPort: 5
-- blkNum: block3
-  description: sandbox-m4-esx2_mLOM-02
-  fromPort: 6
-  interfaceProfile: SBOX-Leaf-202_intProf
-  intfType: switch_port
-  name: HX_vSwitch_M4
-  policyGrp: HX_vSwitch_M4
-  toPort: 6
-- blkNum: block4
-  description: sandbox-m4-esx3_mLOM-02
-  fromPort: 7
-  interfaceProfile: SBOX-Leaf-202_intProf
-  intfType: switch_port
-  name: HX_vSwitch_M4
-  policyGrp: HX_vSwitch_M4
-  toPort: 7
-- blkNum: block5
-  description: sandbox-esx1-esx3_mLOM-01
-  fromPort: 8
-  interfaceProfile: SBOX-Leaf-201_intProf
+  interfaceProfile: LEAF-01-1_intProf
   intfType: switch_port
   name: HX_vSwitch
   policyGrp: HX_vSwitch
-  toPort: 10
-- blkNum: block5
-  description: sandbox-esx1-esx3_mLOM-02
-  fromPort: 8
-  interfaceProfile: SBOX-Leaf-202_intProf
+  toPort: 5
+- blkNum: block3
+  description: hx-bh-prod-02-esxi_mLOM-01
+  fromPort: 7
+  interfaceProfile: LEAF-01-1_intProf
   intfType: switch_port
   name: HX_vSwitch
   policyGrp: HX_vSwitch
-  toPort: 10
-- blkNum: block2
-  description: sandbox-01_mLOM-03-04
+  toPort: 7
+- blkNum: block4
+  description: hx-bh-prod-03-esxi_mLOM-01
+  fromPort: 9
+  interfaceProfile: LEAF-01-1_intProf
+  intfType: switch_port
+  name: HX_vSwitch
+  policyGrp: HX_vSwitch
+  toPort: 9
+- blkNum: block5
+  description: hx-bh-prod-04-esxi_mLOM-01
   fromPort: 11
-  interfaceProfile: SBOX-Leaf-201-SBOX-Leaf-202_intProf
-  intfType: vpc
-  name: vpc_sandbox-01
-  policyGrp: vpc_sandbox-01
+  interfaceProfile: LEAF-01-1_intProf
+  intfType: switch_port
+  name: HX_vSwitch
+  policyGrp: HX_vSwitch
   toPort: 11
 - blkNum: block2
-  description: sandbox-02_mLOM-03-04
-  fromPort: 12
-  interfaceProfile: SBOX-Leaf-201-SBOX-Leaf-202_intProf
+  description: hx-bh-prod-01-esxi_mLOM-02
+  fromPort: 5
+  interfaceProfile: LEAF-01-2_intProf
+  intfType: switch_port
+  name: HX_vSwitch
+  policyGrp: HX_vSwitch
+  toPort: 5
+- blkNum: block3
+  description: hx-bh-prod-02-esxi_mLOM-02
+  fromPort: 7
+  interfaceProfile: LEAF-01-2_intProf
+  intfType: switch_port
+  name: HX_vSwitch
+  policyGrp: HX_vSwitch
+  toPort: 7
+- blkNum: block4
+  description: hx-bh-prod-03-esxi_mLOM-02
+  fromPort: 9
+  interfaceProfile: LEAF-01-2_intProf
+  intfType: switch_port
+  name: HX_vSwitch
+  policyGrp: HX_vSwitch
+  toPort: 9
+- blkNum: block5
+  description: hx-bh-prod-04-esxi_mLOM-02
+  fromPort: 11
+  interfaceProfile: LEAF-01-2_intProf
+  intfType: switch_port
+  name: HX_vSwitch
+  policyGrp: HX_vSwitch
+  toPort: 11
+- blkNum: block2
+  description: hx-bh-prod-esxi_mLOM-03_04
+  fromPort: 6
+  interfaceProfile: LEAF-01-1-LEAF-01-2_intProf
   intfType: vpc
-  name: vpc_sandbox-02
-  policyGrp: vpc_sandbox-02
+  name: vpc_hx-bh-prod-esxi
+  policyGrp: vpc_hx-bh-prod-esxi
+  toPort: 6
+- blkNum: block2
+  description: hx-bh-prod-esxi_mLOM-03_04
+  fromPort: 8
+  interfaceProfile: LEAF-01-1-LEAF-01-2_intProf
+  intfType: vpc
+  name: vpc_hx-bh-prod-esxi
+  policyGrp: vpc_hx-bh-prod-esxi
+  toPort: 8
+- blkNum: block2
+  description: hx-bh-prod-esxi_mLOM-03_04
+  fromPort: 10
+  interfaceProfile: LEAF-01-1-LEAF-01-2_intProf
+  intfType: vpc
+  name: vpc_hx-bh-prod-esxi
+  policyGrp: vpc_hx-bh-prod-esxi
+  toPort: 10
+- blkNum: block2
+  description: hx-bh-prod-esxi_mLOM-03_04
+  fromPort: 12
+  interfaceProfile: LEAF-01-1-LEAF-01-2_intProf
+  intfType: vpc
+  name: vpc_hx-bh-prod-esxi
+  policyGrp: vpc_hx-bh-prod-esxi
   toPort: 12
 - blkNum: block2
-  description: sandbox-03_mLOM-03-04
+  description: bm-bh-prod-esxi_mLOM-01
   fromPort: 13
-  interfaceProfile: SBOX-Leaf-201-SBOX-Leaf-202_intProf
-  intfType: vpc
-  name: vpc_sandbox-03
-  policyGrp: vpc_sandbox-03
+  interfaceProfile: LEAF-01-1_intProf
+  intfType: switch_port
+  name: ESXi_vSwitch
+  policyGrp: ESXi_vSwitch
   toPort: 13
 - blkNum: block2
-  description: ESXi-M6_mLOM-01
-  fromPort: 14
-  interfaceProfile: SBOX-Leaf-201_intProf
-  intfType: switch_port
-  name: ESXi_vSwitch
-  policyGrp: ESXi_vSwitch
-  toPort: 14
-- blkNum: block2
-  description: ESXi-M6_mLOM-02
-  fromPort: 14
-  interfaceProfile: SBOX-Leaf-202_intProf
-  intfType: switch_port
-  name: ESXi_vSwitch
-  policyGrp: ESXi_vSwitch
-  toPort: 14
-- blkNum: block2
-  description: ESXi-M6_mLOM-03-04
+  description: bm-bh-prod-esxi_mLOM-02
   fromPort: 15
-  interfaceProfile: SBOX-Leaf-201-SBOX-Leaf-202_intProf
-  intfType: vpc
-  name: vpc_esx-m6-01
-  policyGrp: vpc_esx-m6-01
+  interfaceProfile: LEAF-01-2_intProf
+  intfType: switch_port
+  name: ESXi_vSwitch
+  policyGrp: ESXi_vSwitch
   toPort: 15
-- blkNum: block3
-  description: ESXi-HX_mLOM-01
-  fromPort: 16
-  interfaceProfile: SBOX-Leaf-201_intProf
-  intfType: switch_port
-  name: ESXi_vSwitch
-  policyGrp: ESXi_vSwitch
-  toPort: 16
-- blkNum: block3
-  description: ESXi-HX_mLOM-02
-  fromPort: 16
-  interfaceProfile: SBOX-Leaf-202_intProf
-  intfType: switch_port
-  name: ESXi_vSwitch
-  policyGrp: ESXi_vSwitch
-  toPort: 16
+- blkNum: block2
+  description: bm-bh-prod-esxi_mLOM-03_04
+  fromPort: 14
+  interfaceProfile: LEAF-01-1-LEAF-01-2_intProf
+  intfType: vpc
+  name: vpc_bm-bh-prod-esxi
+  policyGrp: vpc_bm-bh-prod-esxi
+  toPort: 14
 policyGrps:
 - aep: Infrastructure
   cdpPol: CDP_ON
@@ -135,16 +127,6 @@ policyGrps:
   lldpPol: LLDP_ON
   mcpPol: MCP_ON
   monPol: Nflow_Mon
-  name: HX_vSwitch_M4
-  speed: 10G
-  stormCtlPol: bcast-mcast-storm
-- aep: Infrastructure
-  cdpPol: CDP_ON
-  lacpPol: NA
-  lagType: leaf
-  lldpPol: LLDP_ON
-  mcpPol: MCP_ON
-  monPol: Nflow_Mon
   name: HX_vSwitch
   speed: 25G
   stormCtlPol: bcast-mcast-storm
@@ -155,37 +137,7 @@ policyGrps:
   lldpPol: LLDP_ON
   mcpPol: MCP_ON
   monPol: Nflow_Mon
-  name: vpc_sandbox-01
-  speed: 25G
-  stormCtlPol: bcast-mcast-storm
-- aep: Infrastructure
-  cdpPol: CDP_ON
-  lacpPol: LACP_ACTIVE
-  lagType: node
-  lldpPol: LLDP_ON
-  mcpPol: MCP_ON
-  monPol: Nflow_Mon
-  name: vpc_sandbox-02
-  speed: 25G
-  stormCtlPol: bcast-mcast-storm
-- aep: Infrastructure
-  cdpPol: CDP_ON
-  lacpPol: LACP_ACTIVE
-  lagType: node
-  lldpPol: LLDP_ON
-  mcpPol: MCP_ON
-  monPol: Nflow_Mon
-  name: vpc_sandbox-03
-  speed: 25G
-  stormCtlPol: bcast-mcast-storm
-- aep: Infrastructure
-  cdpPol: CDP_ON
-  lacpPol: LACP_ACTIVE
-  lagType: node
-  lldpPol: LLDP_ON
-  mcpPol: MCP_ON
-  monPol: Nflow_Mon
-  name: vpc_esx-m6-01
+  name: vpc_hx-bh-prod-esxi
   speed: 25G
   stormCtlPol: bcast-mcast-storm
 - aep: Infrastructure
@@ -200,11 +152,11 @@ policyGrps:
   stormCtlPol: bcast-mcast-storm
 - aep: Infrastructure
   cdpPol: CDP_ON
-  lacpPol: NA
-  lagType: leaf
+  lacpPol: LACP_ACTIVE
+  lagType: node
   lldpPol: LLDP_ON
   mcpPol: MCP_ON
   monPol: Nflow_Mon
-  name: ESXi_vSwitch
+  name: vpc_bm-bh-prod-esxi
   speed: 25G
   stormCtlPol: bcast-mcast-storm
