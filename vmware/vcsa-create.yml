@@ -19,14 +19,14 @@
     vcsa_size: 'tiny'
     datastore: 'BH_TB_Data'
     networks: 'PG_1220'
-    vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10-ntp.ova
+    vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10.ova
     vcsa_ova_url: 172.16.100.100:/mnt/nfsshare/00-Software/vmware/
     #vcsa_ova_file: '/var/jenkins_home/{{ vcsa_ova_name }}'
     vcsa_ova_file: '/tmp/{{ vcsa_ova_name }}'
     nfs_file_browser_url: "http://172.16.100.100:8005"
     nfs_file_browser_user: "admin"
     nfs_file_browser_password: "admin"
-    nfs_file_url: '/api/raw/Software/VMWare/{{ vcsa_ova_name }}'
+    nfs_file_url: '/api/raw/00-Software/vmware/{{ vcsa_ova_name }}'
 
   tasks:
 #  - name: Creating a Directory to mount the NFS Storage
