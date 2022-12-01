@@ -1,6 +1,6 @@
 name,description,speed,intfType,cdpPol,lldpPol,mcpPol,monPol,stormCtlPol,lacpPol,aep,interfaceProfile,node,fromPort,toPort,blkNum,interactions
 HX_vSwitch,hx-bh-prod-01-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,5,5,block2,policyGrps
-HX_vSwitch,hx-bh-prod-02-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,7,7,block3,
+HX_vSwitch,hx-bh-prod-02-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,7,7,block3,interfaceProfiles
 HX_vSwitch,hx-bh-prod-03-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,9,,block4,
 HX_vSwitch,hx-bh-prod-04-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,11,,block5,
 HX_vSwitch,hx-bh-prod-01-esxi_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-2_intProf,202,5,5,block2,
