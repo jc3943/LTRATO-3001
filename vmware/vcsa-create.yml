@@ -3,7 +3,7 @@
   name: Deploy the VCSA to an ESXi Host
   gather_facts: false
   vars: 
-    esxi_address: '172.16.100.20'
+    esxi_address: '172.16.100.200'
     esxi_username: 'root'
     esxi_password: 'THORP@ssw0rd'
     pod_esxi_password: 'THORP@ssw0rd'
