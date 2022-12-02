@@ -3,7 +3,7 @@
   name: Deploy the VCSA to an ESXi Host
   gather_facts: false
   vars: 
-    esxi_address: '172.16.100.201'
+    esxi_address: '172.16.100.200'
     esxi_username: 'root'
     esxi_password: 'THORP@ssw0rd'
     pod_esxi_password: 'THORP@ssw0rd'
@@ -19,7 +19,7 @@
     vcsa_size: 'tiny'
     datastore: 'datastore2'
     networks: 'PG_1220'
-    vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10.ova
+    vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10-ntp.ova
     vcsa_ova_url: 172.16.100.100:/mnt/nfsshare/00-Software/vmware/
     #vcsa_ova_file: '/var/jenkins_home/{{ vcsa_ova_name }}'
     vcsa_ova_file: '/tmp/{{ vcsa_ova_name }}'
@@ -80,8 +80,8 @@
         guestinfo.cis.ceip_enabled: "False"
         guestinfo.cis.deployment.autoconfig: 'True' 
         guestinfo.cis.vmdir.password: '{{ vcenter_password }}'
-        #guestinfo.cis.appliance.time.tools-sync: 'true'
-        #guestinfo.cis.appliance.ntp.servers: '{{ ntp_servers }}'
+        guestinfo.cis.appliance.time.tools-sync: 'true'
+        guestinfo.cis.appliance.ntp.servers: '{{ ntp_servers }}'
         domain: '{{ domain }}'
         searchpath: '{{ searchpath }}'
     with_items: "{{ vcsaspecs }}"
