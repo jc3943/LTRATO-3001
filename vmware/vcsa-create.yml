@@ -80,8 +80,8 @@
         guestinfo.cis.ceip_enabled: "False"
         guestinfo.cis.deployment.autoconfig: 'True' 
         guestinfo.cis.vmdir.password: '{{ vcenter_password }}'
-        guestinfo.cis.appliance.time.tools-sync: 'true'
-        guestinfo.cis.appliance.ntp.servers: '{{ ntp_servers }}'
+        #guestinfo.cis.appliance.time.tools-sync: 'true'
+        #guestinfo.cis.appliance.ntp.servers: '{{ ntp_servers }}'
         domain: '{{ domain }}'
         searchpath: '{{ searchpath }}'
     with_items: "{{ vcsaspecs }}"
