@@ -5,7 +5,7 @@
 import sys, getopt, csv
 import requests, json, jsonschema
 from jsonschema import validate
-import urllib3
+import urllib3, pprint
 
 def validataJson(jsonData, schemaData):
     try:
@@ -44,7 +44,23 @@ def hxGetCuuid(specDict, token):
         clusterInfoResponse = requests.get(clusterInfoURL, headers=clusterInfoHeader, verify=False)
         clusterInfoJson = clusterInfoResponse.json()
         cuuid = clusterInfoJson[0]["uuid"]
+        print("CUUID Acquired", clusterInfoResponse, sep=":")
         return cuuid
+
+def hxGetClusterState(specDict, token, cuuid):
+    with open(specDict['infile'], 'r') as csv_file:
+        csvread = csv.DictReader(csv_file)
+        csvDict = list(csvread)
+    
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+    for i in range(len(csvDict)):
+        clusterStatURL = "https://" + csvDict[i]['host'] + "/coreapi/v1/clusters/" + cuuid + "/health"
+        bearerStr = "Bearer " + token
+        clusterInfoHeader = {"Authorization":bearerStr}
+        clusterStatResponse = requests.get(clusterStatURL, headers=clusterInfoHeader, verify=False)
+        clusterStatJson = clusterStatResponse.json()
+        pprint.pprint(clusterStatJson)
 
 def hxGetHostInfo(specDict, token):
     with open(specDict['infile'], 'r') as csv_file:
