@@ -1,0 +1,15 @@
+devices:
+    oob1:
+        type: 'router'
+        os: 'iosxe'
+        platform: n9kv
+        alias: 'uut'
+        credentials:
+            default:
+                username: admin
+                password: THORP@ssw0rd
+        connections:
+            cli:
+                protocol: ssh
+                ip: "172.20.1.254"
+
