@@ -1,0 +1,343 @@
+{
+  "000c.29ca.14c8": {
+    "ip": "172.16.100.20",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "TenGigabitEthernet1/1/1",
+        "mac_type": "dynamic",
+        "vlan": "1220"
+      }
+    ]
+  },
+  "0050.56ae.83fe": {
+    "ip": "172.16.100.100",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "TenGigabitEthernet1/1/1",
+        "mac_type": "dynamic",
+        "vlan": "1220"
+      }
+    ]
+  },
+  "0050.56a3.fe93": {
+    "ip": "172.16.100.105",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "TenGigabitEthernet1/1/1",
+        "mac_type": "dynamic",
+        "vlan": "1220"
+      }
+    ]
+  },
+  "482e.7260.62d8": {
+    "ip": "172.16.100.200",
+    "interfaces": []
+  },
+  "482e.7260.72bc": {
+    "ip": "172.16.100.201",
+    "interfaces": []
+  },
+  "04a7.4123.d2ea": {
+    "ip": "172.16.100.254",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "Vlan1220",
+        "mac_type": "static",
+        "vlan": "1220"
+      }
+    ]
+  },
+  "e8d3.227c.ac80": {
+    "ip": "172.20.0.5",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/10",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "10f9.20ff.23f5": {
+    "ip": "172.20.0.155",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/20",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "10f9.20ff.7071": {
+    "ip": "172.20.0.157",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/22",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "10f9.20ff.2b89": {
+    "ip": "172.20.0.160",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/18",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "10f9.20ff.a695": {
+    "ip": "172.20.0.161",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/16",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "ecf4.0c1b.028d": {
+    "ip": "172.20.0.170",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/29",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "0050.56a3.046b": {
+    "ip": "172.20.0.178",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "TenGigabitEthernet1/1/1",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "3c8b.7f2e.ebec": {
+    "ip": "172.20.1.1",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/4",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "f04a.02a9.2a58": {
+    "ip": "172.20.1.2",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/5",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "e8d3.22e9.7bc0": {
+    "ip": "172.20.1.3",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/6",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "5c31.9282.2f9c": {
+    "ip": "172.20.1.4",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/7",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "00df.1d35.8052": {
+    "ip": "172.20.1.8",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/33",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "0009.9b02.f982": {
+    "ip": "172.20.1.91",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/2",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "0009.9b02.f9e8": {
+    "ip": "172.20.1.94",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/15",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "f89e.2825.189d": {
+    "ip": "192.168.128.1",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/1",
+        "mac_type": "dynamic",
+        "vlan": "1"
+      },
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/1",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "04a7.4123.d2df": {
+    "ip": "172.20.1.254",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "Vlan1000",
+        "mac_type": "static",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "9cd5.7d41.2160": {
+    "ip": "172.20.2.7",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/14",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "9cd5.7d41.2166": {
+    "ip": "172.20.2.8",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/31",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "0080.f959.0bd6": {
+    "ip": "172.20.3.250",
+    "interfaces": []
+  },
+  "f87a.4154.e980": {
+    "ip": "172.20.4.100",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/28",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "f87a.4131.c630": {
+    "ip": "172.20.4.101",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/30",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "0009.9b02.ce73": {
+    "ip": "172.20.4.155",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/39",
+        "mac_type": "dynamic",
+        "vlan": "1000"
+      }
+    ]
+  },
+  "2c3f.0bff.1d2a": {
+    "ip": "192.168.128.21",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/1",
+        "mac_type": "dynamic",
+        "vlan": "1"
+      }
+    ]
+  },
+  "9818.88fe.d3b7": {
+    "ip": "192.168.128.24",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/1",
+        "mac_type": "dynamic",
+        "vlan": "1"
+      }
+    ]
+  },
+  "9818.88fe.d38d": {
+    "ip": "192.168.128.25",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "GigabitEthernet1/0/1",
+        "mac_type": "dynamic",
+        "vlan": "1"
+      }
+    ]
+  },
+  "5062.5570.2725": {
+    "ip": "192.168.128.74",
+    "interfaces": []
+  },
+  "04a7.4123.d2c7": {
+    "ip": "192.168.128.239",
+    "interfaces": [
+      {
+        "device": "oob1",
+        "interface": "Vlan1",
+        "mac_type": "static",
+        "vlan": "1"
+      }
+    ]
+  }
+}
