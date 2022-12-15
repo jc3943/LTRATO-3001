@@ -1,0 +1,25 @@
+KEG/Top Level Equipment,Cable Label,,
+OOBS-01-1,UCS-01-1-CIMC,GigabitEthernet,1/0/25
+OOBS-01-1,UCS-01-1-LAN-A,GigabitEthernet,1/0/24
+OOBS-01-1,TB-01-1-CIMC,GigabitEthernet,1/0/35
+OOBS-01-1,LEAF-01-2-MGMT,GigabitEthernet,1/0/7
+OOBS-01-1,LEAF-01-1-MGMT,GigabitEthernet,1/0/6
+OOBS-01-1,SPINE-01-2-MGMT,GigabitEthernet,1/0/5
+OOBS-01-1,SPINE-01-1-MGMT,GigabitEthernet,1/0/4
+OOBS-01-1,ENV-01-1-MGMT,GigabitEthernet,1/0/3
+OOBS-01-1,PDU-01-1 Ethernet 0,GigabitEthernet,1/0/2
+OOBS-01-1,PDU-01-3 Ethernet 0,GigabitEthernet,1/0/15
+OOBS-01-1,APIC-01-1-CIMC,GigabitEthernet,1/0/14
+OOBS-01-1,APIC-01-1-LAN-A,GigabitEthernet,1/0/13
+OOBS-01-1,FPR-01-1-MGMT,GigabitEthernet,1/0/10
+OOBS-01-1,PDU-01-2 Ethernet 0,GigabitEthernet,1/0/8
+OOBS-01-1,HX-01-4-CIMC,GigabitEthernet,1/0/23
+OOBS-01-1,HX-01-4-LAN-A,GigabitEthernet,1/0/22
+OOBS-01-1,HX-01-3-CIMC,GigabitEthernet,1/0/21
+OOBS-01-1,HX-01-3-LAN-A,GigabitEthernet,1/0/20
+OOBS-01-1,HX-01-2-CIMC,GigabitEthernet,1/0/19
+OOBS-01-1,HX-01-2-LAN-A,GigabitEthernet,1/0/18
+OOBS-01-1,HX-01-1-CIMC,GigabitEthernet,1/0/17
+OOBS-01-1,HX-01-1-LAN-A,GigabitEthernet,1/0/16
+OOBS-01-1,ThorBall-01-1 -Port1,TenGigabitEthernet,1/1/2
+OOBS-01-1,Thorball-01-1-Port2,TenGigabitEthernet,1/1/4

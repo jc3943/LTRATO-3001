@@ -107,6 +107,7 @@ def discover_macs(layer3_devices):
 
         try:
             arp_info = device.parse(arp_lookup_command[device.os])
+            print(arp_info.keys())
         except Exception as e:
             print(f"Problem looking up ARP table on device {device.name}")
 
