@@ -202,7 +202,7 @@
     ]
   },
   "0050.56a3.046b": {
-    "ip": "172.20.1.190",
+    "ip": "172.20.1.191",
     "interfaces": [
       {
         "device": "oob1",
@@ -264,14 +264,7 @@
   },
   "0080.f959.0bd6": {
     "ip": "172.20.3.250",
-    "interfaces": [
-      {
-        "device": "oob1",
-        "interface": "GigabitEthernet1/0/1",
-        "mac_type": "dynamic",
-        "vlan": "1000"
-      }
-    ]
+    "interfaces": []
   },
   "f87a.4154.e980": {
     "ip": "172.20.4.100",

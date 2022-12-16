@@ -107,7 +107,6 @@ def discover_macs(layer3_devices):
 
         try:
             arp_info = device.parse(arp_lookup_command[device.os])
-            print(arp_info.keys())
         except Exception as e:
             print(f"Problem looking up ARP table on device {device.name}")
 
@@ -303,6 +302,8 @@ if __name__ == "__main__":
         f"Building MAC Address list from ARP information on devices {', '.join(args.layer3_devices)}"
     )
     macs = discover_macs(layer3_devices)
+    macKeyList = list(macs.keys())
+    print(macKeyList)
 
     # Update the macs dictionary by finding the Layer 2 Interfaces where the MAC addresses are located across the testbed
     print(
