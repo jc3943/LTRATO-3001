@@ -1,0 +1,391 @@
+{
+  "totalCount": "1",
+  "imdata": [
+    {
+      "l3extOut": {
+        "attributes": {
+          "annotation": "",
+          "descr": "",
+          "dn": "uni/tn-SERVICES/out-out-L3Out_SBOX",
+          "enforceRtctrl": "export",
+          "mplsEnabled": "no",
+          "name": "out-L3Out_SBOX",
+          "nameAlias": "",
+          "ownerKey": "",
+          "ownerTag": "",
+          "targetDscp": "unspecified",
+          "userdom": ":all:common:"
+        },
+        "children": [
+          {
+            "l3extRsL3DomAtt": {
+              "attributes": {
+                "annotation": "",
+                "tDn": "uni/l3dom-L3Out_Ext",
+                "userdom": ":all:common:"
+              }
+            }
+          },
+          {
+            "l3extRsEctx": {
+              "attributes": {
+                "annotation": "",
+                "tnFvCtxName": "services-vrf",
+                "userdom": "all"
+              }
+            }
+          },
+          {
+            "l3extLNodeP": {
+              "attributes": {
+                "annotation": "",
+                "configIssues": "",
+                "descr": "",
+                "name": "SBOX-Leaf-202",
+                "nameAlias": "",
+                "ownerKey": "",
+                "ownerTag": "",
+                "tag": "yellow-green",
+                "targetDscp": "unspecified",
+                "userdom": ":all:"
+              },
+              "children": [
+                {
+                  "l3extRsNodeL3OutAtt": {
+                    "attributes": {
+                      "annotation": "",
+                      "configIssues": "",
+                      "rtrId": "172.20.255.121",
+                      "rtrIdLoopBack": "yes",
+                      "tDn": "topology/pod-1/node-202",
+                      "userdom": ":all:"
+                    }
+                  }
+                },
+                {
+                  "l3extLIfP": {
+                    "attributes": {
+                      "annotation": "",
+                      "descr": "",
+                      "name": "SBOX-Leaf-202",
+                      "nameAlias": "",
+                      "ownerKey": "",
+                      "ownerTag": "",
+                      "prio": "unspecified",
+                      "tag": "yellow-green",
+                      "userdom": ":all:"
+                    },
+                    "children": [
+                      {
+                        "l3extRsPathL3OutAtt": {
+                          "attributes": {
+                            "addr": "172.20.254.21/30",
+                            "annotation": "",
+                            "autostate": "disabled",
+                            "descr": "",
+                            "encap": "unknown",
+                            "encapScope": "local",
+                            "ifInstT": "l3-port",
+                            "ipv6Dad": "enabled",
+                            "isMultiPodDirect": "no",
+                            "llAddr": "::",
+                            "mac": "00:22:BD:F8:19:FF",
+                            "mode": "regular",
+                            "mtu": "inherit",
+                            "tDn": "topology/pod-1/paths-202/pathep-[eth1/48]",
+                            "targetDscp": "unspecified",
+                            "userdom": ":all:"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsNdIfPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnNdIfPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsIngressQosDppPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnQosDppPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsEgressQosDppPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnQosDppPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsArpIfPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnArpIfPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsLIfPCustQosPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnQosCustomPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "eigrpIfP": {
+                          "attributes": {
+                            "annotation": "",
+                            "descr": "",
+                            "name": "",
+                            "nameAlias": "",
+                            "userdom": ":all:"
+                          },
+                          "children": [
+                            {
+                              "eigrpRsIfPol": {
+                                "attributes": {
+                                  "annotation": "",
+                                  "tnEigrpIfPolName": "default",
+                                  "userdom": "all"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "l3extLNodeP": {
+              "attributes": {
+                "annotation": "",
+                "configIssues": "",
+                "descr": "",
+                "name": "SBOX-Leaf-201",
+                "nameAlias": "",
+                "ownerKey": "",
+                "ownerTag": "",
+                "tag": "yellow-green",
+                "targetDscp": "unspecified",
+                "userdom": ":all:common:"
+              },
+              "children": [
+                {
+                  "l3extRsNodeL3OutAtt": {
+                    "attributes": {
+                      "annotation": "",
+                      "configIssues": "",
+                      "rtrId": "172.20.255.117",
+                      "rtrIdLoopBack": "yes",
+                      "tDn": "topology/pod-1/node-201",
+                      "userdom": ":all:common:"
+                    }
+                  }
+                },
+                {
+                  "l3extLIfP": {
+                    "attributes": {
+                      "annotation": "",
+                      "descr": "",
+                      "name": "SBOX-Leaf-201",
+                      "nameAlias": "",
+                      "ownerKey": "",
+                      "ownerTag": "",
+                      "prio": "unspecified",
+                      "tag": "yellow-green",
+                      "userdom": ":all:common:"
+                    },
+                    "children": [
+                      {
+                        "l3extRsPathL3OutAtt": {
+                          "attributes": {
+                            "addr": "172.20.254.17/30",
+                            "annotation": "",
+                            "autostate": "disabled",
+                            "descr": "",
+                            "encap": "unknown",
+                            "encapScope": "local",
+                            "ifInstT": "l3-port",
+                            "ipv6Dad": "enabled",
+                            "isMultiPodDirect": "no",
+                            "llAddr": "::",
+                            "mac": "00:22:BD:F8:19:FF",
+                            "mode": "regular",
+                            "mtu": "inherit",
+                            "tDn": "topology/pod-1/paths-201/pathep-[eth1/48]",
+                            "targetDscp": "unspecified",
+                            "userdom": ":all:common:"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsNdIfPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnNdIfPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsIngressQosDppPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnQosDppPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsEgressQosDppPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnQosDppPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsArpIfPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnArpIfPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "l3extRsLIfPCustQosPol": {
+                          "attributes": {
+                            "annotation": "",
+                            "tnQosCustomPolName": "",
+                            "userdom": "all"
+                          }
+                        }
+                      },
+                      {
+                        "eigrpIfP": {
+                          "attributes": {
+                            "annotation": "",
+                            "descr": "",
+                            "name": "",
+                            "nameAlias": "",
+                            "userdom": ":all:common:"
+                          },
+                          "children": [
+                            {
+                              "eigrpRsIfPol": {
+                                "attributes": {
+                                  "annotation": "",
+                                  "tnEigrpIfPolName": "default",
+                                  "userdom": "all"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "l3extInstP": {
+              "attributes": {
+                "annotation": "",
+                "descr": "",
+                "exceptionTag": "",
+                "floodOnEncap": "disabled",
+                "matchT": "AtleastOne",
+                "name": "L3Out_Ext",
+                "nameAlias": "",
+                "pcEnfPref": "unenforced",
+                "prefGrMemb": "exclude",
+                "prio": "unspecified",
+                "targetDscp": "unspecified",
+                "userdom": ":all:common:"
+              },
+              "children": [
+                {
+                  "fvRsProv": {
+                    "attributes": {
+                      "annotation": "",
+                      "intent": "install",
+                      "matchT": "AtleastOne",
+                      "prio": "unspecified",
+                      "tnVzBrCPName": "SERVICES-Contract",
+                      "userdom": ":all:common:"
+                    }
+                  }
+                },
+                {
+                  "l3extSubnet": {
+                    "attributes": {
+                      "aggregate": "export-rtctrl,shared-rtctrl",
+                      "annotation": "",
+                      "descr": "",
+                      "ip": "0.0.0.0/0",
+                      "name": "",
+                      "nameAlias": "",
+                      "scope": "export-rtctrl,import-security,shared-rtctrl",
+                      "userdom": ":all:common:"
+                    }
+                  }
+                },
+                {
+                  "fvRsCustQosPol": {
+                    "attributes": {
+                      "annotation": "",
+                      "tnQosCustomPolName": "",
+                      "userdom": "all"
+                    }
+                  }
+                },
+                {
+                  "fvRsCons": {
+                    "attributes": {
+                      "annotation": "",
+                      "intent": "install",
+                      "prio": "unspecified",
+                      "tnVzBrCPName": "SERVICES-Contract",
+                      "userdom": ":all:common:"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "eigrpExtP": {
+              "attributes": {
+                "annotation": "",
+                "asn": "10",
+                "descr": "",
+                "nameAlias": "",
+                "userdom": ":all:common:"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+name,description,speed,intfType,cdpPol,lldpPol,mcpPol,monPol,stormCtlPol,lacpPol,aep,interfaceProfile,node,fromPort,toPort,blkNum,interactions
+HX_vSwitch,hx-bh-prod-01-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,5,5,block2,policyGrps
+HX_vSwitch,hx-bh-prod-02-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,7,7,block3,interfaceProfiles
+HX_vSwitch,hx-bh-prod-03-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,9,9,block4,
+HX_vSwitch,hx-bh-prod-04-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,11,11,block5,
+HX_vSwitch,hx-bh-prod-01-esxi_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-2_intProf,202,5,5,block2,
+HX_vSwitch,hx-bh-prod-02-esxi_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-2_intProf,202,7,7,block3,
+HX_vSwitch,hx-bh-prod-03-esxi_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-2_intProf,202,9,9,block4,
+HX_vSwitch,hx-bh-prod-04-esxi_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-2_intProf,202,11,11,block5,
+vpc_hx-bh-prod-esxi,hx-bh-prod-esxi_mLOM-03_04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,LEAF-01-1-LEAF-01-2_intProf,201-202,6,6,block2,
+vpc_hx-bh-prod-esxi,hx-bh-prod-esxi_mLOM-03_04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,LEAF-01-1-LEAF-01-2_intProf,201-202,8,8,block2,
+vpc_hx-bh-prod-esxi,hx-bh-prod-esxi_mLOM-03_04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,LEAF-01-1-LEAF-01-2_intProf,201-202,10,10,block2,
+vpc_hx-bh-prod-esxi,hx-bh-prod-esxi_mLOM-03_04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,LEAF-01-1-LEAF-01-2_intProf,201-202,12,12,block2,
+ESXi_vSwitch,bm-bh-prod-esxi_mLOM-01,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-1_intProf,201,13,13,block2,
+ESXi_vSwitch,bm-bh-prod-esxi_mLOM-02,25G,access,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,NA,Infrastructure,LEAF-01-2_intProf,202,15,15,block2,
+vpc_bm-bh-prod-esxi,bm-bh-prod-esxi_mLOM-03_04,25G,vpc,CDP_ON,LLDP_ON,MCP_ON,Nflow_Mon,bcast-mcast-storm,LACP_ACTIVE,Infrastructure,LEAF-01-1-LEAF-01-2_intProf,201-202,14,14,block2,

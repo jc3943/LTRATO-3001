@@ -1,0 +1,7 @@
+nodeName,nodeID,type,serialNum,nodeFrom,nodeTo,mgmtAddress,mgmtGateway,vpcDomain,vlPoolName,poolType,encapallocmode,encapstart,encapend,domainName,domainType,vmmProvider,aepName,vcenter,vcDataCenter,apic,apicNodeId,aciSoftware,imageURL,imageName
+SPINE-01-1,101,spine,FDO26230854,101,101,172.20.1.1/20,172.20.1.254,,HX-VMM,dynamic,static,1200,1205,,,,,,,apic-01-1,1,n9000-15.2.(6e),172.16.100.100/00-Software/ACI/aci-n9000-dk9.15.2.6e.bin,aci-n9000-dk9.15.2.6e.bin
+SPINE-01-2,102,spine,FDO25500ZW1,102,102,172.20.1.2/20,172.20.1.254,,HX-VMM,dynamic,dynamic,1250,1299,Infrastructure,phys,NA,Infrastructure,,,,,apic-5.2(6e),172.16.100.100/00-Software/ACI/aci-apic-dk9.5.2.6e.iso,aci-apic-dk9.5.2.6e.iso
+LEAF-01-1,201,leaf,FDO26280CD3,201,201,172.20.1.3/20,172.20.1.254,,HX-VMM,dynamic,static,1200,1205,,,,,,,,,,,
+LEAF-01-2,202,leaf,FDO26261FCJ,202,202,172.20.1.4/20,172.20.1.254,,HX-VMM,dynamic,dynamic,1250,1299,HX-VMM,vmm,vmware,Infrastructure,172.16.100.20,bh-prod,,,,,
+LEAF-01-1-LEAF-01-2,201,vpc,,201,202,,,201,HX-VMM,dynamic,dynamic,1250,1299,L3Out_Ext,l3dom,NA,Infrastructure,,,,,,,
+,,,,,,,,,FW-DOM,static,static,5,10,FW-DOM,l3dom,NA,FW-AEP,,,,,,,
