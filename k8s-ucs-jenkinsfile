@@ -6,10 +6,6 @@ pipeline {
         BRANCH_NAME = "${GIT_BRANCH}"
         varPath = "vars/" + "${BRANCH_NAME}"
         APIC_CREDS = credentials('apic-creds')
-        apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
-        apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
-        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
-        apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
   }
   agent {
@@ -42,7 +38,7 @@ pipeline {
             sh 'terraform apply -auto-approve'
           }
           //Need add status checking to python script for status to replace sleep
-          sh 'python3 intersight/intersightDevClaimStatus.py -u https://qa-intersight.thor.iws.navy.mil -i vars/sandbox/imc/hostIpAddrs.csv'
+          sh 'python3 intersight/intersightDevClaimStatus.py -u https://qa-intersight.thor.iws.navy.mil -i $varPath/imc/hostIpAddrs.csv'
           sh 'sleep 180'
         }
       }
@@ -87,7 +83,7 @@ pipeline {
               playbook: './vmware/hxHosts-vcenter-tasks.yml',
               inventory: 'localhost',
               extraVars: [
-                  vcsa_hostname: "172.16.14.137",
+                  vcsa_hostname: $vcsaHostName,
                   datacenter_name: "${BRANCH_NAME}",
                   cluster_name: "${BRANCH_NAME}",
                   datastore: "${BRANCH_NAME}",
