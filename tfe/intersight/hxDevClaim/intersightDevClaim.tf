@@ -1,7 +1,7 @@
 #Authored: Jeff Comer
 
 locals {
-  instances = csvdecode(file("../../../vars/techTap/imc/hostIpAddrs.csv"))
+  instances = csvdecode(file("../../../vars/sandbox/imc/hostIpAddrs.csv"))
 }
 
 resource "intersight_appliance_device_claim" "intersight_imc_claim" {
