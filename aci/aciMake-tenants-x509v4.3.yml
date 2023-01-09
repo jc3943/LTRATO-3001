@@ -122,6 +122,16 @@
       when: (item.rp != "NA")
       with_items: "{{ vrfs }}"
 
+    - name: TASK 02c - Create DHCP Relay
+      cisco.aci.aci_dhcp_relay:
+          host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        state: "present"
+        validate_certs: False
+        tenant: "{{ item.tenant }}"
+        name: "{{ item.tenant }}-DHCP_Relay"
+
 
     - name: TASK 03 - ENSURE TENANT BRIDGE DOMAINS EXIST
       aci_bd:

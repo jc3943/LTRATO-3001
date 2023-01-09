@@ -52,6 +52,7 @@ def main(argv):
     i = 0
     with open(inputfile) as csv_file:
        csv_reader = csv.reader(csv_file, delimiter=',')
+       next(csv_reader)
        for row in csv_reader:
          brdom.append(row[0])
          dfgw.append(row[1])

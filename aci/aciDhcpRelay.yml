@@ -1,0 +1,66 @@
+---
+# Jeff Comer
+# Ansible Playbook to build  DHCP Relay Configuration
+# uses vars/<branch>/tenant.yaml for variables
+
+- name: Build DHCP Relay Configuration
+  hosts: apic
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: TASK 02 - Create DHCP Relay Policy
+      read_csv:
+        path: ../$varPath/aci/tenant.csv
+      register: dhcplist
+
+    - name: TASK 02 - Create DHCP Relay Policy
+      cisco.aci.aci_dhcp_relay:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        state: "present"
+        validate_certs: False
+        tenant: "{{ dhcp.tenant }}"
+        name: "{{ dhcp.tenant }}-DHCP_Relay"
+      loop: "{{ dhcplist.list }}"
+      loop_control:
+        loop_var: dhcp
+      delegate_to: localhost
+      when: (dhcp.dhcpRelay != "NA")
+
+    - name: TASK 03 - Add DHCP Relay Providers
+      cisco.aci.aci_dhcp_relay_provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        state: "present"
+        validate_certs: False
+        tenant: "{{ dhcp.tenant }}"
+        relay_policy: "{{ dhcp.tenant }}-DHCP_Relay"
+        epg_type: epg
+        anp: "{{ dhcp.appProfile }}"
+        epg: "{{ dhcp.epg }}"
+        dhcp_server_addr: "{{ dhcp.dhcpRelay }}"
+      loop: "{{ dhcplist.list }}"
+      loop_control:
+        loop_var: dhcp
+      delegate_to: localhost
+      when: (dhcp.dhcpRelay != "NA")
+
+    - name: TASK 04 - Add DHCP Label to Bridge Domains
+      cisco.aci.aci_bd_dhcp_label:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        private_key: ../creds/ansible.key
+        state: "present"
+        validate_certs: False
+        tenant: "{{ dhcp.tenant }}"
+        dhcp_label: "{{ dhcp.tenant }}-DHCP_Relay"
+        bd: "{{ dhcp.bridgeDomain }}"
+        scope: tenant
+      loop: "{{ dhcplist.list }}"
+      loop_control:
+        loop_var: dhcp
+      delegate_to: localhost
+      when: (dhcp.dhcpRelay != "NA")
