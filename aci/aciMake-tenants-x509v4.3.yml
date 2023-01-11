@@ -124,7 +124,7 @@
 
     - name: TASK 02c - Create DHCP Relay
       cisco.aci.aci_dhcp_relay:
-          host: "{{ inventory_hostname }}"
+        host: "{{ inventory_hostname }}"
         username: "{{ username }}"
         private_key: ../creds/ansible.key
         state: "present"
