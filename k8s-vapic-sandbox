@@ -1,0 +1,149 @@
+//Authored by Jeff Comer
+
+def nodeLabel = 'pod-builder-agent'
+pipeline {
+  environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        APIC_CREDS = credentials('apic-creds')
+        apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
+        apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
+        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+        apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+  }
+  agent {
+    kubernetes {
+      yamlFile 'jnlp-ubuntu.yaml'
+    }
+  }
+  
+  stages{
+    stage('Stat k8s Nodes') {
+      steps {
+        container('ubuntu-runner') {
+          //Check health state of k8s nodes in target cluster
+          sh 'cp -r .kube /root/'
+          sh 'python3 k8s/clusterHealth.py'
+        }
+      }
+    }
+    stage('Deploy VCSA and add credentials to APIC') {
+      steps {
+        container('jnlp') {
+          sh '''
+          echo "Inbound Agent is Connected"
+          '''
+        }
+        container('ubuntu-runner') {
+          //apic sim's stateless - revert to base snapshot with credentials and ip address only
+          //ansiblePlaybook(
+          //    playbook: './vmware/vm-snap-revert.yml',
+          //    inventory: './creds/vmw-inventory',
+          //    extras: '--extra-vars="vmname=$apicVm snap=$apicSnap"',
+          //    colorized: true
+          //)
+          //create vcsa on host defined in vcsa-Specs.yaml
+          /*ansiblePlaybook(
+              playbook: './vmware/vcsa-create.yml',
+              inventory: 'localhost',
+              extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
+              extraVars: [
+                  vcenter_hostname: "$vcsaHostName",
+                  datacenter_name: "${BRANCH_NAME}",
+                  cluster_name: "${BRANCH_NAME}"
+              ],
+              colorized: true
+          )
+          sh 'sleep 45'  */
+          //create user for signature-based auth for all other aci playbooks
+          ansiblePlaybook(
+              playbook: './aci/aciCreate-cert-userv3.yml',
+              inventory: '$apicInventory',
+              colorized: true
+          )
+        }
+      }
+    }
+    stage('Fabric Discovery and Base Config') {
+      steps {
+        container('ubuntu-runner') {
+          //kick off discovery and configure base fabric parameters
+          sh 'python3 aci/aciBuildInventory.py'
+          ansiblePlaybook(
+              playbook: './aci/aciBuildFabric.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
+              colorized: true
+          )
+          ansiblePlaybook(
+              playbook: './aci/aciVmmDomain.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
+              colorized: true
+          )
+        }
+      }
+    }
+    stage('Configure Ports and VMM Integration') {
+      steps {
+        container('ubuntu-runner') {
+          //configure aci fabric ports
+          sh 'python3 aci/aciCreate_port_yaml.py'
+          ansiblePlaybook(
+              playbook: './aci/aciIntf-create.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/aci-ports.yaml"',
+              colorized: true
+          )
+          //Shut vpc ports for HX Edge in prep for install
+          sh 'python3 aci/aciHxVpcOps.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/aci/port-defs.csv -a shut'
+          //create vmm integration with vcsa
+          ansiblePlaybook(
+              playbook: './aci/aciVmmDomain.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/switch-inventory.yaml"',
+              colorized: true
+          )
+        }
+      }
+    }
+    stage('Create and Configure Tenant') {
+      steps {
+        container('ubuntu-runner') {
+          //Build tenant from vars
+          sh 'python3 aci/aciCreate_yaml_from_csv_v4.3.py -i $varPath/aci/tenant.csv -o  $varPath/aci/tenant.yaml'
+          ansiblePlaybook(
+              playbook: './aci/aciMake-tenants-x509v4.3.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/tenant.yaml"',
+              colorized: true
+          )
+          ansiblePlaybook(
+              playbook: './aci/aciJsonLoad.yml',
+              inventory: '$apicInventoryx509',
+              extraVars: [
+                  json_payload: "../$varPath/aci/L3-Out.json"
+              ],
+              colorized: true
+          )
+          sh 'python3 ./aci/aciCreate_yaml_from_csv_v4.3.py -i $varPath/aci/bare-metal-aep.csv -o $varPath/aci/bare-metal-aep.yaml'
+          ansiblePlaybook(
+              playbook: './aci/aep-epg-bm.yml',
+              inventory: '$apicInventoryx509',
+              extras: '--extra-vars="@$varPath/aci/bare-metal-aep.yaml"',
+              colorized: true
+          )
+        }
+      }
+    }
+  /*  stage('Upgrade APIC') {
+      steps {
+        container('ubuntu-runner') {
+          //Upgrade APIC'S
+          sh 'python3 ./aci/aciUpgrade.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/aci/switch-inventory.csv'
+        }
+      }
+    } */
+  }
+}
