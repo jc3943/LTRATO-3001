@@ -20,7 +20,7 @@
       domain: "{{ item.domainname }}"
       name: "{{ item.domainname }}-vcsa"
       credential_username: administrator@vsphere.local
-      credential_password: THORP@ssw0rd
+      credential_password: DEVP@ssw0rd
       vm_provider: "{{ item.vmmprovider }}"
     when: (item.vmmprovider != "NA")
     with_items: "{{ domains  }}"

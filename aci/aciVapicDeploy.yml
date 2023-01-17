@@ -6,7 +6,7 @@
         esxi_username: 'root'
         #esxi_password: 'THORP@ssw0rd'
         datastore: 'DS_0'
-        networks: 'PG_1220'
+        networks: 'OOB'
         vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10-ntp.ova
         vcsa_ova_url: 172.16.100.100:/mnt/nfsshare/00-Software/vmware/
         vcsa_ova_file: '/tmp/{{ vcsa_ova_name }}'
