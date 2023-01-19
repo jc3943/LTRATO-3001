@@ -21,7 +21,7 @@
         switch: "{{ item.lname }}"
         serial: "{{ item.lserial }}"
         descr: "Policy Created Using Ansible"
-        role: leaf
+        #role: leaf
       with_items: "{{ leaves }}"
       tags: register
 
@@ -36,7 +36,7 @@
         switch: "{{ item.sname }}"
         serial: "{{ item.sserial }}"
         descr: "Policy Created Using Ansible"
-        role: spine
+        #role: spine
       with_items: "{{ spines }}"
       tags: register      
 
