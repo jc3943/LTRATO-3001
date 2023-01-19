@@ -6,6 +6,7 @@ pipeline {
         BRANCH_NAME = "${GIT_BRANCH}"
         varPath = "vars/" + "${BRANCH_NAME}"
         APIC_CREDS = credentials('apic-creds')
+        apicIp = "172.20.1.8"
         apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
         apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
         apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
@@ -74,7 +75,7 @@ pipeline {
               colorized: true
           )
           //Shut vpc ports for HX Edge in prep for install
-          sh 'python3 aci/aciHxVpcOps.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.16.100.30 -f $varPath/aci/port-defs.csv -a shut'
+          sh 'python3 aci/aciHxVpcOps.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $apicIp -f $varPath/aci/port-defs.csv -a shut'
           //create vmm integration with vcsa
           ansiblePlaybook(
               playbook: './aci/aciVmmDomain.yml',

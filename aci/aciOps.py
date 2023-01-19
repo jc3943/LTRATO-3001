@@ -45,10 +45,12 @@ def hxPortActions(specDict):
           #portJson = "{\"fabricRsOosPath\":{\"attributes\":{\"tDn\":\"topology/pod-1/paths-" + portNodeDict[i]['node'] + "/pathep-[eth1/" + portNodeDict[i]['port'] + "]\",\"lc\":\"blacklist\"},\"children\":[]}}"
           if(portNodeDict[i]['intfType'] == "vpc"):
             nodeList = portNodeDict[i]['node'].split("-")
-            print("Disabling ports on: " + portNodeDict[i]['name'])
+            print("Disabling ports on: " + portNodeDict[i]['name'] + "\t" + portNodeDict[i]['toPort'])
             for j in range(len(nodeList)):
                 portJson = {"fabricRsOosPath":{"attributes":{"tDn":"topology/pod-1/paths-" + nodeList[j] + "/pathep-[eth1/" + portNodeDict[i]['toPort'] + "]","lc":"blacklist"},"children":[]}}
+                print(portJson)
                 portShut = requests.post(portURL, json=portJson, cookies=cookie, verify=False)
+                print(portShut)
 
     if(specDict['action'] == "noshut"):
        for i in range(len(portNodeDict)):
