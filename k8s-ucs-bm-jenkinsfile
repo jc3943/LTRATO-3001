@@ -41,7 +41,7 @@ pipeline {
       steps {
         container('ubuntu-tfe') {
           //kick policy and profile create
-          dir('tfe/intersight/osInstall/os_isntall') {
+          dir('tfe/intersight/osInstall/os_install') {
             sh 'terraform init'
             sh 'terraform apply -var-file=../../../../$osVars -auto-approve'
           }
