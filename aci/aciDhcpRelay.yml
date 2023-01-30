@@ -41,7 +41,7 @@
         epg_type: epg
         anp: "{{ dhcp.appProfile }}"
         epg: "{{ dhcp.epg }}"
-        dhcp_server_addr: "{{ dhcp.dhcpRelay }}"
+        dhcp_server_addr: "{{ dhcp.dhcpProviderIP }}"
       loop: "{{ dhcplist.list }}"
       loop_control:
         loop_var: dhcp
