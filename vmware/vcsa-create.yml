@@ -5,7 +5,7 @@
   vars: 
     #esxi_address: '172.16.100.200'
     esxi_username: 'root'
-    esxi_password: 'DEVP@ssw0rd'
+    esxi_password: 'THORP@ssw0rd'
     pod_esxi_password: 'DEVP@ssw0rd'
     vcenter_password: 'DEVP@ssw0rd'
     #vcenter_hostname: 'hx-crypto-vcsa'
