@@ -112,7 +112,7 @@
       folder: /
       name: 'ubuntu-{{ vms.epg }}'
       properties:
-          - guest.net
+        - guest.ipAddress
     retries: 60
     delay: 10
     until: gather_vm_info.instance.guest.ipAddress is not none
@@ -123,23 +123,4 @@
     when: (vms.domainType == "vmm" and vms.dhcpRelay == "YES")
     delegate_to: localhost
 
-  - name: Set device_config_ids variable
-      set_fact:
-        device_config_ids: >-
-         {{ device_config_ids | default([])
-           + [item.deviceConfigId]
-          }}
-      loop: "{{ gather_vm_info.instance.guest.net }}"
-
-  - name: Display the first interface set IP Address of a virtual machine
-      debug:
-        msg: "{{ item.1.ipAddress.0 }}"
-      with_nested:
-        - "{{ device_config_ids | sort | first }}"
-        - "{{ gather_vm_info.instance.guest.net }}"
-      when:
-        - item.0 | int == item.1.deviceConfigId
-
-
-
-  
+  - debug: var=gather_vm_info
