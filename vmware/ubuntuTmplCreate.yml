@@ -108,7 +108,6 @@
       validate_certs: no
       schema: vsphere
       datacenter: "sandbox"
-      cluster: "sandbox"
       folder: /
       name: 'ubuntu-{{ vms.epg }}'
       properties:
