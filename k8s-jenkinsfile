@@ -134,6 +134,11 @@ pipeline {
               extras: '--extra-vars="@$varPath/aci/bare-metal-aep.yaml"',
               colorized: true
           )
+          ansiblePlaybook(
+              playbook: './aci/aciDhcpRelay.yml',
+              inventory: '$apicInventoryx509',
+              colorized: true
+          )
         }
       }
     }

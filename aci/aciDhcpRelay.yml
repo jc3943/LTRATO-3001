@@ -27,7 +27,7 @@
       loop_control:
         loop_var: dhcp
       delegate_to: localhost
-      when: (dhcp.dhcpRelay != "NA")
+      when: (dhcp.dhcpProviderIP != "NA")
 
     - name: TASK 03 - Add DHCP Relay Providers
       cisco.aci.aci_dhcp_relay_provider:
