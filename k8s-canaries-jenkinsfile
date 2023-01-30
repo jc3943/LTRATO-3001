@@ -1,0 +1,56 @@
+//Authored by Jeff Comer
+
+def nodeLabel = 'pod-builder-agent'
+pipeline {
+  environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        APIC_CREDS = credentials('apic-creds')
+        apicSnap = "acisim-521g-base-" + "${BRANCH_NAME}"
+        apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
+        apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
+        apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+  }
+  agent {
+    kubernetes {
+      yamlFile 'jnlp-ubuntu.yaml'
+    }
+  }
+  
+  stages{
+    stage('Stat k8s Nodes') {
+      steps {
+        container('ubuntu-runner') {
+          //Check health state of k8s nodes in target cluster
+          sh 'cp -r .kube /root/'
+          sh 'python3 k8s/clusterHealth.py'
+        }
+      }
+    }
+    stage('Deploy VCSA and add credentials to APIC') {
+      steps {
+        container('jnlp') {
+          sh '''
+          echo "Inbound Agent is Connected"
+          '''
+        }
+        container('ubuntu-runner') {
+          ansiblePlaybook(
+              playbook: './vmware/ubuntuTmplCreate.yml',
+              inventory: 'localhost',
+              colorized: true
+          )
+        }
+      }
+    }
+  /*  stage('Upgrade APIC') {
+      steps {
+        container('ubuntu-runner') {
+          //Upgrade APIC'S
+          sh 'python3 ./aci/aciUpgrade.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/aci/switch-inventory.csv'
+        }
+      }
+    } */
+  }
+}
