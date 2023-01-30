@@ -106,6 +106,7 @@
       username: '{{ vcsa_user }}'
       password: '{{ vcsa_pw }}'
       validate_certs: no
+      schema: vsphere
       datacenter: "sandbox"
       cluster: "sandbox"
       folder: /
