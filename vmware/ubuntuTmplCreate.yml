@@ -1,0 +1,88 @@
+---
+- hosts: localhost
+  name: Deploy the VCSA to an ESXi Host
+  gather_facts: false
+  vars: 
+    esxi_username: 'root'
+    esxi_password: 'DEVP@ssw0rd'
+    pod_esxi_password: 'DEVP@ssw0rd'
+    vcenter_password: 'DEVP@ssw0rd'
+    net_prefix: '24'
+    net_gateway: '172.16.14.254'
+    dns_servers: '172.16.20.101'
+    ntp_servers: '172.20.1.254'
+    domain: 'thor.iws.navy.mil'
+    searchpath: "thor.iws.navy.mil"
+    datastore: 'sandbox'
+    networks: 'Storage Controller Management Network'
+    ubuntu_ova_name: ubuntu-pod16.ova
+    ubuntu_ova_url: http://172.16.65.167/00-Software/utils/
+    #vcsa_ova_file: '/var/jenkins_home/{{ vcsa_ova_name }}'
+    ubuntu_ova_file: '/tmp/{{ vcsa_ova_name }}'
+    nfs_file_browser_url: "http://172.16.10.124:8005"
+    nfs_file_browser_user: "admin"
+    nfs_file_browser_password: "admin"
+    nfs_file_url: '/api/raw/00-Software/utils/{{ vcsa_ova_name }}'
+
+  tasks:
+#  - name: Creating a Directory to mount the NFS Storage
+#    become: true
+#    file:
+#      path: /var/jenkins_home/iso
+#      state: directory
+#      mode: 0777
+
+  - name: Authenticate to the nfs file browser
+    uri:
+      url: '{{ nfs_file_browser_url }}/api/login'
+      method: POST
+      body_format: json
+      body: '{"username":"{{ nfs_file_browser_user }}","password":"{{ nfs_file_browser_password }}","recaptcha":""}'
+      headers:
+        Content-Type: "application/json"
+        Accept: "application/json"
+      return_content: yes
+      validate_certs: no
+      status_code: 200, -1
+    register: auth_res
+
+  - name: Download the file
+    get_url:
+      url: '{{ nfs_file_browser_url }}/api/raw/00-Software/utils/{{ ubuntu_ova_name }}?auth={{ auth_res.content  }}'
+      #dest: '/var/jenkins_home/{{ vcsa_ova_name }}'
+      dest: '/tmp/{{ ubuntu_ova_name }}'
+
+  - vmware_deploy_ovf:
+      #hostname: '{{ item.vcsaHost }}'
+      hostname: "172.16.115.11"
+      username: '{{ esxi_username }}'
+      password: '{{ esxi_password }}'
+      #name: '{{ vcenter_hostname }}'
+      name: "tmpl_ubuntu" 
+      ovf: '{{ ubuntu_ova_file }}' 
+      wait_for_ip_address: false
+      power_on: no
+      validate_certs: no
+      inject_ovf_env: false
+      datastore: '{{ datastore }}'
+      networks: "{u'Network 1':u'{{ networks }}'}"
+#      properties:
+#        DeploymentOption.value: '{{ vcsa_size }}'
+#        guestinfo.cis.appliance.net.addr.family: 'ipv4'
+#        guestinfo.cis.appliance.net.mode: 'static'
+#        guestinfo.cis.appliance.net.addr: '{{ item.vcsaAddress }}' 
+#        guestinfo.cis.appliance.net.pnid: "{{ vcenter_hostname }}" 
+#        guestinfo.cis.appliance.net.prefix: '{{ net_prefix }}' 
+#        guestinfo.cis.appliance.net.gateway: '{{ net_gateway }}' 
+#        guestinfo.cis.appliance.net.dns.servers: '{{ dns_servers }}' 
+#        guestinfo.cis.appliance.root.passwd: '{{ vcenter_password }}' 
+#        guestinfo.cis.ceip_enabled: "False"
+#        guestinfo.cis.deployment.autoconfig: 'True' 
+#        guestinfo.cis.vmdir.password: '{{ vcenter_password }}'
+#        guestinfo.cis.appliance.time.tools-sync: 'true'
+#        guestinfo.cis.appliance.ntp.servers: '{{ ntp_servers }}'
+#        domain: '{{ domain }}'
+#        searchpath: '{{ searchpath }}'
+#    with_items: "{{ vcsaspecs }}"
+    delegate_to: localhost
+  
