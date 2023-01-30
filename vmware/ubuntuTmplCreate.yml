@@ -111,7 +111,7 @@
       folder: /
       name: 'ubuntu-{{ vms.epg }}'
       properties:
-        - guest.ipAddress
+        - guest.ipv4Address
     retries: 60
     delay: 10
     until: gather_vm_info.instance.guest.ipAddress is not none
