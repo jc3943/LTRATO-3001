@@ -83,7 +83,6 @@
       password: '{{ vcsa_pw }}'
       validate_certs: no
       template: "tmpl_ubuntu"
-      #name: '{{ vms.prefix }}{{ pod_name }}'
       name: 'ubuntu-{{ vms.epg }}'
       folder: /
       datacenter: "sandbox"
@@ -111,7 +110,7 @@
       folder: /
       name: 'ubuntu-{{ vms.epg }}'
       properties:
-        - guest.ipv4Address
+        - guest.ipAddress
     retries: 60
     delay: 10
     until: gather_vm_info.instance.guest.ipAddress is not none
