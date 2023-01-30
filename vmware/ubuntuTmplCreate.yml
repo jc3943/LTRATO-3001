@@ -79,14 +79,14 @@
       state: present
     delegate_to: localhost
   
-  - name: Create a template from deployed ova
-    vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
-      name: TMPL_ubuntu
-      library: SANDBOX-LIB.id
-      source_vm: tmpl_ubuntu.id
-      placement:
-        cluster: "{{ lookup('vmware.vmware_rest.cluster_moid', 'sandbox') }}"
-        folder: "{{ lookup('vmware.vmware_rest.folder_moid', '/sandbox/vm') }}"
-        
+#  - name: Create a template from deployed ova
+#    vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
+#      name: TMPL_ubuntu
+#      library: SANDBOX-LIB.id
+#      source_vm: tmpl_ubuntu.id
+#      placement:
+#        cluster: "{{ lookup('vmware.vmware_rest.cluster_moid', 'sandbox') }}"
+#        folder: "{{ lookup('vmware.vmware_rest.folder_moid', '/sandbox/vm') }}"
+
 
   
