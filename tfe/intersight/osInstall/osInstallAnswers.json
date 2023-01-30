@@ -1,0 +1,108 @@
+{
+    "ObjectType": "bulk.Request",
+    "ClassId": "bulk.Request",
+    "Moid": "63d5db8d2d1d9383fe08b25b",
+    "Results": [
+      {
+        "ObjectType": "bulk.RestResult",
+        "ClassId": "bulk.RestResult",
+        "Status": 200,
+        "Body": {
+          "Moid": "63d5db8d2d1d9383fe08b24e",
+          "ObjectType": "os.Install",
+          "ClassId": "os.Install",
+          "CreateTime": "2023-01-29T02:35:57.192266188Z",
+          "ModTime": "2023-01-29T02:35:57.192266188Z",
+          "Tags": [],
+          "Owners": [
+            "6273ddc07564612d30091b97"
+          ],
+          "SharedScope": "",
+          "AccountMoid": "6273ddc07564612d30091b97",
+          "DomainGroupMoid": "6273ddc07564612d30091b98",
+          "Ancestors": null,
+          "PermissionResources": [
+            {
+              "ObjectType": "organization.Organization",
+              "ClassId": "mo.MoRef",
+              "Moid": "6273e3fd6972652d3030ae8d",
+              "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/organization/Organizations/6273e3fd6972652d3030ae8d"
+            }
+          ],
+          "AdditionalParameters": [],
+          "Answers": {
+            "ClassId": "os.Answers",
+            "ObjectType": "os.Answers",
+            "Hostname": "sandbox-esxi",
+            "IpConfigType": "static",
+            "IpConfiguration": {
+              "ClassId": "os.Ipv4Configuration",
+              "ObjectType": "os.Ipv4Configuration",
+              "IpV4Config": {
+                "ClassId": "comm.IpV4Interface",
+                "ObjectType": "comm.IpV4Interface",
+                "Gateway": "172.16.115.254",
+                "IpAddress": "172.16.115.41",
+                "Netmask": "255.255.252.0"
+              }
+            },
+            "IsAnswerFileSet": false,
+            "IsRootPasswordCrypted": false,
+            "IsRootPasswordSet": true,
+            "Nameserver": "172.16.20.101",
+            "NetworkDevice": "vmnic5",
+            "ProductKey": "",
+            "Source": "Template"
+          },
+          "Description": "",
+          "ErrorMsg": "",
+          "InstallMethod": "vMedia",
+          "InstallTarget": {
+            "ClassId": "os.VirtualDrive",
+            "ObjectType": "os.VirtualDrive",
+            "Id": "0",
+            "Name": "RAID0_1",
+            "StorageControllerSlotId": "MRAID"
+          },
+          "OperState": "InProgress",
+          "OperatingSystemParameters": {
+            "ClassId": "os.VmwareParameters",
+            "ObjectType": "os.VmwareParameters",
+            "Vlanid": 1200
+          },
+          "Name": "InstallServerOS63d5db8d2d1d9383fe08b24e",
+          "ConfigurationFile": {
+            "ObjectType": "os.ConfigurationFile",
+            "ClassId": "mo.MoRef",
+            "Moid": "6273e458ad1203b1c4391159",
+            "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/os/ConfigurationFiles/6273e458ad1203b1c4391159"
+          },
+          "Image": {
+            "ObjectType": "softwarerepository.OperatingSystemFile",
+            "ClassId": "mo.MoRef",
+            "Moid": "63d5c5c26567612d305cb2b1",
+            "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/softwarerepository/OperatingSystemFiles/63d5c5c26567612d305cb2b1"
+          },
+          "Organization": {
+            "ObjectType": "organization.Organization",
+            "ClassId": "mo.MoRef",
+            "Moid": "6273e3fd6972652d3030ae8d",
+            "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/organization/Organizations/6273e3fd6972652d3030ae8d"
+          },
+          "OsduImage": {
+            "ObjectType": "firmware.ServerConfigurationUtilityDistributable",
+            "ClassId": "mo.MoRef",
+            "Moid": "63d5c5c26567612d305cb2ac",
+            "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/firmware/ServerConfigurationUtilityDistributables/63d5c5c26567612d305cb2ac"
+          },
+          "Server": {
+            "ObjectType": "compute.RackUnit",
+            "ClassId": "mo.MoRef",
+            "Moid": "63d15c426176752d305cc591",
+            "link": "https://qa-intersight.thor.iws.navy.mil/api/v1/compute/RackUnits/63d15c426176752d305cc591"
+          },
+          "WorkflowInfo": null
+        }
+      }
+    ]
+  }

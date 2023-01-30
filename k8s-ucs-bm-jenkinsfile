@@ -1,0 +1,93 @@
+//Authored by Jeff Comer
+
+def nodeLabel = 'pod-builder-agent'
+pipeline {
+  environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        repoVars = $varPath + "terraform/" +  "create_repos.tfvars"
+        osVars = $varPath + "terraform/" +  "os_install.tfvars"
+        APIC_CREDS = credentials('apic-creds')
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+  }
+  agent {
+    kubernetes {
+      yamlFile 'jnlp-ubuntu-tfe.yaml'
+    }
+  }
+  
+  stages{
+    stage('Stat k8s Nodes') {
+      steps {
+        container('ubuntu-tfe') {
+          //Check health state of k8s nodes in target cluster
+          sh 'cp -r .kube /root/'
+          sh 'python3 k8s/clusterHealth.py'
+        }
+      }
+    }
+    stage('Add OS Install SCU and Image to repos') {
+      steps {
+        container('ubuntu-tfe') {
+          //kick off terraform osInstall
+          dir('tfe/intersight/osInstall/create_repos') {
+            sh 'terraform init'
+            sh 'terraform apply -var-file=../../../../$repoVars -auto-approve'
+          }
+        }
+      }
+    }
+    stage('Initial Bare-Metal OS Installs') {
+      steps {
+        container('ubuntu-tfe') {
+          //kick policy and profile create
+          dir('tfe/intersight/osInstall/os_isntall') {
+            sh 'terraform init'
+            sh 'terraform apply -var-file=./../../../$osVars -auto-approve'
+          }
+          sh 'python3 intersight/intersightProfiles.py -u https://qa-intersight.thor.iws.navy.mil'
+        }
+      }
+    } 
+    stage('Create HX DataStore') {
+      steps {
+        container('ubuntu-tfe') {
+          //Create HX DataStore from json template file
+          sh 'python3 hyperflex/hx-createdatastore.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/hyperflex/hx-ctrlvm.csv'
+        }
+      }
+    }
+    stage('Config IMC vnics for VPC') {
+      steps {
+        container('ubuntu-tfe') {
+          //Re-enable fabric ports and config imc for vpc ports and vnics
+          sh 'python3 aci/aciHxVpcOps.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i 172.20.104.7 -f $varPath/aci/port-defs.csv -a noshut'
+          sh 'python3 imc/imcVnicCreate.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/imc/hostIpAddrs.csv'
+          sh 'python3 imc/imcServerPowerCycle.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/imc/hostIpAddrs.csv'
+          //need code here to check esxi http status 200 instead of sleeping
+          sh 'sleep 600'
+        }
+      }
+    } 
+    stage('Post-install tasks and DVS Configs') {
+      steps {
+        container('ubuntu-tfe') {
+          //add vmkernel addrs for vmotion and add hosts and vnics to DVS
+          ansiblePlaybook(
+              playbook: './vmware/hxHosts-vcenter-tasks.yml',
+              inventory: 'localhost',
+              extraVars: [
+                  vcsa_hostname: "$vcsaHostName",
+                  datacenter_name: "${BRANCH_NAME}",
+                  cluster_name: "${BRANCH_NAME}",
+                  datastore: "${BRANCH_NAME}",
+                  vcsa_user: "administrator@vsphere.local",
+                  vcsa_pwd: "$APIC_CREDS_PSW"
+              ],
+              colorized: true
+          )
+        }
+      }
+    }
+  }
+}
