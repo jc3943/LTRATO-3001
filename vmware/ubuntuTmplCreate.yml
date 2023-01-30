@@ -69,39 +69,39 @@
       networks: "{u'Network 1':u'{{ networks }}'}"
     delegate_to: localhost
 
-  - read_csv:
-      path: $varPath/aci/tenant.csv
-    register: tenantlist
-    tags: canary
+#  - read_csv:
+#      path: $varPath/aci/tenant.csv
+#    register: tenantlist
+#    tags: canary
 
-  - name: TASK - Clone Ubuntu Template
-    community.vmware.vmware_guest:
-      hostname: '{{ vcenter_hostname }}'
-      username: '{{ vcsa_user }}'
-      password: '{{ vcsa_pw }}'
-      validate_certs: no
-      template: "tmpl_ubuntu"
-      #name: '{{ vms.prefix }}{{ pod_name }}'
-      name: 'ubuntu-{{ vms.epg }}'
-      folder: /
-      datacenter: "sandbox"
-      cluster: "sandbox"
-      customization:
-        dns_servers:
-        - 172.16.20.101
-      networks:
-        - name: "{{ vms.tenant }}|{{ vms.appProfile }}|{{ vms.epg }}"
-          type: static
-          ip: '{{ vms.gateway }} | ipmath (-1)'
-          netmask: "255.255.252.0"
-          gateway: "{{ vms.gateway }}"
-          connected: yes
-          start_connected: yes
-      state: poweredon
-    loop: "{{ tenantlist.list }}"
-    loop_control:
-        loop_var: vms
-    when: (vms.domainType == "vmm")
-    delegate_to: localhost
+#  - name: TASK - Clone Ubuntu Template
+#    community.vmware.vmware_guest:
+#      hostname: '{{ vcenter_hostname }}'
+#      username: '{{ vcsa_user }}'
+#      password: '{{ vcsa_pw }}'
+#      validate_certs: no
+#      template: "tmpl_ubuntu"
+#      #name: '{{ vms.prefix }}{{ pod_name }}'
+#      name: 'ubuntu-{{ vms.epg }}'
+#      folder: /
+#      datacenter: "sandbox"
+#      cluster: "sandbox"
+#      customization:
+#        dns_servers:
+#        - 172.16.20.101
+#      networks:
+#        - name: "{{ vms.tenant }}|{{ vms.appProfile }}|{{ vms.epg }}"
+#          type: static
+#          ip: '{{ vms.gateway }} | ipmath (-1)'
+#          netmask: "255.255.252.0"
+#          gateway: "{{ vms.gateway }}"
+#          connected: yes
+#          start_connected: yes
+#      state: poweredon
+#    loop: "{{ tenantlist.list }}"
+#    loop_control:
+#        loop_var: vms
+#    when: (vms.domainType == "vmm")
+#    delegate_to: localhost
 
   
