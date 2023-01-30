@@ -70,7 +70,7 @@
     delegate_to: localhost
 
   - read_csv:
-      path: $varPath/aci/tenant.csv
+      path: ../$varPath/aci/tenant.csv
     register: tenantlist
     tags: canary
 
