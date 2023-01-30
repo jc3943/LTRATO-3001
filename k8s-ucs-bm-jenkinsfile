@@ -43,7 +43,7 @@ pipeline {
           //kick policy and profile create
           dir('tfe/intersight/osInstall/os_isntall') {
             sh 'terraform init'
-            sh 'terraform apply -var-file=./../../../$osVars -auto-approve'
+            sh 'terraform apply -var-file=../../../../$osVars -auto-approve'
           }
         }
       }
