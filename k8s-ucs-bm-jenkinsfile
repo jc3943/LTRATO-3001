@@ -5,8 +5,8 @@ pipeline {
   environment {
         BRANCH_NAME = "${GIT_BRANCH}"
         varPath = "vars/" + "${BRANCH_NAME}"
-        repoVars = "${varPath}" + "terraform/" +  "create_repos.tfvars"
-        osVars = "${varPath}" + "terraform/" +  "os_install.tfvars"
+        repoVars = "${varPath}" + "/terraform/" +  "create_repos.tfvars"
+        osVars = "${varPath}" + "/terraform/" +  "os_install.tfvars"
         APIC_CREDS = credentials('apic-creds')
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
   }
