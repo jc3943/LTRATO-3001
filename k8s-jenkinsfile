@@ -139,7 +139,7 @@ pipeline {
     }
     stage('Kickoff Bare Metal Install Pipeline') {
       steps {
-        build job: 'intersightBareMetalInstall', propagate: true, wait: false
+        build job: 'intersight-BareMetalInstall', propagate: true, wait: false
       }
     }
   /*  stage('Upgrade APIC') {
