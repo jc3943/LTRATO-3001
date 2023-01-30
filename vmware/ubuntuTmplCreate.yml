@@ -18,7 +18,7 @@
     searchpath: "thor.iws.navy.mil"
     datastore: 'SANDBOX'
     networks: 'SERVICES|Management|EPG_1200'
-    ubuntu_ova_name: ubuntu-pod16.ova
+    ubuntu_ova_name: jammy-server-cloudimg-amd64.ova
     ubuntu_ova_url: http://172.16.65.167/00-Software/utils/
     #vcsa_ova_file: '/var/jenkins_home/{{ vcsa_ova_name }}'
     ubuntu_ova_file: '/tmp/{{ ubuntu_ova_name }}'
@@ -88,15 +88,15 @@
       folder: /
       datacenter: "sandbox"
       cluster: "sandbox"
-      customization:
-        dns_servers:
-        - 172.16.20.101
+      #customization:
+      #  dns_servers:
+      #  - 172.16.20.101
       networks:
         - name: "{{ vms.tenant }}|{{ vms.appProfile }}|{{ vms.epg }}"
-          type: static
-          ip: '{{ vms.gateway }} | ipmath (-1)'
-          netmask: "255.255.252.0"
-          gateway: "{{ vms.gateway }}"
+          type: dhcp
+          #ip: '{{ vms.gateway }} | ipmath (-1)'
+          #netmask: "255.255.252.0"
+          #gateway: "{{ vms.gateway }}"
           connected: yes
           start_connected: yes
       state: poweredon
