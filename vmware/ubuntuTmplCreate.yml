@@ -97,7 +97,7 @@
     loop: "{{ tenantlist.list }}"
     loop_control:
         loop_var: vms
-    when: (vms.domainType == "vmm")
+    when: (vms.domainType == "vmm" and vms.dhcpRelay != "NA")
     delegate_to: localhost
 
   - name: TASK - Gather VM IP
@@ -119,7 +119,7 @@
     loop: "{{ tenantlist.list }}"
     loop_control:
         loop_var: vms
-    when: (vms.domainType == "vmm")
+    when: (vms.domainType == "vmm" and vms.dhcpRelay != "NA")
     delegate_to: localhost
 
   - debug: var=gather_vm_info
