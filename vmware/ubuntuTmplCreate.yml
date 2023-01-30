@@ -6,6 +6,7 @@
     esxi_username: 'root'
     esxi_password: 'DEVP@ssw0rd'
     pod_esxi_password: 'DEVP@ssw0rd'
+    vcenter_hostname: '172.16.14.137'
     vcenter_password: 'DEVP@ssw0rd'
     net_prefix: '24'
     net_gateway: '172.16.14.254'
@@ -52,7 +53,7 @@
       #dest: '/var/jenkins_home/{{ vcsa_ova_name }}'
       dest: '/tmp/{{ ubuntu_ova_name }}'
 
-  - vmware_deploy_ovf:
+  - ubuntu_deploy_ovf:
       #hostname: '{{ item.vcsaHost }}'
       hostname: "172.16.115.11"
       username: '{{ esxi_username }}'
@@ -68,25 +69,39 @@
       networks: "{u'Network 1':u'{{ networks }}'}"
     delegate_to: localhost
 
-  - name: Create a content library
-    community.vmware.vmware_content_library_manager:
-      hostname: 172.16.14.137
-      username: administrator@vsphere.local
-      password: DEVP@ssw0rd
-      library_name: SANDBOX-LIB
-      library_type: local
-      datastore_name: SANDBOX
-      state: present
-    delegate_to: localhost
-  
-#  - name: Create a template from deployed ova
-#    vmware.vmware_rest.vcenter_vmtemplate_libraryitems:
-#      name: TMPL_ubuntu
-#      library: SANDBOX-LIB.id
-#      source_vm: tmpl_ubuntu.id
-#      placement:
-#        cluster: "{{ lookup('vmware.vmware_rest.cluster_moid', 'sandbox') }}"
-#        folder: "{{ lookup('vmware.vmware_rest.folder_moid', '/sandbox/vm') }}"
+  - read_csv:
+      path: $varPath/aci/tenant.csv
+    register: tenantlist
+    tags: canary
 
+  - name: TASK - Clone Ubuntu Template
+    community.vmware.vmware_guest:
+      hostname: '{{ vcenter_hostname }}'
+      username: '{{ vcsa_user }}'
+      password: '{{ vcsa_pw }}'
+      validate_certs: no
+      template: "tmpl_ubuntu"
+      #name: '{{ vms.prefix }}{{ pod_name }}'
+      name: 'ubuntu-{{ vms.epg }}'
+      folder: /
+      datacenter: "sandbox"
+      cluster: "sandbox"
+      customization:
+        dns_servers:
+        - 172.16.20.101
+      networks:
+        - name: "{{ vms.tenant }}|{{ vms.appProfile }}|{{ vms.epg }}"
+          type: static
+          ip: '{{ vms.gateway }} | ipmath (-1)'
+          netmask: "255.255.252.0"
+          gateway: "{{ vms.gateway }}"
+          connected: yes
+          start_connected: yes
+      state: poweredon
+    loop: "{{ tenantlist.list }}"
+    loop_control:
+        loop_var: vms
+    when: (vms.domainType == "vmm")
+    delegate_to: localhost
 
   
