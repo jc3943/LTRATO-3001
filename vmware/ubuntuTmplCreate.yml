@@ -8,6 +8,8 @@
     pod_esxi_password: 'DEVP@ssw0rd'
     vcenter_hostname: '172.16.14.137'
     vcenter_password: 'DEVP@ssw0rd'
+    vcsa_user: 'administrator@vsphere.local'
+    vcsa_pw: 'DEVP@ssw0rd'
     net_prefix: '24'
     net_gateway: '172.16.14.254'
     dns_servers: '172.16.20.101'
