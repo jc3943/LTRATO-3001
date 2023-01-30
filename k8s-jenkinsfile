@@ -137,6 +137,11 @@ pipeline {
         }
       }
     }
+    stage('Kickoff Bare Metal Install Pipeline') {
+      steps {
+        build job: 'intersightBareMetalInstall', propogate: true, wait: false
+      }
+    }
   /*  stage('Upgrade APIC') {
       steps {
         container('ubuntu-runner') {
