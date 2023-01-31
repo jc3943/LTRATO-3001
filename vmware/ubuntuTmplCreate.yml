@@ -16,7 +16,7 @@
     ntp_servers: '172.20.1.254'
     domain: 'thor.iws.navy.mil'
     searchpath: "thor.iws.navy.mil"
-    datastore: 'SANDBOX'
+    datastore: 'sandbox'
     networks: 'SERVICES|Management|EPG_1200'
     ubuntu_ova_name: jammy-server-cloudimg-amd64.ova
     ubuntu_ova_url: http://172.16.65.167/00-Software/utils/
@@ -57,7 +57,7 @@
 
   - vmware_deploy_ovf:
       #hostname: '{{ item.vcsaHost }}'
-      hostname: "172.16.115.11"
+      hostname: "172.16.115.12"
       username: '{{ esxi_username }}'
       password: '{{ esxi_password }}'
       #name: '{{ vcenter_hostname }}'
