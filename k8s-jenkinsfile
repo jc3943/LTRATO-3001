@@ -142,9 +142,10 @@ pipeline {
         }
       }
     }
-    stage('Kickoff Bare Metal Install Pipeline') {
+    stage('Kickoff ESXi and HX Installs') {
       steps {
         build job: 'intersight-BareMetalInstall', propagate: true, wait: false
+        build job: 'ucs-pipeline', propagate: true, wait: false
       }
     }
   /*  stage('Upgrade APIC') {
