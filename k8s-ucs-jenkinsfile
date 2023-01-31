@@ -57,14 +57,6 @@ pipeline {
         }
       }
     } 
-    stage('Create HX DataStore') {
-      steps {
-        container('ubuntu-tfe') {
-          //Create HX DataStore from json template file
-          sh 'python3 hyperflex/hx-createdatastore.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/hyperflex/hx-ctrlvm.csv'
-        }
-      }
-    }
     stage('Config IMC vnics for VPC') {
       steps {
         container('ubuntu-tfe') {
@@ -74,6 +66,15 @@ pipeline {
           sh 'python3 imc/imcServerPowerCycle.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/imc/hostIpAddrs.csv'
           //need code here to check esxi http status 200 instead of sleeping
           sh 'sleep 600'
+        }
+      }
+    }
+    stage('Create HX DataStore') {
+      steps {
+        container('ubuntu-tfe') {
+          //Create HX DataStore from json template file
+          sh 'python3 hyperflex/hx-createdatastore.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/hyperflex/hx-ctrlvm.csv'
+          sh 'sleep 30'
         }
       }
     } 
