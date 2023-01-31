@@ -333,6 +333,7 @@
         domain: "{{ item.domain }}"
         domain_type: "{{ item.domainType }}"
         vm_provider: "vmware"
+        deploy_immediacy: "immediate"
         resolution_immediacy: "pre-provision"
         encap_mode: "vlan"
         encap: "{{ item.encaps }}"
