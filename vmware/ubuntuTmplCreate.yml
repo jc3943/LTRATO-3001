@@ -17,7 +17,7 @@
     domain: 'thor.iws.navy.mil'
     searchpath: "thor.iws.navy.mil"
     datastore: 'sandbox'
-    networks: 'SERVICES|Management|EPG_1200'
+    networks: 'Storage Controller Management Network'
     ubuntu_ova_name: jammy-server-cloudimg-amd64.ova
     ubuntu_ova_url: http://172.16.65.167/00-Software/utils/
     #vcsa_ova_file: '/var/jenkins_home/{{ vcsa_ova_name }}'
