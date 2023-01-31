@@ -333,7 +333,7 @@
         domain: "{{ item.domain }}"
         domain_type: "{{ item.domainType }}"
         vm_provider: "vmware"
-        resolution_immediacy: "immediate"
+        resolution_immediacy: "pre-provision"
         encap_mode: "vlan"
         encap: "{{ item.encaps }}"
       when: (item.encaptype == "vlan" and item.domainType == "vmm")
