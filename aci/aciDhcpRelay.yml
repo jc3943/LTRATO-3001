@@ -46,7 +46,7 @@
       loop_control:
         loop_var: dhcp
       delegate_to: localhost
-      when: (dhcp.dhcpRelay != "NA")
+      when: (dhcp.dhcpProviderIP != "NA")
 
     - name: TASK 04 - Add DHCP Label to Bridge Domains
       cisco.aci.aci_bd_dhcp_label:
