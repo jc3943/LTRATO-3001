@@ -65,7 +65,7 @@ pipeline {
           sh 'python3 imc/imcVnicCreate.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/imc/hostIpAddrs.csv'
           sh 'python3 imc/imcServerPowerCycle.py -u $APIC_CREDS_USR -p $APIC_CREDS_PSW -i $varPath/imc/hostIpAddrs.csv'
           //need code here to check esxi http status 200 instead of sleeping
-          sh 'sleep 600'
+          sh 'sleep 900'
         }
       }
     }
