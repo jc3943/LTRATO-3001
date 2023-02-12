@@ -1,6 +1,6 @@
 import urllib.request
 import urllib3
-import sys, time
+import sys, time, os
 import getopt
 import requests
 import csv, json, pprint
@@ -132,3 +132,66 @@ def getNodeStatus(specDict, apicSnacks):
     print(nodeFitList)
     print(nodeUnFitList)
     return nodeUnFitList
+
+def getAciIpEp(specDict, apicSnacks):
+
+    fvIpEpListoDicts = []
+    fvIpEpDict = {'ipAddress':'', 'macAddress':'', 'tenant':'', 'BD':'', 'EPG':''}
+    outfilepath = os.environ['varPath']
+    outfile = outfilepath + "/aci/aciEpData.csv"
+
+    baseURL = "https://" + specDict['hostIp']
+    fvCEpURL = baseURL + "/api/node/class/fvCEp.json?query-target=children&target-subtree-class=fvIp"
+    cookie = apicSnacks
+    aciIpEpResponse = requests.get(fvCEpURL, cookies=cookie, verify=False)
+    aciIpEpJson = aciIpEpResponse.json()
+    for i in range(len(aciIpEpJson['imdata'])):
+        if (aciIpEpJson['imdata'][i]['fvIp']['attributes']['bdDn'] != ""):
+            epIp = aciIpEpJson['imdata'][i]['fvIp']['attributes']['addr']
+            bdDn = aciIpEpJson['imdata'][i]['fvIp']['attributes']['bdDn']
+            firstSplit = bdDn.split("/")
+            tenantSplit = firstSplit[1].split("-")
+            tenant = tenantSplit[1]
+            bdSplit = firstSplit[2].split("-") 
+            bridgeDomain = bdSplit[1]
+            dn = bdDn = aciIpEpJson['imdata'][i]['fvIp']['attributes']['dn']
+            dnSplit = dn.split("/")
+            epgSplit = dnSplit[3].split("-")
+            egp = epgSplit[1]
+            macSplit = dnSplit[4].split("-")
+            mac = macSplit[1]
+            fvIpEpDict = {'ipAddress':epIp, 'macAddress':mac, 'tenant':tenant, 'BD':bridgeDomain, 'EPG':egp}
+            fvIpEpListoDicts.append(fvIpEpDict)
+            print(fvIpEpDict)
+
+    keys = fvIpEpListoDicts[0].keys()
+    with open(outfile, 'w', newline='') as output_file:
+        dict_writer = csv.DictWriter(output_file, keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(fvIpEpListoDicts)
+    return fvIpEpListoDicts
+
+def getTenants(specDict, apicSnacks):
+    tenantList = []
+    baseURL = "https://" + specDict['hostIp']
+    tenantURL = baseURL + "/api/node/class/fvTenant.json"
+    cookie = apicSnacks
+    tenantResponse = requests.get(tenantURL, cookies=cookie, verify=False)
+    tenantJson = tenantResponse.json()
+    for i in range(len(tenantJson['imdata'])):
+        if (tenantJson['imdata'][i]['fvTenant']['attributes']['name'] == "infra" or tenantJson['imdata'][i]['fvTenant']['attributes']['name'] == "common" or tenantJson['imdata'][i]['fvTenant']['attributes']['name'] == "mgmt"):
+            print("Ignoring default tenants")
+        else:
+            tenantList.append(tenantJson['imdata'][i]['fvTenant']['attributes']['name'])
+
+    return tenantList
+
+def getTenantBDs(specDict, apicSnacks, tenants):
+    bdDict = {}
+    baseURL = "https://" + specDict['hostIp']
+    cookie = apicSnacks
+    for i in range(len(tenants)):
+        tenantBDURL = baseURL + "/api/node/mo/uni/tn-" + tenants[i] + ".json?query-target=children&target-subtree-class=fvBD"
+        tenantBDResponse = requests.get(tenantBDURL, cookies=cookie, verify=False)
+        tenantBDJson = tenantBDResponse.json()
+        print(tenantBDJson)

@@ -1,0 +1,54 @@
+---
+#Jeff Comer
+#Ansible playbook to add devices to NSO
+
+- hosts: localhost
+  gather_facts: no
+
+  tasks:
+  - name: CREATE DEVICE IN NSO
+    cisco.nso.nso_config:
+      url: "{{ item.nsoUrl }}"
+      username: ncsadmin
+      password: ncsadmin
+      data:
+        tailf-ncs:devices:
+          device:
+           - address: "{{ item.apicAddress }}"
+             description: CONFIGURED BY ANSIBLE!
+             name: "{{ item.apicName }}"
+             authgroup: "DEV"
+             device-type:
+               generic:
+                 ned-id: "cisco-apicdc-gen-3.18"
+             port: "443"
+             state:
+               admin-state: "unlocked"
+    with_items: "{{ nsospecs }}"
+
+  - name: Fetch ssh host keys
+    cisco.nso.nso_action:
+       url: "{{ item.nsoUrl }}"
+       username: ncsadmin
+       password: ncsadmin
+       path: /ncs:devices/fetch-ssh-host-keys
+       input: {}
+    with_items: "{{ nsospecs }}"
+
+  - name: Connect to Device
+    cisco.nso.nso_action:
+       url: "{{ item.nsoUrl }}"
+       username: ncsadmin
+       password: ncsadmin
+       path: /ncs:devices/device{"{{ item.apicName }}"}/connect
+       input: {}
+    with_items: "{{ nsospecs }}"
+
+  - name: Sync From Device
+    cisco.nso.nso_action:
+       url: "{{ item.nsoUrl }}"
+       username: ncsadmin
+       password: ncsadmin
+       path: /ncs:devices/device{"{{ item.apicName }}"}/sync-from
+       input: {}
+    with_items: "{{ nsospecs }}"

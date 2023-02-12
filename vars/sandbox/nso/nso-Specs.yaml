@@ -1,4 +1,6 @@
 nsospecs:
-- nsoUrl: http://172.16.14.164:8080/jsonrpc
+- nsoUrl: http://172.16.14.163:8080/jsonrpc
   c8000vAddress: 172.0.16.11
   c8000vName: pod16-8000v
+  apicAddress: 172.20.104.7
+  apicName: sandbox
