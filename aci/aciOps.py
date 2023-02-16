@@ -180,18 +180,31 @@ def getTenants(specDict, apicSnacks):
     tenantJson = tenantResponse.json()
     for i in range(len(tenantJson['imdata'])):
         if (tenantJson['imdata'][i]['fvTenant']['attributes']['name'] == "infra" or tenantJson['imdata'][i]['fvTenant']['attributes']['name'] == "common" or tenantJson['imdata'][i]['fvTenant']['attributes']['name'] == "mgmt"):
-            print("Ignoring default tenants")
+            print("Ignoring default tenants", tenantJson['imdata'][i]['fvTenant']['attributes']['name'])
         else:
             tenantList.append(tenantJson['imdata'][i]['fvTenant']['attributes']['name'])
 
     return tenantList
 
 def getTenantBDs(specDict, apicSnacks, tenants):
-    bdDict = {}
+    bdDict = {'bridgeDomain':'', 'gateway':'', 'prefixLength':'', 'tenant':''}
+    bdDictList = []
     baseURL = "https://" + specDict['hostIp']
     cookie = apicSnacks
     for i in range(len(tenants)):
         tenantBDURL = baseURL + "/api/node/mo/uni/tn-" + tenants[i] + ".json?query-target=children&target-subtree-class=fvBD"
         tenantBDResponse = requests.get(tenantBDURL, cookies=cookie, verify=False)
         tenantBDJson = tenantBDResponse.json()
-        print(tenantBDJson)
+        #print(tenantBDJson)
+        for k in range(len(tenantBDJson['imdata'])):
+            bdDataURL = baseURL + "/api/node/mo/uni/tn-" + tenants[i] + "/BD-" + tenantBDJson['imdata'][k]['fvBD']['attributes']['name'] + ".json?query-target=children&target-subtree-class=fvSubnet"
+            print(bdDataURL)
+            bdDataResponse = requests.get(bdDataURL, cookies=cookie, verify=False)
+            bdDataJson = bdDataResponse.json()
+            ipSpecs = bdDataJson['imdata'][0]['fvSubnet']['attributes']['ip']
+            ipSpecSplit = ipSpecs.split("/")
+            gwAddr = ipSpecSplit[0]
+            prefixLength = ipSpecSplit[1]
+            bdDict = {'bridgeDomain':tenantBDJson['imdata'][k]['fvBD']['attributes']['name'], 'gateway':gwAddr, 'prefixLength':prefixLength, 'tenant':tenants[i]}
+            bdDictList.append(bdDict)
+    print(bdDictList)

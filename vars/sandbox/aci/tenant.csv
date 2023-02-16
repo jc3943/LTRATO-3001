@@ -6,3 +6,66 @@ BD_1200,172.16.115.254,22,SERVICES,services-vrf,Management,ESXi Management EPG,E
 BD_1202,172.16.117.254,24,SERVICES,services-vrf,Management,ESXi vMtion EPG,EPG_1202,HX-VMM,vmm,SERVICES-Contract,1202,auto,services-allow_all,NA,NA,NA,NA,NA,NA,NA
 BD_5,172.16.125.14,28,SERVICES,services-vrf,Management,Security EPG,EPG_5,HX-VMM,vmm,SERVICES-Contract,1205,vlan,services-allow_all,out-L3Out_SBOX,NA,NA,YES,172.16.20.101,NA,NA
 BD_1225,172.16.118.254,24,SERVICES,services-vrf,Management,Security EPG,EPG_1225,HX-VMM,vmm,SERVICES-Contract,1225,vlan,services-allow_all,out-L3Out_SBOX,NA,NA,YES,172.16.20.101,NA,NA
+BD_10,192.168.10.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_10,OUSV4-VMM,vmm,UICS-Contract,10,vlan,uics-allow-all,NA,NA,NA
+BD_20,192.168.20.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_20,OUSV4-VMM,vmm,UICS-Contract,20,vlan,uics-allow-all,NA,NA,NA
+BD_30,10.10.10.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_30,OUSV4-VMM,vmm,UICS-Contract,30,vlan,uics-allow-all,NA,NA,NA
+BD_31,10.10.20.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_31,OUSV4-VMM,vmm,UICS-Contract,31,vlan,uics-allow-all,NA,NA,NA
+BD_56,192.168.56.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_56,OUSV4-VMM,vmm,UICS-Contract,56,vlan,uics-allow-all,NA,NA,NA
+BD_57,192.168.57.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_57,OUSV4-VMM,vmm,UICS-Contract,57,vlan,uics-allow-all,NA,NA,NA
+BD_58,192.168.58.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_58,OUSV4-VMM,vmm,UICS-Contract,58,vlan,uics-allow-all,NA,NA,NA
+BD_59,192.168.59.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_59,OUSV4-VMM,vmm,UICS-Contract,59,vlan,uics-allow-all,NA,NA,NA
+BD_60,192.168.60.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_60,OUSV4-VMM,vmm,UICS-Contract,60,vlan,uics-allow-all,NA,NA,NA
+BD_61,192.168.107.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_61,OUSV4-VMM,vmm,UICS-Contract,61,vlan,uics-allow-all,NA,NA,NA
+BD_67,192.168.67.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_67,OUSV4-VMM,vmm,UICS-Contract,67,vlan,uics-allow-all,NA,NA,NA
+BD_91,192.168.91.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_91,OUSV4-VMM,vmm,UICS-Contract,91,vlan,uics-allow-all,NA,NA,NA
+BD_102,192.168.102.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_102,OUSV4-VMM,vmm,UICS-Contract,102,vlan,uics-allow-all,NA,NA,NA
+BD_103,192.168.103.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_103,OUSV4-VMM,vmm,UICS-Contract,103,vlan,uics-allow-all,NA,NA,NA
+BD_105,192.168.105.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_105,OUSV4-VMM,vmm,UICS-Contract,105,vlan,uics-allow-all,NA,NA,NA
+BD_107,192.168.107.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_107,OUSV4-VMM,vmm,UICS-Contract,107,vlan,uics-allow-all,NA,NA,NA
+BD_109,192.168.109.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_109,OUSV4-VMM,vmm,UICS-Contract,109,vlan,uics-allow-all,NA,NA,NA
+BD_203,192.168.203.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_203,OUSV4-VMM,vmm,UICS-Contract,203,vlan,uics-allow-all,NA,NA,NA
+BD_205,192.168.205.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_205,OUSV4-VMM,vmm,UICS-Contract,205,vlan,uics-allow-all,NA,NA,NA
+BD_207,192.168.207.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_207,OUSV4-VMM,vmm,UICS-Contract,207,vlan,uics-allow-all,NA,NA,NA
+BD_209,192.168.209.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_209,OUSV4-VMM,vmm,UICS-Contract,209,vlan,uics-allow-all,NA,NA,NA
+BD_211,192.168.211.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_211,OUSV4-VMM,vmm,UICS-Contract,211,vlan,uics-allow-all,NA,NA,NA
+BD_213,192.168.213.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_213,OUSV4-VMM,vmm,UICS-Contract,213,vlan,uics-allow-all,NA,NA,NA
+BD_217,192.168.217.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_217,OUSV4-VMM,vmm,UICS-Contract,217,vlan,uics-allow-all,NA,NA,NA
+BD_222,192.168.222.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_222,OUSV4-VMM,vmm,UICS-Contract,222,vlan,uics-allow-all,NA,NA,NA
+BD_104,192.168.104.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_104,OUSV4-VMM,vmm,UICS-Contract,104,vlan,uics-allow-all,NA,NA,NA
+BD_204,192.168.204.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_204,OUSV4-VMM,vmm,UICS-Contract,204,vlan,uics-allow-all,NA,NA,NA
+BD_92,192.168.92.254,24,UICS,uics-vrf,UICS,UICS Tactical,EPG_92,OUSV4-VMM,vmm,UICS-Contract,92,vlan,uics-allow-all,NA,NA,NA
+BD_10,192.168.10.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_10,OUSV4-VMM,vmm,PICS-Contract,10,auto,pics-allow-all,NA,NA,NA
+BD_20,192.168.20.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_20,OUSV4-VMM,vmm,PICS-Contract,20,auto,pics-allow-all,NA,NA,NA
+BD_30,10.10.10.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_30,OUSV4-VMM,vmm,PICS-Contract,30,auto,pics-allow-all,NA,NA,NA
+BD_31,10.10.20.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_31,OUSV4-VMM,vmm,PICS-Contract,31,auto,pics-allow-all,NA,NA,NA
+BD_56,192.168.56.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_56,OUSV4-VMM,vmm,PICS-Contract,56,auto,pics-allow-all,NA,NA,NA
+BD_57,192.168.57.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_57,OUSV4-VMM,vmm,PICS-Contract,57,auto,pics-allow-all,NA,NA,NA
+BD_58,192.168.58.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_58,OUSV4-VMM,vmm,PICS-Contract,58,auto,pics-allow-all,NA,NA,NA
+BD_59,192.168.59.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_59,OUSV4-VMM,vmm,PICS-Contract,59,auto,pics-allow-all,NA,NA,NA
+BD_60,192.168.60.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_60,OUSV4-VMM,vmm,PICS-Contract,60,auto,pics-allow-all,NA,NA,NA
+BD_61,192.168.107.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_61,OUSV4-VMM,vmm,PICS-Contract,61,auto,pics-allow-all,NA,NA,NA
+BD_67,192.168.67.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_67,OUSV4-VMM,vmm,PICS-Contract,67,auto,pics-allow-all,NA,NA,NA
+BD_91,192.168.91.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_91,OUSV4-VMM,vmm,PICS-Contract,91,auto,pics-allow-all,NA,NA,NA
+BD_102,192.168.102.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_102,OUSV4-VMM,vmm,PICS-Contract,102,auto,pics-allow-all,NA,NA,NA
+BD_103,192.168.103.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_103,OUSV4-VMM,vmm,PICS-Contract,103,auto,pics-allow-all,NA,NA,NA
+BD_105,192.168.105.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_105,OUSV4-VMM,vmm,PICS-Contract,105,auto,pics-allow-all,NA,NA,NA
+BD_107,192.168.107.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_107,OUSV4-VMM,vmm,PICS-Contract,107,auto,pics-allow-all,NA,NA,NA
+BD_109,192.168.109.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_109,OUSV4-VMM,vmm,PICS-Contract,109,auto,pics-allow-all,NA,NA,NA
+BD_203,192.168.203.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_203,OUSV4-VMM,vmm,PICS-Contract,203,auto,pics-allow-all,NA,NA,NA
+BD_205,192.168.205.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_205,OUSV4-VMM,vmm,PICS-Contract,205,auto,pics-allow-all,NA,NA,NA
+BD_207,192.168.207.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_207,OUSV4-VMM,vmm,PICS-Contract,207,auto,pics-allow-all,NA,NA,NA
+BD_209,192.168.209.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_209,OUSV4-VMM,vmm,PICS-Contract,209,auto,pics-allow-all,NA,NA,NA
+BD_211,192.168.211.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_211,OUSV4-VMM,vmm,PICS-Contract,211,auto,pics-allow-all,NA,NA,NA
+BD_213,192.168.213.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_213,OUSV4-VMM,vmm,PICS-Contract,213,auto,pics-allow-all,NA,NA,NA
+BD_217,192.168.217.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_217,OUSV4-VMM,vmm,PICS-Contract,217,auto,pics-allow-all,NA,NA,NA
+BD_222,192.168.222.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_222,OUSV4-VMM,vmm,PICS-Contract,222,auto,pics-allow-all,NA,NA,NA
+BD_104,192.168.104.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_104,OUSV4-VMM,vmm,PICS-Contract,104,auto,pics-allow-all,NA,NA,NA
+BD_204,192.168.204.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_204,OUSV4-VMM,vmm,PICS-Contract,204,auto,pics-allow-all,NA,NA,NA
+BD_92,192.168.92.254,24,PICS,pics-vrf,PICS,PICS Tactical,EPG_92,OUSV4-VMM,vmm,PICS-Contract,92,auto,pics-allow-all,NA,NA,NA
+BD_1200,172.16.11.254,22,SERVICES,services-vrf,Management,ESXi Management EPG,EPG_1200,Infrastructure,phys,SERVICES-Contract,1200,vlan,services-allow_all,L3Out_OOB,YES,10.200.1.1
+BD_1201,172.16.6.254,24,SERVICES,services-vrf,Management,HX Storage Data EPG HX-1,EPG_1201,Infrastructure,phys,SERVICES-Contract,1201,vlan,services-allow_all,NA,NA,NA
+BD_1202,172.16.7.254,24,SERVICES,services-vrf,Management,ESXi vMtion EPG,EPG_1202,Infrastructure,phys,SERVICES-Contract,1202,vlan,services-allow_all,NA,NA,NA
+BD_12,172.16.15.254,22,SERVICES,services-vrf,Management,HX Data Replication Network,EPG_12,HX-VMM,vmm,SERVICES-Contract,1212,auto,services-allow_all,L3Out_OOB,YES,10.200.1.1
+BD_1200,172.16.11.254,22,SERVICES,services-vrf,Management,ESXi Management EPG,EPG_1200,HX-VMM,vmm,SERVICES-Contract,1200,auto,services-allow_all,L3Out_OOB,YES,10.200.1.1
+BD_5,172.16.5.14,28,SERVICES,services-vrf,Management,Security EPG,EPG_5,HX-VMM,vmm,SERVICES-Contract,1205,auto,services-allow_all,L3Out_OOB,NA,NA
+BD_20,172.16.20.254,24,SERVICES,services-vrf,Management,Utiilities,EPG_20,HX-VMM,vmm,SERVICES-Contract,1220,auto,services-allow_all,L3Out_OOB,NA,NA
