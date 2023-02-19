@@ -14,17 +14,17 @@
       register: hostlist
       tags: hostadd, portgroup, vmotion
 
-#    - name: TASK - Enable SSH on all Hosts in the Cluster
-#      community.vmware.vmware_host_service_manager:
-#        hostname: "{{ vcsa_hostname }}"
-#        username: "{{ vcsa_user }}"
-#        password: "{{ vcsa_pwd }}"
-#        validate_certs: no
-#        cluster_name: "{{ cluster_name }}"
-#        service_name: TSM-SSH
-#        state: present
-#      delegate_to: localhost
-#      tags: ssh
+    - name: TASK - Enable SSH on all Hosts in the Cluster
+      community.vmware.vmware_host_service_manager:
+        hostname: "{{ vcsa_hostname }}"
+        username: "{{ vcsa_user }}"
+        password: "{{ vcsa_pwd }}"
+        validate_certs: no
+        cluster_name: "{{ cluster_name }}"
+        service_name: TSM-SSH
+        state: present
+      delegate_to: localhost
+      tags: ssh
 
     - name: TASK - Add vMotion Port Group to vSwitch
       community.vmware.vmware_portgroup:
