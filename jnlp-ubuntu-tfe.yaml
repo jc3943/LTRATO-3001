@@ -7,6 +7,6 @@ spec:
     command: ["sleep"]
     args: ["360m"]
   - name: ubuntu-runner
-    image: jc3943/ubuntu:5.30.22
+    image: jc3943/ubuntu:021923
     command: ["sleep"]
     args: ["360m"]
