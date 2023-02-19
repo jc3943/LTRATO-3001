@@ -29,16 +29,16 @@ pipeline {
       steps {
         container('ubuntu-runner') {
           //add vmkernel addrs for vmotion and add hosts and vnics to DVS
-          sh 'sleep 600'
           ansiblePlaybook(
               playbook: './vmware/hxHosts-vcenter-tasks.yml',
               inventory: 'localhost',
+              extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
               extraVars: [
                   vcsa_hostname: "$vcsaHostName",
                   datacenter_name: "${BRANCH_NAME}",
                   cluster_name: "${BRANCH_NAME}",
                   vcsa_user: "administrator@vsphere.local",
-                  vcsa_pwd: "DEVP@ssw0rd"
+                  vcsa_pwd: "$VCSA_CREDS_PSW"
               ],
               colorized: true
           )

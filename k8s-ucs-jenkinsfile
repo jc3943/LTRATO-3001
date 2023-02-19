@@ -7,6 +7,7 @@ pipeline {
         varPath = "vars/" + "${BRANCH_NAME}"
         APIC_CREDS = credentials('apic-creds')
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+        VCSA_CREDS = credentials('vcsa-creds')
   }
   agent {
     kubernetes {
@@ -85,6 +86,7 @@ pipeline {
           ansiblePlaybook(
               playbook: './vmware/hxHosts-vcenter-tasks.yml',
               inventory: 'localhost',
+              extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
               extraVars: [
                   vcsa_hostname: "$vcsaHostName",
                   datacenter_name: "${BRANCH_NAME}",
