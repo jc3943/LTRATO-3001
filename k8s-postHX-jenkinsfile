@@ -29,6 +29,7 @@ pipeline {
       steps {
         container('ubuntu-runner') {
           //add vmkernel addrs for vmotion and add hosts and vnics to DVS
+          sh 'sleep 600'
           ansiblePlaybook(
               playbook: './vmware/hxHosts-vcenter-tasks.yml',
               inventory: 'localhost',
