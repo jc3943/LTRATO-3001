@@ -7,6 +7,7 @@ pipeline {
         varPath = "vars/" + "${BRANCH_NAME}"
         APIC_CREDS = credentials('apic-creds')
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+        VCSA_CREDS = credentials('vcsa-creds')
   }
   agent {
     kubernetes {
@@ -35,7 +36,6 @@ pipeline {
                   vcsa_hostname: "$vcsaHostName",
                   datacenter_name: "${BRANCH_NAME}",
                   cluster_name: "${BRANCH_NAME}",
-                  datastore: "${BRANCH_NAME}",
                   vcsa_user: "administrator@vsphere.local",
                   vcsa_pwd: "DEVP@ssw0rd"
               ],
