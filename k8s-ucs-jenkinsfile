@@ -91,9 +91,8 @@ pipeline {
                   vcsa_ipAddress: "$vcsaIpAddress",
                   datacenter_name: "${BRANCH_NAME}",
                   cluster_name: "${BRANCH_NAME}",
-                  datastore: "${BRANCH_NAME}",
                   vcsa_user: "administrator@vsphere.local",
-                  vcsa_pwd: "$APIC_CREDS_PSW"
+                  vcsa_pwd: "$VCSA_CREDS_PSW"
               ],
               colorized: true
           )
