@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Post-install tasks and DVS Configs') {
       steps {
-        container('ubuntu-tfe') {
+        container('ubuntu-runner') {
           //add vmkernel addrs for vmotion and add hosts and vnics to DVS
           sh 'sleep 600'
           ansiblePlaybook(
