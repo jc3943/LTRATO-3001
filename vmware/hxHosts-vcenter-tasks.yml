@@ -16,7 +16,7 @@
 
     - name: TASK - Enable SSH on all Hosts in the Cluster
       community.vmware.vmware_host_service_manager:
-        hostname: "{{ item.vcsaAddress }}"
+        hostname: "{{ vcsa_ipAddress }}"
         username: "{{ vcsa_user }}"
         password: "{{ vcsa_pwd }}"
         validate_certs: no
@@ -24,12 +24,11 @@
         service_name: TSM-SSH
         state: present
       delegate_to: localhost
-      with_items: "{{ vcsaspecs }}"
       tags: ssh
 
     - name: TASK - Add vMotion Port Group to vSwitch
       community.vmware.vmware_portgroup:
-        hostname: "{{ item.vcsaAddress }}"
+        hostname: "{{ vcsa_ipAddress }}"
         username: "{{ vcsa_user }}"
         password: "{{ vcsa_pwd }}"
         validate_certs: no
@@ -42,12 +41,11 @@
       loop_control:
         loop_var: hosts
       delegate_to: localhost
-      with_items: "{{ vcsaspecs }}"
       tags: portgroup
 
     - name: TASK - Add vMotion vmKernel to vSwitch
       community.vmware.vmware_vmkernel:
-        hostname: "{{ item.vcsaAddress }}"
+        hostname: "{{ vcsa_ipAddress }}"
         username: "{{ vcsa_user }}"
         password: "{{ vcsa_pwd }}"
         validate_certs: no
@@ -65,12 +63,11 @@
       loop_control:
         loop_var: hosts
       delegate_to: localhost
-      with_items: "{{ vcsaspecs }}"
       tags: vmotion
 
     - name: TASK - Add Hosts to DVS 
       community.vmware.vmware_dvs_host:
-        hostname: "{{ item.vcsaAddress }}"
+        hostname: "{{ vcsa_ipAddress }}"
         username: "{{ vcsa_user }}"
         password: "{{ vcsa_pwd }}"
         validate_certs: no
@@ -84,12 +81,11 @@
       loop_control:
         loop_var: hosts
       delegate_to: localhost
-      with_items: "{{ vcsaspecs }}"
       tags: hostdvs
 
     - name: TASK - Add Links to LAG
       community.vmware.vmware_dvs_host:
-        hostname: "{{ item.vcsaAddress }}"
+        hostname: "{{ vcsa_ipAddress }}"
         username: "{{ vcsa_user }}"
         password: "{{ vcsa_pwd }}"
         validate_certs: no
@@ -105,6 +101,5 @@
       loop_control:
         loop_var: hosts
       delegate_to: localhost
-      with_items: "{{ vcsaspecs }}"
       tags: hostlag
 

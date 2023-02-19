@@ -8,6 +8,7 @@ pipeline {
         APIC_CREDS = credentials('apic-creds')
         vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
         VCSA_CREDS = credentials('vcsa-creds')
+        vcsaIpAddress = "172.16.14.137"
   }
   agent {
     kubernetes {
@@ -86,9 +87,8 @@ pipeline {
           ansiblePlaybook(
               playbook: './vmware/hxHosts-vcenter-tasks.yml',
               inventory: 'localhost',
-              extras: '--extra-vars="@$varPath/vmware/vcsa-Specs.yaml"',
               extraVars: [
-                  vcsa_hostname: "$vcsaHostName",
+                  vcsa_ipAddress: "$vcsaIpAddress",
                   datacenter_name: "${BRANCH_NAME}",
                   cluster_name: "${BRANCH_NAME}",
                   datastore: "${BRANCH_NAME}",
