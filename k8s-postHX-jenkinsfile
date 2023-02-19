@@ -1,0 +1,64 @@
+//Authored by Jeff Comer
+
+def nodeLabel = 'pod-builder-agent'
+pipeline {
+  environment {
+        BRANCH_NAME = "${GIT_BRANCH}"
+        varPath = "vars/" + "${BRANCH_NAME}"
+        APIC_CREDS = credentials('apic-creds')
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+  }
+  agent {
+    kubernetes {
+      yamlFile 'jnlp-ubuntu-tfe.yaml'
+    }
+  }
+  
+  stages{
+    stage('Stat k8s Nodes') {
+      steps {
+        container('ubuntu-tfe') {
+          //Check health state of k8s nodes in target cluster
+          sh 'cp -r .kube /root/'
+          sh 'python3 k8s/clusterHealth.py'
+        }
+      }
+    }
+    stage('Post-install tasks and DVS Configs') {
+      steps {
+        container('ubuntu-tfe') {
+          //add vmkernel addrs for vmotion and add hosts and vnics to DVS
+          ansiblePlaybook(
+              playbook: './vmware/hxHosts-vcenter-tasks.yml',
+              inventory: 'localhost',
+              extraVars: [
+                  vcsa_hostname: "$vcsaHostName",
+                  datacenter_name: "${BRANCH_NAME}",
+                  cluster_name: "${BRANCH_NAME}",
+                  datastore: "${BRANCH_NAME}",
+                  vcsa_user: "administrator@vsphere.local",
+                  vcsa_pwd: "$APIC_CREDS_PSW"
+              ],
+              colorized: true
+          )
+        }
+      }
+    }
+    stage('Deploy Ubuntu Cloud Init VMs for test') {
+      steps {
+        container('jnlp') {
+          sh '''
+          echo "Inbound Agent is Connected"
+          '''
+        }
+        container('ubuntu-runner') {
+          ansiblePlaybook(
+              playbook: './vmware/ubuntuTmplCreate.yml',
+              inventory: 'localhost',
+              colorized: true
+          )
+        }
+      }
+    }
+  }
+}
