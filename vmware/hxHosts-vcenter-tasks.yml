@@ -29,7 +29,7 @@
 
     - name: TASK - Add vMotion Port Group to vSwitch
       community.vmware.vmware_portgroup:
-       hostname: "{{ item.vcsaAddress }}"
+        hostname: "{{ item.vcsaAddress }}"
         username: "{{ vcsa_user }}"
         password: "{{ vcsa_pwd }}"
         validate_certs: no
