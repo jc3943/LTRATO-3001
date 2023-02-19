@@ -41,6 +41,7 @@ pipeline {
               ],
               colorized: true
           )
+          sh 'sleep 600'
         }
       }
     }
