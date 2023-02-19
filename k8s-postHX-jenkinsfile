@@ -37,7 +37,7 @@ pipeline {
                   cluster_name: "${BRANCH_NAME}",
                   datastore: "${BRANCH_NAME}",
                   vcsa_user: "administrator@vsphere.local",
-                  vcsa_pwd: "$APIC_CREDS_PSW"
+                  vcsa_pwd: "DEVP@ssw0rd"
               ],
               colorized: true
           )
