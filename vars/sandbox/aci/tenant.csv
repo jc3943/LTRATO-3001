@@ -5,7 +5,7 @@ BD_1202,172.16.117.254,24,SERVICES,services-vrf,Management,ESXi vMtion EPG,EPG_1
 BD_1200,172.16.115.254,22,SERVICES,services-vrf,Management,ESXi Management EPG,EPG_1200,HX-VMM,vmm,SERVICES-Contract,1200,vlan,services-allow_all,out-L3Out_SBOX,YES,172.16.115.254,YES,172.16.20.101,NA,NA
 BD_1202,172.16.117.254,24,SERVICES,services-vrf,Management,ESXi vMtion EPG,EPG_1202,HX-VMM,vmm,SERVICES-Contract,1202,auto,services-allow_all,NA,NA,NA,NA,NA,NA,NA
 BD_5,172.16.125.14,28,SERVICES,services-vrf,Management,Security EPG,EPG_5,HX-VMM,vmm,SERVICES-Contract,1205,vlan,services-allow_all,out-L3Out_SBOX,NA,NA,YES,NA,NA,NA
-BD_1225,172.16.118.254,24,SERVICES,services-vrf,Management,Security EPG,EPG_1225,HX-VMM,vmm,SERVICES-Contract,1225,vlan,services-allow_all,out-L3Out_SBOX,NA,NA,YES,NA,NA,NA
+BD_1225,172.16.118.254,24,SERVICES,services-vrf,Management,Security EPG,EPG_1225,HX-VMM,vmm,SERVICES-Contract,1225,auto,services-allow_all,out-L3Out_SBOX,NA,NA,YES,NA,NA,NA
 BD_10,192.168.10.254,24,DTWIN,dtwin-vrf,DTWIN,DTWIN Tactical,EPG_10,HX-VMM,vmm,DTWIN-Contract,10,auto,dtwin-allow-all,NA,NA,NA,YES,NA,NA,NA
 BD_20,192.168.20.254,24,DTWIN,dtwin-vrf,DTWIN,DTWIN Tactical,EPG_20,HX-VMM,vmm,DTWIN-Contract,20,auto,dtwin-allow-all,NA,NA,NA,YES,NA,NA,NA
 BD_30,192.168.30.254,24,DTWIN,dtwin-vrf,DTWIN,DTWIN Tactical,EPG_30,HX-VMM,vmm,DTWIN-Contract,30,auto,dtwin-allow-all,NA,NA,NA,YES,NA,NA,NA
