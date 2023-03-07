@@ -21,7 +21,7 @@ def main(argv):
       sys.exit(2)
     for opt, arg in opts:
       if opt == '-h':
-         print('imcVnicCreate.py -u <username> -p <password> -i <inputcsv>')
+         print('intersightProfiles.py -u <intersightURL>')
          sys.exit()
       elif opt in ("-u", "--url"):
          userArg = arg

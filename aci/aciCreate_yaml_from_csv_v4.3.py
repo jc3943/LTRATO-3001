@@ -49,6 +49,8 @@ def main(argv):
     L3Out = []
     multivrf = []
     rp = []
+    dhcpRelay = []
+    dhcpProviderIP = []
     i = 0
     with open(inputfile) as csv_file:
        csv_reader = csv.reader(csv_file, delimiter=',')
@@ -71,6 +73,8 @@ def main(argv):
          L3Out.append(row[14])
          multivrf.append(row[15])
          rp.append(row[16])
+         dhcpRelay.append(row[17])
+         dhcpProviderIP.append(row[18])
          row_count = i
          i = i + 1
        u_tenant_list = []
@@ -102,7 +106,7 @@ def main(argv):
          yaml.write("  - ap: " + x + "\n")
          yaml.write("    tenant: " + y + "\n")
        yaml.write("bridge_domains:\n")
-       for v, w, x, y, z, zz in zip(tenant, vrf, brdom, dfgw, subnetmask, L3Out):
+       for v, w, x, y, z, zz, aa, bb in zip(tenant, vrf, brdom, dfgw, subnetmask, L3Out, dhcpRelay, dhcpProviderIP):
          yaml.write("  - bd: " + x + "\n")
          yaml.write("    gateway: " + y + "\n")
          yaml.write("    mask: " + z + "\n")
@@ -110,6 +114,8 @@ def main(argv):
          yaml.write("    vrf: " + w + "\n")
          yaml.write("    scope: public,shared" + "\n")
          yaml.write("    L3Out: " + zz + "\n")
+         yaml.write("    dhcpRelay: " + aa + "\n")
+         yaml.write("    dhcpProviderIP: " + bb + "\n")
        yaml.write("epgs:\n")
        for a, b, c, d, u, v, w, x, y, yy, z, zz in zip(dfgw, subnetmask, description, multivrf, tenant, app_profile, epg_name, brdom, domain, domainType, encaps, encaptype):
          yaml.write("  - epg: " + w + "\n")

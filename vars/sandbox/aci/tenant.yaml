@@ -1,12 +1,24 @@
 tenants:
   - tenant: SERVICES
+  - tenant: DTWIN
+  - tenant: DEV
 vrfs:
   - vrf: services-vrf
     tenant: SERVICES
     rp: 172.16.115.254
+  - vrf: dtwin-vrf
+    tenant: DTWIN
+    rp: NA
+  - vrf: dev-vrf
+    tenant: DEV
+    rp: NA
 aps:
   - ap: Management
     tenant: SERVICES
+  - ap: DTWIN
+    tenant: DTWIN
+  - ap: DEV
+    tenant: DEV
 bridge_domains:
   - bd: BD_1200
     gateway: 172.16.115.254
@@ -15,6 +27,8 @@ bridge_domains:
     vrf: services-vrf
     scope: public,shared
     L3Out: out-L3Out_SBOX
+    dhcpRelay: YES
+    dhcpProviderIP: 172.16.20.101
   - bd: BD_1201
     gateway: 172.16.116.254
     mask: 24
@@ -22,6 +36,8 @@ bridge_domains:
     vrf: services-vrf
     scope: public,shared
     L3Out: NA
+    dhcpRelay: NA
+    dhcpProviderIP: NA
   - bd: BD_1202
     gateway: 172.16.117.254
     mask: 24
@@ -29,6 +45,8 @@ bridge_domains:
     vrf: services-vrf
     scope: public,shared
     L3Out: NA
+    dhcpRelay: NA
+    dhcpProviderIP: NA
   - bd: BD_1200
     gateway: 172.16.115.254
     mask: 22
@@ -36,6 +54,17 @@ bridge_domains:
     vrf: services-vrf
     scope: public,shared
     L3Out: out-L3Out_SBOX
+    dhcpRelay: YES
+    dhcpProviderIP: 172.16.20.101
+  - bd: BD_1202
+    gateway: 172.16.117.254
+    mask: 24
+    tenant: SERVICES
+    vrf: services-vrf
+    scope: public,shared
+    L3Out: NA
+    dhcpRelay: NA
+    dhcpProviderIP: NA
   - bd: BD_5
     gateway: 172.16.125.14
     mask: 28
@@ -43,6 +72,8 @@ bridge_domains:
     vrf: services-vrf
     scope: public,shared
     L3Out: out-L3Out_SBOX
+    dhcpRelay: YES
+    dhcpProviderIP: NA
   - bd: BD_1225
     gateway: 172.16.118.254
     mask: 24
@@ -50,6 +81,62 @@ bridge_domains:
     vrf: services-vrf
     scope: public,shared
     L3Out: out-L3Out_SBOX
+    dhcpRelay: YES
+    dhcpProviderIP: NA
+  - bd: BD_10
+    gateway: 192.168.10.254
+    mask: 24
+    tenant: DTWIN
+    vrf: dtwin-vrf
+    scope: public,shared
+    L3Out: NA
+    dhcpRelay: YES
+    dhcpProviderIP: NA
+  - bd: BD_20
+    gateway: 192.168.20.254
+    mask: 24
+    tenant: DTWIN
+    vrf: dtwin-vrf
+    scope: public,shared
+    L3Out: NA
+    dhcpRelay: YES
+    dhcpProviderIP: NA
+  - bd: BD_30
+    gateway: 192.168.30.254
+    mask: 24
+    tenant: DTWIN
+    vrf: dtwin-vrf
+    scope: public,shared
+    L3Out: NA
+    dhcpRelay: YES
+    dhcpProviderIP: NA
+  - bd: BD_10
+    gateway: 192.168.10.254
+    mask: 24
+    tenant: DEV
+    vrf: dev-vrf
+    scope: public,shared
+    L3Out: NA
+    dhcpRelay: YES
+    dhcpProviderIP: NA
+  - bd: BD_20
+    gateway: 192.168.20.254
+    mask: 24
+    tenant: DEV
+    vrf: dev-vrf
+    scope: public,shared
+    L3Out: NA
+    dhcpRelay: YES
+    dhcpProviderIP: NA
+  - bd: BD_30
+    gateway: 192.168.30.254
+    mask: 24
+    tenant: DEV
+    vrf: dev-vrf
+    scope: public,shared
+    L3Out: NA
+    dhcpRelay: YES
+    dhcpProviderIP: NA
 epgs:
   - epg: EPG_1200
     tenant: SERVICES
@@ -94,11 +181,23 @@ epgs:
     domain: HX-VMM
     domainType: vmm
     encaps: 1200
-    encaptype: auto
+    encaptype: vlan
     gateway: 172.16.115.254
     mask: 22
     description: ESXi Management EPG
     multivrf: YES
+  - epg: EPG_1202
+    tenant: SERVICES
+    ap: Management
+    bd: BD_1202
+    domain: HX-VMM
+    domainType: vmm
+    encaps: 1202
+    encaptype: auto
+    gateway: 172.16.117.254
+    mask: 24
+    description: ESXi vMtion EPG
+    multivrf: NA
   - epg: EPG_5
     tenant: SERVICES
     ap: Management
@@ -106,7 +205,7 @@ epgs:
     domain: HX-VMM
     domainType: vmm
     encaps: 1205
-    encaptype: auto
+    encaptype: vlan
     gateway: 172.16.125.14
     mask: 28
     description: Security EPG
@@ -122,6 +221,78 @@ epgs:
     gateway: 172.16.118.254
     mask: 24
     description: Security EPG
+    multivrf: NA
+  - epg: EPG_10
+    tenant: DTWIN
+    ap: DTWIN
+    bd: BD_10
+    domain: HX-VMM
+    domainType: vmm
+    encaps: 10
+    encaptype: auto
+    gateway: 192.168.10.254
+    mask: 24
+    description: DTWIN Tactical
+    multivrf: NA
+  - epg: EPG_20
+    tenant: DTWIN
+    ap: DTWIN
+    bd: BD_20
+    domain: HX-VMM
+    domainType: vmm
+    encaps: 20
+    encaptype: auto
+    gateway: 192.168.20.254
+    mask: 24
+    description: DTWIN Tactical
+    multivrf: NA
+  - epg: EPG_30
+    tenant: DTWIN
+    ap: DTWIN
+    bd: BD_30
+    domain: HX-VMM
+    domainType: vmm
+    encaps: 30
+    encaptype: auto
+    gateway: 192.168.30.254
+    mask: 24
+    description: DTWIN Tactical
+    multivrf: NA
+  - epg: EPG_10
+    tenant: DEV
+    ap: DEV
+    bd: BD_10
+    domain: HX-VMM
+    domainType: vmm
+    encaps: 10
+    encaptype: auto
+    gateway: 192.168.10.254
+    mask: 24
+    description: DEV Tactical
+    multivrf: NA
+  - epg: EPG_20
+    tenant: DEV
+    ap: DEV
+    bd: BD_20
+    domain: HX-VMM
+    domainType: vmm
+    encaps: 20
+    encaptype: auto
+    gateway: 192.168.20.254
+    mask: 24
+    description: DEV Tactical
+    multivrf: NA
+  - epg: EPG_30
+    tenant: DEV
+    ap: DEV
+    bd: BD_30
+    domain: HX-VMM
+    domainType: vmm
+    encaps: 30
+    encaptype: auto
+    gateway: 192.168.30.254
+    mask: 24
+    description: DEV Tactical
     multivrf: NA
 epg_contracts:
   - epg: EPG_1200
@@ -164,6 +335,16 @@ epg_contracts:
     contract_type: "consumer"
     ap: Management
     tenant: SERVICES
+  - epg: EPG_1202
+    contract: SERVICES-Contract
+    contract_type: "provider"
+    ap: Management
+    tenant: SERVICES
+  - epg: EPG_1202
+    contract: SERVICES-Contract
+    contract_type: "consumer"
+    ap: Management
+    tenant: SERVICES
   - epg: EPG_5
     contract: SERVICES-Contract
     contract_type: "provider"
@@ -184,13 +365,89 @@ epg_contracts:
     contract_type: "consumer"
     ap: Management
     tenant: SERVICES
+  - epg: EPG_10
+    contract: DTWIN-Contract
+    contract_type: "provider"
+    ap: DTWIN
+    tenant: DTWIN
+  - epg: EPG_10
+    contract: DTWIN-Contract
+    contract_type: "consumer"
+    ap: DTWIN
+    tenant: DTWIN
+  - epg: EPG_20
+    contract: DTWIN-Contract
+    contract_type: "provider"
+    ap: DTWIN
+    tenant: DTWIN
+  - epg: EPG_20
+    contract: DTWIN-Contract
+    contract_type: "consumer"
+    ap: DTWIN
+    tenant: DTWIN
+  - epg: EPG_30
+    contract: DTWIN-Contract
+    contract_type: "provider"
+    ap: DTWIN
+    tenant: DTWIN
+  - epg: EPG_30
+    contract: DTWIN-Contract
+    contract_type: "consumer"
+    ap: DTWIN
+    tenant: DTWIN
+  - epg: EPG_10
+    contract: DEV-Contract
+    contract_type: "provider"
+    ap: DEV
+    tenant: DEV
+  - epg: EPG_10
+    contract: DEV-Contract
+    contract_type: "consumer"
+    ap: DEV
+    tenant: DEV
+  - epg: EPG_20
+    contract: DEV-Contract
+    contract_type: "provider"
+    ap: DEV
+    tenant: DEV
+  - epg: EPG_20
+    contract: DEV-Contract
+    contract_type: "consumer"
+    ap: DEV
+    tenant: DEV
+  - epg: EPG_30
+    contract: DEV-Contract
+    contract_type: "provider"
+    ap: DEV
+    tenant: DEV
+  - epg: EPG_30
+    contract: DEV-Contract
+    contract_type: "consumer"
+    ap: DEV
+    tenant: DEV
 contracts:
   - contract: SERVICES-Contract
     tenant: SERVICES
     subject: "Subject"
     filter: services-allow_all
+  - contract: DTWIN-Contract
+    tenant: DTWIN
+    subject: "Subject"
+    filter: dtwin-allow-all
+  - contract: DEV-Contract
+    tenant: DEV
+    subject: "Subject"
+    filter: dev-allow-all
 filters:
   - filter: services-allow_all
     tenant: SERVICES
+    entry: "default"
+    ethertype: "unspecified"
+  - filter: dtwin-allow-all
+    tenant: DTWIN
+    entry: "default"
+    ethertype: "unspecified"
+  - filter: dev-allow-all
+    tenant: DEV
     entry: "default"
     ethertype: "unspecified"

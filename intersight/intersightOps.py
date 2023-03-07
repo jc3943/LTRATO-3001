@@ -65,6 +65,12 @@ def getDevTargetStatus(specDict):
             print("Targets from terraform device claims are conected in Intersight")
             break
 
+def getServerSummaries(specDict):
+    serverSummaryURL = specDict['url'] + "/api/v1/compute/PhysicalSummaries?$inlinecount=allpages"
+    response = requests.get(serverSummaryURL, verify=False, auth=AUTH)
+    serverSummaryJson = response.json()
+    
+
 def deployHXProfiles(specDict):
     profileURL = specDict['url'] + "/api/v1/hyperflex/ClusterProfiles"
     #print(profileURL)
