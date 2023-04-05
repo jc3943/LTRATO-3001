@@ -1,0 +1,414 @@
+"3c2ee1c","jc3943","Tue, 7 Mar 2023 01:19:16 -0600","modified aciCreate_yaml_from_csv_v4.3.py to include dhcp data from csv and started intersight server firmware retrieve routine",	 4 files changed, 273 insertions(+), 4 deletions(-)	
+"a07cf87","jc3943","Tue, 21 Feb 2023 16:45:10 -0500","made tenant.csv updates for encap type",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"adfa8bb","jc3943","Tue, 21 Feb 2023 04:57:44 -0500","made tenant.csv updates",	 1 file changed, 8 insertions(+), 8 deletions(-)	
+"edbffe7","jc3943","Sun, 19 Feb 2023 18:11:01 -0500","fixed issues related to bad dns entry in k8s runners",	 2 files changed, 1 insertion(+), 52 deletions(-)	
+"146345a","jc3943","Sun, 19 Feb 2023 17:45:35 -0500","changing extras on ucs vmware tasks",	 3 files changed, 9 insertions(+), 14 deletions(-)	
+"91a9af5","jc3943","Sun, 19 Feb 2023 17:23:57 -0500","changing extras on ucs vmware tasks",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"05a3229","jc3943","Sun, 19 Feb 2023 17:21:26 -0500","changing extras on ucs vmware tasks",	 3 files changed, 14 insertions(+), 7 deletions(-)	
+"234517b","jc3943","Sun, 19 Feb 2023 16:44:59 -0500","updating ubuntu-runner for vmware mods",	 1 file changed, 1 insertion(+)	
+"732e845","jc3943","Sun, 19 Feb 2023 16:41:30 -0500","updating ubuntu-runner for vmware mods",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"b8cfa52","jc3943","Sun, 19 Feb 2023 16:17:49 -0500","troubleshooting hx post-install tasks",	 1 file changed, 1 deletion(-)	
+"3f1a9f3","jc3943","Sun, 19 Feb 2023 16:17:15 -0500","troubleshooting hx post-install tasks",	 2 files changed, 5 insertions(+), 1 deletion(-)	
+"983dd35","jc3943","Sun, 19 Feb 2023 16:02:05 -0500","troubleshooting hx post-install tasks",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"53be588","jc3943","Sun, 19 Feb 2023 15:59:38 -0500","troubleshooting hx post-install tasks",	 1 file changed, 1 insertion(+)	
+"1dc91ca","jc3943","Sun, 19 Feb 2023 15:56:52 -0500","troubleshooting hx post-install tasks",	 1 file changed, 11 insertions(+), 11 deletions(-)	
+"48e4712","jc3943","Sun, 19 Feb 2023 15:53:16 -0500","troubleshooting hx post-install tasks",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"47cddc3","jc3943","Sun, 19 Feb 2023 15:41:30 -0500","troubleshooting hx post-install tasks",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"35eb905","jc3943","Sun, 19 Feb 2023 15:33:08 -0500","troubleshooting hx post-install tasks",	 2 files changed, 461 insertions(+)	
+"5d86bb1","jc3943","Sun, 19 Feb 2023 12:07:36 -0500","removed redundant BD's from tenant.csv",	 1 file changed, 1 insertion(+), 8 deletions(-)	
+"a6964e7","jc3943","Thu, 16 Feb 2023 05:23:25 -0800","added some additional tenant data to vars",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"ba53e73","jc3943","Thu, 16 Feb 2023 05:18:28 -0800","added some additional tenant data to vars",	 1 file changed, 63 insertions(+), 63 deletions(-)	
+"157e21c","jc3943","Thu, 16 Feb 2023 05:12:24 -0800","added some additional tenant data to vars",	 3 files changed, 80 insertions(+), 4 deletions(-)	
+"f68cab8","jc3943","Sun, 12 Feb 2023 16:57:39 +0100","adding some aci EP tracking and tenant/bd interrogation scripts",	 10 files changed, 263 insertions(+), 4 deletions(-)	
+"949945d","jc3943","Wed, 1 Feb 2023 13:03:24 -0500","rem'd ssh task in hxHosts-vcenter-tasks.yml due to unknown issue",	 1 file changed, 11 insertions(+), 11 deletions(-)	
+"52f8647","jc3943","Wed, 1 Feb 2023 08:14:01 -0500","rem'd sleep timer in devClaim-jenkinsfile for demo purposes",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"dc9f27a","jc3943","Wed, 1 Feb 2023 07:41:07 -0500","created jenkinsfile for intersightDevClaim only",	 1 file changed, 49 insertions(+)	
+"6ef918c","jc3943","Wed, 1 Feb 2023 07:37:35 -0500","updated nso to sync to and changed nso api addr for current pod svc ip",	 2 files changed, 3 insertions(+), 3 deletions(-)	
+"78bdbb4","jc3943","Tue, 31 Jan 2023 20:54:56 -0500","updated timer for vcenter to reconnect hosts",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"d295e59","jc3943","Tue, 31 Jan 2023 17:21:08 -0500","updates to tenant.csv",	 1 file changed, 3 insertions(+), 3 deletions(-)	
+"8aa7569","jc3943","Tue, 31 Jan 2023 15:57:27 -0500","moved HX datastore create until after reboot",	 1 file changed, 9 insertions(+), 8 deletions(-)	
+"153486b","jc3943","Tue, 31 Jan 2023 14:39:32 -0500","removed stand-alone host for unknown issue",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"a52a859","jc3943","Tue, 31 Jan 2023 14:28:09 -0500","removed stand-alone host for unknown issue",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"85fc253","jc3943","Tue, 31 Jan 2023 11:01:36 -0500","removed stand-alone host for unknown issue",	 3 files changed, 4 insertions(+), 4 deletions(-)	
+"f525047","jc3943","Tue, 31 Jan 2023 06:50:32 -0500","fixed hostIpAddrs.csv vars",	 3 files changed, 1 insertion(+), 1 deletion(-)	
+"d4e7104","jc3943","Mon, 30 Jan 2023 21:42:29 -0500","removed stale tfstate data and added esxi-bm host to devClaim vars",	 11 files changed, 2 insertions(+), 4174 deletions(-)	
+"9c959c9","jc3943","Mon, 30 Jan 2023 20:26:11 -0500","changed wait state for secondary pipeline to false as not supported",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"537c020","jc3943","Mon, 30 Jan 2023 20:17:54 -0500","change conditional in aciDhcpRelay.yml relay provider",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"9659e18","jc3943","Mon, 30 Jan 2023 19:58:52 -0500","changed resolution immediacy to pre-provision due to issue with vapic",	 2 files changed, 2 insertions(+), 1 deletion(-)	
+"2d51e63","jc3943","Mon, 30 Jan 2023 19:56:37 -0500","changed resolution immediacy to pre-provision due to issue with vapic",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"048029f","jc3943","Mon, 30 Jan 2023 19:49:48 -0500","changed resolution immediacy to pre-provision due to issue with vapic",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"6297cfe","jc3943","Mon, 30 Jan 2023 19:42:22 -0500","updates for full day-0 pipeline build",	 3 files changed, 20 insertions(+), 2 deletions(-)	
+"a44ef55","jc3943","Mon, 30 Jan 2023 19:03:04 -0500","prepping for full pipeline build",	 2 files changed, 3 insertions(+), 2 deletions(-)	
+"b130c93","jc3943","Mon, 30 Jan 2023 17:21:27 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 1 insertion(+), 2 deletions(-)	
+"5513e9e","jc3943","Mon, 30 Jan 2023 17:17:18 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"9c3e655","jc3943","Mon, 30 Jan 2023 17:10:30 -0500","adding to ubuntu automation, facts debugging",	 2 files changed, 5 insertions(+), 5 deletions(-)	
+"c336156","jc3943","Mon, 30 Jan 2023 16:49:57 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 1 deletion(-)	
+"f1ed3da","jc3943","Mon, 30 Jan 2023 16:46:14 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"c97d5bb","jc3943","Mon, 30 Jan 2023 16:43:37 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"af460f0","jc3943","Mon, 30 Jan 2023 16:39:57 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 2 insertions(+), 21 deletions(-)	
+"50baca4","jc3943","Mon, 30 Jan 2023 15:45:38 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 18 insertions(+), 5 deletions(-)	
+"cb13534","jc3943","Mon, 30 Jan 2023 15:40:02 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 1 insertion(+)	
+"fb78316","jc3943","Mon, 30 Jan 2023 15:34:43 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 4 insertions(+), 2 deletions(-)	
+"6e7dbd3","jc3943","Mon, 30 Jan 2023 15:30:02 -0500","adding to ubuntu automation, facts debugging",	 1 file changed, 27 insertions(+), 7 deletions(-)	
+"a098748","jc3943","Mon, 30 Jan 2023 14:26:17 -0500","adding to ubuntu automation",	 1 file changed, 8 insertions(+), 8 deletions(-)	
+"3feeb8a","jc3943","Mon, 30 Jan 2023 14:13:36 -0500","adding to ubuntu automation",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"1b3173f","jc3943","Mon, 30 Jan 2023 13:52:19 -0500","adding to ubuntu automation",	 1 file changed, 2 insertions(+)	
+"13234b2","jc3943","Mon, 30 Jan 2023 13:49:41 -0500","adding to ubuntu automation",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"ac436b7","jc3943","Mon, 30 Jan 2023 13:45:12 -0500","adding to ubuntu automation",	 1 file changed, 34 insertions(+), 34 deletions(-)	
+"9709f66","jc3943","Mon, 30 Jan 2023 13:43:02 -0500","adding to ubuntu automation",	 1 file changed, 33 insertions(+), 33 deletions(-)	
+"3b65f9a","jc3943","Mon, 30 Jan 2023 13:40:09 -0500","adding to ubuntu automation",	 1 file changed, 35 insertions(+), 20 deletions(-)	
+"818314c","jc3943","Mon, 30 Jan 2023 13:06:11 -0500","adding to ubuntu automation",	 1 file changed, 9 insertions(+), 9 deletions(-)	
+"7cec483","jc3943","Mon, 30 Jan 2023 13:02:48 -0500","adding to ubuntu automation",	 1 file changed, 22 insertions(+), 18 deletions(-)	
+"5ef4eeb","jc3943","Mon, 30 Jan 2023 12:35:08 -0500","updated datastore",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"79c80a9","jc3943","Mon, 30 Jan 2023 12:33:37 -0500","updated ubuntu ova playbook",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"aafb7c3","jc3943","Mon, 30 Jan 2023 12:25:31 -0500","adding k8s-canaries",	 1 file changed, 56 insertions(+)	
+"d9240fc","jc3943","Mon, 30 Jan 2023 12:07:16 -0500","updated ubuntu ova deployment vars",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"ea2d8ae","jc3943","Mon, 30 Jan 2023 11:36:45 -0500","updated dhcpRelay for providerIP",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"96b4c50","jc3943","Mon, 30 Jan 2023 11:27:49 -0500","updated k8s-jenkinsfile for dhcpRelay",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"db55e13","jc3943","Mon, 30 Jan 2023 11:26:51 -0500","updated k8s-jenkinsfile for dhcpRelay",	 6 files changed, 6 insertions(+), 4 deletions(-)	
+"4d4881e","jc3943","Mon, 30 Jan 2023 09:24:15 -0500","adding ubuntu ova deployment",	 2 files changed, 134 insertions(+)	
+"63f0b1d","jc3943","Sun, 29 Jan 2023 21:26:56 -0500","fixed typo in k8s-jenkinsfile",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"7a4a140","jc3943","Sun, 29 Jan 2023 21:08:51 -0500","chnaged vcsa deploy vars",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"c9612d9","jc3943","Sun, 29 Jan 2023 21:00:35 -0500","chnaged vcsa ova url",	 1 file changed, 11 insertions(+), 11 deletions(-)	
+"1d92b85","jc3943","Sun, 29 Jan 2023 20:52:57 -0500","chnaged vcsa ova url",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"f93636f","jc3943","Sun, 29 Jan 2023 20:49:12 -0500","added stage to kickoff bare metal install pipeline to k8s-jenkinsfile",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"847e7ef","jc3943","Sun, 29 Jan 2023 20:47:39 -0500","added stage to kickoff bare metal install pipeline to k8s-jenkinsfile",	 1 file changed, 5 insertions(+)	
+"9d7c9f3","jc3943","Sun, 29 Jan 2023 20:39:04 -0500","removed terraform state data",	 3 files changed, 1012 deletions(-)	
+"a051c2f","jc3943","Sun, 29 Jan 2023 20:04:51 -0500","fixed type in k8s-ucs-bm-jenkinsfile",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"1a4c6f8","jc3943","Sun, 29 Jan 2023 19:51:52 -0500","fixed type in k8s-ucs-bm-jenkinsfile",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"ca564f5","jc3943","Sun, 29 Jan 2023 19:45:14 -0500","fixed type in k8s-ucs-bm-jenkinsfile",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"c4da257","jc3943","Sun, 29 Jan 2023 19:35:10 -0500","fixed type in k8s-ucs-bm-jenkinsfile",	 1 file changed, 2 insertions(+), 43 deletions(-)	
+"3cca45f","jc3943","Sun, 29 Jan 2023 19:32:20 -0500","added terraform files for repo creation and bm os install",	 42 files changed, 102067 insertions(+)	
+"5b89fe9","jc3943","Wed, 25 Jan 2023 18:09:25 -0500","updated bare-metal-aep.csv and tenant.csv for additional header aep/encap  assignment for physical domain and dhcp related tasks",	 12 files changed, 191 insertions(+), 341 deletions(-)	
+"01c63e7","jc3943","Fri, 20 Jan 2023 11:15:08 -0500","Merge branch 'bh-prod' into sandbox",	"ee23283","jc3943","Thu, 19 Jan 2023 18:58:26 -0500","added env var for apic ip address",	 5 files changed, 116 insertions(+), 3 deletions(-)
+	"7e49394","jc3943","Thu, 19 Jan 2023 14:42:46 -0500","rem'd role on build",	 1 file changed, 2 insertions(+), 2 deletions(-)
+	"cdb27e4","jc3943","Thu, 19 Jan 2023 13:51:03 -0500","added role back in for initial discovery",	 1 file changed, 2 insertions(+), 2 deletions(-)
+	"9658faa","jc3943","Thu, 19 Jan 2023 10:50:12 -0500","rem'd role as this causes an error currently",	 1 file changed, 2 insertions(+), 2 deletions(-)
+	"83f478e","jc3943","Thu, 19 Jan 2023 10:25:48 -0500","updated to correct datastore for bh-prod",	 1 file changed, 1 insertion(+), 1 deletion(-)
+	"0781e19","jc3943","Thu, 19 Jan 2023 10:21:21 -0500","updated tenant.csv template headers",	 1 file changed, 6 insertions(+), 5 deletions(-)
+	"dcd369a","jc3943","Thu, 19 Jan 2023 10:06:00 -0500","updated tenant seed files",	 4 files changed, 29 insertions(+)
+	"97fa2d3","jc3943","Mon, 16 Jan 2023 21:00:08 -0500","added an EPG to tenant.csv",	 2 files changed, 2 insertions(+), 2 deletions(-)
+	"c35fa0b","jc3943","Mon, 16 Jan 2023 20:56:52 -0500","added an EPG to tenant.csv",	 1 file changed, 2 insertions(+), 1 deletion(-)
+	"10ee709","jc3943","Mon, 16 Jan 2023 19:31:33 -0500","working on ova deployment script for vapic",	 4 files changed, 73 insertions(+)
+	"6ae255d","jc3943","Thu, 12 Jan 2023 20:28:55 -0500","update bare-metal-aep.csv for header row",	 2 files changed, 110 insertions(+)
+	"122b27e","jc3943","Thu, 12 Jan 2023 13:05:39 -0500","minor mods and merge conflict resolved Merge branch 'master' into vapic-eft",	"725e7f7","jc3943","Thu, 12 Jan 2023 13:04:32 -0500","modified tenant creation playbook",
+ 1 file changed, 11 deletions(-)		"67f4502","jc3943","Thu, 12 Jan 2023 07:27:30 -0500","added k8s-vapic-sandbox jenkinsfile for eft testing",
+ 1 file changed, 149 insertions(+)		"e3c4147","jc3943","Tue, 10 Jan 2023 20:45:00 -0500","removed dhcp relay task from make-tenants as it is elsewhere",
+ 1 file changed, 11 deletions(-)		"0144904","jc3943","Tue, 10 Jan 2023 20:40:00 -0500","modified tenant.csv to match addition of header row and dhcpRelay key",
+ 1 file changed, 6 insertions(+), 5 deletions(-)		"5166f36","jc3943","Tue, 10 Jan 2023 20:33:34 -0500","modifid typo in aciMakeTenants",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"89a047f","jc3943","Tue, 10 Jan 2023 20:30:45 -0500","modified  type in jenkinsfile",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"8749afc","jc3943","Sun, 8 Jan 2023 20:14:23 -0500","added aci dhcp relay and modified seed csv for header row",
+ 5 files changed, 83 insertions(+), 5 deletions(-)		"11f4381","jc3943","Fri, 6 Jan 2023 18:21:52 -0500","fixed path in devClaim ... this needs variablized",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"23453d5","jc3943","Fri, 6 Jan 2023 18:05:50 -0500","modified vars to match branch and fixed cluster mask",
+ 2 files changed, 167 insertions(+), 6 deletions(-)		"03c0b88","jc3943","Fri, 6 Jan 2023 16:58:39 -0500","removing junk files",
+ 2 files changed, 0 insertions(+), 0 deletions(-)		"e1a982b","jc3943","Wed, 4 Jan 2023 18:07:20 -0500","added role to leaf and spine discovery scripts as GX2B could be either",
+ 1 file changed, 2 insertions(+)		"a853326","jc3943","Wed, 4 Jan 2023 09:21:19 -0500","modified vars for vapic-eft",
+ 6 files changed, 5 insertions(+), 5 deletions(-)		"31d4e54","jc3943","Tue, 3 Jan 2023 19:00:59 -0500","initial branch commit and var mods",
+ 22 files changed, 1228 insertions(+), 2 deletions(-)		"699a9ab","jc3943","Tue, 3 Jan 2023 17:20:12 -0500","minor mod to utils",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"3d6a149","jc3943","Tue, 20 Dec 2022 16:41:46 -0500","updates switch-inventory.yaml",
+ 2 files changed, 3 insertions(+), 3 deletions(-)		"5ee9109","jc3943","Thu, 15 Dec 2022 19:08:47 -0600","minor mods to mac_lookup.py",
+ 3 files changed, 4 insertions(+), 10 deletions(-)		"b65ad82","jc3943","Wed, 14 Dec 2022 19:41:39 -0600","working on mac lookup iosxe",
+ 4 files changed, 64 insertions(+), 24 deletions(-)		"17e270a","Kelly Jones (kellyjon)","Wed, 14 Dec 2022 18:55:40 -0500","added wti upgrade code",
+ 3 files changed, 541 insertions(+)		"edfd567","Kelly Jones (kellyjon)","Wed, 14 Dec 2022 18:53:15 -0500","Merge branch 'bh-prod' of github.com:jc3943/LTRATO-3001 into bh-prod",
+"7130ccf","jc3943","Wed, 14 Dec 2022 15:26:00 +0000","added mac_lookup.py unmodified fron git hank preston",	 8 files changed, 1022 insertions(+)	
+"c864f20","jc3943","Wed, 7 Dec 2022 20:51:04 -0500","commit from bh-prod Merge branch 'bh-prod'",	"13ba6ff","jc3943","Wed, 7 Dec 2022 20:50:48 -0500","removing junk files",	 3 files changed, 0 insertions(+), 0 deletions(-)
+	"6f1a297","jc3943","Wed, 7 Dec 2022 20:49:29 -0500","fixing merge conflicts",	"f4cf57a","jc3943","Wed, 7 Dec 2022 20:47:49 -0500","added hx-getClusterState.py",
+ 4 files changed, 64 insertions(+), 1 deletion(-)		"05fc4b1","jc3943","Tue, 6 Dec 2022 14:19:52 -0500","updated switch-inventory.csv and hostIpAddres.csv",
+ 3 files changed, 2 insertions(+), 9 deletions(-)		"6fef1af","jc3943","Fri, 2 Dec 2022 10:02:45 -0500","fixed datastore reference",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"c96eb69","jc3943","Fri, 2 Dec 2022 09:11:41 -0500","updated all to original esxi host for vcsa",
+ 2 files changed, 5 insertions(+), 5 deletions(-)		"bf8ce94","jc3943","Thu, 1 Dec 2022 22:36:02 -0500","removed add host task to vcsa-create.yml temporarily",
+ 1 file changed, 14 insertions(+), 14 deletions(-)		"8b2185a","jc3943","Thu, 1 Dec 2022 22:19:27 -0500","removed ntp setting from vcsa-create.yml",
+ 1 file changed, 2 insertions(+), 2 deletions(-)		"8c4cf84","jc3943","Thu, 1 Dec 2022 22:11:19 -0500","updates to reflect new esxi host",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"65afd5e","jc3943","Thu, 1 Dec 2022 22:09:40 -0500","updates to reflect new esxi host",
+ 1 file changed, 13 insertions(+), 13 deletions(-)		"5602dc8","jc3943","Thu, 1 Dec 2022 22:07:48 -0500","updates to reflect new esxi host",
+ 2 files changed, 3 insertions(+), 3 deletions(-)		"b0be27a","jc3943","Thu, 1 Dec 2022 19:36:55 -0500","changed switch-inventory.csv to reflect correct vcenter parms",
+ 1 file changed, 4 insertions(+), 4 deletions(-)		"3920cc8","jc3943","Thu, 1 Dec 2022 18:37:42 -0500","changed apic ip in docker-jenkinsfile for aciHxPortOps.py",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"2792ed7","jc3943","Thu, 1 Dec 2022 18:31:04 -0500","modified hardcoded file values in aciCreate_port_yaml.py",
+ 2 files changed, 88 insertions(+), 136 deletions(-)		"00befe4","jc3943","Thu, 1 Dec 2022 18:25:09 -0500","modified hardcoded file values in aciCreate_port_yaml.py",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"4d038c1","jc3943","Thu, 1 Dec 2022 18:24:25 -0500","modified hardcoded file values in aciCreate_port_yaml.py",
+ 3 files changed, 133 insertions(+), 61 deletions(-)		"185c070","jc3943","Thu, 1 Dec 2022 18:15:11 -0500","fixed issue with port-defs.csv",
+ 2 files changed, 1 insertion(+), 1 deletion(-)		"3464c06","jc3943","Thu, 1 Dec 2022 18:07:43 -0500","attempting different esxi host",
+ 1 file changed, 13 insertions(+), 13 deletions(-)		"f543d49","jc3943","Thu, 1 Dec 2022 18:00:56 -0500","attempting different esxi host",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"c3e76f0","jc3943","Thu, 1 Dec 2022 17:57:55 -0500","attempting different esxi host",
+ 2 files changed, 2 insertions(+), 2 deletions(-)		"711b381","jc3943","Thu, 1 Dec 2022 17:52:45 -0500","attempting different esxi host",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"cce2dc4","jc3943","Thu, 1 Dec 2022 16:30:22 -0500","attempting different esxi host",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"034a0cc","jc3943","Thu, 1 Dec 2022 15:46:12 -0500","attempting different esxi host",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"e678922","jc3943","Thu, 1 Dec 2022 15:44:09 -0500","attempting different esxi host",
+ 2 files changed, 2 insertions(+), 2 deletions(-)		"3d4f9f6","jc3943","Thu, 1 Dec 2022 14:53:00 -0500","switching to different vcsa ova file",
+ 1 file changed, 2 insertions(+), 2 deletions(-)		"ab62060","jc3943","Thu, 1 Dec 2022 12:26:47 -0500","fixed yet another typo",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"0c86de9","jc3943","Thu, 1 Dec 2022 12:08:03 -0500","fixed esxi host address for vcsa-create.yml",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"3e6070b","jc3943","Thu, 1 Dec 2022 12:00:14 -0500","fixed esxi host address for vcsa-create.yml",
+ 1 file changed, 2 insertions(+), 2 deletions(-)		"0ef200b","jc3943","Thu, 1 Dec 2022 11:54:08 -0500","fixed type on esxi host address vcsa-create.yml",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"09fd602","jc3943","Thu, 1 Dec 2022 09:36:16 -0500","updated domain name in vcsa-create.yml",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"a330d2c","jc3943","Thu, 1 Dec 2022 09:28:56 -0500","updated vcenter creds for vmm domain association",
+ 2 files changed, 1 insertion(+), 1 deletion(-)		"8740f24","jc3943","Wed, 30 Nov 2022 17:30:01 -0500","modified branch specific vars",
+ 7 files changed, 63 insertions(+), 50 deletions(-)		"78c2ef2","jc3943","Wed, 30 Nov 2022 13:54:24 -0500","re-sync",
+ 1 file changed, 0 insertions(+), 0 deletions(-)		"a9333f9","jc3943","Tue, 29 Nov 2022 15:01:13 -0500","modifed nodeHealth python for test criteria",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"633d81e","jc3943","Tue, 29 Nov 2022 14:57:37 -0500","modifed nodeHealth python for test criteria",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"e06a9c0","jc3943","Tue, 29 Nov 2022 14:52:58 -0500","modifed nodeHealth python for test criteria",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"27d5ca1","jc3943","Tue, 29 Nov 2022 14:51:22 -0500","modifed nodeHealth python for test criteria",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"80180d9","jc3943","Tue, 29 Nov 2022 14:50:10 -0500","modifed nodeHealth python for test criteria",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"9655fab","jc3943","Tue, 29 Nov 2022 14:47:14 -0500","modifed nodeHealth python for test criteria",
+ 3 files changed, 8 insertions(+), 15 deletions(-)		"98ff9ad","jc3943","Tue, 29 Nov 2022 14:26:39 -0500","modifed cron timer on aciNodeHealth-jenkinsfile for 10m interval",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"6cd1c1f","jc3943","Tue, 29 Nov 2022 14:21:10 -0500","minor fixes in aciGetNodeStates.py and jenkinsfile for periodic execution",
+ 7 files changed, 51 insertions(+), 4 deletions(-)		"a313ef3","jc3943","Mon, 28 Nov 2022 17:01:48 -0500","init branch commit with update switch-inventory.csv",
+ 23 files changed, 1225 insertions(+)		"64ce9fa","jc3943","Mon, 28 Nov 2022 16:18:57 -0500","working aci switch upgrade scripts",
+ 2 files changed, 75 insertions(+), 23 deletions(-)		"aef32ad","jc3943","Sun, 27 Nov 2022 17:05:02 -0500","minor cosmetic fixes to apic upgrade script",
+ 2 files changed, 8 insertions(+), 8 deletions(-)		"f7cf534","jc3943","Sun, 27 Nov 2022 09:10:56 -0500","resolving issue with apic upgrade status checks",
+ 4 files changed, 254 insertions(+), 44 deletions(-)		"40f603a","jc3943","Fri, 25 Nov 2022 20:59:09 -0500","updated aciGetnodeStates python modules",
+ 15 files changed, 549 insertions(+), 418 deletions(-)		"15ad29f","jc3943","Wed, 16 Nov 2022 08:59:09 -0600","added dns info for bind pod",
+ 4 files changed, 45 insertions(+)		"29a898c","jc3943","Thu, 10 Nov 2022 11:03:53 -0500","changed interpreter from /bin/python3 to /usr/bin/python3 in inv-sandbox-x509",
+ 1 file changed, 2 insertions(+), 2 deletions(-)		"ad0da76","jc3943","Thu, 10 Nov 2022 11:00:39 -0500","changed interpreter from /bin/python3 to /usr/bin/python3 in inv-sandbox-x509",
+ 2 files changed, 3 insertions(+), 3 deletions(-)		"1fa37a2","jc3943","Thu, 10 Nov 2022 10:03:44 -0500","removed enable_ha and enable_drs from vcsa-create.yml due to remove from galaxy collection",
+ 1 file changed, 2 insertions(+), 2 deletions(-)		"1222732","jc3943","Thu, 10 Nov 2022 04:51:55 -0500","removed container defs in docker-aci-jenkinsfile",
+ 1 file changed, 1 insertion(+), 3 deletions(-)		"e242771","jc3943","Thu, 10 Nov 2022 04:50:29 -0500","removed container defs in docker-aci-jenkinsfile",
+ 1 file changed, 1 insertion(+), 3 deletions(-)		"8d8278f","jc3943","Thu, 10 Nov 2022 04:48:20 -0500","removed container defs in docker-aci-jenkinsfile",
+ 1 file changed, 13 deletions(-)		"67513c0","jc3943","Thu, 10 Nov 2022 04:41:02 -0500","added docker based jenkinsfile for aci build",
+ 2 files changed, 272 insertions(+)		"384e91a","jc3943","Tue, 8 Nov 2022 21:29:05 -0500","attempting HX destroy automation",
+ 5 files changed, 204 insertions(+), 5 deletions(-)		"0b8eb4a","jc3943","Tue, 8 Nov 2022 13:20:55 -0500","added imcAdminPw.py and tested for admin password reset",
+ 4 files changed, 53 insertions(+), 2 deletions(-)		"752d25e","jc3943","Tue, 8 Nov 2022 11:55:32 -0500","added ntp settings func to imcOps.py",
+ 4 files changed, 27 insertions(+), 9 deletions(-)		"a2a2b8d","jc3943","Tue, 8 Nov 2022 09:32:40 -0500","resolved M4 10G port config issues",
+ 4 files changed, 21 insertions(+), 10 deletions(-)		"d29e8a7","jc3943","Mon, 7 Nov 2022 19:43:39 -0500","added hostname and dns python scripts",
+ 6 files changed, 66 insertions(+), 3 deletions(-)		"10ca67d","jc3943","Mon, 7 Nov 2022 12:12:32 -0500","working on imcInventory.py",
+ 10 files changed, 85 insertions(+), 7 deletions(-)		"7b344de","jc3943","Tue, 1 Nov 2022 17:43:27 -0400","resync",
+"9cc4a49","jc3943","Tue, 1 Nov 2022 17:41:53 -0400","working on terraform bulk os install",	 21 files changed, 1950 insertions(+), 509 deletions(-)	
+"9dc80d7","jc3943","Thu, 27 Oct 2022 12:49:17 -0700","restored pod1 k8s-jenkinsfile for full pipeline",	 1 file changed, 6 insertions(+), 6 deletions(-)	
+"6ea5300","jc3943","Thu, 27 Oct 2022 09:22:16 -0700","working terraform osInstall",	 16 files changed, 946 insertions(+), 1 deletion(-)	
+"254bb51","jc3943","Mon, 17 Oct 2022 20:17:34 -0400","modified tft/intersight/hxDevClaim/intersightDevClaim.tf",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"ddf077b","jc3943","Mon, 17 Oct 2022 20:03:37 -0400","mods for techTap demo",	 17 files changed, 1263 insertions(+)	
+"763c987","jc3943","Mon, 17 Oct 2022 19:56:36 -0400","adding in kickstart for intersight bmInstall",	 3 files changed, 98 insertions(+)	
+"e08d798","jc3943","Tue, 11 Oct 2022 19:03:56 -0400","modified k8s-jenkinsfile for just tenant mods",	 1 file changed, 6 insertions(+), 6 deletions(-)	
+"4ccd1a1","jc3943","Tue, 11 Oct 2022 18:54:58 -0400","modified k8s-jenkinsfile for just tenant mods",	 1 file changed, 6 insertions(+), 6 deletions(-)	
+"2e8a50f","jc3943","Tue, 11 Oct 2022 18:45:59 -0400","modified k8s-jenkinsfile for just tenant mods",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"b93a830","jc3943","Tue, 11 Oct 2022 18:41:29 -0400","added nso-tenant for demo",	 2 files changed, 7 insertions(+), 1 deletion(-)	
+"6bc659b","jc3943","Tue, 11 Oct 2022 18:29:28 -0400","modified k8s-ucs-jenkinsfile, aciOps.py, aciFabricSwitchUpgrade",	 4 files changed, 7 insertions(+), 4 deletions(-)	
+"7d6f534","jc3943","Sun, 9 Oct 2022 22:28:23 -0400","removed a few non-descript remarks",	 2 files changed, 4 insertions(+), 2 deletions(-)	
+"bac7667","jc3943","Thu, 29 Sep 2022 19:52:26 -0400","fixing L3 out to add node 202",	 2 files changed, 18 insertions(+), 134 deletions(-)	
+"0ba6cad","jc3943","Thu, 29 Sep 2022 19:05:10 -0400","remove apic upgrade step from pipeline to save time",	 2 files changed, 4 insertions(+), 3 deletions(-)	
+"cc9c754","jc3943","Thu, 29 Sep 2022 18:36:00 -0400","updated L3-out.json for leaf-202 L3",	 2 files changed, 294 insertions(+), 20 deletions(-)	
+"fe75350","jc3943","Thu, 29 Sep 2022 18:29:31 -0400","updated switch-inventory.csv for fw domain",	 1 file changed, 2 insertions(+), 1 deletion(-)	
+"6f89fb9","jc3943","Thu, 29 Sep 2022 18:14:28 -0400","updated port-defs.csv for stand-alone esxi hosts",	 4 files changed, 16 insertions(+), 13 deletions(-)	
+"8d0ba3e","jc3943","Thu, 29 Sep 2022 16:38:32 -0400","updated vcsa-create.yml to remove adding virtual esxi host",	 1 file changed, 14 insertions(+), 14 deletions(-)	
+"8bf2a0d","jc3943","Thu, 29 Sep 2022 16:37:23 -0400","updated dev.tfvars for disk cleanup",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"7597d3d","jc3943","Thu, 29 Sep 2022 13:20:39 -0400","updated k8s-ucs-jenkinsfile to enable all scripts for test",	 2 files changed, 4 insertions(+), 4 deletions(-)	
+"0b9b334","jc3943","Thu, 29 Sep 2022 12:10:06 -0400","updated vcsa-create.yml for new vcsa ova",	 2 files changed, 5 insertions(+), 2 deletions(-)	
+"7f27d97","jc3943","Tue, 27 Sep 2022 21:07:18 -0400","hardcoded vcsa ip, dns issue",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"4425adc","jc3943","Tue, 27 Sep 2022 21:03:59 -0400","updates path to hx-hosts.csv",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"90f884b","jc3943","Tue, 27 Sep 2022 21:00:30 -0400","changed hxHosts-vcenter-tasks.yml to match localhost",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"30cfa2f","jc3943","Tue, 27 Sep 2022 20:56:05 -0400","fixed syntax error in jenkinsfile",	 1 file changed, 5 insertions(+), 5 deletions(-)	
+"d0f43e7","jc3943","Tue, 27 Sep 2022 20:52:09 -0400","modified hxHosts-vcenter-tasks.yml and added to k8s-ucs-jenkinsfile",	 1 file changed, 3 insertions(+), 3 deletions(-)	
+"6539361","jc3943","Tue, 27 Sep 2022 20:47:29 -0400","modified hxHosts-vcenter-tasks.yml and added to k8s-ucs-jenkinsfile",	 5 files changed, 59 insertions(+), 35 deletions(-)	
+"30115cf","jc3943","Mon, 26 Sep 2022 11:07:32 -0400","adding script to power cycle server post vnic create",	 3 files changed, 48 insertions(+), 1 deletion(-)	
+"c22a3ba","jc3943","Mon, 26 Sep 2022 09:42:27 -0400","adding in scripts to create vnics on hx hosts",	 2 files changed, 3 insertions(+), 2 deletions(-)	
+"a28d4b9","jc3943","Fri, 23 Sep 2022 10:44:34 -0400","prepping k8s-jenkinsfile for imc operations",	 3 files changed, 150 insertions(+), 1 deletion(-)	
+"00b6b81","jc3943","Fri, 23 Sep 2022 10:17:38 -0400","revised aciHxVpcOps.py to handle shut/noshut of hx edge vpc ports",	 3 files changed, 13 insertions(+), 8 deletions(-)	
+"76aedb1","jc3943","Fri, 23 Sep 2022 09:33:48 -0400","reconstructed L3-Out.json",	 1 file changed, 255 insertions(+), 1 deletion(-)	
+"2b96757","jc3943","Thu, 22 Sep 2022 20:31:29 -0400","reconstructed L3-Out.json",	 2 files changed, 232 insertions(+), 231 deletions(-)	
+"13be00a","jc3943","Thu, 22 Sep 2022 19:17:31 -0400","added L3 out port profile",	 2 files changed, 20 insertions(+), 1 deletion(-)	
+"8e0e135","jc3943","Thu, 22 Sep 2022 18:11:19 -0400","added L3 domain to switch-inventory.csv",	 6 files changed, 109 insertions(+), 9 deletions(-)	
+"57a7d36","jc3943","Wed, 21 Sep 2022 10:07:08 -0400","added column to port defs for node id, updating aciPortOps.py to use port-defs.csv for port ops shut/noshut",	 3 files changed, 51 insertions(+), 57 deletions(-)	
+"e442224","jc3943","Wed, 21 Sep 2022 09:39:31 -0400","added vpc to port-defs.csv and updated imc routines for vnic create on hx nodes",	 10 files changed, 279 insertions(+), 13 deletions(-)	
+"801fbb3","jc3943","Tue, 20 Sep 2022 20:03:56 -0400","modified hxHosts-vcenter-tasks.yml per env",	 2 files changed, 9 insertions(+), 27 deletions(-)	
+"5a3dcd5","jc3943","Tue, 20 Sep 2022 19:46:34 -0400","added hx host ansible playbook for post install tasks",	 2 files changed, 7 insertions(+), 26 deletions(-)	
+"77252b1","jc3943","Tue, 20 Sep 2022 19:41:28 -0400","added hx host ansible playbook for post install tasks",	 4 files changed, 149 insertions(+)	
+"53c3af5","jc3943","Tue, 20 Sep 2022 15:45:07 -0400","updated pipeline for hx data store creation",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"9ffadcb","jc3943","Tue, 20 Sep 2022 15:41:18 -0400","updated pipeline for hx data store creation",	 1 file changed, 9 insertions(+), 1 deletion(-)	
+"54fe4c5","jc3943","Tue, 20 Sep 2022 15:33:17 -0400","updated hx-createDatastore for current pipeline",	 3 files changed, 54 insertions(+), 54 deletions(-)	
+"d424de4","jc3943","Tue, 20 Sep 2022 09:28:01 -0400","updated dynamic runner yanl sleep timer to support long lived workflows",	 3 files changed, 4 insertions(+), 4 deletions(-)	
+"786e9c4","jc3943","Mon, 19 Sep 2022 04:27:14 -0400","switching back to vsphere 6.7 due to licensing issues",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"a9c5cf5","jc3943","Fri, 16 Sep 2022 21:37:14 -0400","removing hx proxy config from terraform",	 2 files changed, 4 insertions(+), 4 deletions(-)	
+"9f96ce2","jc3943","Fri, 16 Sep 2022 11:00:23 -0700","changed vcsa version to support M5 cluster default esxi7",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"f1c3eba","jc3943","Fri, 16 Sep 2022 08:36:40 -0700","changed intersight tag for hx policies",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"ab41720","jc3943","Fri, 16 Sep 2022 08:24:34 -0700","changed node profile filter mechanism",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"2bb2147","jc3943","Fri, 16 Sep 2022 07:51:15 -0700","updated vars to use M5 cluster",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"9d1059d","jc3943","Thu, 15 Sep 2022 20:01:02 -0700","updated vars to use M5 cluster",	 3 files changed, 20 insertions(+), 20 deletions(-)	
+"f5bcab8","jc3943","Thu, 15 Sep 2022 16:50:03 -0700","fixed key error in statusHXDeploy",	 2 files changed, 136 insertions(+), 103 deletions(-)	
+"4c9f941","jc3943","Thu, 15 Sep 2022 11:26:49 -0700","looking at esxi root pw issue",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"2731a2a","jc3943","Wed, 14 Sep 2022 10:49:46 -0700","fixed key error in statusHXDeploy",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"ea676be","jc3943","Wed, 14 Sep 2022 10:31:50 -0700","fixed key error in statusHXDeploy",	 2 files changed, 1 insertion(+), 1 deletion(-)	
+"c8706bf","jc3943","Wed, 14 Sep 2022 10:25:33 -0700","fixed key error in statusHXDeploy",	 3 files changed, 5 insertions(+), 5 deletions(-)	
+"176e050","jc3943","Wed, 14 Sep 2022 07:57:06 -0700","updated tenant.yaml to reflect current tenant.yaml",	 1 file changed, 146 insertions(+), 757 deletions(-)	
+"9c8dd5c","jc3943","Wed, 14 Sep 2022 07:51:38 -0700","removed json payload from deploy status get request",	 1 file changed, 3 insertions(+), 3 deletions(-)	
+"63d45df","jc3943","Wed, 14 Sep 2022 07:32:48 -0700","fixed mis-configured vcsa address, added hx deployment validation",	 1 file changed, 2 insertions(+), 1 deletion(-)	
+"faa4a84","jc3943","Wed, 14 Sep 2022 07:31:20 -0700","fixed mis-configured vcsa address, added hx deployment validation",	 1 file changed, 4 insertions(+)	
+"b6c8094","jc3943","Wed, 14 Sep 2022 07:16:53 -0700","updated env.tfvars for the correct vcenter",	 2 files changed, 20 insertions(+), 3 deletions(-)	
+"602a54f","jc3943","Wed, 14 Sep 2022 05:45:46 -0700","added hx profile deployment back to pipeline",	 2 files changed, 6 insertions(+), 1 deletion(-)	
+"9ba91c1","jc3943","Tue, 13 Sep 2022 21:19:31 -0700","added pause after device claims",	 2 files changed, 1 insertion(+), 1 deletion(-)	
+"bac595f","jc3943","Tue, 13 Sep 2022 20:56:31 -0700","fixed intersight/intersightDevClaimStatus.py to check claim status against terraform targets list",	 2 files changed, 7 insertions(+), 6 deletions(-)	
+"6d4e601","jc3943","Tue, 13 Sep 2022 20:36:22 -0700","fixed intersight/intersightDevClaimStatus.py to check claim status against terraform targets list",	 3 files changed, 38 insertions(+), 6 deletions(-)	
+"bc903ce","jc3943","Mon, 12 Sep 2022 13:48:49 -0400","j",	 4 files changed, 10 insertions(+), 8 deletions(-)	
+"10dee11","jc3943","Mon, 12 Sep 2022 13:06:27 -0400","removed sleep timer, replaced by intersightDevClaimStatus.py",	 3 files changed, 14 insertions(+), 8 deletions(-)	
+"6257328","jc3943","Mon, 12 Sep 2022 12:30:17 -0400","modified intersightOps.py",	 3 files changed, 2 insertions(+), 3 deletions(-)	
+"f92d2f0","jc3943","Sun, 11 Sep 2022 17:06:53 -0400","adding code to get devClaimStatus",	 2 files changed, 4 insertions(+)	
+"dc755c7","jc3943","Sun, 11 Sep 2022 16:19:37 -0400","adding code to get devClaimStatus",	 4 files changed, 45 insertions(+), 10 deletions(-)	
+"82fbb29","jc3943","Sun, 11 Sep 2022 14:13:31 -0400","fixed typo in intersightProfiles.py",	 3 files changed, 2 insertions(+), 2 deletions(-)	
+"8096720","jc3943","Sun, 11 Sep 2022 11:36:56 -0400","modified dockerfile to include intersight_auth",	 3 files changed, 2 insertions(+), 1 deletion(-)	
+"749ef02","jc3943","Sun, 11 Sep 2022 10:48:16 -0400","added hx profile deploy python script to deploy cluster",	 3 files changed, 3 insertions(+), 2 deletions(-)	
+"e25187b","jc3943","Sun, 11 Sep 2022 10:28:44 -0400","reduced post devClaim sleep time",	 2 files changed, 984 insertions(+), 1 deletion(-)	
+"e617cd8","jc3943","Sun, 11 Sep 2022 10:02:06 -0400","fixed relative path to intersight pem data",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"f7316de","jc3943","Sun, 11 Sep 2022 09:57:50 -0400","moved hxDevClaim, updated k8s-ucs-jenkinsfile for hxEdgeBuildStage",	 15 files changed, 45 insertions(+), 17 deletions(-)	
+"3bac416","jc3943","Thu, 8 Sep 2022 13:39:55 -0400","fixed L3 out name and added aaep bm epg maps",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"aa706e7","jc3943","Thu, 8 Sep 2022 13:27:09 -0400","fixed L3 out name and added aaep bm epg maps",	 5 files changed, 37 insertions(+), 3 deletions(-)	
+"e4271dc","jc3943","Thu, 8 Sep 2022 11:39:13 -0400","updated tenant.csv for L3 out to QA",	 1 file changed, 3 insertions(+), 3 deletions(-)	
+"94534cb","jc3943","Thu, 8 Sep 2022 11:32:45 -0400","updated port-defs.csv for M5 HX cluster",	 5 files changed, 19 insertions(+), 1 deletion(-)	
+"7dd70ca","jc3943","Thu, 8 Sep 2022 09:03:15 -0400","added aci L3, modified ip addresses",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"0711889","jc3943","Wed, 7 Sep 2022 18:38:12 -0400","added aci L3",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"9ef7c4b","jc3943","Wed, 7 Sep 2022 17:52:15 -0400","added aci L3",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"1513262","jc3943","Wed, 7 Sep 2022 17:38:33 -0400","added aci L3",	 2 files changed, 239 insertions(+)	
+"9435c1e","jc3943","Wed, 7 Sep 2022 14:17:52 -0400","terraform intersight automation added",	 17 files changed, 1240 insertions(+), 2000 deletions(-)	
+"8ceba31","jc3943","Fri, 19 Aug 2022 22:48:35 -0400","fixed stage descriptors in k8s-jenkinsfile",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"78a844a","jc3943","Fri, 19 Aug 2022 22:24:38 -0400","adding terraform hx edge install scripts",	 40 files changed, 5602 insertions(+), 2 deletions(-)	
+"128146c","jc3943","Wed, 17 Aug 2022 03:07:04 -0400","retrying 5.2.5c apic upgrade",	 2 files changed, 3 insertions(+), 2 deletions(-)	
+"8a4e8b4","jc3943","Wed, 17 Aug 2022 01:04:02 -0400","retrying 5.2.5c apic upgrade",	 2 files changed, 2 insertions(+), 2 deletions(-)	
+"2bdea19","jc3943","Tue, 16 Aug 2022 19:57:17 -0400","added base64 encoding and decoding utility",	 6 files changed, 57 insertions(+)	
+"8ac8005","jc3943","Tue, 16 Aug 2022 19:45:54 -0400","updated aci tfe for tenant",	 2 files changed, 17 insertions(+), 2 deletions(-)	
+"fd1b2b2","jc3943","Tue, 16 Aug 2022 17:39:38 -0400","base64 encoded cimc_pa",	 2 files changed, 2 insertions(+), 2 deletions(-)	
+"2442916","jc3943","Tue, 16 Aug 2022 16:50:04 -0400","changed def for secretkey",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"8a8a464","jc3943","Tue, 16 Aug 2022 16:44:25 -0400","added variable type declarations variables.tf",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"3c59f06","jc3943","Tue, 16 Aug 2022 16:42:08 -0400","added variable type declarations variables.tf",	 1 file changed, 24 insertions(+)	
+"42646ac","jc3943","Tue, 16 Aug 2022 16:35:53 -0400","yeah some genius forgot quotes in tfvars",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"21f1cf3","jc3943","Tue, 16 Aug 2022 16:33:33 -0400","modified terraform intersight device claim files",	 3 files changed, 29 insertions(+), 16 deletions(-)	
+"f223f4b","jc3943","Tue, 16 Aug 2022 08:24:44 -0400","aciUpgrade.py timer tweeks",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"12f539f","jc3943","Tue, 16 Aug 2022 08:23:22 -0400","aciUpgrade.py timer tweeks",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"e7af9fe","jc3943","Sun, 14 Aug 2022 23:24:20 -0400","retrying 5.2.5c apic upgrade",	 2 files changed, 2 insertions(+), 2 deletions(-)	
+"3c9056f","jc3943","Fri, 12 Aug 2022 10:30:16 -0400","updated wait timers on aciUpgrade.py",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"7e6f213","jc3943","Fri, 12 Aug 2022 10:09:47 -0400","updated timers on aciUpgrade.py",	 2 files changed, 2 insertions(+), 2 deletions(-)	
+"03e4659","jc3943","Fri, 12 Aug 2022 01:11:30 -0400","cleaned up terraform state to solve apply failures, no dns hack needed",	 2 files changed, 33 insertions(+), 324 deletions(-)	
+"c6cc4d8","jc3943","Thu, 11 Aug 2022 21:34:12 -0400","dns hacks",	 2 files changed, 2 insertions(+), 2 deletions(-)	
+"af16748","jc3943","Thu, 11 Aug 2022 21:32:45 -0400","dns hacks",	 2 files changed, 274 insertions(+), 38 deletions(-)	
+"2a0fafe","jc3943","Thu, 11 Aug 2022 21:23:02 -0400","dns hacking",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"2f4fdad","jc3943","Thu, 11 Aug 2022 21:10:24 -0400","dns hacking",	 1 file changed, 2 insertions(+), 1 deletion(-)	
+"8f18be5","jc3943","Thu, 11 Aug 2022 19:55:45 -0400","dns hacking",	 2 files changed, 1 insertion(+), 2 deletions(-)	
+"0aaaab9","jc3943","Thu, 11 Aug 2022 19:54:27 -0400","dns hacking",	 1 file changed, 2 insertions(+)	
+"449974a","jc3943","Thu, 11 Aug 2022 19:43:15 -0400","added sleep for k8s debug",	 1 file changed, 1 insertion(+)	
+"227a8da","jc3943","Thu, 11 Aug 2022 19:30:55 -0400","modified k8s-ucs-jenkinsfile for hosts entry",	 4 files changed, 4 insertions(+), 1 deletion(-)	
+"604d00d","jc3943","Thu, 11 Aug 2022 19:12:09 -0400","changed runner image",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"d990c21","jc3943","Thu, 11 Aug 2022 18:57:14 -0400","modified path in k8s-jenkinsfile for apic upgrade vars",	 4 files changed, 301 insertions(+), 10 deletions(-)	
+"28d0160","jc3943","Thu, 11 Aug 2022 17:16:59 -0400","added intersight api keys",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"1acd209","jc3943","Thu, 11 Aug 2022 17:13:24 -0400","added intersight api keys",	 3 files changed, 28 insertions(+)	
+"5b32b12","jc3943","Thu, 11 Aug 2022 17:08:43 -0400","modified hostIpAddrs.csv path in intersightDevClaim.tf",	 3 files changed, 14 insertions(+), 5 deletions(-)	
+"edf1e80","jc3943","Thu, 11 Aug 2022 16:46:03 -0400","created k8s-ucs-jenkinsfile and jnlp-ubuntu-tfe",	 2 files changed, 56 insertions(+)	
+"df01978","jc3943","Thu, 11 Aug 2022 15:37:12 -0400","added intersightDevClaim.tf",	 15 files changed, 994 insertions(+)	
+"b48288e","jc3943","Thu, 11 Aug 2022 12:40:53 -0400","updated k8s-jenkins for apic upgrade",	 1 file changed, 9 insertions(+)	
+"dd18047","jc3943","Thu, 11 Aug 2022 10:48:25 -0400","modified switch-inventory.csv and added aci upgrade py's",	 6 files changed, 428 insertions(+), 4 deletions(-)	
+"c0d4647","jc3943","Wed, 10 Aug 2022 17:34:01 -0400","fixed vmm_provider in aciBuildFabric.yml",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"66082a0","jc3943","Wed, 10 Aug 2022 17:31:22 -0400","fixed vmm_provider in aciBuildFabric.yml",	 1 file changed, 1 insertion(+)	
+"b78d52b","jeff.comer","Wed, 10 Aug 2022 17:25:55 -0400","updated switch-inventory.csv datacenter name",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"8b35f67","jc3943","Wed, 10 Aug 2022 17:24:54 -0400","updated aciBuildFabric.yml",	 1 file changed, 15 insertions(+), 1 deletion(-)	
+"357be08","jc3943","Wed, 10 Aug 2022 16:34:53 -0400","updated aci-ports.yaml",	 1 file changed, 86 insertions(+), 1 deletion(-)	
+"e33c879","jc3943","Wed, 10 Aug 2022 16:08:22 -0400","Merge branch 'sandbox' of github.com:jc3943/LTRATO-3001 into sandbox just cause Please enter a commit message to explain why this merge is necessary,",	"d9f1039","jeff.comer","Wed, 10 Aug 2022 16:06:09 -0400","updated port-defs.csv",	 2 files changed, 2 insertions(+), 2 deletions(-)
+	"2af60da","jc3943","Wed, 10 Aug 2022 16:02:43 -0400","blah",	 3 files changed, 4 insertions(+), 88 deletions(-)
+	"dc4fc9a","jeff.comer","Wed, 10 Aug 2022 15:40:26 -0400","fixed oob pref length in switch-inventory.csv",	 1 file changed, 1 insertion(+), 1 deletion(-)
+	"9c536ff","jeff.comer","Wed, 10 Aug 2022 15:36:27 -0400","fixed oob pref length in switch-inventory.csv",	 1 file changed, 3 insertions(+), 3 deletions(-)
+	"d62584f","jeff.comer","Wed, 10 Aug 2022 15:32:57 -0400","fixed oob pref length in switch-inventory.csv",	 1 file changed, 3 insertions(+), 3 deletions(-)
+	"16ce463","jc3943","Wed, 10 Aug 2022 15:17:07 -0400","Merge branch 'sandbox' of github.com:jc3943/LTRATO-3001 into sandbox just cause Please enter a commit message to explain why this merge is necessary,",	"3d121d5","jc3943","Wed, 10 Aug 2022 15:16:43 -0400","removed typo k8s-jenkinsfile",
+ 3 files changed, 1 insertion(+), 1 deletion(-)		"28bd895","jeff.comer","Wed, 10 Aug 2022 15:07:21 -0400","updated vars for sandbox",
+ 4 files changed, 17 insertions(+), 19 deletions(-)		"4093b46","jc3943","Wed, 10 Aug 2022 14:42:45 -0400","update and resync",
+ 1 file changed, 0 insertions(+), 0 deletions(-)		"2dbc254","jc3943","Wed, 10 Aug 2022 14:05:03 -0400","modified jenkinsfile for sandbox",
+ 21 files changed, 1055 insertions(+), 33 deletions(-)		"97e310f","jc3943","Wed, 10 Aug 2022 13:25:08 -0400","updated ubuntu-dockerfile",
+ 11 files changed, 991 insertions(+), 11 deletions(-)		"37c7ffc","jc3943","Sun, 10 Jul 2022 21:38:19 -0400","added envMon-jenkinsfile",
+ 1 file changed, 34 insertions(+)		"9a20a2e","jc3943","Sun, 10 Jul 2022 19:51:35 -0400","added imc power data to postgres",
+ 3 files changed, 39 insertions(+), 4 deletions(-)		"170de87","jc3943","Wed, 6 Jul 2022 19:06:26 -0400","added hx-inventory script",
+ 12 files changed, 381 insertions(+)		"a5249cd","jc3943","Mon, 4 Jul 2022 20:33:21 -0400","added k8s kubeconfig",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"e04752b","jc3943","Mon, 4 Jul 2022 20:31:47 -0400","added k8s kubeconfig",
+ 1 file changed, 19 insertions(+)		"08b17d4","jc3943","Mon, 4 Jul 2022 20:22:17 -0400","added k8s node stat python and updated k8s-jenkinsfile",
+ 3 files changed, 19 insertions(+)		"26ffafc","jc3943","Fri, 1 Jul 2022 21:03:19 -0400","adding k8s node health validation",
+ 3 files changed, 27 insertions(+)		"bb699d1","jc3943","Thu, 30 Jun 2022 12:01:23 -0400","mods for esxi host vars",
+ 16 files changed, 16 insertions(+), 16 deletions(-)		"1847356","jc3943","Thu, 30 Jun 2022 04:12:43 -0400","resync",
+ 1 file changed, 0 insertions(+), 0 deletions(-)		"4d729c7","jc3943","Thu, 16 Jun 2022 07:59:38 -0700","added missing vars for pod2 and pod3",
+ 7 files changed, 18 insertions(+)		"630aed2","jc3943","Wed, 15 Jun 2022 13:56:23 -0700","initial pod1 commit",
+ 16 files changed, 1674 insertions(+)		"57a92c7","jc3943","Wed, 15 Jun 2022 05:00:58 -0700","initial pod16 branch commit",
+ 2 files changed, 9 insertions(+)		"1b0c078","jc3943","Mon, 13 Jun 2022 19:39:54 -0700","added nso-Specs vars for all pods and nso playbook",
+ 15 files changed, 60 insertions(+)		"6214583","jc3943","Mon, 13 Jun 2022 19:23:23 -0700","added nso device playbook for 8kv",
+ 10 files changed, 53 insertions(+), 4 deletions(-)		"88aeee3","jc3943","Mon, 13 Jun 2022 14:06:22 -0700","modifies vars across all 16 pods",
+ 48 files changed, 318 insertions(+), 318 deletions(-)		"1b1ac0b","jc3943","Mon, 13 Jun 2022 13:27:16 -0700","fixed switch-inventory vars for 2-16",
+ 15 files changed, 15 insertions(+), 15 deletions(-)		"1ff890e","jc3943","Mon, 13 Jun 2022 06:55:31 -0700","removed json payload for pod1",
+ 1 file changed, 19 deletions(-)		"5584bf8","ltrato.3001","Sun, 12 Jun 2022 21:11:24 -0400","added json template",
+ 1 file changed, 0 insertions(+), 0 deletions(-)		"a8abb23","ltrato.3001","Sun, 12 Jun 2022 19:30:37 -0400","added json data",
+ 1 file changed, 19 insertions(+)		"349ed7f","jc3943","Sun, 12 Jun 2022 16:28:35 -0700","added json loader aci rest",
+ 2 files changed, 50 insertions(+)		"2d1fae2","jc3943","Sun, 12 Jun 2022 11:28:27 -0700","fixed typo in k8s-jenkinsfile",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"4aa0cc2","jc3943","Sun, 12 Jun 2022 11:22:31 -0700","fixed typo in k8s-jenkinsfile",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"0699a36","jc3943","Sun, 12 Jun 2022 09:12:16 -0700","added remaining tasks to k8s-jenkinsfile",
+ 1 file changed, 23 insertions(+), 2 deletions(-)		"0b78fb3","jc3943","Sun, 12 Jun 2022 06:58:25 -0700","added tenant vars all pods",
+ 30 files changed, 12060 insertions(+)		"4165ecb","ltrato.3001","Sun, 12 Jun 2022 09:02:54 -0400","added tenant vars yaml",
+ 1 file changed, 778 insertions(+)		"b15fca4","jc3943","Sun, 12 Jun 2022 05:47:51 -0700","added tenant vars",
+ 3 files changed, 450 insertions(+)		"9671f00","jc3943","Sat, 11 Jun 2022 20:00:43 -0700","update ubuntu-dockerfile",
+ 1 file changed, 9 insertions(+), 9 deletions(-)		"013d753","ltrato.3001","Sat, 11 Jun 2022 22:38:40 -0400","pod1 testing source",
+ 1 file changed, 2 insertions(+), 2 deletions(-)		"6dff3cb","jc3943","Fri, 10 Jun 2022 21:43:48 -0400","updated jnlp-ubuntu.yaml",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"47b8642","jc3943","Fri, 10 Jun 2022 21:31:07 -0400","updated k8s-jenkinsfile for vmmDomain playbook",
+ 1 file changed, 7 insertions(+)		"8a5af7b","jc3943","Fri, 10 Jun 2022 20:21:06 -0400","updated switch-inventory.csv for pod vars",
+ 19 files changed, 16 insertions(+), 16 deletions(-)		"31edaba","jc3943","Fri, 10 Jun 2022 16:58:10 -0400","tested vmmDomain playbook",
+ 3 files changed, 53 insertions(+), 55 deletions(-)		"7f776cf","jc3943","Fri, 10 Jun 2022 16:29:24 -0400","Merge branch 'master' of github.com:jc3943/LTRATO-3001 resync",
+"294ae89","jc3943","Fri, 10 Jun 2022 16:27:56 -0400","modied switch inventory vars for pod vcsa",	 3 files changed, 3 insertions(+), 3 deletions(-)	
+"50db9b5","ltrato.3001","Tue, 7 Jun 2022 17:11:45 -0400","removed bogus test",	 1 file changed, 1 deletion(-)	
+"8dd46b5","ltrato.3001","Tue, 7 Jun 2022 17:11:17 -0400","bogus commit test",	 1 file changed, 1 insertion(+)	
+"9147fb7","jc3943","Mon, 6 Jun 2022 06:41:27 -0400","modified creds for remaining pods",	 28 files changed, 196 insertions(+)	
+"5de97bc","jc3943","Sun, 5 Jun 2022 20:20:15 -0400","added vcsa vars for remaining pods",	 105 files changed, 3471 insertions(+), 3 deletions(-)	
+"6114f40","jc3943","Sat, 4 Jun 2022 12:28:45 -0400","modified vcsaCreate.yml",	 4 files changed, 3 insertions(+), 6 deletions(-)	
+"0f072dd","jc3943","Sat, 4 Jun 2022 12:23:36 -0400","modified vcsaCreate.yml",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"80b6754","jc3943","Sat, 4 Jun 2022 12:22:58 -0400","modified vcsaCreate.yml",	 2 files changed, 3 insertions(+), 2 deletions(-)	
+"93aea6f","jc3943","Sat, 4 Jun 2022 12:14:50 -0400","modified vcsaCreate.yml",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"ca5bbca","jc3943","Sat, 4 Jun 2022 12:13:50 -0400","modified vcsaCreate.yml",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"4fd2793","jc3943","Sat, 4 Jun 2022 12:12:56 -0400","modified vcsaCreate.yml",	 1 file changed, 3 insertions(+), 1 deletion(-)	
+"cac60ba","jc3943","Sat, 4 Jun 2022 11:30:44 -0400","modified creds and vars",	 7 files changed, 9 insertions(+), 8 deletions(-)	
+"fbc943a","jc3943","Mon, 30 May 2022 07:15:33 -0400","resync",	 1 file changed, 0 insertions(+), 0 deletions(-)	
+"9104066","jc3943","Mon, 30 May 2022 06:59:34 -0400","resync",	"8c8b1b7","jc3943","Mon, 30 May 2022 06:55:05 -0400","resync",	 121 files changed, 50615 insertions(+), 1 deletion(-)
+	"35b2608","jc3943","Sun, 29 May 2022 15:31:51 -0400","moving back to devlab",	 16 files changed, 162 insertions(+), 6 deletions(-)
+	"6a3e9e9","jc3943","Sun, 29 May 2022 14:54:39 +0000","modified inventories for dcloud",	 4 files changed, 4 insertions(+), 4 deletions(-)
+	"ed426b7","jc3943","Sun, 29 May 2022 14:51:45 +0000","removed apic snapshot revert",	 7 files changed, 91 insertions(+), 27 deletions(-)
+	"33111e9","jc3943","Sun, 29 May 2022 14:23:39 +0000","removed vcsa-create temporarily",	 1 file changed, 11 insertions(+), 11 deletions(-)
+	"be292ee","jc3943","Sun, 29 May 2022 10:21:12 -0400","modifying vars for dcloud",	 94 files changed, 49561 insertions(+)
+	"cd23cb7","jc3943","Thu, 26 May 2022 16:50:16 -0400","added aci fabric ports",	 1 file changed, 1 insertion(+), 1 deletion(-)
+	"bdfc120","jc3943","Thu, 26 May 2022 16:49:03 -0400","added aci fabric ports",	 1 file changed, 1 insertion(+), 1 deletion(-)
+	"826f8a4","jc3943","Thu, 26 May 2022 16:38:48 -0400","added aci fabric ports",	 3 files changed, 258 insertions(+), 3 deletions(-)
+	"a192e67","jc3943","Thu, 26 May 2022 16:31:04 -0400","added aci fabric ports",	 1 file changed, 1 insertion(+)
+	"49ae904","jc3943","Thu, 26 May 2022 16:28:09 -0400","added aci fabric ports",	 13 files changed, 577 insertions(+)
+	"74e8871","jc3943","Tue, 24 May 2022 18:14:41 -0400","vars mods",	 2 files changed, 5 insertions(+), 1 deletion(-)
+	"2b069f7","jc3943","Tue, 24 May 2022 16:54:00 -0400","varied esxi host for vcsa deployment",	 3 files changed, 3 insertions(+), 1 deletion(-)
+	"55c1ad6","jc3943","Tue, 24 May 2022 14:24:42 -0400","modified k8s-jenksinfile",	 1 file changed, 6 insertions(+), 7 deletions(-)
+	"2296238","jc3943","Tue, 24 May 2022 13:40:47 -0400","adding vcsa-create",	 1 file changed, 1 insertion(+), 1 deletion(-)
+	"c20dff7","jc3943","Tue, 24 May 2022 13:37:06 -0400","adding vcsa-create",	 85 files changed, 49654 insertions(+)
+	"44a19ba","jc3943","Tue, 24 May 2022 11:09:01 -0400","updated some vcsa vars",	 2 files changed, 2 insertions(+), 2 deletions(-)
+	"66443a1","jc3943","Tue, 24 May 2022 09:44:11 -0400","pod2 initial commit",	 2 files changed, 9 insertions(+), 2 deletions(-)
+	"5be1be6","jc3943","Tue, 24 May 2022 08:59:33 -0400","added pod2 vars",	 3 files changed, 166 insertions(+)
+	"cd53c98","jc3943","Mon, 23 May 2022 18:49:46 -0400","updated x509",	 3 files changed, 24 insertions(+), 26 deletions(-)
+	"98b7da6","jc3943","Mon, 23 May 2022 18:45:54 -0400","updated x509",	 2 files changed, 26 insertions(+), 26 deletions(-)
+	"427e297","jc3943","Mon, 23 May 2022 18:40:45 -0400","added vm-snap-revert.yml",	 5 files changed, 32 insertions(+), 3 deletions(-)
+	"674e101","jc3943","Mon, 23 May 2022 18:27:06 -0400","updated certs",	 2 files changed, 26 insertions(+), 26 deletions(-)
+	"a663b70","jc3943","Mon, 23 May 2022 18:23:51 -0400","modified k8s-jenkinsfile",	 2 files changed, 2 insertions(+), 13 deletions(-)
+	"af5a557","jc3943","Mon, 23 May 2022 17:52:08 -0400","Merge branch 'pod1' of https://github.com/jc3943/LTRATO-3001 into pod1 just for grins",	"3a85df7","jc3943","Mon, 23 May 2022 17:51:48 -0400","updated k8s-jenkinsfile",
+ 2 files changed, 4 insertions(+), 3 deletions(-)		"94dd46d","jc3943","Mon, 23 May 2022 14:33:34 +0000","vars mods, debugs removed",
+ 2 files changed, 88 insertions(+), 8 deletions(-)		"e9accde","jc3943","Mon, 23 May 2022 10:32:02 -0400","vars mods",
+ 2 files changed, 5 insertions(+), 5 deletions(-)		"f3cca9a","jc3943","Mon, 23 May 2022 09:48:42 -0400","changing some vars for discovery",
+ 4 files changed, 4 insertions(+), 4 deletions(-)		"eb1e721","jc3943","Fri, 20 May 2022 12:37:15 +0000","misc fixings",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"94bdb18","jc3943","Fri, 20 May 2022 12:21:09 +0000","revert cert user playbook to aci_rest due to lack of write access support",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"b10771e","jc3943","Fri, 20 May 2022 12:19:29 +0000","added x509 inventory file",
+ 2 files changed, 10 insertions(+), 2 deletions(-)		"046d1ed","jc3943","Fri, 20 May 2022 12:14:05 +0000","revert cert user playbook to aci_rest due to lack of write access support",
+ 1 file changed, 1 insertion(+), 1 deletion(-)		"7e58011","jc3943","Fri, 20 May 2022 12:03:08 +0000","updated certs",
+ 4 files changed, 26 insertions(+), 109 deletions(-)		"4379f21","jc3943","Fri, 20 May 2022 07:46:47 -0400","jerge branch 'pod1' of https://github.com/jc3943/LTRATO-3001 into pod1 merge mess",
+"8268a4e","jc3943","Fri, 20 May 2022 07:46:16 -0400","updated cert path in playbooks",	 2 files changed, 43 insertions(+), 43 deletions(-)	
+"965c8a4","jc3943","Wed, 18 May 2022 20:32:56 -0400","new keys",	 2 files changed, 79 insertions(+), 79 deletions(-)	
+"6918b06","jc3943","Wed, 18 May 2022 20:20:07 -0400","new keys",	 2 files changed, 78 insertions(+), 25 deletions(-)	
+"0c51890","jc3943","Thu, 19 May 2022 00:05:34 +0000","reverted cert playbook do to bug",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"2ed981d","jc3943","Wed, 18 May 2022 19:47:24 -0400","new cert",	 4 files changed, 56 insertions(+), 26 deletions(-)	
+"77f47d6","jc3943","Wed, 18 May 2022 19:43:36 -0400","permission mods",	 1 file changed, 1 insertion(+), 1 deletion(-)	
+"39188bd","jc3943","Wed, 18 May 2022 19:30:15 -0400","updating creds",	 1 file changed, 2 insertions(+), 2 deletions(-)	
+"e6bf2da","jc3943","Wed, 18 May 2022 19:25:13 -0400","resync",	 1 file changed, 29 insertions(+)	
+"d22a149","jc3943","Wed, 18 May 2022 18:02:42 -0400","added k8s-jenkinsfile for gitops",	 9 files changed, 255 insertions(+), 126 deletions(-)	
+"80fe5cf","jc3943","Tue, 17 May 2022 07:22:33 -0400","removed extra noise",	 5 files changed, 997 insertions(+)	
+"8aec27c","jc3943","Sat, 14 May 2022 19:56:13 -0400","Merge branch 'master' of https://github.com/jc3943/LTRATO-3001 synch",	"0fa55e2","jc3943","Sat, 14 May 2022 18:22:32 -0400","updated jenkinsfile",	 1 file changed, 0 insertions(+), 0 deletions(-)
+	"8189801","jc3943","Sat, 14 May 2022 18:13:04 -0400","sync",	 1 file changed, 0 insertions(+), 0 deletions(-)
+	"71b98e2","jc3943","Fri, 13 May 2022 10:57:44 -0400","updated pod-jenkinsfile",	 1 file changed, 2 insertions(+), 2 deletions(-)
+	"94456be","jc3943","Fri, 13 May 2022 10:53:15 -0400","updated pod-jenkinsfile",	 2 files changed, 1 insertion(+), 1 deletion(-)
+	"0faf398","jc3943","Thu, 12 May 2022 21:05:40 -0400","modified pod-jenkinsfile",	 2 files changed, 102 insertions(+), 1 deletion(-)
+	"4b858d2","jc3943","Thu, 12 May 2022 20:26:51 -0400","added pod-jenkinsfile",	 1 file changed, 1 insertion(+)
+	"c243143","jc3943","Thu, 12 May 2022 20:09:45 -0400","added pod-jenkinsfile",	 1 file changed, 1 insertion(+), 1 deletion(-)
+	"010ef40","jc3943","Thu, 12 May 2022 20:07:38 -0400","added pod-jenkinsfile",	 2 files changed, 18 insertions(+)
+	"2f52254","jc3943","Thu, 12 May 2022 17:43:57 -0400","added aciDelete-cert-auth.yml",	 3 files changed, 24 insertions(+), 101 deletions(-)
+	"bcdc697","jc3943","Thu, 12 May 2022 17:35:39 -0400","renamed cert-auth playbook",	 1 file changed, 0 insertions(+), 0 deletions(-)
+	"09e176b","jc3943","Thu, 12 May 2022 17:11:13 -0400","created certs",	 3 files changed, 26 insertions(+), 24 deletions(-)
+	"d3d56a2","jc3943","Thu, 12 May 2022 17:09:03 -0400","created certs",	 2 files changed, 24 insertions(+), 27 deletions(-)
+	"c6774c6","jc3943","Thu, 12 May 2022 17:00:42 -0400","Merge branch 'pod1' of https://github.com/jc3943/LTRATO-3001",	"4ffed90","jc3943","Thu, 12 May 2022 17:00:04 -0400","added ansible-playbook for cert-auth",
+ 3 files changed, 140 insertions(+)		"5342e4d","jc3943","Thu, 12 May 2022 16:58:02 -0400","Merge pull request #1 from jc3943/pod1",
+"778b937","jc3943","Thu, 12 May 2022 16:54:09 -0400","added ansible playbook to create cert-auth",	 3 files changed, 63 insertions(+)	
+"f7ee7ba","jc3943","Thu, 12 May 2022 15:55:51 -0400","initial commit",	 16 files changed, 86 insertions(+)	

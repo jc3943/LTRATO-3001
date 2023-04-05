@@ -1,0 +1,50 @@
+FROM ubuntu:22.04
+#FROM jc3943/ubuntu:5.30.22
+
+ARG DEBIAN_FRONTEND=noninteractive
+##### Apt-Utils #####
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends apt-utils
+##### Sudo #####
+RUN apt-get install -y sudo
+
+COPY ccp7* /home/devadmin/.ssh/
+
+##### Other utils #####
+RUN apt-get update \
+	&& apt-get install -y openssh-client vim nfs-common gzip ansible wget software-properties-common gnupg2 curl
+RUN apt install  openssh-server sudo -y
+RUN useradd -rm -d /home/devadmin -s /bin/bash -g root -G sudo -u 1000 devadmin
+RUN  echo 'devadmin:devadmin' | chpasswd
+RUN service ssh start
+EXPOSE 22
+CMD ["/usr/sbin/sshd","-D"]
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt update
+RUN apt-get update
+#RUN apt remove ansible -y
+RUN apt install sshpass -y
+RUN apt-get install git -y
+RUN apt-get install python3-pip -y
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade ansible
+RUN ansible-galaxy collection install cisco.aci
+RUN ansible-galaxy collection install community.vmware
+RUN ansible-galaxy collection install cisco.nae
+RUN ansible-galaxy collection install wti.remote
+RUN pip3 install pyopenssl
+RUN pip3 install requests
+RUN pip3 install xlrd
+RUN pip3 install pyvmomi
+RUN pip3 install Jinja2
+RUN pip3 install kubernetes
+RUN pip3 install psycopg2-binary
+RUN pip3 install PyYAML
+RUN pip3 install str2bool
+RUN pip3 install urllib3
+RUN pip3 install install git+https://github.com/CiscoDevNet/intersight-python
+RUN pip3 install jsonschema
+RUN pip3 install intersight_auth
+
+
