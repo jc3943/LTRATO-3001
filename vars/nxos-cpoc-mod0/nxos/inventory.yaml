@@ -1,0 +1,14 @@
+---
+fabric:
+  inventory:
+    spines:
+      - name: cs05
+        url: https:///9.1.18.24
+      - name: cs06
+        url: https:///9.1.18.25
+
+    leafs:
+      - name: es01
+        url: https://10.1.1.3
+      - name: es02
+        url: https://10.1.1.4
