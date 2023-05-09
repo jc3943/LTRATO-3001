@@ -68,32 +68,32 @@ interfaceProfiles:
   fromPort: 6
   interfaceProfile: LEAF-01-1-LEAF-01-2_intProf
   intfType: vpc
-  name: vpc_hx-bh-prod-esxi
-  policyGrp: vpc_hx-bh-prod-esxi
+  name: vpc_hx-bh-prod-01
+  policyGrp: vpc_hx-bh-prod-01
   toPort: 6
 - blkNum: block2
   description: hx-bh-prod-esxi_mLOM-03_04
   fromPort: 8
   interfaceProfile: LEAF-01-1-LEAF-01-2_intProf
   intfType: vpc
-  name: vpc_hx-bh-prod-esxi
-  policyGrp: vpc_hx-bh-prod-esxi
+  name: vpc_hx-bh-prod-02
+  policyGrp: vpc_hx-bh-prod-02
   toPort: 8
 - blkNum: block2
   description: hx-bh-prod-esxi_mLOM-03_04
   fromPort: 10
   interfaceProfile: LEAF-01-1-LEAF-01-2_intProf
   intfType: vpc
-  name: vpc_hx-bh-prod-esxi
-  policyGrp: vpc_hx-bh-prod-esxi
+  name: vpc_hx-bh-prod-03
+  policyGrp: vpc_hx-bh-prod-03
   toPort: 10
 - blkNum: block2
   description: hx-bh-prod-esxi_mLOM-03_04
   fromPort: 12
   interfaceProfile: LEAF-01-1-LEAF-01-2_intProf
   intfType: vpc
-  name: vpc_hx-bh-prod-esxi
-  policyGrp: vpc_hx-bh-prod-esxi
+  name: vpc_hx-bh-prod-04
+  policyGrp: vpc_hx-bh-prod-04
   toPort: 12
 - blkNum: block2
   description: bm-bh-prod-esxi_mLOM-01
@@ -137,7 +137,37 @@ policyGrps:
   lldpPol: LLDP_ON
   mcpPol: MCP_ON
   monPol: Nflow_Mon
-  name: vpc_hx-bh-prod-esxi
+  name: vpc_hx-bh-prod-01
+  speed: 25G
+  stormCtlPol: bcast-mcast-storm
+- aep: Infrastructure
+  cdpPol: CDP_ON
+  lacpPol: LACP_ACTIVE
+  lagType: node
+  lldpPol: LLDP_ON
+  mcpPol: MCP_ON
+  monPol: Nflow_Mon
+  name: vpc_hx-bh-prod-02
+  speed: 25G
+  stormCtlPol: bcast-mcast-storm
+- aep: Infrastructure
+  cdpPol: CDP_ON
+  lacpPol: LACP_ACTIVE
+  lagType: node
+  lldpPol: LLDP_ON
+  mcpPol: MCP_ON
+  monPol: Nflow_Mon
+  name: vpc_hx-bh-prod-03
+  speed: 25G
+  stormCtlPol: bcast-mcast-storm
+- aep: Infrastructure
+  cdpPol: CDP_ON
+  lacpPol: LACP_ACTIVE
+  lagType: node
+  lldpPol: LLDP_ON
+  mcpPol: MCP_ON
+  monPol: Nflow_Mon
+  name: vpc_hx-bh-prod-04
   speed: 25G
   stormCtlPol: bcast-mcast-storm
 - aep: Infrastructure
