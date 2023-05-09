@@ -10,9 +10,9 @@
     vcenter_password: 'DEVP@ssw0rd'
     #vcenter_hostname: 'hx-crypto-vcsa'
     #vcenter_address: '172.16.10.241'
-    net_prefix: '22'
+    net_prefix: '24'
     net_gateway: '172.16.14.254'
-    dns_servers: '172.16.20.101'
+    dns_servers: '172.16.10.100'
     domain: 'thor.iws.navy.mil'
     searchpath: "thor.iws.navy.mil"
     vcsa_size: 'tiny'
