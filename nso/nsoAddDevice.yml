@@ -44,11 +44,11 @@
        input: {}
     with_items: "{{ nsospecs }}"
 
-  - name: Sync From Device
+  - name: Sync Golden Config to Device
     cisco.nso.nso_action:
        url: "{{ item.nsoUrl }}"
        username: ncsadmin
        password: ncsadmin
-       path: /ncs:devices/device{"{{ item.c8000vName }}"}/sync-from
+       path: /ncs:devices/device{"{{ item.c8000vName }}"}/sync-to
        input: {}
     with_items: "{{ nsospecs }}"
