@@ -9,7 +9,7 @@
     pod_esxi_password: 'DEVP@ssw0rd'
     vcenter_password: 'DEVP@ssw0rd'
     #vcenter_hostname: 'hx-crypto-vcsa'
-    #vcenter_address: '172.16.10.241'
+    #vcenter_address: '172.16.14.137'
     net_prefix: '24'
     net_gateway: '172.16.14.254'
     dns_servers: '172.16.10.100'
