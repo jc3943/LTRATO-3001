@@ -13,8 +13,8 @@
     net_prefix: '24'
     net_gateway: '172.16.14.254'
     dns_servers: '172.16.10.100'
-    domain: 'thor.iws.navy.mil'
-    searchpath: "thor.iws.navy.mil"
+    domain: 'devlab.lab.com'
+    searchpath: "devlab.lab.com"
     vcsa_size: 'tiny'
     datastore: 'DEV'
     networks: 'Storage Controller Management Network'
