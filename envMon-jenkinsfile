@@ -12,7 +12,7 @@ pipeline {
         apicVm = "acisim-5.2-1g-" + "${BRANCH_NAME}"
         apicInventory = "./creds/inv-" + "${BRANCH_NAME}"
         apicInventoryx509 = "./creds/inv-" + "${BRANCH_NAME}" + "-x509"
-        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".thor.iws.navy.mil"
+        vcsaHostName = "vcsa-" + "${BRANCH_NAME}" + ".devlab.lab.com"
         IMC_CREDS = credentials('imc-creds')
   }
   agent {

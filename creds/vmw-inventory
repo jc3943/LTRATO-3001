@@ -4,5 +4,5 @@ password=DEVP@ssw0rd
 ansible_python_interpreter="/bin/python3"
 
 [vcenter]
-172.16.10.241
+172.16.14.137
 

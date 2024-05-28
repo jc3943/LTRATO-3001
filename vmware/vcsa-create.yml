@@ -4,20 +4,34 @@
   gather_facts: false
   vars: 
     esxi_username: 'root'
-    esxi_password: 'THORP@ssw0rd'
+    esxi_password: 'DEVP@ssw0rd'
     pod_esxi_password: 'DEVP@ssw0rd'
     vcenter_password: 'DEVP@ssw0rd'
+<<<<<<< HEAD
     net_prefix: '24'
     net_gateway: '172.16.14.254'
     dns_servers: '172.16.20.101'
     ntp_servers: '172.20.1.254'
     domain: 'thor.iws.navy.mil'
     searchpath: "thor.iws.navy.mil"
+=======
+    #vcenter_hostname: 'hx-crypto-vcsa'
+    #vcenter_address: '172.16.14.137'
+    net_prefix: '24'
+    net_gateway: '172.16.14.254'
+    dns_servers: '172.16.10.100'
+    domain: 'devlab.lab.com'
+    searchpath: "devlab.lab.com"
+>>>>>>> pod1
     vcsa_size: 'tiny'
     datastore: 'DEV'
     networks: 'Storage Controller Management Network'
     vcsa_ova_name: VMware-vCenter-Server-Appliance-6.7.0.46000-17138064_OVF10-ntp.ova
+<<<<<<< HEAD
     vcsa_ova_url: http://172.16.65.167/00-Software/VMWare/
+=======
+    vcsa_ova_url: 172.16.20.10:/data/nfs/00-Software/vmware/
+>>>>>>> pod1
     #vcsa_ova_file: '/var/jenkins_home/{{ vcsa_ova_name }}'
     vcsa_ova_file: '/tmp/{{ vcsa_ova_name }}'
     nfs_file_browser_url: "http://172.16.10.124:8005"
